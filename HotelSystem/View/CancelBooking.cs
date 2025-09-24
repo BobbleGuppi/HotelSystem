@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace HotelSystem.View
 {
-    public partial class Form3 : Form
+    public partial class CancelBooking : Form
     {
-        public Form3()
+        public CancelBooking()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
