@@ -73,12 +73,6 @@
     <Compile Include="View\Form3.Designer.cs">
       <DependentUpon>Form3.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ChangeBooking.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\ChangeBooking.Designer.cs">
-      <DependentUpon>ChangeBooking.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
