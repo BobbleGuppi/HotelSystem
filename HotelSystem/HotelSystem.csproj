@@ -67,11 +67,11 @@
     <Compile Include="View\BookingEnquiry.Designer.cs">
       <DependentUpon>BookingEnquiry.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form3.cs">
+    <Compile Include="View\MakeBooking.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
+    <Compile Include="View\MakeBooking.Designer.cs">
+      <DependentUpon>MakeBooking.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -87,6 +87,9 @@
     </Compile>
     <EmbeddedResource Include="View\CancelBooking.resx">
       <DependentUpon>CancelBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MakeBooking.resx">
+      <DependentUpon>MakeBooking.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
