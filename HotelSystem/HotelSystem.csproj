@@ -82,8 +82,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
-    <Folder Include="Logic Layer\" />
-    <Folder Include="View Layer\" />
+    <Folder Include="Logic\" />
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
