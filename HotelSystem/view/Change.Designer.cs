@@ -1,6 +1,6 @@
 ﻿namespace HotelSystem.View
 {
-    partial class ChangeBooking
+    partial class Change
     {
         /// <summary>
         /// Required designer variable.

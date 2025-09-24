@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HotelSystem.View
 {
-    public partial class ChangeBooking : Form
+    public partial class Change : Form
     {
-        public ChangeBooking()
+        public Change()
         {
             InitializeComponent();
         }
