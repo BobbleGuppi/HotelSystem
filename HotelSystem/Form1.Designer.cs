@@ -39,10 +39,9 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button2.Location = new System.Drawing.Point(784, 433);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(588, 352);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(221, 50);
+            this.button2.Size = new System.Drawing.Size(166, 41);
             this.button2.TabIndex = 1;
             this.button2.Text = "Click Me!";
             this.button2.UseVisualStyleBackColor = false;
@@ -50,17 +49,19 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(344, 107);
+            this.textBox1.Location = new System.Drawing.Point(258, 87);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.Size = new System.Drawing.Size(76, 20);
             this.textBox1.TabIndex = 2;
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(533, 55);
+            this.radioButton1.Location = new System.Drawing.Point(400, 45);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(103, 20);
+            this.radioButton1.Size = new System.Drawing.Size(85, 17);
             this.radioButton1.TabIndex = 3;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "radioButton1";
@@ -69,9 +70,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(224, 246);
+            this.label1.Location = new System.Drawing.Point(168, 200);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 16);
+            this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "bless me";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -79,32 +81,33 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(320, 404);
+            this.label2.Location = new System.Drawing.Point(240, 328);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 16);
+            this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "hey amahle";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(537, 253);
+            this.comboBox1.Location = new System.Drawing.Point(403, 206);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.Size = new System.Drawing.Size(92, 21);
             this.comboBox1.TabIndex = 6;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1117, 636);
+            this.ClientSize = new System.Drawing.Size(1034, 517);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
