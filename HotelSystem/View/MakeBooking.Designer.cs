@@ -1,6 +1,6 @@
 ﻿namespace HotelSystem.View
 {
-    partial class Form3
+    partial class MakeBooking
     {
         /// <summary>
         /// Required designer variable.
