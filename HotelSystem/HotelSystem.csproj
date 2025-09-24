@@ -91,12 +91,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\BookingEnquiry.resx">
-      <DependentUpon>BookingEnquiry.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\ChangeBooking.resx">
-      <DependentUpon>ChangeBooking.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

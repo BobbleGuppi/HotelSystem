@@ -10,24 +10,14 @@ using System.Windows.Forms;
 
 namespace HotelSystem.View
 {
-    public partial class ChangeBooking : Form
+    public partial class CancelBooking : Form
     {
-        public ChangeBooking()
+        public CancelBooking()
         {
             InitializeComponent();
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ChangeBooking_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
         {
 
         }
