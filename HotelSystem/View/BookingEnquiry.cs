@@ -16,5 +16,25 @@ namespace HotelSystem.View
         {
             InitializeComponent();
         }
+
+        private void reservLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RIDTextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void confirmButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
