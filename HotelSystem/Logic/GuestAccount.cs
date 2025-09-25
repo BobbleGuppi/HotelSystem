@@ -10,8 +10,8 @@ namespace HotelSystem.Logic
      {
         private string guestAccID;
         private DateTime dateCreated;
-        private string status;
-        
+        private string status;//what is the status referring to?
+
         public GuestAccount(string guestAccID, DateTime dateCreated, string status)
         {
             this.guestAccID = guestAccID;

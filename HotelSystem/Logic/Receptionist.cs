@@ -8,7 +8,7 @@ namespace HotelSystem.Logic
 {
     public class Receptionist:Person
     {
-        private string receptionistId;
+        private string receptionistId;//is this class necessary?
         private string password;
 
         public Receptionist(string id, string name, string phone, string receptionistId, string password):base(id, name, phone)
