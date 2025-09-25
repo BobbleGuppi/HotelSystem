@@ -7,6 +7,16 @@ using System.Threading.Tasks;
 namespace HotelSystem.Logic
 {
      public class GuestAccount
-    {
-    }
+     {
+        private string guestAccID;
+        private DateTime dateCreated;
+        private string status;
+        
+        public GuestAccount(string guestAccID, DateTime dateCreated, string status)
+        {
+            this.guestAccID = guestAccID;
+            this.dateCreated = dateCreated;
+            this.status = status;
+        }
+     }
 }
