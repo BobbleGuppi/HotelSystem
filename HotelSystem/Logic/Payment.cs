@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HotelSystem.Logic
 {
-    internal class Payment
+    public class Payment
     {
     }
 }
