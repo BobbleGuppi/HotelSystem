@@ -52,6 +52,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logic\Guest.cs" />
+    <Compile Include="Logic\GuestAccount.cs" />
+    <Compile Include="Logic\Payment.cs" />
+    <Compile Include="Logic\Receptionist.cs" />
+    <Compile Include="Logic\Reservation.cs" />
+    <Compile Include="Logic\Room.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,7 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
-    <Folder Include="Logic\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
