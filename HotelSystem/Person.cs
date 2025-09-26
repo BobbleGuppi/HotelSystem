@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace HotelSystem
 {
-    internal class Person
+    public class Person
     {
+        protected string id;
+        protected string name;
+        protected string phone;
+
+        public Person(string ID, string name, string phone)
+        {
+            this.id = ID;
+            this.name = name;
+            this.phone = phone;
+        }
+
     }
 }
