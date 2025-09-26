@@ -41,7 +41,7 @@
             this.PromptLabel.AutoSize = true;
             this.PromptLabel.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.PromptLabel.Font = new System.Drawing.Font("Eras Demi ITC", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PromptLabel.Location = new System.Drawing.Point(33, 53);
+            this.PromptLabel.Location = new System.Drawing.Point(33, 51);
             this.PromptLabel.Name = "PromptLabel";
             this.PromptLabel.Size = new System.Drawing.Size(390, 31);
             this.PromptLabel.TabIndex = 1;
@@ -73,7 +73,7 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(349, 147);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(201, 44);
+            this.richTextBox1.Size = new System.Drawing.Size(201, 30);
             this.richTextBox1.TabIndex = 5;
             this.richTextBox1.Text = "";
             // 
@@ -81,7 +81,7 @@
             // 
             this.richTextBox2.Location = new System.Drawing.Point(349, 230);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(201, 44);
+            this.richTextBox2.Size = new System.Drawing.Size(201, 31);
             this.richTextBox2.TabIndex = 6;
             this.richTextBox2.Text = "";
             // 
