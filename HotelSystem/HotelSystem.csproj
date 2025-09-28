@@ -117,6 +117,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\BookingEnquiry.resx">
       <DependentUpon>BookingEnquiry.cs</DependentUpon>
@@ -174,6 +175,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\100 Free Aesthetic Blue App Icons For iPhone - Glory of the Snow.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Blue icon Home.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\bell.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\bellv2.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
