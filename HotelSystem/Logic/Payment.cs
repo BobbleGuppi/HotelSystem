@@ -19,7 +19,7 @@ namespace HotelSystem.Logic
             this.paymentId = paymentId;
             this.amount = amount;
             this.paymentType = paymentType;
-            this.status = status;
+            this.status = status; //rachel asked about this
             this.payDate = payDate;
         }
 
