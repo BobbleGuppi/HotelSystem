@@ -11,7 +11,7 @@ namespace HotelSystem.Logic
         private string paymentId;
         private double amount;
         private string paymentType; //what does this mean?
-        private string status; //what does status refer to ?
+        private string status; //what does status refer to ? // if its pending or something 
         private DateTime payDate;
 
         public Payment(string paymentId, double amount, string paymentType, string status, DateTime payDate)
