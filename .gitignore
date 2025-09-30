@@ -370,3 +370,5 @@ FodyWeavers.xsd
 /HotelSystem/ReservationsDatabaseDataSet.xsc
 /HotelSystem/ReservationsDatabaseDataSet.xsd
 /HotelSystem/ReservationsDatabaseDataSet.xss
+>>>>>>> 828832bce8fcc5478bcca6ae1cdcbf0dc72961a6
+/HotelSystem/ReservationsDatabase.mdf
