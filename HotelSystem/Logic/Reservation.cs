@@ -16,6 +16,14 @@ namespace HotelSystem.Logic
         private double totalPrice;
         private bool depositPaid;
 
+
+
+        public string ReservationID
+        {
+            get { return reservationID; }
+        }
+
+
      public Reservation(string reservationID, int roomID, Guest guest, DateTime checkInDate, DateTime checkOutDate, double totalPrice, bool depositPaid)
      {
             this.reservationID = reservationID;
@@ -27,6 +35,10 @@ namespace HotelSystem.Logic
             this.depositPaid = depositPaid;
      }
 
+
+
+        
+        
      
 
     }
