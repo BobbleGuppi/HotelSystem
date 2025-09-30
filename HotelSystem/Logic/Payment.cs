@@ -10,7 +10,7 @@ namespace HotelSystem.Logic
     {
         private string paymentId;
         private decimal amount;
-        private string paymentType; //what does this mean?
+        private string paymentType; 
         private DateTime payDate;
 
         public Payment(string paymentId, decimal amount, string paymentType, DateTime payDate)

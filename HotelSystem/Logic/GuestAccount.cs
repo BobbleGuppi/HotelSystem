@@ -12,7 +12,7 @@ namespace HotelSystem.Logic
         private string guestAccID;
         private DateTime dateCreated;
         private string status;          // paid, unpaid, depositPaid
-        private decimal totalAmount;
+        private decimal totalAmount;  
         private decimal balance;
 
         private Payment depositPay;
