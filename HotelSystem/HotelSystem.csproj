@@ -163,5 +163,8 @@
   <ItemGroup>
     <None Include="bin\bellv2.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
