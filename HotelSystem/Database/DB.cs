@@ -13,7 +13,8 @@ namespace HotelSystem.Database
 {
     public class DB
     {
-        //private string strConn = Settings.Default.EmployeeDatabaseConnectionString;
+        private string strConn = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=HotelSystemDB;Integrated Security=True;" +
+            "Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
         protected SqlConnection cnMain;
         protected DataSet dsMain;
         protected SqlDataAdapter daMain;
