@@ -26,7 +26,7 @@ namespace HotelSystem.Logic
             return paymentId;
         }
 
-        public double getAmount()
+        public decimal getAmount()
         {
             return amount;
         }
