@@ -165,13 +165,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="HotelSystemsDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="HotelSystemsDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>HotelSystemsDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Scripts\demo.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
