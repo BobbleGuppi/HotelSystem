@@ -11,7 +11,7 @@ namespace HotelSystem.Logic
         private string receptionistId;//is this class necessary?
         private string password;
 
-        public Receptionist(string id, string name, string phone, string receptionistId, string password):base(id, name, phone)
+        public Receptionist(string id, string name, string phone, string address, string receptionistId, string password) : base(id, name, phone,address)
         {
             this.receptionistId = receptionistId;
             this.password = password;
