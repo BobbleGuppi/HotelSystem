@@ -366,9 +366,6 @@ FodyWeavers.xsd
 /HotelSystem/ReservationsDatabaseDataSet.xsd
 /HotelSystem/ReservationsDatabaseDataSet.xss
 /HotelSystem/ReservationsDatabase.mdf
-<<<<<<< HEAD
-/HotelSystem/ReservationsDatabase.mdf
-=======
 /HotelSystem/ReservationsDatabaseDataSet.Designer.cs
 /HotelSystem/ReservationsDatabaseDataSet.xsc
 /HotelSystem/ReservationsDatabaseDataSet.xsd
