@@ -166,7 +166,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Scripts\demo.sql" />
-    <Content Include="Scripts\MoreTables.sql" />
+    <Content Include="Scripts\FINAL.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
