@@ -27,7 +27,7 @@ namespace HotelSystem.Logic
             this.depositPaid = depositPaid;
      }
 
-     
+      
 
     }
 }
