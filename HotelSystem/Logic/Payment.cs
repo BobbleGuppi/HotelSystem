@@ -9,19 +9,43 @@ namespace HotelSystem.Logic
     public class Payment
     {
         private string paymentId;
-        private double amount;
+        private decimal amount;
         private string paymentType; //what does this mean?
-        private string status; //what does status refer to ?
         private DateTime payDate;
 
-        public Payment(string paymentId, double amount, string paymentType, string status, DateTime payDate)
+        public Payment(string paymentId, decimal amount, string paymentType, DateTime payDate)
         {
             this.paymentId = paymentId;
             this.amount = amount;
             this.paymentType = paymentType;
-            this.status = status; //rachel asked about this
             this.payDate = payDate;
         }
 
+        public string getPaymentID()
+        {
+            return paymentId;
+        }
+
+        public double getAmount()
+        {
+            return amount;
+        }
+
+        public string getPaymentType()
+        {
+            return paymentType;
+        }
+
+        public DateTime getPayDate()
+        {
+            return payDate;
+        }
+
+        public override string ToString()
+        {
+            return $"PaymentID: {paymentId}, Amount: {amount}, Type: {paymentType}, Date: {payDate.ToShortDateString()}";
+        }
     }
+
+
 }
