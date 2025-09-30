@@ -84,11 +84,14 @@ namespace HotelSystem.Logic
             {
                 return 750;
             }
-            else (date > endMidSeason && date <= endHighSeason)
-           {
+            else if (date > endMidSeason && date <= endHighSeason)
+            {
                 return 995;
-           }
-            return 0;
+            }
+            else
+            {
+                return 0;
+            }
 
         }
 
@@ -97,7 +100,7 @@ namespace HotelSystem.Logic
             depositPaid = true;
         }
 
-        public void ChangeReservationDates(DateTime newCheckIn, DateTime newCheckOut)
+        public void changeReservationDates(DateTime newCheckIn, DateTime newCheckOut)
         {
             checkInDate = newCheckIn;
             checkOutDate = newCheckOut;
@@ -105,10 +108,10 @@ namespace HotelSystem.Logic
             calculateTotalPrice(checkInDate, checkOutDate); // Assuming pricePerNight is handled in checkSeasonalPricing
         }
 
-        public string ReservationDetails()
+        public string reservationDetails()
         {
-            guest.DisplayInfo();
-            return "Current booking reserved for" + checkInDate.ToString(("yyyy-MM-dd") + " to " + checkOutDate.ToString("yyyy-MM-dd");
+            guest.displayInfo();
+            return "Current booking reserved for" + checkInDate.ToString("yyyy-MM-dd") + " to " + checkOutDate.ToString("yyyy-MM-dd");
 
         }
 

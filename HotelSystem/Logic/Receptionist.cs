@@ -16,5 +16,17 @@ namespace HotelSystem.Logic
             this.receptionistId = receptionistId;
             this.password = password;
         }
+
+        public Boolean login(string receptionistId, string password)
+        {
+            if (this.receptionistId == receptionistId && this.password == password)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
