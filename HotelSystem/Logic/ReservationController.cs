@@ -72,7 +72,6 @@ namespace HotelSystem.Logic
             }
             return reservations[index];
         }
-        #endregion
 
         public int FindIndex(Reservation reservation)
         {
@@ -90,5 +89,8 @@ namespace HotelSystem.Logic
             else
                 return -1;
         }
+        #endregion
+
+
     }
 }
