@@ -10,17 +10,17 @@ namespace HotelSystem.Logic
     {
         private string reservationID;
         private int roomID; //thinking we should make it an enum
-        private Guest guest;
+        private string guestID;
         private DateTime checkInDate; //we will have to set a standard time
         private DateTime checkOutDate;
         public double totalPrice;
         private bool depositPaid = false;
 
-        public Reservation(string reservationID, int roomID, Guest guest, DateTime checkInDate, DateTime checkOutDate, double totalPrice, bool depositPaid)
+        public Reservation(string reservationID, int roomID, string guestID, DateTime checkInDate, DateTime checkOutDate, double totalPrice, bool depositPaid)
         {
             this.reservationID = reservationID;
             this.roomID = roomID;
-            this.guest = guest;
+            this.guestID = guestID;
             this.checkInDate = checkInDate;
             this.checkOutDate = checkOutDate;
             this.totalPrice = totalPrice;
@@ -39,10 +39,10 @@ namespace HotelSystem.Logic
             set { roomID = value; }
         }
 
-        public Guest Guest
+        public string Guest
         {
-            get { return guest; }
-            set { guest = value; }
+            get { return guestID; }
+            set { guestID = value; }
         }
 
         public DateTime CheckInDate
@@ -57,6 +57,11 @@ namespace HotelSystem.Logic
             set { checkOutDate = value; }
         }
 
+        public bool DepositPaid
+        {
+            get { return depositPaid; }
+            set { depositPaid = value; }
+        }
         #endregion
 
         public void calculateTotalPrice(DateTime checkIn, DateTime checkOut)
