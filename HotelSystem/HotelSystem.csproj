@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="Logic\Guest.cs" />
     <Compile Include="Logic\GuestAccount.cs" />
+    <Compile Include="Logic\GuestAccountController.cs" />
     <Compile Include="Logic\GuestController.cs" />
     <Compile Include="Logic\Payment.cs" />
     <Compile Include="Logic\Receptionist.cs" />

@@ -26,6 +26,7 @@ namespace HotelSystem.Logic
         #region Constructors
         public GuestController()
         {
+
             guestDB = new GuestDB();
             guests = guestDB.AllGuests;
         }
