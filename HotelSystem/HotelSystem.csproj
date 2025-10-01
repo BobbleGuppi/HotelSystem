@@ -74,6 +74,7 @@
     <Compile Include="Logic\Payment.cs" />
     <Compile Include="Logic\Receptionist.cs" />
     <Compile Include="Logic\Reservation.cs" />
+    <Compile Include="Logic\ReservationController.cs" />
     <Compile Include="Logic\Room.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
