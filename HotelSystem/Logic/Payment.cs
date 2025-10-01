@@ -9,11 +9,11 @@ namespace HotelSystem.Logic
     public class Payment
     {
         private string paymentId;
-        private decimal amount;
+        private double amount;
         private string paymentType; 
         private DateTime payDate;
 
-        public Payment(string paymentId, decimal amount, string paymentType, DateTime payDate)
+        public Payment(string paymentId, double amount, string paymentType, DateTime payDate)
         {
             this.paymentId = paymentId;
             this.amount = amount;
@@ -26,7 +26,7 @@ namespace HotelSystem.Logic
             return paymentId;
         }
 
-        public decimal getAmount()
+        public double getAmount()
         {
             return amount;
         }

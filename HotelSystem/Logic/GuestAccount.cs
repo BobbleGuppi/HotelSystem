@@ -7,33 +7,75 @@ using System.Threading.Tasks;
 
 namespace HotelSystem.Logic
 {
-     public class GuestAccount
+    #region Data members
+    public class GuestAccount
      {
         private string guestAccID;
+        private string guestID;
         private DateTime dateCreated;
         private string status;          // paid, unpaid, depositPaid
-        private decimal totalAmount;  
-        private decimal balance;
+        private double totalAmount;  
+        private double balance;
 
         private Payment depositPay;
         private Payment fullPay;
+        #endregion
 
+        #region Property
         public string GuestAccID
         {
             get {  return guestAccID; }
         }
 
+        public string GuestID
+        {
+            get {  return guestID; }
+        }
 
-        public GuestAccount(string guestAccID, DateTime dateCreated, decimal totalAmount )
+        public DateTime DateCreated
+        {
+            get { return dateCreated; }
+        }
+
+        public string Status
+        {
+            get { return status; }
+        }
+
+        public double TotalAmount
+        {
+            get { return  totalAmount; }
+        }
+
+        public double Balance
+        {
+            get { return balance; }
+        }
+
+        public Payment DepositPay
+        {
+            get { return depositPay; }
+        }
+
+        public Payment FullPay
+        {
+            get { return fullPay; }
+        }
+        #endregion
+
+        #region Constructor
+        public GuestAccount(string guestAccID, string guestID, DateTime dateCreated, double totalAmount , string status = "Unpaid")
         {
             this.guestAccID = guestAccID;
+            this.guestID = guestID;
             this.dateCreated = dateCreated;
             this.totalAmount = totalAmount;
             this.balance = totalAmount;
-            this.status = "Unpaid";
+            this.status = status; // inittally unpaid
         }
+        #endregion
 
-
+        #region Methods
         public void makeDeposit(string payment)
         {
             if (depositPay !=null) {
@@ -41,7 +83,7 @@ namespace HotelSystem.Logic
 
             }
 
-            decimal depositAmount = totalAmount * 0.10m; // chat said this is how i make it 10%
+            double depositAmount = totalAmount * 0.10; // chat said this is how i make it 10%
             balance -= depositAmount;
             status = "DepositPaid";
 
@@ -52,7 +94,7 @@ namespace HotelSystem.Logic
 
         }
 
-        public void makePayment(string payment, decimal amount)
+        public void makePayment(string payment, double amount)
         {
             if (fullPay != null)
             {
@@ -76,19 +118,20 @@ namespace HotelSystem.Logic
             fullPay = new Payment(payment, amount, "TotalPayment", DateTime.Now);
         }
 
-        public decimal getBalance()
+        public double getBalance()
             {
                 return balance;
             }
 
-            public string getStatus()
-            {
+        public string getStatus()
+        {
             return status;
-            }
         }
+        #endregion
+    }
 
 
 
 
-     
+
 }
