@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace HotelSystem.Logic
 {
-     public class GuestAccount
+    
+    public class GuestAccount
      {
+        #region Data members
         private string guestAccID;
         private DateTime dateCreated;
         private string status;          // paid, unpaid, depositPaid
@@ -30,8 +32,8 @@ namespace HotelSystem.Logic
             this.status = "Unpaid";
         }
 
-
-        public void makeDeposit()
+        #region Methods
+        public void makeDeposit(string paymentID, string guestAccID)
         {
             if (status != "Unpaid") {
                 throw new Exception("Deposit must only be made once when the account is unpaid!");
@@ -42,12 +44,14 @@ namespace HotelSystem.Logic
             balance -= deposit;
             status = "DepositPaid";
 
+            depositPay = new Payment(paymentID, guestAccID, depositAmount, "Deposit", DateTime.Now);
+
 
 
 
         }
 
-        public void makePayment(decimal amount)
+        public void makePayment(string paymentID, double amount, string guestAccID)
         {
             if (amount <= 0 || amount > balance)
             {
@@ -66,6 +70,8 @@ namespace HotelSystem.Logic
                 status = "DepositPaid";
 
             }
+
+            fullPay = new Payment(paymentID, guestAccID, amount, "TotalPayment", DateTime.Now);
         }
 
         public decimal getBalance()

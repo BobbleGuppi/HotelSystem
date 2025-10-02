@@ -63,26 +63,6 @@ namespace HotelSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _100_Free_Aesthetic_Blue_App_Icons_For_iPhone___Glory_of_the_Snow {
-            get {
-                object obj = ResourceManager.GetObject("100 Free Aesthetic Blue App Icons For iPhone - Glory of the Snow", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap bell {
-            get {
-                object obj = ResourceManager.GetObject("bell", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap bellv2 {
             get {
                 object obj = ResourceManager.GetObject("bellv2", resourceCulture);
