@@ -64,6 +64,7 @@
     <Compile Include="Database\DB.cs" />
     <Compile Include="Database\GuestAccountDB.cs" />
     <Compile Include="Database\GuestDB.cs" />
+    <Compile Include="Database\PaymentDB.cs" />
     <Compile Include="Database\ReservationDB.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

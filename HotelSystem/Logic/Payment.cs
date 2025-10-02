@@ -8,43 +8,42 @@ namespace HotelSystem.Logic
 {
     public class Payment
     {
+
+        #region Fields
         private string paymentId;
+        private string guestAccId;
         private double amount;
         private string paymentType; 
         private DateTime payDate;
+        #endregion
 
-        public Payment(string paymentId, double amount, string paymentType, DateTime payDate)
+
+        #region Constructors
+        public Payment(string paymentId, string guestAccId, double amount, string paymentType, DateTime payDate)
         {
             this.paymentId = paymentId;
+            this.guestAccId = guestAccId;
             this.amount = amount;
             this.paymentType = paymentType;
             this.payDate = payDate;
         }
+        #endregion
 
-        public string getPaymentID()
-        {
-            return paymentId;
-        }
+        #region Property Methods
+        public string PaymentID { get{ return paymentId; } set{ paymentId = value; } }
+        public string GuestAccID { get { return guestAccId; } set { guestAccId = value; } }
+        public double Amount { get { return amount; } set { amount = value; } }
+        public string PaymentType { get { return paymentId; } set { paymentId = value; } }
+        public DateTime DatePaid { get { return payDate; } set { payDate = value; } }
+        #endregion
 
-        public double getAmount()
-        {
-            return amount;
-        }
-
-        public string getPaymentType()
-        {
-            return paymentType;
-        }
-
-        public DateTime getPayDate()
-        {
-            return payDate;
-        }
-
+        #region Utility Methods
         public override string ToString()
         {
             return $"PaymentID: {paymentId}, Amount: {amount}, Type: {paymentType}, Date: {payDate.ToShortDateString()}";
         }
+        #endregion
+
     }
 
 
