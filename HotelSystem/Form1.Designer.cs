@@ -48,6 +48,7 @@
             this.menuStrip1.BackColor = System.Drawing.Color.LightBlue;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.homeToolStripMenuItem,
             this.manageGuestBookingsToolStripMenuItem,
@@ -56,7 +57,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1034, 44);
+            this.menuStrip1.Size = new System.Drawing.Size(1379, 44);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -78,28 +79,28 @@
             this.makeBookingEnquiryToolStripMenuItem});
             this.manageGuestBookingsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.manageGuestBookingsToolStripMenuItem.Name = "manageGuestBookingsToolStripMenuItem";
-            this.manageGuestBookingsToolStripMenuItem.Size = new System.Drawing.Size(144, 40);
+            this.manageGuestBookingsToolStripMenuItem.Size = new System.Drawing.Size(179, 40);
             this.manageGuestBookingsToolStripMenuItem.Text = "Manage Bookings";
             // 
             // changeGuestBookingToolStripMenuItem
             // 
             this.changeGuestBookingToolStripMenuItem.BackColor = System.Drawing.Color.CadetBlue;
             this.changeGuestBookingToolStripMenuItem.Name = "changeGuestBookingToolStripMenuItem";
-            this.changeGuestBookingToolStripMenuItem.Size = new System.Drawing.Size(235, 24);
+            this.changeGuestBookingToolStripMenuItem.Size = new System.Drawing.Size(292, 30);
             this.changeGuestBookingToolStripMenuItem.Text = "Change Guest Booking";
             // 
             // cancelGuestBookingToolStripMenuItem
             // 
             this.cancelGuestBookingToolStripMenuItem.BackColor = System.Drawing.Color.CadetBlue;
             this.cancelGuestBookingToolStripMenuItem.Name = "cancelGuestBookingToolStripMenuItem";
-            this.cancelGuestBookingToolStripMenuItem.Size = new System.Drawing.Size(235, 24);
+            this.cancelGuestBookingToolStripMenuItem.Size = new System.Drawing.Size(292, 30);
             this.cancelGuestBookingToolStripMenuItem.Text = "Cancel Guest Booking";
             // 
             // makeBookingEnquiryToolStripMenuItem
             // 
             this.makeBookingEnquiryToolStripMenuItem.BackColor = System.Drawing.Color.CadetBlue;
             this.makeBookingEnquiryToolStripMenuItem.Name = "makeBookingEnquiryToolStripMenuItem";
-            this.makeBookingEnquiryToolStripMenuItem.Size = new System.Drawing.Size(235, 24);
+            this.makeBookingEnquiryToolStripMenuItem.Size = new System.Drawing.Size(292, 30);
             this.makeBookingEnquiryToolStripMenuItem.Text = "Make Booking Enquiry";
             // 
             // makeGuestBookingToolStripMenuItem
@@ -107,7 +108,7 @@
             this.makeGuestBookingToolStripMenuItem.BackColor = System.Drawing.Color.PowderBlue;
             this.makeGuestBookingToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.makeGuestBookingToolStripMenuItem.Name = "makeGuestBookingToolStripMenuItem";
-            this.makeGuestBookingToolStripMenuItem.Size = new System.Drawing.Size(162, 40);
+            this.makeGuestBookingToolStripMenuItem.Size = new System.Drawing.Size(203, 40);
             this.makeGuestBookingToolStripMenuItem.Text = "Make Guest Booking";
             this.makeGuestBookingToolStripMenuItem.Click += new System.EventHandler(this.makeGuestBookingToolStripMenuItem_Click);
             // 
@@ -117,7 +118,7 @@
             this.reportsToolStripMenuItem.BackColor = System.Drawing.Color.PowderBlue;
             this.reportsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(73, 40);
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(92, 40);
             this.reportsToolStripMenuItem.Text = "Reports";
             // 
             // label1
@@ -125,9 +126,10 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Sans Serif Collection", 47.99999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Location = new System.Drawing.Point(118, 189);
+            this.label1.Location = new System.Drawing.Point(157, 233);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(785, 217);
+            this.label1.Size = new System.Drawing.Size(976, 272);
             this.label1.TabIndex = 8;
             this.label1.Text = "@Phumula Kamndandi ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -138,9 +140,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Sans Serif Collection", 47.99999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label2.Location = new System.Drawing.Point(363, 300);
+            this.label2.Location = new System.Drawing.Point(484, 369);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(254, 217);
+            this.label2.Size = new System.Drawing.Size(316, 272);
             this.label2.TabIndex = 10;
             this.label2.Text = "Hotel";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -148,22 +151,25 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(587, 356);
+            this.pictureBox2.Location = new System.Drawing.Point(783, 438);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(78, 71);
+            this.pictureBox2.Size = new System.Drawing.Size(104, 87);
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1034, 517);
+            this.ClientSize = new System.Drawing.Size(1379, 692);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
