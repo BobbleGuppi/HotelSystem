@@ -30,7 +30,7 @@ namespace HotelSystem.View
             {
                 MessageBox.Show("Login Successful");
                 this.Hide();
-                Form1 frm = new Form1();
+                Home frm = new Home();
                 frm.ShowDialog();
                 this.Close();
             }
