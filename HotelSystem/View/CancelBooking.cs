@@ -21,5 +21,14 @@ namespace HotelSystem.View
         {
 
         }
+
+        private void ConfirmButton_Click_1(object sender, EventArgs e)
+        {
+            label1.Visible = false;
+            label3.Visible = false;
+            richTextBox1.Visible = false;
+
+
+        }
     }
 }
