@@ -77,7 +77,7 @@
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(174, 52);
             this.confirmButton.TabIndex = 4;
-            this.confirmButton.Text = "Confirm";
+            this.confirmButton.Text = "Booking Enquiry";
             this.confirmButton.UseVisualStyleBackColor = false;
             this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
