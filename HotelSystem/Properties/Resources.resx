@@ -121,12 +121,6 @@
   <data name="Blue icon Home" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Blue icon Home.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="bell" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\bell.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="100 Free Aesthetic Blue App Icons For iPhone - Glory of the Snow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\100 Free Aesthetic Blue App Icons For iPhone - Glory of the Snow.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="bellv2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\bellv2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
