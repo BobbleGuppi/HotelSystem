@@ -115,7 +115,7 @@ namespace HotelSystem.Logic
 
         public string reservationDetails()
         {
-            guest.displayInfo();
+            //guest.displayInfo();
             return "Current booking reserved for" + checkInDate.ToString("yyyy-MM-dd") + " to " + checkOutDate.ToString("yyyy-MM-dd");
 
         }
