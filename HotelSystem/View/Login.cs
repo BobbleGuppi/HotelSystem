@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelSystem.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,9 +25,20 @@ namespace HotelSystem.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 frm = new Form1();
-            frm.ShowDialog();
-            this.Close();
+            Receptionist rec = new Receptionist("1", "Phumla", "0123456789", "123 Street", "Strawberry", "phumla@hote1");
+            if (rec.login(usernamebtn.Text, passwordbtn.Text))
+            {
+                MessageBox.Show("Login Successful");
+                this.Hide();
+                Form1 frm = new Form1();
+                frm.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Login Failed. Please try again.");
+            }
+
         }
     }
 }

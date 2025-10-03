@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.logbtn = new System.Windows.Forms.Button();
+            this.passwordbtn = new System.Windows.Forms.TextBox();
+            this.usernamebtn = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -42,9 +42,9 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.logbtn);
+            this.panel1.Controls.Add(this.passwordbtn);
+            this.panel1.Controls.Add(this.usernamebtn);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
@@ -54,34 +54,34 @@
             this.panel1.Size = new System.Drawing.Size(459, 416);
             this.panel1.TabIndex = 0;
             // 
-            // button1
+            // logbtn
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(151, 361);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.button1.Size = new System.Drawing.Size(145, 36);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Log in";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.logbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logbtn.Location = new System.Drawing.Point(151, 361);
+            this.logbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.logbtn.Name = "logbtn";
+            this.logbtn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.logbtn.Size = new System.Drawing.Size(145, 36);
+            this.logbtn.TabIndex = 5;
+            this.logbtn.Text = "Log in";
+            this.logbtn.UseVisualStyleBackColor = true;
+            this.logbtn.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox2
+            // passwordbtn
             // 
-            this.textBox2.Location = new System.Drawing.Point(85, 266);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(271, 22);
-            this.textBox2.TabIndex = 4;
+            this.passwordbtn.Location = new System.Drawing.Point(85, 266);
+            this.passwordbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.passwordbtn.Name = "passwordbtn";
+            this.passwordbtn.Size = new System.Drawing.Size(271, 22);
+            this.passwordbtn.TabIndex = 4;
             // 
-            // textBox1
+            // usernamebtn
             // 
-            this.textBox1.Location = new System.Drawing.Point(85, 171);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(271, 22);
-            this.textBox1.TabIndex = 3;
+            this.usernamebtn.Location = new System.Drawing.Point(85, 171);
+            this.usernamebtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.usernamebtn.Name = "usernamebtn";
+            this.usernamebtn.Size = new System.Drawing.Size(271, 22);
+            this.usernamebtn.TabIndex = 3;
             // 
             // label3
             // 
@@ -122,7 +122,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1052, 450);
+            this.ClientSize = new System.Drawing.Size(1154, 622);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Login";
@@ -137,11 +137,11 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox passwordbtn;
+        private System.Windows.Forms.TextBox usernamebtn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button logbtn;
     }
 }

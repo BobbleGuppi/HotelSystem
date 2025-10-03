@@ -66,11 +66,11 @@
     <Compile Include="Database\GuestDB.cs" />
     <Compile Include="Database\PaymentDB.cs" />
     <Compile Include="Database\ReservationDB.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Logic\Guest.cs" />
     <Compile Include="Logic\GuestAccount.cs" />
@@ -120,8 +120,8 @@
     <Compile Include="View\MakeBooking.Designer.cs">
       <DependentUpon>MakeBooking.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -175,9 +175,31 @@
     <None Include="bin\bellv2.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Home light blue icon.jpeg" />
     <Content Include="Scripts\demo.sql" />
     <Content Include="Scripts\FINAL.sql" />
     <Content Include="Scripts\RealFinal.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
