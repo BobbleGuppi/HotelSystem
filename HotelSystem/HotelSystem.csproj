@@ -168,7 +168,16 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+<<<<<<< HEAD
   <ItemGroup />
+=======
+  <ItemGroup>
+    <None Include="bin\Blue icon Home.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\bellv2.jpg" />
+  </ItemGroup>
+>>>>>>> acc8a7a274945957c920ed2ec741d69d4525127c
   <ItemGroup>
     <Content Include="bin\Home light blue icon.jpeg" />
     <Content Include="Scripts\demo.sql" />
