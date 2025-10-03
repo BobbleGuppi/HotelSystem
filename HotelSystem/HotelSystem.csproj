@@ -169,7 +169,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\" />
+    <None Include="bin\Blue icon Home.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\bellv2.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\demo.sql" />
