@@ -169,13 +169,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="bin\100 Free Aesthetic Blue App Icons For iPhone - Glory of the Snow.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="bin\Blue icon Home.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\bell.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\bellv2.jpg" />
