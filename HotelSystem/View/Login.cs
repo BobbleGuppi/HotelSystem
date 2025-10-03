@@ -24,7 +24,7 @@ namespace HotelSystem.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 frm = new Form1();
+            Home frm = new Home();
             frm.ShowDialog();
             this.Close();
         }
