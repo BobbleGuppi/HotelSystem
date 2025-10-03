@@ -37,8 +37,12 @@ namespace HotelSystem
         private void makeGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MakeBooking frm = new MakeBooking();
-            frm.MdiParent = this;   
+            // Attach new child
+            frm.MdiParent = this;
+            frm.FormBorderStyle = FormBorderStyle.None;  // no border/title
+            frm.Dock = DockStyle.Fill;                   // fill the MDI area
             frm.Show();
+
         }
 
         private void label1_Click_1(object sender, EventArgs e)
