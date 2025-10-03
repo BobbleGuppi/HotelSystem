@@ -174,7 +174,6 @@
   <ItemGroup>
     <None Include="bin\bellv2.jpg" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Scripts\demo.sql" />
     <Content Include="Scripts\FINAL.sql" />

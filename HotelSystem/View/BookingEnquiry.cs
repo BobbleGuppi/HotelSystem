@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HotelSystem.View
 {
-    public partial class BookingEnquiry : Form
+    public partial class BookingEnquiryForm : Form
     {
-        public BookingEnquiry()
+        public BookingEnquiryForm()
         {
             InitializeComponent();
         }
@@ -33,6 +33,20 @@ namespace HotelSystem.View
         }
 
         private void confirmButton_Click(object sender, EventArgs e)
+        {
+            string reservationID = richTextBox1.Text;
+            label1.Visible = false;
+            reservLabel.Visible = false;
+            richTextBox1.Visible = false;
+
+        }
+
+        private void BookingEnquiryForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
