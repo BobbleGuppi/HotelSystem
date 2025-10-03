@@ -76,6 +76,7 @@
             this.ConfirmButton.TabIndex = 12;
             this.ConfirmButton.Text = "Confirm";
             this.ConfirmButton.UseVisualStyleBackColor = false;
+            this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click_1);
             // 
             // richTextBox1
             // 
