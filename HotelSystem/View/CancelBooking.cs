@@ -15,6 +15,7 @@ namespace HotelSystem.View
         public CancelBooking()
         {
             InitializeComponent();
+            
         }
 
         private void confirmButton_Click(object sender, EventArgs e)
