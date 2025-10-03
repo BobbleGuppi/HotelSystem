@@ -27,7 +27,9 @@ namespace HotelSystem.View
         {
             label1.Visible = false;
             label3.Visible = false;
-            richTextBox1.Visible = false;
+            textBoxForReservationID.Visible = false;
+
+            //now read the reservationId text
 
 
         }

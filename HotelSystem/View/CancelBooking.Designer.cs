@@ -33,13 +33,13 @@
             this.ConfirmButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxForReservationID = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.textBoxForReservationID);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.ConfirmButton);
             this.panel1.Controls.Add(this.label3);
@@ -103,12 +103,12 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Provide the reservation number and details:";
             // 
-            // textBox1
+            // textBoxForReservationID
             // 
-            this.textBox1.Location = new System.Drawing.Point(275, 225);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(224, 22);
-            this.textBox1.TabIndex = 14;
+            this.textBoxForReservationID.Location = new System.Drawing.Point(275, 225);
+            this.textBoxForReservationID.Name = "textBoxForReservationID";
+            this.textBoxForReservationID.Size = new System.Drawing.Size(224, 22);
+            this.textBoxForReservationID.TabIndex = 14;
             // 
             // CancelBooking
             // 
@@ -132,6 +132,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button ConfirmButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxForReservationID;
     }
 }
