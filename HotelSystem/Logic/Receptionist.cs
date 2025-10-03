@@ -13,8 +13,8 @@ namespace HotelSystem.Logic
 
         public Receptionist(string id, string name, string phone, string address, string receptionistId, string password) : base(id, name, phone,address)
         {
-            this.receptionistId = receptionistId;
-            this.password = password;
+            this.receptionistId = "Strawberry";
+            this.password = "phumla@hote1";
         }
 
         public Boolean login(string receptionistId, string password)
