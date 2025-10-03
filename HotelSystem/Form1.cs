@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelSystem.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,7 +35,9 @@ namespace HotelSystem
 
         private void makeGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            MakeBooking frm = new MakeBooking();
+            frm.MdiParent = this;   
+            frm.Show();
         }
 
         private void label1_Click_1(object sender, EventArgs e)
@@ -45,6 +48,27 @@ namespace HotelSystem
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void changeGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ChangeBooking frm = new ChangeBooking();
+            frm.MdiParent = this;
+            frm.Show();//can't use ShowDialog as it will block the parent form.
+        }
+
+        private void cancelGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CancelBooking frm = new CancelBooking();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void makeBookingEnquiryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BookingEnquiry frm = new BookingEnquiry();
+            frm.MdiParent = this;
+            frm.Show();
         }
     }
 }

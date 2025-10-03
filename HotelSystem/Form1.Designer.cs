@@ -88,6 +88,7 @@
             this.changeGuestBookingToolStripMenuItem.Name = "changeGuestBookingToolStripMenuItem";
             this.changeGuestBookingToolStripMenuItem.Size = new System.Drawing.Size(292, 30);
             this.changeGuestBookingToolStripMenuItem.Text = "Change Guest Booking";
+            this.changeGuestBookingToolStripMenuItem.Click += new System.EventHandler(this.changeGuestBookingToolStripMenuItem_Click);
             // 
             // cancelGuestBookingToolStripMenuItem
             // 
@@ -95,6 +96,7 @@
             this.cancelGuestBookingToolStripMenuItem.Name = "cancelGuestBookingToolStripMenuItem";
             this.cancelGuestBookingToolStripMenuItem.Size = new System.Drawing.Size(292, 30);
             this.cancelGuestBookingToolStripMenuItem.Text = "Cancel Guest Booking";
+            this.cancelGuestBookingToolStripMenuItem.Click += new System.EventHandler(this.cancelGuestBookingToolStripMenuItem_Click);
             // 
             // makeBookingEnquiryToolStripMenuItem
             // 
@@ -102,6 +104,7 @@
             this.makeBookingEnquiryToolStripMenuItem.Name = "makeBookingEnquiryToolStripMenuItem";
             this.makeBookingEnquiryToolStripMenuItem.Size = new System.Drawing.Size(292, 30);
             this.makeBookingEnquiryToolStripMenuItem.Text = "Make Booking Enquiry";
+            this.makeBookingEnquiryToolStripMenuItem.Click += new System.EventHandler(this.makeBookingEnquiryToolStripMenuItem_Click);
             // 
             // makeGuestBookingToolStripMenuItem
             // 
@@ -152,7 +155,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(783, 438);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(104, 87);
             this.pictureBox2.TabIndex = 11;
@@ -162,14 +165,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1379, 692);
+            this.ClientSize = new System.Drawing.Size(1379, 636);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
