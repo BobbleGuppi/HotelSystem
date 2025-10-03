@@ -18,6 +18,7 @@ namespace HotelSystem
             InitializeComponent();
         }
 
+
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -69,6 +70,11 @@ namespace HotelSystem
             BookingEnquiry frm = new BookingEnquiry();
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

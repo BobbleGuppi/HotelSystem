@@ -55,9 +55,10 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1028, 44);
+            this.menuStrip1.Size = new System.Drawing.Size(771, 44);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // homeToolStripMenuItem
             // 
@@ -126,49 +127,13 @@
             // 
             // Home
             // 
-            //this.label1.AutoSize = true;
-            //this.label1.Font = new System.Drawing.Font("Sans Serif Collection", 47.99999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            //this.label1.Location = new System.Drawing.Point(157, 233);
-            //this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            //this.label1.Name = "label1";
-            //this.label1.Size = new System.Drawing.Size(976, 272);
-            //this.label1.TabIndex = 8;
-            //this.label1.Text = "@Phumula Kamndandi ";
-            //this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //this.label1.Click += new System.EventHandler(this.label1_Click_1);
-            //// 
-            //// label2
-            //// 
-            //this.label2.AutoSize = true;
-            //this.label2.Font = new System.Drawing.Font("Sans Serif Collection", 47.99999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            //this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            //this.label2.Location = new System.Drawing.Point(484, 369);
-            //this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            //this.label2.Name = "label2";
-            //this.label2.Size = new System.Drawing.Size(316, 272);
-            //this.label2.TabIndex = 10;
-            //this.label2.Text = "Hotel";
-            //this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //this.label2.Click += new System.EventHandler(this.label2_Click);
-            //// 
-            //// pictureBox2
-            //// 
-            //this.pictureBox2.Location = new System.Drawing.Point(783, 438);
-            //this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
-            //this.pictureBox2.Name = "pictureBox2";
-            //this.pictureBox2.Size = new System.Drawing.Size(104, 87);
-            //this.pictureBox2.TabIndex = 11;
-            //this.pictureBox2.TabStop = false;
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 517);
+            this.ClientSize = new System.Drawing.Size(771, 420);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Home";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
