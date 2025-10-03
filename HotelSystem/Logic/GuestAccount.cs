@@ -76,7 +76,7 @@ namespace HotelSystem.Logic
         #endregion
 
         #region Methods
-        public void makeDeposit(string payment)
+        public void makeDeposit(string paymentId)
         {
             if (depositPay !=null) {
                 throw new Exception("Deposit has already been made.");
@@ -87,14 +87,14 @@ namespace HotelSystem.Logic
             balance -= depositAmount;
             status = "DepositPaid";
 
-            depositPay = new Payment(payment, depositAmount, "Deposit", DateTime.Now);
+            depositPay = new Payment(paymentId, GuestAccID, depositAmount, "Deposit", DateTime.Now);
 
 
 
 
         }
 
-        public void makePayment(string payment, double amount)
+        public void makePayment(string paymentId, double amount)
         {
             if (fullPay != null)
             {
@@ -115,7 +115,7 @@ namespace HotelSystem.Logic
 
             }
 
-            fullPay = new Payment(payment, amount, "TotalPayment", DateTime.Now);
+            fullPay = new Payment(paymentId, GuestAccID, amount, "TotalPayment", DateTime.Now);
         }
 
         public double getBalance()
