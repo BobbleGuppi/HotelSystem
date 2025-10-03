@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HotelSystem.View
 {
-    public partial class BookingEnquiryForm : Form
+    public partial class BookingEnquiry : Form
     {
-        public BookingEnquiryForm()
+        public BookingEnquiry()
         {
             InitializeComponent();
         }

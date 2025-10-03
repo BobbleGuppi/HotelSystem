@@ -1,6 +1,6 @@
 ﻿namespace HotelSystem.View
 {
-    partial class BookingEnquiryForm
+    partial class BookingEnquiry
     {
         /// <summary>
         /// Required designer variable.
@@ -81,7 +81,7 @@
             this.confirmButton.UseVisualStyleBackColor = false;
             this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
-            // BookingEnquiryForm
+            // BookingEnquiry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -91,8 +91,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.reservLabel);
-            this.Name = "BookingEnquiryForm";
-            this.Text = "Booking Enquiry Form";
+            this.Name = "BookingEnquiry";
+            this.Text = "Booking Enquiry";
             this.Load += new System.EventHandler(this.BookingEnquiryForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
