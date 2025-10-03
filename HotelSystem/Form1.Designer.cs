@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageGuestBookingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeGuestBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelGuestBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeBookingEnquiryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeGuestBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.homeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -59,6 +59,15 @@
             this.menuStrip1.Size = new System.Drawing.Size(1034, 44);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // homeToolStripMenuItem
+            // 
+            this.homeToolStripMenuItem.AutoSize = false;
+            this.homeToolStripMenuItem.BackColor = System.Drawing.Color.PowderBlue;
+            this.homeToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.homeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
+            this.homeToolStripMenuItem.Size = new System.Drawing.Size(40, 40);
             // 
             // manageGuestBookingsToolStripMenuItem
             // 
@@ -102,6 +111,15 @@
             this.makeGuestBookingToolStripMenuItem.Text = "Make Guest Booking";
             this.makeGuestBookingToolStripMenuItem.Click += new System.EventHandler(this.makeGuestBookingToolStripMenuItem_Click);
             // 
+            // reportsToolStripMenuItem
+            // 
+            this.reportsToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.reportsToolStripMenuItem.BackColor = System.Drawing.Color.PowderBlue;
+            this.reportsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(73, 40);
+            this.reportsToolStripMenuItem.Text = "Reports";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -114,16 +132,6 @@
             this.label1.Text = "@Phumula Kamndandi ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
-            // 
-            // homeToolStripMenuItem
-            // 
-            this.homeToolStripMenuItem.AutoSize = false;
-            this.homeToolStripMenuItem.BackColor = System.Drawing.Color.PowderBlue;
-            this.homeToolStripMenuItem.BackgroundImage = global::HotelSystem.Properties.Resources.Blue_icon_Home;
-            this.homeToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.homeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            this.homeToolStripMenuItem.Size = new System.Drawing.Size(40, 40);
             // 
             // label2
             // 
@@ -140,21 +148,11 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::HotelSystem.Properties.Resources.bellv2;
             this.pictureBox2.Location = new System.Drawing.Point(587, 356);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(78, 71);
             this.pictureBox2.TabIndex = 11;
             this.pictureBox2.TabStop = false;
-            // 
-            // reportsToolStripMenuItem
-            // 
-            this.reportsToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.reportsToolStripMenuItem.BackColor = System.Drawing.Color.PowderBlue;
-            this.reportsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(73, 40);
-            this.reportsToolStripMenuItem.Text = "Reports";
             // 
             // Form1
             // 

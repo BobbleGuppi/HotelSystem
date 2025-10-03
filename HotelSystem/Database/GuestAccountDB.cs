@@ -183,7 +183,7 @@ namespace HotelSystem.Database
         public bool UpdateDataSource(GuestAccount aGuestAcc)
         {
             bool success = true;
-            Create_INSERT_Command(aGuestAcc);
+            Create_INSERT_Command(aGuestAcc);//repeated this line by mistake .
             
             Create_INSERT_Command(aGuestAcc);
             Create_UPDATE_Command(aGuestAcc);
