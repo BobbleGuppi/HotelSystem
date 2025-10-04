@@ -22,6 +22,24 @@ namespace HotelSystem.Database
             Edit = 1,
             Delete = 2
         }
+
+        #region Constructor
+        public DB()
+        {
+            try
+            {
+                //Open a connection & create a new dataset object
+                cnMain = new SqlConnection(strConn);
+                dsMain = new DataSet();
+            }
+            catch (SystemException e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message, "Error");
+                return;
+            }
+        }
+
+        #endregion
         public void FillDataSet(string aSQLstring, string aTable)
         {
             //fills dataset fresh from the db for a specific table and with a specific Query
