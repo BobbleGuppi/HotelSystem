@@ -31,15 +31,31 @@ namespace HotelSystem.View
             // make the controls invisible for later
             richTextBox1.Visible = false;
             doneButton.Visible = false;
+            prevPageButton.Visible = false;
             
         }
+        public void reservationNumLabel_Click(object sender, EventArgs e)
+        {
 
-        
+        }
+
+        public void CancelBooking_Load(object sender, EventArgs e)
+        {
+            screen = 0;
+            richTextBox1.Visible=false;
+            doneButton.Visible=false;
+            prevPageButton.Visible=false;
+            
+
+        }
+
+
 
         private void ConfirmButton_Click_1(object sender, EventArgs e)
         {
             if (screen == 0)
             {
+                prevPageButton.Visible = true;
                 //now read the reservationId text
                 string reservationid = textBoxForReservationID.Text.Trim();
 
@@ -68,6 +84,7 @@ namespace HotelSystem.View
             }
             else if (screen == 1)
             {
+                prevPageButton.Text = "Cancel";
                 richTextBox1.Text = $"Warning! Guest booking for ({foundReservation.ReservationID}) will be cancelled. This action cannot be undone.\nAre you sure you want to cancel this guest booking?";
                 screen = 2; // next
             }
@@ -102,6 +119,8 @@ namespace HotelSystem.View
                 textBoxForReservationID.Visible = true;
                 reservationIDinputLabel.Visible = true;
                 ConfirmButton.Visible = true;
+                
+                prevPageButton.Text = "Previous page";
                 prevPageButton.Visible = true;
                 doneButton.Visible= false;
 
@@ -110,6 +129,7 @@ namespace HotelSystem.View
             }
             if (screen == 2)
             {
+
                 richTextBox1.Text = $"Guest Booking found!\nDo you wish to proceed to cancel the existing guest booking?:\n\t" + foundGuest.displayInfo();
 
                 screen = 1;

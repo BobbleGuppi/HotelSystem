@@ -26,5 +26,10 @@ namespace HotelSystem.View
         {
 
         }
+
+        private void ChangeBooking_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
