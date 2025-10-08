@@ -179,6 +179,7 @@
     <Content Include="Database\updatedDB.sql" />
     <Content Include="Scripts\demo.sql" />
     <Content Include="Scripts\FINAL.sql" />
+    <Content Include="Scripts\FixedScript.sql" />
     <Content Include="Scripts\guestTable2.sql" />
     <Content Include="Scripts\RealFinal.sql" />
     <Content Include="Scripts\updatedScript.sql" />
