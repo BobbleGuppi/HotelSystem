@@ -95,7 +95,7 @@ namespace HotelSystem.View
             {
                
                 Rcontroller.DataMaintenance(foundReservation, DB.DBOperation.Delete);
-                Rcontroller.FinalizeChnages(foundReservation);
+                Rcontroller.FinalizeChanges(foundReservation);
 
                 ShowScreen3();
             }
