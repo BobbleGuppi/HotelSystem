@@ -31,8 +31,17 @@ namespace HotelSystem.View
             DateTime arrivalDate = arrivalDateTP.Value;
             DateTime departureDate = departureDateTP.Value;
 
-    
+            bool Availability= reservationController.RoomAvailable(arrivalDate,departureDate);
             MessageBox.Show($"Checking room availability from {arrivalDate.ToShortDateString()} to {departureDate.ToShortDateString()} ");
+
+            if (Availability)
+            {
+                MessageBox.Show("A room is available for the selected dates!", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Sorry, no rooms are available for those dates.", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
         }
     }
