@@ -39,6 +39,7 @@ namespace HotelSystem.Logic
                 new Room("R005")
             };
         }
+
         #endregion
 
         #region database communication
@@ -63,6 +64,7 @@ namespace HotelSystem.Logic
             }
         }
 
+   
         public bool FinalizeChnages(Reservation reservation)
         {
             return reservationDB.UpdateDataSource(reservation);
