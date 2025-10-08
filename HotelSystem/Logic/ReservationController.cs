@@ -14,6 +14,7 @@ namespace HotelSystem.Logic
         ReservationDB reservationDB;
         Collection<Reservation> reservations;
         private List<Room> rooms;
+        private string currentRoom;
         #endregion
 
         #region properties
@@ -22,13 +23,15 @@ namespace HotelSystem.Logic
         {
             get { return reservations; }
         }
+
+        public string CurrentRoom { get { return currentRoom; } set { currentRoom = value; } }
         #endregion
 
         #region constructors
         public ReservationController()
         {
             reservationDB = new ReservationDB();
-            reservations = reservationDB.AllReservations;
+            reservations = reservationDB.AllReservations;   
             rooms = new List<Room>
             {
                 new Room("R001"),
@@ -100,17 +103,20 @@ namespace HotelSystem.Logic
                 return -1;
         }
 
-        public bool RoomAvailable( DateTime checkIn, DateTime checkOut)
+        public bool RoomAvailable(DateTime checkIn, DateTime checkOut)
         {
             foreach (Room room in rooms)
             {
                 if (room.IsAvailable(checkIn, checkOut))
                 {
+                    currentRoom = room.RoomID;
                     return true;
                 }
             }
             return false;
         }
+
+
     }
 
 

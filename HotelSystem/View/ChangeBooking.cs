@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelSystem.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,9 @@ namespace HotelSystem.View
         private int room;
         public enum DateChecker { invalidDate = 0, validDate = 1  }
         DateChecker pickedDate;
+        private ReservationController res_cntrllr;
+        bool roomAvail;
+        private string myRoom;
 
 
         #region Constructor
@@ -51,6 +55,11 @@ namespace HotelSystem.View
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime checkInDate = CheckInPicker.Value.Date;
+            if (checkInDate.Month != 12)
+            {
+                MessageBox.Show("You can only select December!");
+                return;
+            }
             DateChecking();
 
         }
@@ -58,6 +67,11 @@ namespace HotelSystem.View
         private void CheckOutPicker_ValueChanged(object sender, EventArgs e)
         {
             DateTime checkOutDate = CheckOutPicker.Value.Date;
+            if (checkOutDate.Month != 12)
+            {
+                MessageBox.Show("You can only select December!");
+                return;
+            }
         }
 
         private void reservationIDTextBox_TextChanged(object sender, EventArgs e)
@@ -77,18 +91,27 @@ namespace HotelSystem.View
             }
             if (pickedDate == DateChecker.validDate)
             {
-                MainPanel.Visible = false;
-                RoomFoundPanel.Visible = true;
+                res_cntrllr = new ReservationController();
+                roomAvail = res_cntrllr.RoomAvailable(checkInDate, checkOutDate);
+
+                if (roomAvail)
+                {
+                    myRoom = res_cntrllr.CurrentRoom;
+                    MainPanel.Visible = false;
+                    RoomFoundPanel.Visible = true;
+                }
+                else 
+                {
+                    MessageBox.Show("No Rooms Available on these Dates.");
+                    return;
+                }
+
             }
         }
 
         #endregion
 
-        // [1[1, 2, 3, 4, 5, 6, 7, 8], 2[], 3[], 4[], 5[]]
-        // room, day
-        // day, room
-        // [1[1, 2, 3, 4, 5], 2[], 3[], 4[], 5[]]
-
+     
 
         private void label1_Click(object sender, EventArgs e)
         {
