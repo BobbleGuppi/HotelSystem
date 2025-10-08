@@ -16,16 +16,26 @@ namespace HotelSystem.View
     {
 
         #region Fields
+
+        // dates
         private DateTime checkInDate;
         private DateTime checkOutDate;
+
+        // ids
         private string reservationID;
-        private string guestID;
-        private int room;
+
+        // dateChecker enum & variable
         public enum DateChecker { invalidDate = 0, validDate = 1  }
         DateChecker pickedDate;
+
+        // controller
         private ReservationController res_cntrllr;
+
+        // needed helper variables
+        Reservation myReservation;
         bool roomAvail;
-        private Random rnd = new Random();
+        private Random rnd = new Random(); // declare at class level
+
         #endregion
 
         #region Constructor
@@ -72,51 +82,70 @@ namespace HotelSystem.View
         #region FirstConfirm Button
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            DateChecking();
+            DateChecking(); // generate random 14-days deadline
 
+            // Error handling for guest that picks a non-December month
             if (checkInDate.Month != 12 || checkOutDate.Month != 12)
             {
                 MessageBox.Show("You can only select December!", "Invalid Date Selected");
                 return;
             }
 
+            // Check if the reservation is in the database
+            myReservation = res_cntrllr.find(reservationID);
+            if (myReservation == null)
+            {
+                MessageBox.Show("Reservation ID not found", "Invalid Reservation ID");
+                return;
+            }
+
+            // if reservation found
             else
             {
+                // First check if 14 days in advance or not
                 if (pickedDate == DateChecker.invalidDate)
                 {
                     MessageBox.Show("Invalid Reservation Date: Must book 14 days in advance.", "Invalid Date Selected");
                     return;
 
                 }
-                if (pickedDate == DateChecker.validDate)
+
+                else
                 {
-                    res_cntrllr = new ReservationController();
-                    roomAvail = res_cntrllr.RoomAvailable(checkInDate, checkOutDate);
-
-                    if (roomAvail)
+                    if (pickedDate == DateChecker.validDate)
                     {
+                        res_cntrllr = new ReservationController();
+                        roomAvail = res_cntrllr.RoomAvailable(checkInDate, checkOutDate); // returns room
 
-                        List<Reservation> reservations = new List<Reservation>()
-                    {
-                        new Reservation(reservationID,1,"G000",checkInDate,checkOutDate,0.0,false)
+                        if (!roomAvail)
+                        {
+                            MessageBox.Show("No Rooms Available on these Dates.");
+                            return;
+                        }
 
-                    };
+                        // 4. Create a **demo reservation** (preview) without touching DB
+                        Reservation demoRes = Reservation(
+                            myReservation.ReservationID,
+                            myReservation.RoomID,
+                            myReservation.Guest,
+                            checkInDate,
+                            checkOutDate,
+                            myReservation.DepositPaid
+                        );
 
-                        // Bind the list to the DataGridView
-                        dataGridView1.DataSource = reservations;
+                        // 5. Add to a local list for the DataGridView
+                        List<Reservation> previewList = new List<Reservation> { demoRes };
+                        dataGridView1.DataSource = null;
+                        dataGridView1.DataSource = previewList;
+
+                        // Switch panels to show preview
                         MainPanel.Visible = false;
                         RoomFoundPanel.Visible = true;
-                    }
-                    else
-                    {
-                        MessageBox.Show("No Rooms Available on these Dates.");
-                        return;
+
                     }
 
                 }
             }
-
-            
         }
 
         #endregion
@@ -124,6 +153,7 @@ namespace HotelSystem.View
         #region CancelChange Button
         private void button1_Click(object sender, EventArgs e)
         {
+            reservationIDTextBox.Text = "";
             this.Close();
         }
         #endregion
@@ -131,7 +161,33 @@ namespace HotelSystem.View
         #region ConfirmChange Button
         private void confirmChangeButton_Click(object sender, EventArgs e)
         {
+            if (myReservation == null)
+            {
+                MessageBox.Show("No reservation selected.");
+                return;
+            }
 
+            // 1. Call controller to update reservation (DB + in-memory collection)
+            bool success = res_cntrllr.EditReservationDates(reservationID, checkInDate, checkOutDate);
+
+            if (success)
+            {
+                MessageBox.Show("Reservation updated successfully!", "Success");
+
+                // 2. Refresh DataGridView with updated reservation (optional)
+                Reservation updated = res_cntrllr.find(reservationID);
+                List<Reservation> updatedList = new List<Reservation> { updated };
+                dataGridView1.DataSource = null;
+                dataGridView1.DataSource = updatedList;
+
+                // 3. Switch panels back
+                RoomFoundPanel.Visible = false;
+                MainPanel.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Failed to update reservation. Check Reservation ID.", "Error");
+            }
         }
         #endregion
 
