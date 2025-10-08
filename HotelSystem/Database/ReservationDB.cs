@@ -32,7 +32,7 @@ namespace HotelSystem.Database
         {
             reservations = new Collection<Reservation>();
             FillDataSet(sqlLocal1, table1);
-            //Add2Collection(table1);
+            Add2Collection(table1);
         }
         #endregion
 
@@ -53,7 +53,7 @@ namespace HotelSystem.Database
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
                     string reservationId = Convert.ToString(myRow["ReservationID"]).TrimEnd();
-                    int roomID = Convert.ToInt32(myRow["RoomID"]);
+                    string roomID = Convert.ToString(myRow["RoomID"]);
                     string guestID = Convert.ToString(myRow["GuestID"]).TrimEnd();
                     DateTime checkInDate = Convert.ToDateTime(myRow["CheckInDate"]);
                     DateTime checkOutDate = Convert.ToDateTime(myRow["CheckOutDate"]);
