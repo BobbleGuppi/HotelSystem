@@ -15,6 +15,7 @@ namespace HotelSystem.View
     public partial class ChangeBooking : Form
     {
 
+        #region Fields
         private DateTime checkInDate;
         private DateTime checkOutDate;
         private string reservationID;
@@ -26,6 +27,7 @@ namespace HotelSystem.View
         bool roomAvail;
         private string myRoom;
         private Random rnd = new Random();
+        #endregion
 
         #region Constructor
         public ChangeBooking()
@@ -47,16 +49,12 @@ namespace HotelSystem.View
         {
         
         }
-
-
         #endregion
 
         #region Get User Input
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             checkInDate = CheckInPicker.Value.Date; // assign to the field
-            DateChecking();
-
         }
 
         private void CheckOutPicker_ValueChanged(object sender, EventArgs e)
@@ -72,9 +70,11 @@ namespace HotelSystem.View
 
         #endregion
 
-        #region Confirm Button
+        #region FirstConfirm Button
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
+            DateChecking();
+
             if (checkInDate.Month != 12 || checkOutDate.Month != 12)
             {
                 MessageBox.Show("You can only select December!");
@@ -123,13 +123,24 @@ namespace HotelSystem.View
 
         #endregion
 
-        #region DataGridView
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        #region CancelChange Button
+        private void button1_Click(object sender, EventArgs e)
         {
-  
 
         }
         #endregion
+
+        #region ConfirmChange Button
+        private void confirmChangeButton_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+ 
+        }
 
         private void label1_Click(object sender, EventArgs e)
         {

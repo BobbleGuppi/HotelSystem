@@ -39,8 +39,8 @@
             this.reservationIDTextBox = new System.Windows.Forms.RichTextBox();
             this.CheckOutPicker = new System.Windows.Forms.DateTimePicker();
             this.RoomFoundPanel = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.confirmChangeButton = new System.Windows.Forms.Button();
+            this.cancelChangeButton = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
@@ -175,8 +175,8 @@
             // 
             // RoomFoundPanel
             // 
-            this.RoomFoundPanel.Controls.Add(this.button2);
-            this.RoomFoundPanel.Controls.Add(this.button1);
+            this.RoomFoundPanel.Controls.Add(this.confirmChangeButton);
+            this.RoomFoundPanel.Controls.Add(this.cancelChangeButton);
             this.RoomFoundPanel.Controls.Add(this.dataGridView1);
             this.RoomFoundPanel.Controls.Add(this.label4);
             this.RoomFoundPanel.Location = new System.Drawing.Point(12, 27);
@@ -184,31 +184,33 @@
             this.RoomFoundPanel.Size = new System.Drawing.Size(1197, 482);
             this.RoomFoundPanel.TabIndex = 9;
             // 
-            // button2
+            // confirmChangeButton
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1005, 385);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 34);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Confirm";
-            this.button2.UseVisualStyleBackColor = false;
+            this.confirmChangeButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.confirmChangeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.confirmChangeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.confirmChangeButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmChangeButton.Location = new System.Drawing.Point(1005, 385);
+            this.confirmChangeButton.Name = "confirmChangeButton";
+            this.confirmChangeButton.Size = new System.Drawing.Size(112, 34);
+            this.confirmChangeButton.TabIndex = 14;
+            this.confirmChangeButton.Text = "Confirm";
+            this.confirmChangeButton.UseVisualStyleBackColor = false;
+            this.confirmChangeButton.Click += new System.EventHandler(this.confirmChangeButton_Click);
             // 
-            // button1
+            // cancelChangeButton
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(770, 385);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 34);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = false;
+            this.cancelChangeButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.cancelChangeButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancelChangeButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cancelChangeButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelChangeButton.Location = new System.Drawing.Point(770, 385);
+            this.cancelChangeButton.Name = "cancelChangeButton";
+            this.cancelChangeButton.Size = new System.Drawing.Size(112, 34);
+            this.cancelChangeButton.TabIndex = 13;
+            this.cancelChangeButton.Text = "Cancel";
+            this.cancelChangeButton.UseVisualStyleBackColor = false;
+            this.cancelChangeButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -217,6 +219,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(61, 160);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1069, 84);
             this.dataGridView1.TabIndex = 12;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -274,7 +277,7 @@
         private System.Windows.Forms.Panel RoomFoundPanel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button confirmChangeButton;
+        private System.Windows.Forms.Button cancelChangeButton;
     }
 }
