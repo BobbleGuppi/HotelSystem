@@ -15,6 +15,9 @@ namespace HotelSystem
     {
 
         private ChangeBooking changeBookingForm; // store the single instance
+        private BookingEnquiry enquiryForm;
+        private CancelBooking cancelBookingForm;
+        private MakeBooking makeBookingForm;
 
         public Home()
         {
@@ -38,15 +41,6 @@ namespace HotelSystem
 
         }
 
-        private void makeGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MakeBooking frm = new MakeBooking();
-            frm.MdiParent = this;   
-            frm.Show();
-
-
-        }
-
         private void label1_Click_1(object sender, EventArgs e)
         {
 
@@ -57,9 +51,19 @@ namespace HotelSystem
 
         }
 
-        #region Change Guest Booking Functionality
+        #region Child Form Functionality
+
+        private void CloseAllChildForms()
+        {
+            foreach (Form child in this.MdiChildren)
+            {
+                child.Close();
+            }
+        }
+
         private void changeGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CloseAllChildForms();
             if (changeBookingForm == null || changeBookingForm.IsDisposed)
             {
                 changeBookingForm = new ChangeBooking();
@@ -74,31 +78,71 @@ namespace HotelSystem
             }
 
         }
-        #endregion
 
         private void cancelGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CancelBooking frm = new CancelBooking();
-            frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
-            frm.Show();
+            CloseAllChildForms();
+            if (cancelBookingForm == null || cancelBookingForm.IsDisposed)
+            {
+                cancelBookingForm = new CancelBooking();
+                cancelBookingForm.WindowState = FormWindowState.Maximized;
+                cancelBookingForm.MdiParent = this;
+                cancelBookingForm.Show();
+                cancelBookingForm.BringToFront();
+            }
+            else
+            {
+                cancelBookingForm.BringToFront(); // just focus the existing one
+            }
         }
 
         private void makeBookingEnquiryToolStripMenuItem_Click(object sender, EventArgs e)
-        { 
-            BookingEnquiry frm = new BookingEnquiry();
-            frm.MdiParent = this;
-            frm.WindowState = FormWindowState.Maximized;
-            frm.Show();
+        {
+            CloseAllChildForms();
+            if (enquiryForm == null || enquiryForm.IsDisposed)
+            {
+                enquiryForm = new BookingEnquiry();
+                enquiryForm.WindowState = FormWindowState.Maximized;
+                enquiryForm.MdiParent = this;
+                enquiryForm.Show();
+                enquiryForm.BringToFront();
+            }
+            else
+            {
+                enquiryForm.BringToFront(); // just focus the existing one
+            }
 
         }
 
+        private void makeGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            if (makeBookingForm == null || makeBookingForm.IsDisposed)
+            {
+                makeBookingForm = new MakeBooking();
+                makeBookingForm.WindowState = FormWindowState.Maximized;
+                makeBookingForm.MdiParent = this;
+                makeBookingForm.Show();
+                makeBookingForm.BringToFront();
+            }
+            else
+            {
+                makeBookingForm.BringToFront(); // just focus the existing one
+            }
+
+
+
+        }
+
+
+        #endregion
         // Add this method to your Home class
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             // You can handle the item click event here if needed
             // For now, leave it empty or add your logic
         }
+
 
     }
 }

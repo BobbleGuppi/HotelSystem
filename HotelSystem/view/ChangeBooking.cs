@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static HotelSystem.Database.DB;
 
 namespace HotelSystem.View
 {
@@ -44,6 +45,7 @@ namespace HotelSystem.View
             InitializeComponent();
             MainPanel.Visible = true;
             RoomFoundPanel.Visible = false;
+            res_cntrllr = new ReservationController();
         }
         #endregion
 
@@ -54,10 +56,7 @@ namespace HotelSystem.View
             pickedDate = (DateChecker)randomValue; // Convert to enum
 
         }
-        public void findGuestID() 
-        {
-        
-        }
+    
         #endregion
 
         #region Get User Input
@@ -114,7 +113,7 @@ namespace HotelSystem.View
                 {
                     if (pickedDate == DateChecker.validDate)
                     {
-                        res_cntrllr = new ReservationController();
+                        
                         roomAvail = res_cntrllr.RoomAvailable(checkInDate, checkOutDate); // returns room
 
                         if (!roomAvail)
@@ -178,9 +177,25 @@ namespace HotelSystem.View
 
             if (result == DialogResult.Yes)
             {
-                // User confirmed
+                // Update in-memory object
                 myReservation.changeReservationDates(checkInDate, checkOutDate);
-                MessageBox.Show("Deletion and new Reservation ID creation successful!\r\n\r\n");
+
+                // Update the DataSet
+                res_cntrllr.reservationDB.DataSetChange(myReservation, DB.DBOperation.Edit);
+
+                // Push the changes to the database via DataAdapter
+                bool success = res_cntrllr.FinalizeChanges(myReservation);
+
+                if (success)
+                {
+                    MessageBox.Show("Reservation successfully updated in the database!");
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update reservation in the database.");
+                    this.Close();
+                }
             }
             else
             {
@@ -211,6 +226,9 @@ namespace HotelSystem.View
 
         }
 
-        
+        private void MainPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
