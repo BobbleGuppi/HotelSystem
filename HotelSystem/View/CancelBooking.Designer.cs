@@ -51,7 +51,7 @@
             this.panel1.Controls.Add(this.reservationNumLabel);
             this.panel1.Location = new System.Drawing.Point(27, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(868, 465);
+            this.panel1.Size = new System.Drawing.Size(756, 378);
             this.panel1.TabIndex = 5;
             // 
             // textBoxForReservationID
@@ -82,10 +82,9 @@
             this.ConfirmButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConfirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ConfirmButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConfirmButton.Location = new System.Drawing.Point(617, 361);
-            this.ConfirmButton.Margin = new System.Windows.Forms.Padding(4);
+            this.ConfirmButton.Location = new System.Drawing.Point(530, 306);
             this.ConfirmButton.Name = "ConfirmButton";
-            this.ConfirmButton.Size = new System.Drawing.Size(133, 67);
+            this.ConfirmButton.Size = new System.Drawing.Size(146, 41);
             this.ConfirmButton.TabIndex = 12;
             this.ConfirmButton.Text = "Confirm";
             this.ConfirmButton.UseVisualStyleBackColor = false;
@@ -150,12 +149,13 @@
             // 
             // CancelBooking
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(942, 534);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CancelBooking";
             this.Text = "CancelBooking";
             this.Load += new System.EventHandler(this.CancelBooking_Load);

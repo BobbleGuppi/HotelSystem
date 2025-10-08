@@ -12,8 +12,8 @@ namespace HotelSystem.Database
 {
     public class DB
     {
-        private string strConn = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=HotelSystemDB;Integrated Security=True;" +"Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
-        protected SqlConnection cnMain;
+        private static string strConn = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=HotelSystemDB;Integrated Security=True;" +"Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        protected SqlConnection cnMain  = new SqlConnection(strConn);
         protected DataSet dsMain;
         protected SqlDataAdapter daMain;
         public enum DBOperation

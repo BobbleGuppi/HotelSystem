@@ -136,5 +136,10 @@ namespace HotelSystem.View
             }
             
         }
+
+        private void textBoxForReservationID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
