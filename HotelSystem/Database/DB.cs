@@ -12,8 +12,9 @@ namespace HotelSystem.Database
 {
     public class DB
     {
-        private static string strConn = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=HotelSystemDB;Integrated Security=True;" +"Connect Timeout=30;Encrypt=False";
-        protected SqlConnection cnMain  = new SqlConnection(strConn);
+        // Connection string fixed: removed unsupported 'Application Intent=ReadWrite;'
+        private static string strConn = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=HotelSystemDB;Integrated Security=True;Connect Timeout=30;Encrypt=False";
+        protected SqlConnection cnMain = new SqlConnection(strConn);
         protected DataSet dsMain;
         protected SqlDataAdapter daMain;
         public enum DBOperation
@@ -28,8 +29,9 @@ namespace HotelSystem.Database
         {
             try
             {
-                //Open a connection & create a new dataset object
-                cnMain = new SqlConnection(strConn);
+                // Only re-initialize if not already set
+                if (cnMain == null)
+                    cnMain = new SqlConnection(strConn);
                 dsMain = new DataSet();
             }
             catch (SystemException e)
@@ -38,15 +40,15 @@ namespace HotelSystem.Database
                 return;
             }
         }
-
         #endregion
+
         public void FillDataSet(string aSQLstring, string aTable)
         {
-            //fills dataset fresh from the db for a specific table and with a specific Query
             try
             {
                 daMain = new SqlDataAdapter(aSQLstring, cnMain);
-                cnMain.Open();
+                if (cnMain.State != ConnectionState.Open)
+                    cnMain.Open();
                 //dsMain.Clear();
                 daMain.Fill(dsMain, aTable);
                 cnMain.Close();
@@ -54,20 +56,20 @@ namespace HotelSystem.Database
             catch (Exception errObj)
             {
                 MessageBox.Show(errObj.Message + "  " + errObj.StackTrace);
+                if (cnMain.State == ConnectionState.Open)
+                    cnMain.Close();
             }
         }
+
         protected bool UpdateDataSource(string sqlLocal, string table)
         {
             bool success;
             try
             {
-                //open the connection
-                cnMain.Open();
-                //***update the database table via the data adapter
+                if (cnMain.State != ConnectionState.Open)
+                    cnMain.Open();
                 daMain.Update(dsMain, table);
-                //---close the connection
                 cnMain.Close();
-                //refresh the dataset
                 FillDataSet(sqlLocal, table);
                 success = true;
             }
@@ -75,9 +77,8 @@ namespace HotelSystem.Database
             {
                 MessageBox.Show(errObj.Message + "  " + errObj.StackTrace);
                 success = false;
-            }
-            finally
-            {
+                if (cnMain.State == ConnectionState.Open)
+                    cnMain.Close();
             }
             return success;
         }

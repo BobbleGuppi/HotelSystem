@@ -13,7 +13,7 @@ namespace HotelSystem.Logic
         #region data members
         public ReservationDB reservationDB;
         protected Collection<Reservation> reservations;
-        List<Room> rooms;
+        private List<Room> rooms;
         #endregion
 
         #region properties
@@ -22,13 +22,14 @@ namespace HotelSystem.Logic
         {
             get { return reservations; }
         }
+
         #endregion
 
-        #region constructors
+        #region Constructors
         public ReservationController()
         {
             reservationDB = new ReservationDB();
-            reservations = reservationDB.AllReservations;
+            reservations = reservationDB.AllReservations;   
             rooms = new List<Room>
             {
                 new Room("R001"),
@@ -38,6 +39,7 @@ namespace HotelSystem.Logic
                 new Room("R005")
             };
         }
+
         #endregion
 
         #region database communication
@@ -62,6 +64,7 @@ namespace HotelSystem.Logic
             }
         }
 
+   
         public bool FinalizeChnages(Reservation reservation)
         {
             return reservationDB.UpdateDataSource(reservation);
@@ -100,7 +103,7 @@ namespace HotelSystem.Logic
                 return -1;
         }
 
-        public bool RoomAvailable( DateTime checkIn, DateTime checkOut)
+        public bool RoomAvailable(DateTime checkIn, DateTime checkOut)
         {
             foreach (Room room in rooms)
             {
@@ -111,6 +114,8 @@ namespace HotelSystem.Logic
             }
             return false;
         }
+
+
     }
 
 

@@ -40,17 +40,15 @@
             this.guestpnl = new System.Windows.Forms.Panel();
             this.confirmGbtn = new System.Windows.Forms.Button();
             this.addresstxt = new System.Windows.Forms.TextBox();
-            this.emailtxt = new System.Windows.Forms.TextBox();
             this.lNametxt = new System.Windows.Forms.TextBox();
             this.idNotxt = new System.Windows.Forms.TextBox();
             this.phoneNotxt = new System.Windows.Forms.TextBox();
             this.fNametxt = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbladdress = new System.Windows.Forms.Label();
+            this.lblid = new System.Windows.Forms.Label();
+            this.lblphone = new System.Windows.Forms.Label();
+            this.lblname = new System.Windows.Forms.Label();
+            this.lblfname = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Rersevationpnl.SuspendLayout();
             this.guestpnl.SuspendLayout();
@@ -91,6 +89,7 @@
             this.confirmRbtn.TabIndex = 8;
             this.confirmRbtn.Text = "Confirm Rersevation";
             this.confirmRbtn.UseVisualStyleBackColor = false;
+            this.confirmRbtn.Click += new System.EventHandler(this.confirmRbtn_Click);
             // 
             // availabilitybtn
             // 
@@ -151,17 +150,15 @@
             // 
             this.guestpnl.Controls.Add(this.confirmGbtn);
             this.guestpnl.Controls.Add(this.addresstxt);
-            this.guestpnl.Controls.Add(this.emailtxt);
             this.guestpnl.Controls.Add(this.lNametxt);
             this.guestpnl.Controls.Add(this.idNotxt);
             this.guestpnl.Controls.Add(this.phoneNotxt);
             this.guestpnl.Controls.Add(this.fNametxt);
-            this.guestpnl.Controls.Add(this.label11);
-            this.guestpnl.Controls.Add(this.label10);
-            this.guestpnl.Controls.Add(this.label9);
-            this.guestpnl.Controls.Add(this.label8);
-            this.guestpnl.Controls.Add(this.label7);
-            this.guestpnl.Controls.Add(this.label6);
+            this.guestpnl.Controls.Add(this.lbladdress);
+            this.guestpnl.Controls.Add(this.lblid);
+            this.guestpnl.Controls.Add(this.lblphone);
+            this.guestpnl.Controls.Add(this.lblname);
+            this.guestpnl.Controls.Add(this.lblfname);
             this.guestpnl.Controls.Add(this.label5);
             this.guestpnl.Location = new System.Drawing.Point(641, 34);
             this.guestpnl.Name = "guestpnl";
@@ -172,27 +169,21 @@
             // 
             this.confirmGbtn.BackColor = System.Drawing.Color.LightBlue;
             this.confirmGbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmGbtn.Location = new System.Drawing.Point(124, 344);
+            this.confirmGbtn.Location = new System.Drawing.Point(158, 339);
             this.confirmGbtn.Name = "confirmGbtn";
             this.confirmGbtn.Size = new System.Drawing.Size(143, 23);
             this.confirmGbtn.TabIndex = 13;
             this.confirmGbtn.Text = "Confirm Guest";
             this.confirmGbtn.UseVisualStyleBackColor = false;
+            this.confirmGbtn.Click += new System.EventHandler(this.confirmGbtn_Click);
             // 
             // addresstxt
             // 
-            this.addresstxt.Location = new System.Drawing.Point(206, 277);
+            this.addresstxt.Location = new System.Drawing.Point(206, 246);
             this.addresstxt.Multiline = true;
             this.addresstxt.Name = "addresstxt";
             this.addresstxt.Size = new System.Drawing.Size(216, 48);
             this.addresstxt.TabIndex = 12;
-            // 
-            // emailtxt
-            // 
-            this.emailtxt.Location = new System.Drawing.Point(206, 230);
-            this.emailtxt.Name = "emailtxt";
-            this.emailtxt.Size = new System.Drawing.Size(216, 22);
-            this.emailtxt.TabIndex = 11;
             // 
             // lNametxt
             // 
@@ -222,65 +213,55 @@
             this.fNametxt.Size = new System.Drawing.Size(216, 22);
             this.fNametxt.TabIndex = 7;
             // 
-            // label11
+            // lbladdress
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(40, 279);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(84, 20);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "Address:";
+            this.lbladdress.AutoSize = true;
+            this.lbladdress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbladdress.Location = new System.Drawing.Point(42, 246);
+            this.lbladdress.Name = "lbladdress";
+            this.lbladdress.Size = new System.Drawing.Size(84, 20);
+            this.lbladdress.TabIndex = 6;
+            this.lbladdress.Text = "Address:";
             // 
-            // label10
+            // lblid
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(42, 230);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(62, 20);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Email:";
+            this.lblid.AutoSize = true;
+            this.lblid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblid.Location = new System.Drawing.Point(42, 191);
+            this.lblid.Name = "lblid";
+            this.lblid.Size = new System.Drawing.Size(102, 20);
+            this.lblid.TabIndex = 4;
+            this.lblid.Text = "ID number:";
             // 
-            // label9
+            // lblphone
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(42, 191);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 20);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "ID number:";
+            this.lblphone.AutoSize = true;
+            this.lblphone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblphone.Location = new System.Drawing.Point(42, 153);
+            this.lblphone.Name = "lblphone";
+            this.lblphone.Size = new System.Drawing.Size(135, 20);
+            this.lblphone.TabIndex = 3;
+            this.lblphone.Text = "Phone number:";
             // 
-            // label8
+            // lblname
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(42, 153);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(135, 20);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Phone number:";
+            this.lblname.AutoSize = true;
+            this.lblname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblname.Location = new System.Drawing.Point(42, 115);
+            this.lblname.Name = "lblname";
+            this.lblname.Size = new System.Drawing.Size(106, 20);
+            this.lblname.TabIndex = 2;
+            this.lblname.Text = "Last Name:";
             // 
-            // label7
+            // lblfname
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(42, 115);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(106, 20);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Last Name:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(40, 75);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(108, 20);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "First Name:";
+            this.lblfname.AutoSize = true;
+            this.lblfname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblfname.Location = new System.Drawing.Point(40, 75);
+            this.lblfname.Name = "lblfname";
+            this.lblfname.Size = new System.Drawing.Size(108, 20);
+            this.lblfname.TabIndex = 1;
+            this.lblfname.Text = "First Name:";
             // 
             // label5
             // 
@@ -324,14 +305,12 @@
         private System.Windows.Forms.Button availabilitybtn;
         private System.Windows.Forms.Panel guestpnl;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbladdress;
+        private System.Windows.Forms.Label lblid;
+        private System.Windows.Forms.Label lblphone;
+        private System.Windows.Forms.Label lblname;
+        private System.Windows.Forms.Label lblfname;
         private System.Windows.Forms.TextBox addresstxt;
-        private System.Windows.Forms.TextBox emailtxt;
         private System.Windows.Forms.TextBox lNametxt;
         private System.Windows.Forms.TextBox idNotxt;
         private System.Windows.Forms.TextBox phoneNotxt;
