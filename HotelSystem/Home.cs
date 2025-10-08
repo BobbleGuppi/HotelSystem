@@ -87,7 +87,12 @@ namespace HotelSystem
 
         }
 
-
+        // Add this method to your Home class
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            // You can handle the item click event here if needed
+            // For now, leave it empty or add your logic
+        }
 
     }
 }
