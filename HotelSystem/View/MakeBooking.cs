@@ -176,18 +176,13 @@ namespace HotelSystem.View
             }
 
             string reservationId = "R" + new Random().Next(1000, 9999);
-            int roomId = 1;
-            if (roomId == -1)
-            {
-                MessageBox.Show("No available room found.");
-                return;
-            }
+            string roomId = "R001";
 
             string guestId = guest.GuestID;
             double totalPrice = 0.0;
             bool depositPaid = false;
 
-            Reservation reservation = new Reservation(reservationId, roomId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
+            Reservation reservation = new Reservation(reservationId,roomId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
 
             try
             {
