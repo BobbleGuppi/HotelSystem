@@ -1,13 +1,14 @@
-﻿using System;
+﻿using HotelSystem.Logic;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using HotelSystem.Logic;
-using System.Data;
-using System.Drawing.Text;
+using System.Windows.Forms;
 
 namespace HotelSystem.Database
 {
@@ -73,32 +74,39 @@ namespace HotelSystem.Database
             foreach (DataRow myRowVar in dsMain.Tables[table].Rows)
             {
                 myRow = myRowVar;
-                if (!(myRow.RowState == DataRowState.Deleted))
+                if (myRow.RowState == DataRowState.Deleted)
                 {
-                    string reservationId = Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ReservationID"]).TrimEnd();
-                    if (reservationId == reservation.ReservationID)
-                    {
-                        returnValue = rowIndex;
-                        break;
-                    }
+                    rowIndex++;
+                    continue;
+                }
+
+                // Trim DB-side value (nchar may be padded)
+                string reservationId = Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ReservationID"]).TrimEnd();
+                if (reservationId == reservation.ReservationID)
+                {
+                    returnValue = rowIndex;
+                    break;
                 }
                 rowIndex++;
             }
-                return returnValue;
-            }
+            return returnValue;
+        }
+
+
+
         private void FillRow(DataRow myRow, Reservation reservation, DB.DBOperation operation)
         {
-            if (operation == DB.DBOperation.Add)
-            {
-                myRow["ReservationID"] = reservation.ReservationID;
-                myRow["GuestID"] = reservation.GuestID;
-                myRow["CheckInDate"] = reservation.CheckInDate;
-                myRow["CheckOutDate"] = reservation.CheckOutDate;
-                myRow["TotalPrice"] = reservation.totalPrice;
-                myRow["Deposit"] = reservation.DepositPaid;
-            }
+            // Always set the columns for both Add and Edit
+            myRow["ReservationID"] = reservation.ReservationID;
+            myRow["GuestID"] = reservation.GuestID;
+            myRow["CheckInDate"] = reservation.CheckInDate;
+            myRow["CheckOutDate"] = reservation.CheckOutDate;
+            myRow["TotalPrice"] = reservation.totalPrice;
+            myRow["Deposit"] = reservation.DepositPaid;
+
+            // No AcceptChanges() here — we want the DataRow state to remain Modified for Update()
         }
-        
+
 
         #endregion
 
@@ -115,16 +123,32 @@ namespace HotelSystem.Database
                     FillRow(aRow, reservation, operation);
                     dsMain.Tables[table].Rows.Add(aRow);
                     break;
+
                 case DBOperation.Edit:
-                    aRow = dsMain.Tables[table].Rows[FindRow(reservation, table)];
+                    int editIndex = FindRow(reservation, table);
+                    if (editIndex < 0)
+                    {
+                        // Optionally throw or log; for now show message
+                        MessageBox.Show("Edit failed: reservation row not found in DataSet.");
+                        return;
+                    }
+                    aRow = dsMain.Tables[table].Rows[editIndex];
                     FillRow(aRow, reservation, operation);
                     break;
+
                 case DBOperation.Delete:
-                    aRow = dsMain.Tables[table].Rows[FindRow(reservation, table)];
+                    int delIndex = FindRow(reservation, table);
+                    if (delIndex < 0)
+                    {
+                        MessageBox.Show("Delete failed: reservation row not found in DataSet.");
+                        return;
+                    }
+                    aRow = dsMain.Tables[table].Rows[delIndex];
                     aRow.Delete();
                     break;
             }
         }
+
         #endregion
 
         #region Build Parameter, Create commands and Update Database
@@ -197,6 +221,38 @@ namespace HotelSystem.Database
             daMain.UpdateCommand.Parameters.Add(param);
         }
 
+        private void Create_Update_Parameter(Reservation reservation)
+        {
+            SqlParameter param = default(SqlParameter);
+
+            param = new SqlParameter("@GuestID", SqlDbType.NChar, 10, "GuestID");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@CheckInDate", SqlDbType.DateTime, 8, "CheckInDate");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@CheckOutDate", SqlDbType.DateTime, 8, "CheckOutDate");
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@TotalPrice", SqlDbType.Decimal);
+            param.Precision = 18;
+            param.Scale = 2;
+            param.SourceColumn = "TotalPrice";
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "Deposit"); // matches DB column
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@OriginalReservationID", SqlDbType.NChar, 10, "ReservationID");
+            param.SourceVersion = DataRowVersion.Original;
+            daMain.UpdateCommand.Parameters.Add(param);
+        }
+
         private void Create_Update_Command(Reservation reservation)
         {
             daMain.UpdateCommand = new SqlCommand(
@@ -205,20 +261,13 @@ namespace HotelSystem.Database
                 "CheckInDate = @CheckInDate, " +
                 "CheckOutDate = @CheckOutDate, " +
                 "TotalPrice = @TotalPrice, " +
-                "Deposit = @DepositPaid " +  
+                "Deposit = @Deposit " +
                 "WHERE ReservationID = @OriginalReservationID", cnMain);
 
-            Build_Update_Parameter(reservation);
+            Create_Update_Parameter(reservation);
         }
 
-        //private void Create_Update_Command(Reservation reservation)
-        //{
-        //    daMain.UpdateCommand = new SqlCommand(
-        //    "UPDATE Reservation SET GuestID = @GuestID, CheckInDate = @CheckInDate, " +
-        //    "CheckOutDate = @CheckOutDate, TotalPrice = @TotalPrice, Deposit = @DepositPaid " +
-        //    "WHERE ReservationID = @OriginalReservationID", cnMain);
-        //    Build_Update_Parameter(reservation);
-        //}
+
 
         private void Build_Delete_Command(Reservation reservation)
         {
