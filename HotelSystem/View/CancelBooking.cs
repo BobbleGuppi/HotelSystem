@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HotelSystem.Logic;
 
 namespace HotelSystem.View
 {
@@ -30,7 +31,17 @@ namespace HotelSystem.View
             textBoxForReservationID.Visible = false;
 
             //now read the reservationId text
+            string reservationid = textBoxForReservationID.Text;
 
+            //ReservationController.find(reservationid);
+
+
+
+
+        }
+
+        private void textBoxForReservationID_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
