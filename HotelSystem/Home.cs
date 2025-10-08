@@ -18,6 +18,15 @@ namespace HotelSystem
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
         }
+        
+
+        private void OpenChild(Form frm)
+        {
+            frm.MdiParent = this;
+            frm.Text = "Change Booking";
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.Show();
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -39,6 +48,8 @@ namespace HotelSystem
             MakeBooking frm = new MakeBooking();
             frm.MdiParent = this;   
             frm.Show();
+
+
         }
 
         private void label1_Click_1(object sender, EventArgs e)
