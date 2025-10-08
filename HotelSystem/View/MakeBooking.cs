@@ -2,6 +2,7 @@
 using HotelSystem.Logic;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -17,8 +18,8 @@ namespace HotelSystem.View
         DateTime arrivalDate;
         DateTime departureDate;
         private ReservationController reservationController;
-        GuestController guestController;
-        GuestAccountController guestAccountController;
+        private GuestController guestController;
+        private GuestAccountController guestAccountController;
 
         public MakeBooking()
         {
@@ -40,10 +41,10 @@ namespace HotelSystem.View
             arrivalDate = arrivalDateTP.Value;
             departureDate = departureDateTP.Value;
 
-            bool Availability = reservationController.RoomAvailable(arrivalDate, departureDate);
+            bool availability = reservationController.RoomAvailable(arrivalDate, departureDate);
             MessageBox.Show($"Checking room availability from {arrivalDate.ToShortDateString()} to {departureDate.ToShortDateString()} ");
 
-            if (Availability)
+            if (availability)
             {
                 MessageBox.Show("A room is available for the selected dates!", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -51,7 +52,6 @@ namespace HotelSystem.View
             {
                 MessageBox.Show("Sorry, no rooms are available for those dates.", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         private void confirmRbtn_Click(object sender, EventArgs e)
@@ -63,22 +63,21 @@ namespace HotelSystem.View
 
         private void CenterPanel(Panel panel)
         {
-            // Calculate position so panel is centered within the form
             int x = (this.ClientSize.Width - panel.Width) / 2;
             int y = (this.ClientSize.Height - panel.Height) / 2;
-
             panel.Location = new Point(x, y);
         }
 
         private void confirmGbtn_Click(object sender, EventArgs e)
         {
-            string firstname = fNametxt.Text;
-            string lastname = lNametxt.Text;
-            string phone = phoneNotxt.Text;
-            string id = idNotxt.Text;
-            string address = addresstxt.Text;
-            string fullname = firstname + " " + lastname;   
+            string firstname = fNametxt.Text.Trim();
+            string lastname = lNametxt.Text.Trim();
+            string phone = phoneNotxt.Text.Trim();
+            string id = idNotxt.Text.Trim();
+            string address = addresstxt.Text.Trim();
+            string fullname = firstname + " " + lastname;
             Guest existingGuest = null;
+
             try
             {
                 existingGuest = guestController.find(id);
@@ -86,28 +85,74 @@ namespace HotelSystem.View
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+                return;
             }
-            
 
-           if (existingGuest == null)
+            if (existingGuest == null)
             {
                 string guestID = GenerateGuestID();
-                string guestAccount = GenerateGuestAcc();
-                Guest newGuest = new Guest(id,fullname,phone,address,guestID,guestAccount);
+                // Create GuestAccount for the new guest
+                string guestAccID = GenerateGuestAccountID();
+                DateTime dateCreated = DateTime.Now;
+                double totalAmount = 0.0;
+                string status = "Unpaid";
+                GuestAccount newGuestAccount = new GuestAccount(guestAccID, guestID, dateCreated, totalAmount, status);
 
-                guestController.DataMaintenance(newGuest, DB.DBOperation.Add);
-                guestController.FinalizeChnages(newGuest);
+                try
+                {
+                    guestAccountController.DataMaintenance(newGuestAccount, DB.DBOperation.Add);
+                    guestAccountController.FinalizeChanges(newGuestAccount);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to add new guest account: " + ex.Message);
+                    return;
+                }
 
-                MessageBox.Show("New guest added successfully!");
-                CreateReservation(newGuest);
+                // Now create the Guest with the guestAccount ID
+                Guest newGuest = new Guest(id, fullname, phone, address, guestID, guestAccID);
+
+                try
+                {
+                    guestController.DataMaintenance(newGuest, DB.DBOperation.Add);
+                    guestController.FinalizeChnages(newGuest);
+                    MessageBox.Show("New guest and guest account added successfully!");
+                    CreateReservation(newGuest, newGuestAccount);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Failed to add new guest: " + ex.Message);
+                }
             }
             else
             {
-                MessageBox.Show("Guest already exists. Proceeding to reservation...");
-                CreateReservation(existingGuest);
-            }
+                // Find or create GuestAccount for existing guest
+                GuestAccount guestAccount = guestAccountController.AllGuestAccounts
+                    .FirstOrDefault(acc => acc.GuestID == existingGuest.GuestID);
 
-            //remember to add the method hidetextbox and showtextbox
+                if (guestAccount == null)
+                {
+                    string guestAccID = GenerateGuestAccountID();
+                    DateTime dateCreated = DateTime.Now;
+                    double totalAmount = 0.0;
+                    string status = "Unpaid";
+                    guestAccount = new GuestAccount(guestAccID, existingGuest.GuestID, dateCreated, totalAmount, status);
+
+                    try
+                    {
+                        guestAccountController.DataMaintenance(guestAccount, DB.DBOperation.Add);
+                        guestAccountController.FinalizeChanges(guestAccount);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Failed to add guest account for existing guest: " + ex.Message);
+                        return;
+                    }
+                }
+
+                MessageBox.Show("Guest already exists. Proceeding to reservation...");
+                CreateReservation(existingGuest, guestAccount);
+            }
         }
 
         private string GenerateGuestID()
@@ -116,30 +161,46 @@ namespace HotelSystem.View
             return "GT" + rand.Next(100, 1000);
         }
 
-        private string GenerateGuestAcc()
+        private string GenerateGuestAccountID()
         {
             Random rand = new Random();
-            return "GA" + rand.Next(100, 1000);
+            return "GA" + rand.Next(1000, 9999);
         }
-        private void CreateReservation(Guest guest)
+
+        private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
-            // Example values, replace with actual logic
+            if (!reservationController.RoomAvailable(arrivalDate, departureDate))
+            {
+                MessageBox.Show("No rooms available for the selected dates. Cannot create reservation.");
+                return;
+            }
+
             string reservationId = "R" + new Random().Next(1000, 9999);
-            int roomId = 1; // You should select an available room
+            int roomId = 1;
+            if (roomId == -1)
+            {
+                MessageBox.Show("No available room found.");
+                return;
+            }
+
             string guestId = guest.GuestID;
-            DateTime checkIn = arrivalDate;
-            DateTime checkOut = departureDate;
-            double totalPrice = 100.0; // Calculate based on your logic
+            double totalPrice = 0.0;
             bool depositPaid = false;
 
-            Reservation reservation = new Reservation(reservationId, roomId, guestId, checkIn, checkOut, totalPrice, depositPaid);
-            reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
-            reservationController.FinalizeChnages(reservation);
+            Reservation reservation = new Reservation(reservationId, roomId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
 
-            MessageBox.Show("Reservation successfully created!");
+            try
+            {
+                reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
+                reservationController.FinalizeChnages(reservation);
+                MessageBox.Show("Reservation successfully created!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to create reservation: " + ex.Message);
+            }
         }
 
 
     }
-
 }
