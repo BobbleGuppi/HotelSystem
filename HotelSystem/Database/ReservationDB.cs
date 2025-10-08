@@ -53,13 +53,12 @@ namespace HotelSystem.Database
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
                     string reservationId = Convert.ToString(myRow["ReservationID"]).TrimEnd();
-                    string roomID = "R001";
                     string guestID = Convert.ToString(myRow["GuestID"]).TrimEnd();
                     DateTime checkInDate = Convert.ToDateTime(myRow["CheckInDate"]);
                     DateTime checkOutDate = Convert.ToDateTime(myRow["CheckOutDate"]);
                     double totalPrice = Convert.ToDouble(myRow["TotalPrice"]);
                     bool depositPaid = Convert.ToBoolean(myRow["Deposit"]);
-                    aReservation = new Reservation(reservationId, roomID, guestID, checkInDate, checkOutDate, totalPrice, depositPaid);
+                    aReservation = new Reservation(reservationId, guestID, checkInDate, checkOutDate, totalPrice, depositPaid);
                     reservations.Add(aReservation);
                 }
             }
