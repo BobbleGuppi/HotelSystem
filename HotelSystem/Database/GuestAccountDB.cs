@@ -22,7 +22,6 @@ namespace HotelSystem.Database
 
         #endregion
 
-
         #region Property Method: Collection
         public Collection<GuestAccount> AllGuestAccounts
         {
@@ -154,20 +153,23 @@ namespace HotelSystem.Database
         {
             //Create Parameters to communicate with SQL INSERT...add the input parameter and set its properties.
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@GuestAccID", SqlDbType.NVarChar, 15, "GuestAccID");
+            param = new SqlParameter("@GuestAccID", SqlDbType.NChar, 10, "GuestAccID");
             daMain.InsertCommand.Parameters.Add(param);//Add the parameter to the Parameters collection.
 
-            param = new SqlParameter("@GuestID", SqlDbType.NVarChar, 10, "GuestID");
+            param = new SqlParameter("@GuestID", SqlDbType.NChar, 10, "GuestID");
             daMain.InsertCommand.Parameters.Add(param);
 
             
             param = new SqlParameter("@DateCreated", SqlDbType.DateTime, 8, "DateCreated");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@TotalAmount", SqlDbType.Money, 8, "TotalAmount");
+            param = new SqlParameter("@TotalAmount", SqlDbType.Decimal);
+            param.Precision = 18;      // total digits
+            param.Scale = 2;           // digits after decimal
+            param.SourceColumn = "TotalAmount";
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Status", SqlDbType.NVarChar, 10, "Status");
+            param = new SqlParameter("@Status", SqlDbType.NChar, 10, "Status");
             daMain.InsertCommand.Parameters.Add(param);
             
         }
@@ -196,11 +198,11 @@ namespace HotelSystem.Database
         {
             SqlParameter param;
 
-            param = new SqlParameter("@GuestAccID", SqlDbType.NVarChar, 10, "GuestAccID");
+            param = new SqlParameter("@GuestAccID", SqlDbType.NChar, 10, "GuestAccID");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@GuestID", SqlDbType.NVarChar, 10, "GuestID");
+            param = new SqlParameter("@GuestID", SqlDbType.NChar, 10, "GuestID");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
@@ -208,7 +210,10 @@ namespace HotelSystem.Database
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@TotalAmount", SqlDbType.Money, 8, "TotalAmount");
+            param = new SqlParameter("@TotalAmount", SqlDbType.Decimal);
+            param.Precision = 18;      // total digits
+            param.Scale = 2;           // digits after decimal
+            param.SourceColumn = "TotalAmount";
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
@@ -216,7 +221,7 @@ namespace HotelSystem.Database
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Original_GuestAccID", SqlDbType.NVarChar, 15, "GuestAccID");
+            param = new SqlParameter("@Original_GuestAccID", SqlDbType.NChar, 15, "GuestAccID");
             param.SourceVersion = DataRowVersion.Original;
             daMain.UpdateCommand.Parameters.Add(param);
 

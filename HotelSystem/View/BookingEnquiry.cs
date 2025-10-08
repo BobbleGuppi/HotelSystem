@@ -69,7 +69,6 @@ namespace HotelSystem.View
                 reservationInfo.AppendText($"Check-Out Date: {reservation.CheckOutDate:d}\n");
                 reservationInfo.AppendText($"Total Price:    R{reservation.totalPrice:F2}\n");
                 reservationInfo.AppendText($"Deposit Paid:   {(reservation.DepositPaid ? "Yes" : "No")}\n");
-                reservationInfo.AppendText("===========================\n");
                 reservationInfo.Visible = true;
             }
             else {                 
@@ -135,6 +134,11 @@ namespace HotelSystem.View
         }
 
         private void prevButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

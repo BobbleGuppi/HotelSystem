@@ -66,7 +66,7 @@ namespace HotelSystem.Logic
         }
 
    
-        public bool FinalizeChnages(Reservation reservation)
+        public bool FinalizeChanges(Reservation reservation)
         {
             return reservationDB.UpdateDataSource(reservation);
         }
@@ -75,16 +75,17 @@ namespace HotelSystem.Logic
         #region Search Method
         public Reservation find(string reservationID)
         {
-            int index = 0;
-            Boolean found = (reservations[index].ReservationID == reservationID);
             int count = reservations.Count;
-            while (!(found) && (index < count - 1))
+            for (int i = 0; i < count; i++)
             {
-                index++;
-                found = (reservations[index].ReservationID == reservationID);
+                if (reservations[i].ReservationID == reservationID)
+                {
+                    return reservations[i]; // found
+                }
             }
-            return reservations[index];
+            return null; // not found
         }
+
         #endregion
 
         public int FindIndex(Reservation reservation)
