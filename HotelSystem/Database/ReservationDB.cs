@@ -57,8 +57,8 @@ namespace HotelSystem.Database
                     DateTime checkInDate = Convert.ToDateTime(myRow["CheckInDate"]);
                     DateTime checkOutDate = Convert.ToDateTime(myRow["CheckOutDate"]);
                     double totalPrice = Convert.ToDouble(myRow["TotalPrice"]);
-                    bool depositPaid = Convert.ToBoolean(myRow["Deposit"]);
-                    aReservation = new Reservation(reservationId, guestID, checkInDate, checkOutDate, totalPrice, depositPaid);
+                    bool deposit = Convert.ToBoolean(myRow["Deposit"]);
+                    aReservation = new Reservation(reservationId, guestID, checkInDate, checkOutDate, totalPrice, deposit);
                     reservations.Add(aReservation);
                 }
             }
@@ -125,71 +125,65 @@ namespace HotelSystem.Database
                     break;
             }
         }
-        #endregion
-
-        #region Build Parameter, Create commands and Update Database
-
         private void Build_Insert_Parameter(Reservation reservation)
         {
-            SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@ReservationID", SqlDbType.NChar, 10, "ReservationID");
+            SqlParameter param = new SqlParameter("@ReservationID", SqlDbType.NChar, 10, "ReservationID");
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@GuestID", SqlDbType.NChar, 10, "GuestID");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@CheckInDate", SqlDbType.DateTime, 8, "CheckInDate"); 
+            param = new SqlParameter("@CheckInDate", SqlDbType.DateTime, 8, "CheckInDate");
+            daMain.InsertCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "Deposit"); // <-- FIXED HERE
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@CheckOutDate", SqlDbType.DateTime, 8, "CheckOutDate");
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@TotalPrice", SqlDbType.Decimal);
-            param.Precision = 18;      // total digits
-            param.Scale = 2;           // digits after decimal
+            param.Precision = 18;
+            param.Scale = 2;
             param.SourceColumn = "TotalPrice";
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "DepositPaid");
             daMain.InsertCommand.Parameters.Add(param);
         }
 
         private void Create_Insert_Command(Reservation reservation)
         {
            daMain.InsertCommand = new SqlCommand("INSERT INTO Reservation"+
-                " (ReservationID, GuestID, CheckInDate, CheckOutDate, TotalPrice, DepositPaid) " +
+                " (ReservationID, GuestID, CheckInDate, CheckOutDate, TotalPrice, Deposit) " +
                 " VALUES (@ReservationID, @GuestID, @CheckInDate, @CheckOutDate, @TotalPrice, @Deposit)", cnMain);
             Build_Insert_Parameter(reservation);
         }
 
         private void Build_Update_Parameter(Reservation reservation)
         {
-            SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@ReservationID", SqlDbType.NChar, 10, "ReservationID");
+            SqlParameter param = new SqlParameter("@ReservationID", SqlDbType.NChar, 10, "ReservationID");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
             param = new SqlParameter("@GuestID", SqlDbType.NChar, 10, "GuestID");
-            param.SourceVersion = DataRowVersion.Current; 
+            param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
             param = new SqlParameter("@CheckInDate", SqlDbType.DateTime, 8, "CheckInDate");
-            param.SourceVersion = DataRowVersion.Current; 
+            param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
             param = new SqlParameter("@CheckOutDate", SqlDbType.DateTime, 8, "CheckOutDate");
-            param.SourceVersion = DataRowVersion.Current; 
-            daMain.UpdateCommand.Parameters.Add(param);
-   
-            param = new SqlParameter("@TotalPrice", SqlDbType.Decimal);
-            param.Precision = 18;      // total digits
-            param.Scale = 2;           // digits after decimal
-            param.SourceColumn = "TotalPrice";
-            param.SourceVersion = DataRowVersion.Current; 
+            param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "DepositPaid");
-            param.SourceVersion = DataRowVersion.Current; 
+            param = new SqlParameter("@TotalPrice", SqlDbType.Decimal);
+            param.Precision = 18;
+            param.Scale = 2;
+            param.SourceColumn = "TotalPrice";
+            param.SourceVersion = DataRowVersion.Current;
+            daMain.UpdateCommand.Parameters.Add(param);
+
+            param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "Deposit"); // <-- FIXED HERE
+            param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
             param = new SqlParameter("@OriginalReservationID", SqlDbType.NChar, 10, "ReservationID");
