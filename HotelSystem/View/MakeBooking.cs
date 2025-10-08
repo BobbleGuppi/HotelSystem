@@ -107,7 +107,7 @@ namespace HotelSystem.View
                         MessageBox.Show("Failed to save new guest account.");
                         return;
                     }
-                    else {                         MessageBox.Show("New guest account added successfully!"); }
+                    else {  MessageBox.Show("New guest account added successfully!"); }
                 }
                 catch (Exception ex)
                 {
@@ -141,18 +141,13 @@ namespace HotelSystem.View
             else
             {
                 // Find or create GuestAccount for existing guest
-                GuestAccount guestAccount = guestAccountController.AllGuestAccounts
-                    .FirstOrDefault(acc => acc.GuestID == existingGuest.GuestID);
-
-                if (guestAccount == null)
-                {
+               
                     string guestAccID = GenerateGuestAccountID();
                     DateTime dateCreated = DateTime.Now;
                     double totalAmount = 0.0;
                     string status = "Unpaid";
-                    guestAccount = new GuestAccount(guestAccID, existingGuest.GuestID, dateCreated, totalAmount, status);
-
-                    try
+                    GuestAccount guestAccount = new GuestAccount(guestAccID, existingGuest.GuestID, dateCreated, totalAmount, status);
+                try
                     {
                         guestAccountController.DataMaintenance(guestAccount, DB.DBOperation.Add);
                         guestAccountController.FinalizeChanges(guestAccount);
@@ -162,7 +157,7 @@ namespace HotelSystem.View
                         MessageBox.Show("Failed to add guest account for existing guest: " + ex.Message);
                         return;
                     }
-                }
+               
 
                 MessageBox.Show("Guest already exists. Proceeding to reservation...");
                 CreateReservation(existingGuest, guestAccount);
@@ -196,7 +191,7 @@ namespace HotelSystem.View
             try
             {
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
-                bool savedReser = reservationController.FinalizeChnages(reservation);
+                bool savedReser = reservationController.FinalizeChanges(reservation);
                 if (!savedReser)
                 {
                     MessageBox.Show("Failed to save reservation.");

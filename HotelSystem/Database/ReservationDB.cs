@@ -102,7 +102,7 @@ namespace HotelSystem.Database
             myRow["CheckInDate"] = reservation.CheckInDate;
             myRow["CheckOutDate"] = reservation.CheckOutDate;
             myRow["TotalPrice"] = reservation.totalPrice;
-            myRow["Deposit"] = reservation.DepositPaid;
+            myRow["Deposit"] = reservation.DepositPaid; // or reservation.Deposit if that's your property
 
             // No AcceptChanges() here — we want the DataRow state to remain Modified for Update()
         }
