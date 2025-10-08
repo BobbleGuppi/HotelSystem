@@ -11,8 +11,8 @@ namespace HotelSystem.Logic
     public class ReservationController
     {
         #region data members
-        ReservationDB reservationDB;
-        Collection<Reservation> reservations;
+        public ReservationDB reservationDB;
+        protected Collection<Reservation> reservations;
         private List<Room> rooms;
         #endregion
 
