@@ -62,14 +62,20 @@ namespace HotelSystem.View
                 if (!string.IsNullOrWhiteSpace(reservationid))
                 {
 
-
-                    foundReservation = Rcontroller.find(reservationid); // will return the reservation object that matches the reservationid
+                    try
+                    {
+                        foundReservation = Rcontroller.find(reservationid); // will return the reservation object that matches the reservationid
+                    } catch
+                    {
+                        MessageBox.Show("Reservation cannot be found in the database!")
+                    }
+                    
 
                     if (foundReservation != null)
 
                     {
 
-                        foundGuest = guestController.find(foundReservation.Guest); // will return a Guest object that matches the guestid
+                        foundGuest = guestController.find(foundReservation.GuestID); // will return a Guest object that matches the guestid
                         if (foundGuest != null)
                         {
                             reservationNumLabel.Visible = false;
