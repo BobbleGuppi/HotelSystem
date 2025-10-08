@@ -122,25 +122,25 @@ namespace HotelSystem.View
                             MessageBox.Show("No Rooms Available on these Dates.");
                             return;
                         }
+                        else 
+                        {
+                            DataTable previewTable = new DataTable();
 
-                        // 4. Create a **demo reservation** (preview) without touching DB
-                        //Reservation demoRes = Reservation(
-                        //    myReservation.ReservationID,
-                        //    myReservation.RoomID,
-                        //    myReservation.Guest,
-                        //    checkInDate,
-                        //    checkOutDate,
-                        //    myReservation.DepositPaid
-                        //);
+                            // Define columns
+                            previewTable.Columns.Add("ReservationID", typeof(string));
+                            previewTable.Columns.Add("CheckInDate", typeof(DateTime));
+                            previewTable.Columns.Add("CheckOutDate", typeof(DateTime));
 
-                        //// 5. Add to a local list for the DataGridView
-                        //List<Reservation> previewList = new List<Reservation> { demoRes };
-                        //dataGridView1.DataSource = null;
-                        //dataGridView1.DataSource = previewList;
+                            // Add a demo row
+                            previewTable.Rows.Add(reservationID, checkInDate, checkOutDate);
 
-                        // Switch panels to show preview
-                        MainPanel.Visible = false;
-                        RoomFoundPanel.Visible = true;
+                            dataGridView1.DataSource = previewTable;
+
+
+                            // Switch panels to show preview
+                            MainPanel.Visible = false;
+                            RoomFoundPanel.Visible = true;
+                        }
 
                     }
 
@@ -167,27 +167,27 @@ namespace HotelSystem.View
                 return;
             }
 
-            //// 1. Call controller to update reservation (DB + in-memory collection)
-            //bool success = res_cntrllr.EditReservationDates(reservationID, checkInDate, checkOutDate);
+            // Show confirmation dialog
+            DialogResult result = MessageBox.Show(
+                "Warning!! previous reservation will be deleted from the database." +
+                "Confirm new reservation to be created?\r\n", // Message
+                "Confirm Change",                      // Title
+                MessageBoxButtons.YesNo,               // Yes/No buttons
+                MessageBoxIcon.Question                // Optional icon
+            );
 
-            //if (success)
-            //{
-            //    MessageBox.Show("Reservation updated successfully!", "Success");
+            if (result == DialogResult.Yes)
+            {
+                // User confirmed
+                myReservation.changeReservationDates(checkInDate, checkOutDate);
+                MessageBox.Show("Deletion and new Reservation ID creation successful!\r\n\r\n");
+            }
+            else
+            {
+                MessageBox.Show("Change Booking Cancelled.");
+                this.Close();
+            }
 
-            //    // 2. Refresh DataGridView with updated reservation (optional)
-            //    Reservation updated = res_cntrllr.find(reservationID);
-            //    List<Reservation> updatedList = new List<Reservation> { updated };
-            //    dataGridView1.DataSource = null;
-            //    dataGridView1.DataSource = updatedList;
-
-            //    // 3. Switch panels back
-            //    RoomFoundPanel.Visible = false;
-            //    MainPanel.Visible = true;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Failed to update reservation. Check Reservation ID.", "Error");
-            //}
         }
         #endregion
 
