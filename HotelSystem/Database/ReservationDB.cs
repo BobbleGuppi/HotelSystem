@@ -144,7 +144,10 @@ namespace HotelSystem.Database
             param = new SqlParameter("@CheckOutDate", SqlDbType.DateTime, 8, "CheckOutDate");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@TotalPrice", SqlDbType.Money, 8, "TotalPrice");
+            param = new SqlParameter("@TotalPrice", SqlDbType.Decimal);
+            param.Precision = 18;      // total digits
+            param.Scale = 2;           // digits after decimal
+            param.SourceColumn = "TotalPrice";
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "DepositPaid");
@@ -177,8 +180,11 @@ namespace HotelSystem.Database
             param = new SqlParameter("@CheckOutDate", SqlDbType.DateTime, 8, "CheckOutDate");
             param.SourceVersion = DataRowVersion.Current; 
             daMain.UpdateCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@TotalPrice", SqlDbType.Money, 8, "TotalPrice");
+   
+            param = new SqlParameter("@TotalPrice", SqlDbType.Decimal);
+            param.Precision = 18;      // total digits
+            param.Scale = 2;           // digits after decimal
+            param.SourceColumn = "TotalPrice";
             param.SourceVersion = DataRowVersion.Current; 
             daMain.UpdateCommand.Parameters.Add(param);
 
