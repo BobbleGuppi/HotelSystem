@@ -29,6 +29,14 @@ namespace HotelSystem.Logic
         {
             reservationDB = new ReservationDB();
             reservations = reservationDB.AllReservations;
+            rooms = new List<Room>
+            {
+                new Room("R001"),
+                new Room("R002"),
+                new Room("R003"),
+                new Room("R004"),
+                new Room("R005")
+            };
         }
         #endregion
 
