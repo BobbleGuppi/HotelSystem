@@ -12,8 +12,8 @@ namespace HotelSystem.Database
 {
     public class DB
     {
-        private string strConn = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=HotelSystemDB;Integrated Security=True;" +"Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
-        protected SqlConnection cnMain;
+        private static string strConn = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=HotelSystemDB;Integrated Security=True;" +"Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        protected SqlConnection cnMain  = new SqlConnection(strConn);
         protected DataSet dsMain;
         protected SqlDataAdapter daMain;
         public enum DBOperation
@@ -22,6 +22,24 @@ namespace HotelSystem.Database
             Edit = 1,
             Delete = 2
         }
+
+        #region Constructor
+        public DB()
+        {
+            try
+            {
+                //Open a connection & create a new dataset object
+                cnMain = new SqlConnection(strConn);
+                dsMain = new DataSet();
+            }
+            catch (SystemException e)
+            {
+                System.Windows.Forms.MessageBox.Show(e.Message, "Error");
+                return;
+            }
+        }
+
+        #endregion
         public void FillDataSet(string aSQLstring, string aTable)
         {
             //fills dataset fresh from the db for a specific table and with a specific Query

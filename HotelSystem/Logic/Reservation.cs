@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace HotelSystem.Logic
 {
@@ -15,6 +16,7 @@ namespace HotelSystem.Logic
         private DateTime checkOutDate;
         public double totalPrice;
         private bool depositPaid = false;
+        
 
         public Reservation(string reservationID, int roomID, string guestID, DateTime checkInDate, DateTime checkOutDate, double totalPrice, bool depositPaid)
         {
@@ -100,10 +102,140 @@ namespace HotelSystem.Logic
 
         }
 
+
         public void makeDepositPayment()
         {
             depositPaid = true;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public void changeReservationDates(DateTime newCheckIn, DateTime newCheckOut)
         {
@@ -120,10 +252,22 @@ namespace HotelSystem.Logic
 
         }
 
+        public bool RoomAvailable(Collection<Room> rooms, DateTime checkIn, DateTime checkOut)
+        {
+            foreach (Room room in rooms)
+            {
+                if (room.IsAvailable(checkIn, checkOut))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
-        
-        
-     
+
+
+
+
 
     }
 }

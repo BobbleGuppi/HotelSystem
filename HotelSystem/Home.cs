@@ -65,26 +65,30 @@ namespace HotelSystem
         private void changeGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeBooking frm = new ChangeBooking();
-            OpenChild(frm);
+            frm.WindowState = FormWindowState.Maximized;
+            frm.MdiParent = this;
+            frm.Show();//can't use ShowDialog as it will block the parent form.
         }
 
         private void cancelGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CancelBooking frm = new CancelBooking();
             frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
             frm.Show();
         }
 
         private void makeBookingEnquiryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        { 
             BookingEnquiry frm = new BookingEnquiry();
             frm.MdiParent = this;
+            frm.WindowState = FormWindowState.Maximized;
             frm.Show();
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
 
         }
+
+        private void menuStrip1_ItemClicked(object sender, EventArgs e) { }
+
+
     }
 }

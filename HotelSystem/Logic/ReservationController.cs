@@ -13,6 +13,7 @@ namespace HotelSystem.Logic
         #region data members
         ReservationDB reservationDB;
         Collection<Reservation> reservations;
+        private List<Room> rooms;
         #endregion
 
         #region properties
@@ -28,6 +29,14 @@ namespace HotelSystem.Logic
         {
             reservationDB = new ReservationDB();
             reservations = reservationDB.AllReservations;
+            rooms = new List<Room>
+            {
+                new Room("R001"),
+                new Room("R002"),
+                new Room("R003"),
+                new Room("R004"),
+                new Room("R005")
+            };
         }
         #endregion
 
@@ -36,7 +45,7 @@ namespace HotelSystem.Logic
         {
             switch (operation)
             {
-               case DB.DBOperation.Add:
+                case DB.DBOperation.Add:
                     reservationDB.DataSetChange(reservation, operation);
                     reservations.Add(reservation);
                     break;
@@ -45,7 +54,7 @@ namespace HotelSystem.Logic
                     reservations[rowIndex] = reservation;
                     break;
                 case DB.DBOperation.Delete:
-                   reservationDB.DataSetChange(reservation, operation);
+                    reservationDB.DataSetChange(reservation, operation);
                     int delIndex = FindIndex(reservation);
                     if (delIndex >= 0)
                         reservations.RemoveAt(delIndex);
@@ -90,5 +99,20 @@ namespace HotelSystem.Logic
             else
                 return -1;
         }
+
+        public bool RoomAvailable( DateTime checkIn, DateTime checkOut)
+        {
+            foreach (Room room in rooms)
+            {
+                if (room.IsAvailable(checkIn, checkOut))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
+
+
 }
+  

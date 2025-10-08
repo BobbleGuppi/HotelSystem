@@ -9,19 +9,39 @@ namespace HotelSystem.Logic
     public class Room
     {
         private string roomID;
-        private bool isAvailable;
+        private List<Reservation> reservations = new List<Reservation>();
 
-
-        public Room(string roomID, bool isAvailable)
+        public Room(string roomID)
         {
             this.roomID = roomID;
-            this.isAvailable = isAvailable;
         }
 
-        public bool IsAvailable
+        public string RoomID
         {
-            get { return isAvailable; }
-            set { isAvailable = value; }
+            get { return roomID; }
+        }
+
+        // Add a reservation to this room
+        public void AddReservation(Reservation reservation)
+        {
+            reservations.Add(reservation);
+        }
+
+        // Check if room is available for a given date range
+        public bool IsAvailable(DateTime checkIn, DateTime checkOut)
+        {
+            foreach (Reservation r in reservations)
+            {
+                // Overlap check: If the requested range overlaps with existing one
+                if (checkIn < r.CheckOutDate && checkOut > r.CheckInDate)
+                {
+                    return false; // Not available
+                }
+            }
+            return true; // Available if no overlap
         }
     }
+
+
 }
+

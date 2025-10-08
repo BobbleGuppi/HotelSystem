@@ -176,30 +176,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Home light blue icon.jpeg" />
+    <Content Include="Database\updatedDB.sql" />
     <Content Include="Scripts\demo.sql" />
     <Content Include="Scripts\FINAL.sql" />
     <Content Include="Scripts\RealFinal.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
