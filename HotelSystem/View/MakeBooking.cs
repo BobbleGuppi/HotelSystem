@@ -187,7 +187,7 @@ namespace HotelSystem.View
             try
             {
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
-                reservationController.FinalizeChnages(reservation);
+                reservationController.FinalizeChanges(reservation);
                 MessageBox.Show("Reservation successfully created!");
             }
             catch (Exception ex)
