@@ -101,6 +101,17 @@ namespace HotelSystem.Logic
             }
 
         }
+        public bool RoomAvailable(List<Room> rooms, DateTime checkIn, DateTime checkOut)
+        {
+            foreach (Room room in rooms)
+            {
+                if (room.IsAvailable(checkIn, checkOut))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         public void makeDepositPayment()
         {
