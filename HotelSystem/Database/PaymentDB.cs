@@ -133,7 +133,10 @@ namespace HotelSystem.Database
             param = new SqlParameter("@GuestAccID", SqlDbType.NChar, 10, "GuestAccID");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Amount", SqlDbType.Money, 0, "Amount");
+            param = new SqlParameter("@Amount", SqlDbType.Decimal);
+            param.Precision = 18;      // total digits
+            param.Scale = 2;           // digits after decimal
+            param.SourceColumn = "Amount";
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@DatePaid", SqlDbType.DateTime, 0, "DatePaid");
