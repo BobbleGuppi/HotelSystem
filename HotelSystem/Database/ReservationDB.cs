@@ -53,7 +53,7 @@ namespace HotelSystem.Database
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
                     string reservationId = Convert.ToString(myRow["ReservationID"]).TrimEnd();
-                    string roomID = Convert.ToString(myRow["RoomID"]);
+                    string roomID = "R001";
                     string guestID = Convert.ToString(myRow["GuestID"]).TrimEnd();
                     DateTime checkInDate = Convert.ToDateTime(myRow["CheckInDate"]);
                     DateTime checkOutDate = Convert.ToDateTime(myRow["CheckOutDate"]);
@@ -92,7 +92,6 @@ namespace HotelSystem.Database
             if (operation == DB.DBOperation.Add)
             {
                 myRow["ReservationID"] = reservation.ReservationID;
-                myRow["RoomID"] = reservation.RoomID;
                 myRow["GuestID"] = reservation.GuestID;
                 myRow["CheckInDate"] = reservation.CheckInDate;
                 myRow["CheckOutDate"] = reservation.CheckOutDate;
@@ -137,9 +136,6 @@ namespace HotelSystem.Database
             param = new SqlParameter("@ReservationID", SqlDbType.NChar, 10, "ReservationID");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@RoomID", SqlDbType.Int, 4, "RoomID");
-            daMain.InsertCommand.Parameters.Add(param);
-
             param = new SqlParameter("@GuestID", SqlDbType.NChar, 10, "GuestID");
             daMain.InsertCommand.Parameters.Add(param);
 
@@ -159,8 +155,8 @@ namespace HotelSystem.Database
         private void Create_Insert_Command(Reservation reservation)
         {
            daMain.InsertCommand = new SqlCommand("INSERT INTO Reservation"+
-                " (ReservationID, RoomID, GuestID, CheckInDate, CheckOutDate, TotalPrice, DepositPaid) " +
-                " VALUES (@ReservationID, @RoomID, @GuestID, @CheckInDate, @CheckOutDate, @TotalPrice, @Deposit)", cnMain);
+                " (ReservationID, GuestID, CheckInDate, CheckOutDate, TotalPrice, DepositPaid) " +
+                " VALUES (@ReservationID, @GuestID, @CheckInDate, @CheckOutDate, @TotalPrice, @Deposit)", cnMain);
             Build_Insert_Parameter(reservation);
         }
 
@@ -169,10 +165,6 @@ namespace HotelSystem.Database
             SqlParameter param = default(SqlParameter);
             param = new SqlParameter("@ReservationID", SqlDbType.NChar, 10, "ReservationID");
             param.SourceVersion = DataRowVersion.Current;
-            daMain.UpdateCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@RoomID", SqlDbType.Int, 4, "RoomID");
-            param.SourceVersion = DataRowVersion.Current; 
             daMain.UpdateCommand.Parameters.Add(param);
 
             param = new SqlParameter("@GuestID", SqlDbType.NChar, 10, "GuestID");
@@ -203,7 +195,7 @@ namespace HotelSystem.Database
 
         private void Create_Update_Command(Reservation reservation)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE Reservation SET RoomID = @RoomID,  GuestID = @GuestID, CheckInDate = @CheckInDate, " +
+            daMain.UpdateCommand = new SqlCommand("UPDATE Reservation SET GuestID = @GuestID, CheckInDate = @CheckInDate, " +
                 " CheckOutDate = @CheckOutDate,  TotalPrice = @TotalPrice, Deposit = @Deposit  WHERE ReservationID = @OriginalReservationID", cnMain);
             Build_Update_Parameter(reservation);
         }
