@@ -59,11 +59,11 @@ namespace HotelSystem.View
                 //now read the reservationId text
                 string reservationid = textBoxForReservationID.Text.Trim();
 
-                foundReservation = Rcontroller.find(reservationid); // will return the reservation object that matches the reservationid
-
 
                 if (foundReservation != null)
+
                 {
+                    foundReservation = Rcontroller.find(reservationid); // will return the reservation object that matches the reservationid
                     foundGuest = guestController.find(foundReservation.Guest); // will return a Guest object that matches the guestid
 
                     reservationNumLabel.Visible = false;
@@ -78,7 +78,7 @@ namespace HotelSystem.View
                 }
                 else
                 {
-                    MessageBox.Show("Reservation not found.\nNote:ID is made from Guest initials, Month, Start Date and number of days reserved.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Note:ID is made from Guest initials, Month, Start Date and number of days reserved.", "Reservation not found!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
