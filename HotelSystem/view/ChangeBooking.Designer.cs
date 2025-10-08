@@ -111,6 +111,7 @@
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1197, 482);
             this.MainPanel.TabIndex = 8;
+            this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
             // tableLayoutPanel1
             // 
@@ -244,8 +245,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1221, 566);
-            this.Controls.Add(this.RoomFoundPanel);
             this.Controls.Add(this.MainPanel);
+            this.Controls.Add(this.RoomFoundPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "ChangeBooking";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
