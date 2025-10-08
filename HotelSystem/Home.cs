@@ -13,20 +13,15 @@ namespace HotelSystem
 {
     public partial class Home : Form
     {
+
+        private ChangeBooking changeBookingForm; // store the single instance
+
         public Home()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
         }
-        
-
-        private void OpenChild(Form frm)
-        {
-            frm.MdiParent = this;
-            frm.Text = "Change Booking";
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm.Show();
-        }
+       
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -62,13 +57,24 @@ namespace HotelSystem
 
         }
 
+        #region Change Guest Booking Functionality
         private void changeGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangeBooking frm = new ChangeBooking();
-            frm.WindowState = FormWindowState.Maximized;
-            frm.MdiParent = this;
-            frm.Show();//can't use ShowDialog as it will block the parent form.
+            if (changeBookingForm == null || changeBookingForm.IsDisposed)
+            {
+                changeBookingForm = new ChangeBooking();
+                changeBookingForm.WindowState = FormWindowState.Maximized;
+                changeBookingForm.MdiParent = this;
+                changeBookingForm.Show();
+                changeBookingForm.BringToFront();
+            }
+            else
+            {
+                changeBookingForm.BringToFront(); // just focus the existing one
+            }
+
         }
+        #endregion
 
         private void cancelGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
         {

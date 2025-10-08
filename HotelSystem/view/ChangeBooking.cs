@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HotelSystem.Database;
+using HotelSystem.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +15,7 @@ namespace HotelSystem.View
     public partial class ChangeBooking : Form
     {
 
+        #region Fields
         private DateTime checkInDate;
         private DateTime checkOutDate;
         private string reservationID;
@@ -20,7 +23,10 @@ namespace HotelSystem.View
         private int room;
         public enum DateChecker { invalidDate = 0, validDate = 1  }
         DateChecker pickedDate;
-
+        private ReservationController res_cntrllr;
+        bool roomAvail;
+        private Random rnd = new Random();
+        #endregion
 
         #region Constructor
         public ChangeBooking()
@@ -34,7 +40,6 @@ namespace HotelSystem.View
         #region Utility Methods
         public void DateChecking() 
         {
-            Random rnd = new Random();// Generate 0 or 1 randomly
             int randomValue = rnd.Next(0, 2);  // 0 (inclusive) to 2 (exclusive)
             pickedDate = (DateChecker)randomValue; // Convert to enum
 
@@ -43,52 +48,97 @@ namespace HotelSystem.View
         {
         
         }
-
-
         #endregion
 
         #region Get User Input
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            DateTime checkInDate = CheckInPicker.Value.Date;
-            DateChecking();
-
+            checkInDate = CheckInPicker.Value.Date; // assign to the field
         }
 
         private void CheckOutPicker_ValueChanged(object sender, EventArgs e)
         {
-            DateTime checkOutDate = CheckOutPicker.Value.Date;
+            checkOutDate = CheckOutPicker.Value.Date; // assign to the field
+
         }
 
         private void reservationIDTextBox_TextChanged(object sender, EventArgs e)
         {
-            string reservationID = reservationIDTextBox.Text;
+            reservationID = reservationIDTextBox.Text;
         }
 
         #endregion
 
-        #region Confirm Button
+        #region FirstConfirm Button
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            if (pickedDate == DateChecker.invalidDate)
-            {
-                MessageBox.Show("Invalid Reservation Date: Must book 14 days in advance.");
+            DateChecking();
 
-            }
-            if (pickedDate == DateChecker.validDate)
+            if (checkInDate.Month != 12 || checkOutDate.Month != 12)
             {
-                MainPanel.Visible = false;
-                RoomFoundPanel.Visible = true;
+                MessageBox.Show("You can only select December!", "Invalid Date Selected");
+                return;
             }
+
+            else
+            {
+                if (pickedDate == DateChecker.invalidDate)
+                {
+                    MessageBox.Show("Invalid Reservation Date: Must book 14 days in advance.", "Invalid Date Selected");
+                    return;
+
+                }
+                if (pickedDate == DateChecker.validDate)
+                {
+                    res_cntrllr = new ReservationController();
+                    roomAvail = res_cntrllr.RoomAvailable(checkInDate, checkOutDate);
+
+                    if (roomAvail)
+                    {
+
+                        List<Reservation> reservations = new List<Reservation>()
+                    {
+                        new Reservation(reservationID,1,"G000",checkInDate,checkOutDate,0.0,false)
+
+                    };
+
+                        // Bind the list to the DataGridView
+                        dataGridView1.DataSource = reservations;
+                        MainPanel.Visible = false;
+                        RoomFoundPanel.Visible = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Rooms Available on these Dates.");
+                        return;
+                    }
+
+                }
+            }
+
+            
         }
 
         #endregion
 
-        // [1[1, 2, 3, 4, 5, 6, 7, 8], 2[], 3[], 4[], 5[]]
-        // room, day
-        // day, room
-        // [1[1, 2, 3, 4, 5], 2[], 3[], 4[], 5[]]
+        #region CancelChange Button
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
 
+        #region ConfirmChange Button
+        private void confirmChangeButton_Click(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+ 
+        }
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -96,11 +146,6 @@ namespace HotelSystem.View
         }
 
         private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
