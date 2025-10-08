@@ -16,8 +16,17 @@ namespace HotelSystem
         public Home()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
+        
 
+        private void OpenChild(Form frm)
+        {
+            frm.MdiParent = this;
+            frm.Text = "Change Booking";
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.Show();
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -56,8 +65,7 @@ namespace HotelSystem
         private void changeGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ChangeBooking frm = new ChangeBooking();
-            frm.MdiParent = this;
-            frm.Show();//can't use ShowDialog as it will block the parent form.
+            OpenChild(frm);
         }
 
         private void cancelGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
