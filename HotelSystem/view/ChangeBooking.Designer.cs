@@ -39,15 +39,15 @@
             this.reservationIDTextBox = new System.Windows.Forms.RichTextBox();
             this.CheckOutPicker = new System.Windows.Forms.DateTimePicker();
             this.RoomFoundPanel = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.GuestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Room = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Arrival = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Departure = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.RoomFoundPanel.SuspendLayout();
@@ -104,6 +104,7 @@
             this.ConfirmButton.TabIndex = 7;
             this.ConfirmButton.Text = "Confirm";
             this.ConfirmButton.UseVisualStyleBackColor = false;
+            this.ConfirmButton.Click += new System.EventHandler(this.ConfirmButton_Click);
             // 
             // MainPanel
             // 
@@ -166,6 +167,7 @@
             this.reservationIDTextBox.Size = new System.Drawing.Size(228, 28);
             this.reservationIDTextBox.TabIndex = 8;
             this.reservationIDTextBox.Text = "";
+            this.reservationIDTextBox.TextChanged += new System.EventHandler(this.reservationIDTextBox_TextChanged);
             // 
             // CheckOutPicker
             // 
@@ -174,6 +176,7 @@
             this.CheckOutPicker.Name = "CheckOutPicker";
             this.CheckOutPicker.Size = new System.Drawing.Size(228, 20);
             this.CheckOutPicker.TabIndex = 10;
+            this.CheckOutPicker.ValueChanged += new System.EventHandler(this.CheckOutPicker_ValueChanged);
             // 
             // RoomFoundPanel
             // 
@@ -186,19 +189,31 @@
             this.RoomFoundPanel.Size = new System.Drawing.Size(1197, 482);
             this.RoomFoundPanel.TabIndex = 9;
             // 
-            // label4
+            // button2
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.label4.Font = new System.Drawing.Font("Eras Demi ITC", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(424, 37);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(312, 31);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Available Room Found!";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(1005, 385);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(112, 34);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Confirm";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(770, 385);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 34);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Cancel";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 
@@ -247,31 +262,19 @@
             this.Price.Name = "Price";
             this.Price.ReadOnly = true;
             // 
-            // button1
+            // label4
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(770, 385);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 34);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1005, 385);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 34);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Confirm";
-            this.button2.UseVisualStyleBackColor = false;
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.label4.Font = new System.Drawing.Font("Eras Demi ITC", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(424, 37);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(312, 31);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Available Room Found!";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // ChangeBooking
             // 
