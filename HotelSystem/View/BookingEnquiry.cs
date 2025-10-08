@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelSystem.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,13 +11,17 @@ using System.Windows.Forms;
 
 namespace HotelSystem.View
 {
+   
     public partial class BookingEnquiry : Form
     {
         private Size originalFormSize;
         private Dictionary<Control, Rectangle> controlBounds = new Dictionary<Control, Rectangle>();
+        private ReservationController reservationController;
+        private Reservation reservation;
         public BookingEnquiry()
         {
             InitializeComponent();
+            reservationController = new ReservationController();
             this.Load += BookingEnquiry_Load;
             this.Resize += BookingEnquiry_Resize;
         }
@@ -44,10 +49,13 @@ namespace HotelSystem.View
         private void confirmButton_Click(object sender, EventArgs e)
         {
             string reservationId = richTextBox1.Text;
-            richTextBox1.Visible= false;
-            reservLabel.Visible= false;
-            confirmButton.Visible= false;
-            label1.Visible= false;
+            richTextBox1.Visible = false;
+            reservLabel.Visible = false;
+            confirmButton.Visible = false;
+            label1.Visible = false;
+
+            reservation = reservationController.find(reservationId);
+
         }
 
         private void BookingEnquiry_Load(object sender, EventArgs e)
