@@ -17,6 +17,7 @@ namespace HotelSystem.View
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
+            CenterPanel();
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -39,6 +40,17 @@ namespace HotelSystem.View
             {
                 MessageBox.Show("Login Failed. Please try again.");
             }
+
+        }
+        private void CenterPanel()
+        {
+            panel1.Location = new Point(
+                (this.ClientSize.Width - panel1.Width) / 2,
+                (this.ClientSize.Height - panel1.Height) / 2
+            );
+        }
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
