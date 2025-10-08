@@ -97,7 +97,7 @@ namespace HotelSystem.Database
                 myRow["CheckInDate"] = reservation.CheckInDate;
                 myRow["CheckOutDate"] = reservation.CheckOutDate;
                 myRow["TotalPrice"] = reservation.totalPrice;
-                myRow["DepositPaid"] = reservation.DepositPaid;
+                myRow["Deposit"] = reservation.DepositPaid;
             }
         }
         
