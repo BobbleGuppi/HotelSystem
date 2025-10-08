@@ -14,6 +14,7 @@ namespace HotelSystem.Logic
         public ReservationDB reservationDB;
         protected Collection<Reservation> reservations;
         protected List<Room> rooms;
+        protected string currentRoom;
         #endregion
 
         #region properties
@@ -22,7 +23,7 @@ namespace HotelSystem.Logic
         {
             get { return reservations; }
         }
-
+        public string RoomID { get { return currentRoom; } set{currentRoom = value;} }
         #endregion
 
         #region Constructors
@@ -109,6 +110,7 @@ namespace HotelSystem.Logic
             {
                 if (room.IsAvailable(checkIn, checkOut))
                 {
+                    currentRoom = room.RoomID;
                     return true;
                 }
             }

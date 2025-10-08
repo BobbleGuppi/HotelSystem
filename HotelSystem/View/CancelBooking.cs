@@ -55,30 +55,49 @@ namespace HotelSystem.View
         {
             if (screen == 0)
             {
-                prevPageButton.Visible = true;
+                //prevPageButton.Visible = true;
+               
                 //now read the reservationId text
                 string reservationid = textBoxForReservationID.Text.Trim();
-
-                foundReservation = Rcontroller.find(reservationid); // will return the reservation object that matches the reservationid
-
-
-                if (foundReservation != null)
+                if (!string.IsNullOrWhiteSpace(reservationid))
                 {
-                    foundGuest = guestController.find(foundReservation.GuestID); // will return a Guest object that matches the guestid
 
-                    reservationNumLabel.Visible = false;
-                    reservationIDinputLabel.Visible = false;
-                    textBoxForReservationID.Visible = false;
+                    try
+                    {
+                        foundReservation = Rcontroller.find(reservationid); // will return the reservation object that matches the reservationid
+                    } catch
+                    {
+                        MessageBox.Show("Reservation cannot be found in the database!")
+                    }
+                    
 
-                    richTextBox1.Visible = true;
-                    richTextBox1.Text = $"Guest Booking found!\nDo you wish to proceed to cancel the existing guest booking?:\n\t" + foundGuest.displayInfo();
+                    if (foundReservation != null)
 
-                    screen = 1; // go to the next screen
+                    {
 
-                }
-                else
+                        foundGuest = guestController.find(foundReservation.GuestID); // will return a Guest object that matches the guestid
+                        if (foundGuest != null)
+                        {
+                            reservationNumLabel.Visible = false;
+                            reservationIDinputLabel.Visible = false;
+                            textBoxForReservationID.Visible = false;
+                            prevPageButton.Visible = true;
+                            richTextBox1.Visible = true;
+                            richTextBox1.Text = $"Guest Booking found!\nDo you wish to proceed to cancel the existing guest booking?:\n\t" + foundGuest.displayInfo();
+
+                            screen = 1; // go to the next screen
+                        }
+
+                        
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Note:ID is made from Guest initials, Month, Start Date and number of days reserved.", "Reservation not found!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }else
                 {
-                    MessageBox.Show("Reservation not found.\nNote:ID is made from Guest initials, Month, Start Date and number of days reserved.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Reservation ID field must not be empty. Try again.", "This is a required field box!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
