@@ -34,9 +34,9 @@
             this.confirmButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.reservationInfo = new System.Windows.Forms.RichTextBox();
-            this.doneButton = new System.Windows.Forms.Button();
             this.prevButton = new System.Windows.Forms.Button();
+            this.doneButton = new System.Windows.Forms.Button();
+            this.reservationInfo = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -109,26 +109,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1500, 700);
             this.panel2.TabIndex = 6;
-            // 
-            // reservationInfo
-            // 
-            this.reservationInfo.Location = new System.Drawing.Point(32, 29);
-            this.reservationInfo.Name = "reservationInfo";
-            this.reservationInfo.Size = new System.Drawing.Size(519, 263);
-            this.reservationInfo.TabIndex = 0;
-            this.reservationInfo.Text = "";
-            // 
-            // doneButton
-            // 
-            this.doneButton.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.doneButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.doneButton.Font = new System.Drawing.Font("Eras Medium ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doneButton.Location = new System.Drawing.Point(735, 612);
-            this.doneButton.Name = "doneButton";
-            this.doneButton.Size = new System.Drawing.Size(198, 70);
-            this.doneButton.TabIndex = 5;
-            this.doneButton.Text = "Done";
-            this.doneButton.UseVisualStyleBackColor = false;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // prevButton
             // 
@@ -142,6 +123,26 @@
             this.prevButton.Text = "Previous Page";
             this.prevButton.UseVisualStyleBackColor = false;
             this.prevButton.Click += new System.EventHandler(this.prevButton_Click);
+            // 
+            // doneButton
+            // 
+            this.doneButton.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.doneButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.doneButton.Font = new System.Drawing.Font("Eras Medium ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.doneButton.Location = new System.Drawing.Point(735, 612);
+            this.doneButton.Name = "doneButton";
+            this.doneButton.Size = new System.Drawing.Size(198, 70);
+            this.doneButton.TabIndex = 5;
+            this.doneButton.Text = "Done";
+            this.doneButton.UseVisualStyleBackColor = false;
+            // 
+            // reservationInfo
+            // 
+            this.reservationInfo.Location = new System.Drawing.Point(32, 29);
+            this.reservationInfo.Name = "reservationInfo";
+            this.reservationInfo.Size = new System.Drawing.Size(519, 263);
+            this.reservationInfo.TabIndex = 0;
+            this.reservationInfo.Text = "";
             // 
             // BookingEnquiry
             // 

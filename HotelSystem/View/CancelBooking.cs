@@ -67,7 +67,7 @@ namespace HotelSystem.View
                         foundReservation = Rcontroller.find(reservationid); // will return the reservation object that matches the reservationid
                     } catch
                     {
-                        MessageBox.Show("Reservation cannot be found in the database!")
+                        MessageBox.Show("Reservation cannot be found in the database!");
                     }
                     
 
