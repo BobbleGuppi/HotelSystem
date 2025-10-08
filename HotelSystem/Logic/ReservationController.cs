@@ -13,6 +13,7 @@ namespace HotelSystem.Logic
         #region data members
         public ReservationDB reservationDB;
         protected Collection<Reservation> reservations;
+        List<Room> rooms;
         #endregion
 
         #region properties
