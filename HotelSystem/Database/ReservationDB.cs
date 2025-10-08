@@ -150,7 +150,7 @@ namespace HotelSystem.Database
             param.SourceColumn = "TotalPrice";
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "DepositPaid");
+            param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "Deposit");
             daMain.InsertCommand.Parameters.Add(param);
         }
 

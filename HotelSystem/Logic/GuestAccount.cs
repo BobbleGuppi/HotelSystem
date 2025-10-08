@@ -88,10 +88,6 @@ namespace HotelSystem.Logic
             status = "DepositPaid";
 
             depositPay = new Payment(paymentId, GuestAccID, depositAmount, "Deposit", DateTime.Now);
-
-
-
-
         }
 
         public void makePayment(string paymentId, double amount)

@@ -135,6 +135,7 @@
             this.doneButton.TabIndex = 5;
             this.doneButton.Text = "Done";
             this.doneButton.UseVisualStyleBackColor = false;
+            this.doneButton.Click += new System.EventHandler(this.doneButton_Click);
             // 
             // reservationInfo
             // 

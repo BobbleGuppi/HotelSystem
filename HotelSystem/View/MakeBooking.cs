@@ -15,8 +15,8 @@ namespace HotelSystem.View
 {
     public partial class MakeBooking : Form
     {
-        DateTime arrivalDate;
-        DateTime departureDate;
+        private DateTime arrivalDate;
+        private DateTime departureDate;
         private ReservationController reservationController;
         private GuestController guestController;
         private GuestAccountController guestAccountController;
