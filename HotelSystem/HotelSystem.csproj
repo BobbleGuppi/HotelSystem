@@ -180,6 +180,7 @@
     <Content Include="Scripts\demo.sql" />
     <Content Include="Scripts\FINAL.sql" />
     <Content Include="Scripts\RealFinal.sql" />
+    <Content Include="Scripts\updatedScript.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
