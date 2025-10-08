@@ -185,7 +185,7 @@ namespace HotelSystem.Database
         public bool UpdateDataSource(GuestAccount aGuestAcc)
         {
             bool success = true;
-            Create_INSERT_Command(aGuestAcc);//repeated this line by mistake .
+           // Create_INSERT_Command(aGuestAcc);//repeated this line by mistake .
             
             Create_INSERT_Command(aGuestAcc);
             Create_UPDATE_Command(aGuestAcc);
@@ -238,8 +238,6 @@ namespace HotelSystem.Database
 
         private void Create_DELETE_Command(GuestAccount aGuestAcc)
         {
-            
-
             SqlParameter param = new SqlParameter("@Original_GuestAccID", SqlDbType.NVarChar, 10, "GuestAccID");
             param.SourceVersion = DataRowVersion.Original;
             daMain.DeleteCommand.Parameters.Add(param);
