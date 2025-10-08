@@ -25,7 +25,6 @@ namespace HotelSystem.View
         DateChecker pickedDate;
         private ReservationController res_cntrllr;
         bool roomAvail;
-        private string myRoom;
         private Random rnd = new Random();
         #endregion
 
@@ -65,7 +64,7 @@ namespace HotelSystem.View
 
         private void reservationIDTextBox_TextChanged(object sender, EventArgs e)
         {
-            string reservationID = reservationIDTextBox.Text;
+            reservationID = reservationIDTextBox.Text;
         }
 
         #endregion
@@ -77,7 +76,7 @@ namespace HotelSystem.View
 
             if (checkInDate.Month != 12 || checkOutDate.Month != 12)
             {
-                MessageBox.Show("You can only select December!");
+                MessageBox.Show("You can only select December!", "Invalid Date Selected");
                 return;
             }
 
@@ -85,7 +84,7 @@ namespace HotelSystem.View
             {
                 if (pickedDate == DateChecker.invalidDate)
                 {
-                    MessageBox.Show("Invalid Reservation Date: Must book 14 days in advance.");
+                    MessageBox.Show("Invalid Reservation Date: Must book 14 days in advance.", "Invalid Date Selected");
                     return;
 
                 }
@@ -99,7 +98,7 @@ namespace HotelSystem.View
 
                         List<Reservation> reservations = new List<Reservation>()
                     {
-                        new Reservation(reservationID,1,"G000", DateTime.Today,DateTime.Today.AddDays(1),0.0,false)
+                        new Reservation(reservationID,1,"G000",checkInDate,checkOutDate,0.0,false)
 
                     };
 
@@ -107,7 +106,6 @@ namespace HotelSystem.View
                         dataGridView1.DataSource = reservations;
                         MainPanel.Visible = false;
                         RoomFoundPanel.Visible = true;
-                        myRoom = res_cntrllr.CurrentRoom;
                     }
                     else
                     {
@@ -126,7 +124,7 @@ namespace HotelSystem.View
         #region CancelChange Button
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
         #endregion
 
