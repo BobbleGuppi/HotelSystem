@@ -124,19 +124,19 @@ namespace HotelSystem.View
                         }
 
                         // 4. Create a **demo reservation** (preview) without touching DB
-                        Reservation demoRes = Reservation(
-                            myReservation.ReservationID,
-                            myReservation.RoomID,
-                            myReservation.Guest,
-                            checkInDate,
-                            checkOutDate,
-                            myReservation.DepositPaid
-                        );
+                        //Reservation demoRes = Reservation(
+                        //    myReservation.ReservationID,
+                        //    myReservation.RoomID,
+                        //    myReservation.Guest,
+                        //    checkInDate,
+                        //    checkOutDate,
+                        //    myReservation.DepositPaid
+                        //);
 
-                        // 5. Add to a local list for the DataGridView
-                        List<Reservation> previewList = new List<Reservation> { demoRes };
-                        dataGridView1.DataSource = null;
-                        dataGridView1.DataSource = previewList;
+                        //// 5. Add to a local list for the DataGridView
+                        //List<Reservation> previewList = new List<Reservation> { demoRes };
+                        //dataGridView1.DataSource = null;
+                        //dataGridView1.DataSource = previewList;
 
                         // Switch panels to show preview
                         MainPanel.Visible = false;
@@ -167,27 +167,27 @@ namespace HotelSystem.View
                 return;
             }
 
-            // 1. Call controller to update reservation (DB + in-memory collection)
-            bool success = res_cntrllr.EditReservationDates(reservationID, checkInDate, checkOutDate);
+            //// 1. Call controller to update reservation (DB + in-memory collection)
+            //bool success = res_cntrllr.EditReservationDates(reservationID, checkInDate, checkOutDate);
 
-            if (success)
-            {
-                MessageBox.Show("Reservation updated successfully!", "Success");
+            //if (success)
+            //{
+            //    MessageBox.Show("Reservation updated successfully!", "Success");
 
-                // 2. Refresh DataGridView with updated reservation (optional)
-                Reservation updated = res_cntrllr.find(reservationID);
-                List<Reservation> updatedList = new List<Reservation> { updated };
-                dataGridView1.DataSource = null;
-                dataGridView1.DataSource = updatedList;
+            //    // 2. Refresh DataGridView with updated reservation (optional)
+            //    Reservation updated = res_cntrllr.find(reservationID);
+            //    List<Reservation> updatedList = new List<Reservation> { updated };
+            //    dataGridView1.DataSource = null;
+            //    dataGridView1.DataSource = updatedList;
 
-                // 3. Switch panels back
-                RoomFoundPanel.Visible = false;
-                MainPanel.Visible = true;
-            }
-            else
-            {
-                MessageBox.Show("Failed to update reservation. Check Reservation ID.", "Error");
-            }
+            //    // 3. Switch panels back
+            //    RoomFoundPanel.Visible = false;
+            //    MainPanel.Visible = true;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Failed to update reservation. Check Reservation ID.", "Error");
+            //}
         }
         #endregion
 
