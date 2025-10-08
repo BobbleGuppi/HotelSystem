@@ -68,7 +68,7 @@
             this.Rersevationpnl.Controls.Add(this.label1);
             this.Rersevationpnl.Location = new System.Drawing.Point(44, 34);
             this.Rersevationpnl.Name = "Rersevationpnl";
-            this.Rersevationpnl.Size = new System.Drawing.Size(558, 383);
+            this.Rersevationpnl.Size = new System.Drawing.Size(520, 383);
             this.Rersevationpnl.TabIndex = 0;
             // 
             // cancelbtn
