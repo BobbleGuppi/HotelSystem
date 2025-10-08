@@ -1,12 +1,6 @@
 ﻿using HotelSystem.Logic;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HotelSystem.View
@@ -17,13 +11,16 @@ namespace HotelSystem.View
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
-            CenterPanel();
-
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
+            CenterPanel(panel1);
+        }
 
+        private void Login_Resize(object sender, EventArgs e)
+        {
+            CenterPanel(panel1);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -41,18 +38,19 @@ namespace HotelSystem.View
             {
                 MessageBox.Show("Login Failed. Please try again.");
             }
-
         }
-        private void CenterPanel()
+
+        private void CenterPanel(Panel panel)
         {
-            panel1.Location = new Point(
-                (this.ClientSize.Width - panel1.Width) / 2,
-                (this.ClientSize.Height - panel1.Height) / 2
+            panel.Location = new Point(
+                (this.ClientSize.Width - panel.Width) / 2,
+                (this.ClientSize.Height - panel.Height) / 2
             );
         }
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
         }
     }
 }
+
