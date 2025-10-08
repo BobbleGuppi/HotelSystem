@@ -41,7 +41,7 @@ namespace HotelSystem.Logic
             set { roomID = value; }
         }
 
-        public string Guest
+        public string GuestID
         {
             get { return guestID; }
             set { guestID = value; }

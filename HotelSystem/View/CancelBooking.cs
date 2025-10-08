@@ -64,7 +64,7 @@ namespace HotelSystem.View
 
                 if (foundReservation != null)
                 {
-                    foundGuest = guestController.find(foundReservation.Guest); // will return a Guest object that matches the guestid
+                    foundGuest = guestController.find(foundReservation.GuestID); // will return a Guest object that matches the guestid
 
                     reservationNumLabel.Visible = false;
                     reservationIDinputLabel.Visible = false;

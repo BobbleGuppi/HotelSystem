@@ -58,7 +58,7 @@ namespace HotelSystem.Database
                     DateTime checkInDate = Convert.ToDateTime(myRow["CheckInDate"]);
                     DateTime checkOutDate = Convert.ToDateTime(myRow["CheckOutDate"]);
                     double totalPrice = Convert.ToDouble(myRow["TotalPrice"]);
-                    bool depositPaid = Convert.ToBoolean(myRow["DepositPaid"]);
+                    bool depositPaid = Convert.ToBoolean(myRow["Deposit"]);
                     aReservation = new Reservation(reservationId, roomID, guestID, checkInDate, checkOutDate, totalPrice, depositPaid);
                     reservations.Add(aReservation);
                 }
@@ -93,7 +93,7 @@ namespace HotelSystem.Database
             {
                 myRow["ReservationID"] = reservation.ReservationID;
                 myRow["RoomID"] = reservation.RoomID;
-                myRow["GuestID"] = reservation.Guest;
+                myRow["GuestID"] = reservation.GuestID;
                 myRow["CheckInDate"] = reservation.CheckInDate;
                 myRow["CheckOutDate"] = reservation.CheckOutDate;
                 myRow["TotalPrice"] = reservation.totalPrice;

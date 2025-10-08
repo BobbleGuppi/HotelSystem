@@ -24,6 +24,10 @@ namespace HotelSystem.View
             reservationController = new ReservationController();
             this.Load += BookingEnquiry_Load;
             this.Resize += BookingEnquiry_Resize;
+            reservationInfo.Visible = false;
+            panel1.Visible = true;
+            panel2.Visible = false;
+
         }
 
         private void BookingEnquiry_ResizeEvent(object sender, EventArgs e)
@@ -49,13 +53,39 @@ namespace HotelSystem.View
         private void confirmButton_Click(object sender, EventArgs e)
         {
             string reservationId = richTextBox1.Text;
-            richTextBox1.Visible = false;
-            reservLabel.Visible = false;
-            confirmButton.Visible = false;
-            label1.Visible = false;
+            panel1.Visible = false;
+            panel2.Visible = true;
 
             reservation = reservationController.find(reservationId);
+            reservationInfo.Size = new Size(900, 450);
+            reservationInfo.Font = new Font("Segoe UI", 24, FontStyle.Regular);
+            CenterPanel();
 
+            if (reservation != null) {
+                reservationInfo.AppendText("=== Reservation Details ===\n");
+                reservationInfo.AppendText($"Reservation ID: {reservation.ReservationID}\n");
+                reservationInfo.AppendText($"Room ID:        {reservation.RoomID}\n");
+                reservationInfo.AppendText($"Guest ID:       {reservation.GuestID}\n");
+                reservationInfo.AppendText($"Check-In Date:  {reservation.CheckInDate:d}\n");
+                reservationInfo.AppendText($"Check-Out Date: {reservation.CheckOutDate:d}\n");
+                reservationInfo.AppendText($"Total Price:    R{reservation.totalPrice:F2}\n");
+                reservationInfo.AppendText($"Deposit Paid:   {(reservation.DepositPaid ? "Yes" : "No")}\n");
+                reservationInfo.AppendText("===========================\n");
+                reservationInfo.Visible = true;
+            }
+            else {                 
+                reservationInfo.AppendText("No reservation found with the provided ID.\n");
+                reservationInfo.Visible = true;
+            }
+
+        }
+
+        private void CenterPanel()
+        {
+            panel2.Location = new Point(
+                (this.ClientSize.Width - panel2.Width) / 2,
+                (this.ClientSize.Height - panel2.Height) / 2
+            );
         }
 
         private void BookingEnquiry_Load(object sender, EventArgs e)
@@ -78,7 +108,7 @@ namespace HotelSystem.View
         {
             panel1.Left = (this.ClientSize.Width - panel1.Width) / 2;
             panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
-            //Console.WriteLine("Resize event fired!");
+            
             if (originalFormSize.Width == 0 || originalFormSize.Height == 0)
                 return;
 
@@ -99,6 +129,15 @@ namespace HotelSystem.View
             panel1.Height = this.ClientSize.Height;
             
         }
-        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void prevButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
