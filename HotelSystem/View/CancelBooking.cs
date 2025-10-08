@@ -20,10 +20,8 @@ namespace HotelSystem.View
         private GuestController guestController;
         private Guest foundGuest;
 
-        private int screen = 0;
-        // 0 = enter ID screen
-        // 1 = show booking found confirmation
-        // 2 = final delete confirmation
+        private int screen = 0; // 0= entering the ID screen 1= booking found confirmation 2= final delete confrimation
+        
 
         public CancelBooking()
         {
@@ -32,8 +30,8 @@ namespace HotelSystem.View
             reservationDB = new ReservationDB();
             guestController = new GuestController();
 
-            // Initial state
-            ResetToScreen0();
+            
+            ResetToScreen0(); // this is the Initial state
         }
 
         private void CancelBooking_Load(object sender, EventArgs e)
