@@ -10,7 +10,6 @@ namespace HotelSystem.Logic
     public class Reservation
     {
         private string reservationID;
-        private string roomID; //thinking we should make it an enum
         private string guestID;
         private DateTime checkInDate; //we will have to set a standard time
         private DateTime checkOutDate;
@@ -18,10 +17,9 @@ namespace HotelSystem.Logic
         private bool depositPaid = false;
         
 
-        public Reservation(string reservationID, string roomID, string guestID, DateTime checkInDate, DateTime checkOutDate, double totalPrice, bool depositPaid)
+        public Reservation(string reservationID, string guestID, DateTime checkInDate, DateTime checkOutDate, double totalPrice, bool depositPaid)
         {
             this.reservationID = reservationID;
-            this.roomID = roomID;
             this.guestID = guestID;
             this.checkInDate = checkInDate;
             this.checkOutDate = checkOutDate;
@@ -35,12 +33,7 @@ namespace HotelSystem.Logic
             set { reservationID = value; }
         }
 
-        public string RoomID
-        {
-            get { return roomID; }
-            set { roomID = value; }
-        }
-
+       
         public string GuestID
         {
             get { return guestID; }
@@ -123,17 +116,7 @@ namespace HotelSystem.Logic
 
         }
 
-        public bool RoomAvailable(Collection<Room> rooms, DateTime checkIn, DateTime checkOut)
-        {
-            foreach (Room room in rooms)
-            {
-                if (room.IsAvailable(checkIn, checkOut))
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
+        
 
 
 
