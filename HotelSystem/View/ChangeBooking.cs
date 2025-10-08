@@ -177,16 +177,13 @@ namespace HotelSystem.View
 
             if (result == DialogResult.Yes)
             {
-                // Step 1: Update in-memory object
+                // Update in-memory object
                 myReservation.changeReservationDates(checkInDate, checkOutDate);
 
-                // Step 1.5: Make sure totalPrice property is set/calculated on the object (you already do this in changeReservationDates)
-                // myReservation.calculateTotalPrice(...); // if needed
-
-                // Step 2: Update the DataSet (mark the DataRow as modified)
+                // Update the DataSet
                 res_cntrllr.reservationDB.DataSetChange(myReservation, DB.DBOperation.Edit);
 
-                // Step 3: Push the changes to the database via DataAdapter
+                // Push the changes to the database via DataAdapter
                 bool success = res_cntrllr.FinalizeChanges(myReservation);
 
                 if (success)
