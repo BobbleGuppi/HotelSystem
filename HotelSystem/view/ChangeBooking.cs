@@ -1,4 +1,5 @@
-﻿using HotelSystem.Logic;
+﻿using HotelSystem.Database;
+using HotelSystem.Logic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,7 @@ namespace HotelSystem.View
         private ReservationController res_cntrllr;
         bool roomAvail;
         private string myRoom;
-
+        private Random rnd = new Random();
 
         #region Constructor
         public ChangeBooking()
@@ -38,7 +39,6 @@ namespace HotelSystem.View
         #region Utility Methods
         public void DateChecking() 
         {
-            Random rnd = new Random();// Generate 0 or 1 randomly
             int randomValue = rnd.Next(0, 2);  // 0 (inclusive) to 2 (exclusive)
             pickedDate = (DateChecker)randomValue; // Convert to enum
 
@@ -54,24 +54,15 @@ namespace HotelSystem.View
         #region Get User Input
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            DateTime checkInDate = CheckInPicker.Value.Date;
-            if (checkInDate.Month != 12)
-            {
-                MessageBox.Show("You can only select December!");
-                return;
-            }
+            checkInDate = CheckInPicker.Value.Date; // assign to the field
             DateChecking();
 
         }
 
         private void CheckOutPicker_ValueChanged(object sender, EventArgs e)
         {
-            DateTime checkOutDate = CheckOutPicker.Value.Date;
-            if (checkOutDate.Month != 12)
-            {
-                MessageBox.Show("You can only select December!");
-                return;
-            }
+            checkOutDate = CheckOutPicker.Value.Date; // assign to the field
+
         }
 
         private void reservationIDTextBox_TextChanged(object sender, EventArgs e)
@@ -84,34 +75,61 @@ namespace HotelSystem.View
         #region Confirm Button
         private void ConfirmButton_Click(object sender, EventArgs e)
         {
-            if (pickedDate == DateChecker.invalidDate)
+            if (checkInDate.Month != 12 || checkOutDate.Month != 12)
             {
-                MessageBox.Show("Invalid Reservation Date: Must book 14 days in advance.");
-
+                MessageBox.Show("You can only select December!");
+                return;
             }
-            if (pickedDate == DateChecker.validDate)
-            {
-                res_cntrllr = new ReservationController();
-                roomAvail = res_cntrllr.RoomAvailable(checkInDate, checkOutDate);
 
-                if (roomAvail)
+            else
+            {
+                if (pickedDate == DateChecker.invalidDate)
                 {
-                    myRoom = res_cntrllr.CurrentRoom;
-                    MainPanel.Visible = false;
-                    RoomFoundPanel.Visible = true;
-                }
-                else 
-                {
-                    MessageBox.Show("No Rooms Available on these Dates.");
+                    MessageBox.Show("Invalid Reservation Date: Must book 14 days in advance.");
                     return;
-                }
 
+                }
+                if (pickedDate == DateChecker.validDate)
+                {
+                    res_cntrllr = new ReservationController();
+                    roomAvail = res_cntrllr.RoomAvailable(checkInDate, checkOutDate);
+
+                    if (roomAvail)
+                    {
+
+                        List<Reservation> reservations = new List<Reservation>()
+                    {
+                        new Reservation(reservationID,1,"G000", DateTime.Today,DateTime.Today.AddDays(1),0.0,false)
+
+                    };
+
+                        // Bind the list to the DataGridView
+                        dataGridView1.DataSource = reservations;
+                        MainPanel.Visible = false;
+                        RoomFoundPanel.Visible = true;
+                        myRoom = res_cntrllr.CurrentRoom;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No Rooms Available on these Dates.");
+                        return;
+                    }
+
+                }
             }
+
+            
         }
 
         #endregion
 
-     
+        #region DataGridView
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+  
+
+        }
+        #endregion
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -119,11 +137,6 @@ namespace HotelSystem.View
         }
 
         private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

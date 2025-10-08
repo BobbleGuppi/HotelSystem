@@ -42,11 +42,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.GuestID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Room = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Arrival = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Departure = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.MainPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -220,47 +215,11 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.GuestID,
-            this.Room,
-            this.Arrival,
-            this.Departure,
-            this.Price});
             this.dataGridView1.Location = new System.Drawing.Point(61, 160);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1069, 84);
             this.dataGridView1.TabIndex = 12;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // GuestID
-            // 
-            this.GuestID.HeaderText = "GuestID";
-            this.GuestID.Name = "GuestID";
-            this.GuestID.ReadOnly = true;
-            // 
-            // Room
-            // 
-            this.Room.HeaderText = "Room";
-            this.Room.Name = "Room";
-            this.Room.ReadOnly = true;
-            // 
-            // Arrival
-            // 
-            this.Arrival.HeaderText = "Arrival";
-            this.Arrival.Name = "Arrival";
-            this.Arrival.ReadOnly = true;
-            // 
-            // Departure
-            // 
-            this.Departure.HeaderText = "Departure";
-            this.Departure.Name = "Departure";
-            this.Departure.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
             // 
             // label4
             // 
@@ -282,8 +241,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1221, 566);
-            this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.RoomFoundPanel);
+            this.Controls.Add(this.MainPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "ChangeBooking";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -315,11 +274,6 @@
         private System.Windows.Forms.Panel RoomFoundPanel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GuestID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Room;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Arrival;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Departure;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
     }
