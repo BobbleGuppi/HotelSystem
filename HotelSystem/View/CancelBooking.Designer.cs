@@ -36,11 +36,13 @@
             this.ConfirmButton = new System.Windows.Forms.Button();
             this.reservationIDinputLabel = new System.Windows.Forms.Label();
             this.reservationNumLabel = new System.Windows.Forms.Label();
+            this.goToHomeCancelButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.goToHomeCancelButton);
             this.panel1.Controls.Add(this.doneButton);
             this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Controls.Add(this.textBoxForReservationID);
@@ -49,9 +51,9 @@
             this.panel1.Controls.Add(this.reservationIDinputLabel);
             this.panel1.Controls.Add(this.reservationNumLabel);
             this.panel1.Location = new System.Drawing.Point(36, 42);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1008, 465);
+            this.panel1.Size = new System.Drawing.Size(1214, 629);
             this.panel1.TabIndex = 5;
             // 
             // doneButton
@@ -60,8 +62,8 @@
             this.doneButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.doneButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.doneButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doneButton.Location = new System.Drawing.Point(488, 444);
-            this.doneButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.doneButton.Location = new System.Drawing.Point(861, 444);
+            this.doneButton.Margin = new System.Windows.Forms.Padding(5);
             this.doneButton.Name = "doneButton";
             this.doneButton.Size = new System.Drawing.Size(177, 82);
             this.doneButton.TabIndex = 17;
@@ -71,17 +73,18 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(47, 68);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBox1.Location = new System.Drawing.Point(120, 51);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1069, 294);
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(918, 294);
             this.richTextBox1.TabIndex = 15;
             this.richTextBox1.Text = "";
             // 
             // textBoxForReservationID
             // 
-            this.textBoxForReservationID.Location = new System.Drawing.Point(367, 277);
-            this.textBoxForReservationID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxForReservationID.Location = new System.Drawing.Point(446, 277);
+            this.textBoxForReservationID.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForReservationID.Name = "textBoxForReservationID";
             this.textBoxForReservationID.Size = new System.Drawing.Size(297, 22);
             this.textBoxForReservationID.TabIndex = 14;
@@ -92,8 +95,8 @@
             this.prevPageButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.prevPageButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.prevPageButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prevPageButton.Location = new System.Drawing.Point(120, 444);
-            this.prevPageButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.prevPageButton.Location = new System.Drawing.Point(120, 447);
+            this.prevPageButton.Margin = new System.Windows.Forms.Padding(5);
             this.prevPageButton.Name = "prevPageButton";
             this.prevPageButton.Size = new System.Drawing.Size(177, 82);
             this.prevPageButton.TabIndex = 13;
@@ -107,10 +110,10 @@
             this.ConfirmButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConfirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ConfirmButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConfirmButton.Location = new System.Drawing.Point(707, 377);
-            this.ConfirmButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ConfirmButton.Location = new System.Drawing.Point(861, 447);
+            this.ConfirmButton.Margin = new System.Windows.Forms.Padding(4);
             this.ConfirmButton.Name = "ConfirmButton";
-            this.ConfirmButton.Size = new System.Drawing.Size(195, 50);
+            this.ConfirmButton.Size = new System.Drawing.Size(177, 79);
             this.ConfirmButton.TabIndex = 12;
             this.ConfirmButton.Text = "Confirm";
             this.ConfirmButton.UseVisualStyleBackColor = false;
@@ -121,7 +124,7 @@
             this.reservationIDinputLabel.AutoSize = true;
             this.reservationIDinputLabel.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.reservationIDinputLabel.Font = new System.Drawing.Font("Eras Demi ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reservationIDinputLabel.Location = new System.Drawing.Point(95, 277);
+            this.reservationIDinputLabel.Location = new System.Drawing.Point(133, 276);
             this.reservationIDinputLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.reservationIDinputLabel.Name = "reservationIDinputLabel";
             this.reservationIDinputLabel.Size = new System.Drawing.Size(152, 23);
@@ -143,12 +146,27 @@
             this.reservationNumLabel.Text = "Provide the reservation number and details:";
             this.reservationNumLabel.Click += new System.EventHandler(this.reservationNumLabel_Click);
             // 
+            // goToHomeCancelButton
+            // 
+            this.goToHomeCancelButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.goToHomeCancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.goToHomeCancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.goToHomeCancelButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.goToHomeCancelButton.Location = new System.Drawing.Point(120, 447);
+            this.goToHomeCancelButton.Margin = new System.Windows.Forms.Padding(5);
+            this.goToHomeCancelButton.Name = "goToHomeCancelButton";
+            this.goToHomeCancelButton.Size = new System.Drawing.Size(177, 82);
+            this.goToHomeCancelButton.TabIndex = 18;
+            this.goToHomeCancelButton.Text = "Cancel";
+            this.goToHomeCancelButton.UseVisualStyleBackColor = false;
+            this.goToHomeCancelButton.Click += new System.EventHandler(this.goToHomeCancelButton_Click);
+            // 
             // CancelBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(1256, 657);
+            this.ClientSize = new System.Drawing.Size(1278, 698);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "CancelBooking";
@@ -170,5 +188,6 @@
         private System.Windows.Forms.TextBox textBoxForReservationID;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button doneButton;
+        private System.Windows.Forms.Button goToHomeCancelButton;
     }
 }
