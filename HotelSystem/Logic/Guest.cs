@@ -14,7 +14,6 @@ namespace HotelSystem.Logic
         private string guestAccount; // changed GuestAccount to a string for database purposes
         #endregion
 
-
         #region Property Methods
         public string GuestID { get { return guestID; } set { guestID = value; } }
         public string GuestAccount { get { return guestAccount; } set {guestAccount = value; } }
@@ -27,7 +26,6 @@ namespace HotelSystem.Logic
             this.guestAccount = guestAccount;
         }
         #endregion
-
 
         #region Methods
         public void generateID()

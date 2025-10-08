@@ -80,6 +80,13 @@ namespace HotelSystem.View
                 return;
             }
 
+            // ADD IN LATER ONCE U FIND THE RESERVATION
+            //if (reservationID != inDatabase)
+            //{
+            //    MessageBox.Show("Reservation ID not found", "Invalid Reservation ID");
+            //    return;
+            //}
+
             else
             {
                 if (pickedDate == DateChecker.invalidDate)
@@ -95,12 +102,24 @@ namespace HotelSystem.View
 
                     if (roomAvail)
                     {
+                        /*
+                         * If a room is available, then we go into the Reservation database,
+                         * use the reservationID given in the textbox and,
+                         * find the reservation, and change its checkin/out dates
+                         * Use the info in the cols to populate local list of reservations.
+                         * Assumptions:
+                         *  - No refunds
+                         *  - Those who change their reservations have all paid the deposit
+                         *  - Delete guest account with the same guestID
+                         * 
+                        */
 
                         List<Reservation> reservations = new List<Reservation>()
-                    {
-                        new Reservation(reservationID,1,"G000",checkInDate,checkOutDate,0.0,false)
+                        {
+                            // dummy values
+                            new Reservation(reservationID,1,"G000",checkInDate,checkOutDate,0.0,true)
 
-                    };
+                        };
 
                         // Bind the list to the DataGridView
                         dataGridView1.DataSource = reservations;
@@ -124,6 +143,7 @@ namespace HotelSystem.View
         #region CancelChange Button
         private void button1_Click(object sender, EventArgs e)
         {
+            reservationIDTextBox.Text = "";
             this.Close();
         }
         #endregion
@@ -131,7 +151,7 @@ namespace HotelSystem.View
         #region ConfirmChange Button
         private void confirmChangeButton_Click(object sender, EventArgs e)
         {
-
+            // this is actually where the functionality goes.
         }
         #endregion
 
