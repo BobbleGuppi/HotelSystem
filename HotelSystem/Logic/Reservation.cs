@@ -10,7 +10,6 @@ namespace HotelSystem.Logic
     public class Reservation
     {
         private string reservationID;
-        private string roomID; //thinking we should make it an enum
         private string guestID;
         private DateTime checkInDate; //we will have to set a standard time
         private DateTime checkOutDate;
@@ -34,12 +33,7 @@ namespace HotelSystem.Logic
             set { reservationID = value; }
         }
 
-        public string RoomID
-        {
-            get { return roomID; }
-            set { roomID = value; }
-        }
-
+       
         public string GuestID
         {
             get { return guestID; }
@@ -122,7 +116,11 @@ namespace HotelSystem.Logic
 
         }
 
-       
+        
+
+
+
+
 
 
     }

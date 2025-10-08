@@ -200,7 +200,7 @@ namespace HotelSystem.Database
 
         private void Create_Update_Command(Reservation reservation)
         {
-            daMain.UpdateCommand = new SqlCommand("UPDATE Reservation SET GuestID = @GuestID, CheckInDate = @CheckInDate, " +
+            daMain.UpdateCommand = new SqlCommand("UPDATE Reservation SET ,  GuestID = @GuestID, CheckInDate = @CheckInDate, " +
                 " CheckOutDate = @CheckOutDate,  TotalPrice = @TotalPrice, Deposit = @Deposit  WHERE ReservationID = @OriginalReservationID", cnMain);
             Build_Update_Parameter(reservation);
         }

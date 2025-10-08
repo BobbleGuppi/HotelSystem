@@ -64,7 +64,6 @@ namespace HotelSystem.View
             if (reservation != null) {
                 reservationInfo.AppendText("=== Reservation Details ===\n");
                 reservationInfo.AppendText($"Reservation ID: {reservation.ReservationID}\n");
-                reservationInfo.AppendText($"Room ID:        {reservation.RoomID}\n");
                 reservationInfo.AppendText($"Guest ID:       {reservation.GuestID}\n");
                 reservationInfo.AppendText($"Check-In Date:  {reservation.CheckInDate:d}\n");
                 reservationInfo.AppendText($"Check-Out Date: {reservation.CheckOutDate:d}\n");
