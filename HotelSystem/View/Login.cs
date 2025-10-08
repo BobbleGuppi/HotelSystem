@@ -16,6 +16,7 @@ namespace HotelSystem.View
         public Login()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void Login_Load(object sender, EventArgs e)

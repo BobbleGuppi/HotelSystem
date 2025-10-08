@@ -28,25 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
+            this.Rersevationpnl = new System.Windows.Forms.Panel();
+            this.cancelbtn = new System.Windows.Forms.Button();
+            this.confirmRbtn = new System.Windows.Forms.Button();
+            this.availabilitybtn = new System.Windows.Forms.Button();
+            this.departureDateTP = new System.Windows.Forms.DateTimePicker();
+            this.arrivalDateTP = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.guestpnl = new System.Windows.Forms.Panel();
+            this.confirmGbtn = new System.Windows.Forms.Button();
+            this.addresstxt = new System.Windows.Forms.TextBox();
+            this.emailtxt = new System.Windows.Forms.TextBox();
+            this.lNametxt = new System.Windows.Forms.TextBox();
+            this.idNotxt = new System.Windows.Forms.TextBox();
+            this.phoneNotxt = new System.Windows.Forms.TextBox();
+            this.fNametxt = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -54,89 +52,70 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.Rersevationpnl.SuspendLayout();
+            this.guestpnl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // Rersevationpnl
             // 
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.dateTimePicker2);
-            this.panel1.Controls.Add(this.dateTimePicker1);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(44, 34);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(558, 383);
-            this.panel1.TabIndex = 0;
+            this.Rersevationpnl.Controls.Add(this.cancelbtn);
+            this.Rersevationpnl.Controls.Add(this.confirmRbtn);
+            this.Rersevationpnl.Controls.Add(this.availabilitybtn);
+            this.Rersevationpnl.Controls.Add(this.departureDateTP);
+            this.Rersevationpnl.Controls.Add(this.arrivalDateTP);
+            this.Rersevationpnl.Controls.Add(this.label3);
+            this.Rersevationpnl.Controls.Add(this.label2);
+            this.Rersevationpnl.Controls.Add(this.label1);
+            this.Rersevationpnl.Location = new System.Drawing.Point(44, 34);
+            this.Rersevationpnl.Name = "Rersevationpnl";
+            this.Rersevationpnl.Size = new System.Drawing.Size(558, 383);
+            this.Rersevationpnl.TabIndex = 0;
             // 
-            // button3
+            // cancelbtn
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(414, 329);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(103, 33);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = true;
+            this.cancelbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelbtn.Location = new System.Drawing.Point(414, 329);
+            this.cancelbtn.Name = "cancelbtn";
+            this.cancelbtn.Size = new System.Drawing.Size(103, 33);
+            this.cancelbtn.TabIndex = 9;
+            this.cancelbtn.Text = "Cancel";
+            this.cancelbtn.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // confirmRbtn
             // 
-            this.button2.BackColor = System.Drawing.Color.LightBlue;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(218, 329);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(172, 33);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Confirm Rersevation";
-            this.button2.UseVisualStyleBackColor = false;
+            this.confirmRbtn.BackColor = System.Drawing.Color.LightBlue;
+            this.confirmRbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmRbtn.Location = new System.Drawing.Point(218, 329);
+            this.confirmRbtn.Name = "confirmRbtn";
+            this.confirmRbtn.Size = new System.Drawing.Size(172, 33);
+            this.confirmRbtn.TabIndex = 8;
+            this.confirmRbtn.Text = "Confirm Rersevation";
+            this.confirmRbtn.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // availabilitybtn
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(15, 329);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(182, 33);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Show Room Availability";
-            this.button1.UseVisualStyleBackColor = true;
+            this.availabilitybtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.availabilitybtn.Location = new System.Drawing.Point(15, 329);
+            this.availabilitybtn.Name = "availabilitybtn";
+            this.availabilitybtn.Size = new System.Drawing.Size(182, 33);
+            this.availabilitybtn.TabIndex = 7;
+            this.availabilitybtn.Text = "Show Room Availability";
+            this.availabilitybtn.UseVisualStyleBackColor = true;
+            this.availabilitybtn.Click += new System.EventHandler(this.availabilitybtn_Click);
             // 
-            // comboBox1
+            // departureDateTP
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(239, 165);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 6;
+            this.departureDateTP.Location = new System.Drawing.Point(239, 115);
+            this.departureDateTP.Name = "departureDateTP";
+            this.departureDateTP.Size = new System.Drawing.Size(200, 22);
+            this.departureDateTP.TabIndex = 5;
             // 
-            // dateTimePicker2
+            // arrivalDateTP
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(239, 115);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker2.TabIndex = 5;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(239, 71);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(52, 169);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(160, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Number of rooms:";
+            this.arrivalDateTP.Location = new System.Drawing.Point(239, 71);
+            this.arrivalDateTP.Name = "arrivalDateTP";
+            this.arrivalDateTP.Size = new System.Drawing.Size(200, 22);
+            this.arrivalDateTP.TabIndex = 4;
             // 
             // label3
             // 
@@ -168,80 +147,80 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Capture Rersevation Details:";
             // 
-            // panel2
+            // guestpnl
             // 
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.textBox6);
-            this.panel2.Controls.Add(this.textBox5);
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(641, 34);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(526, 383);
-            this.panel2.TabIndex = 1;
+            this.guestpnl.Controls.Add(this.confirmGbtn);
+            this.guestpnl.Controls.Add(this.addresstxt);
+            this.guestpnl.Controls.Add(this.emailtxt);
+            this.guestpnl.Controls.Add(this.lNametxt);
+            this.guestpnl.Controls.Add(this.idNotxt);
+            this.guestpnl.Controls.Add(this.phoneNotxt);
+            this.guestpnl.Controls.Add(this.fNametxt);
+            this.guestpnl.Controls.Add(this.label11);
+            this.guestpnl.Controls.Add(this.label10);
+            this.guestpnl.Controls.Add(this.label9);
+            this.guestpnl.Controls.Add(this.label8);
+            this.guestpnl.Controls.Add(this.label7);
+            this.guestpnl.Controls.Add(this.label6);
+            this.guestpnl.Controls.Add(this.label5);
+            this.guestpnl.Location = new System.Drawing.Point(641, 34);
+            this.guestpnl.Name = "guestpnl";
+            this.guestpnl.Size = new System.Drawing.Size(526, 383);
+            this.guestpnl.TabIndex = 1;
             // 
-            // button4
+            // confirmGbtn
             // 
-            this.button4.BackColor = System.Drawing.Color.LightBlue;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(124, 344);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(143, 23);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Confirm Guest";
-            this.button4.UseVisualStyleBackColor = false;
+            this.confirmGbtn.BackColor = System.Drawing.Color.LightBlue;
+            this.confirmGbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmGbtn.Location = new System.Drawing.Point(124, 344);
+            this.confirmGbtn.Name = "confirmGbtn";
+            this.confirmGbtn.Size = new System.Drawing.Size(143, 23);
+            this.confirmGbtn.TabIndex = 13;
+            this.confirmGbtn.Text = "Confirm Guest";
+            this.confirmGbtn.UseVisualStyleBackColor = false;
             // 
-            // textBox6
+            // addresstxt
             // 
-            this.textBox6.Location = new System.Drawing.Point(206, 277);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(216, 48);
-            this.textBox6.TabIndex = 12;
+            this.addresstxt.Location = new System.Drawing.Point(206, 277);
+            this.addresstxt.Multiline = true;
+            this.addresstxt.Name = "addresstxt";
+            this.addresstxt.Size = new System.Drawing.Size(216, 48);
+            this.addresstxt.TabIndex = 12;
             // 
-            // textBox5
+            // emailtxt
             // 
-            this.textBox5.Location = new System.Drawing.Point(206, 230);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(216, 22);
-            this.textBox5.TabIndex = 11;
+            this.emailtxt.Location = new System.Drawing.Point(206, 230);
+            this.emailtxt.Name = "emailtxt";
+            this.emailtxt.Size = new System.Drawing.Size(216, 22);
+            this.emailtxt.TabIndex = 11;
             // 
-            // textBox4
+            // lNametxt
             // 
-            this.textBox4.Location = new System.Drawing.Point(206, 113);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(216, 22);
-            this.textBox4.TabIndex = 10;
+            this.lNametxt.Location = new System.Drawing.Point(206, 113);
+            this.lNametxt.Name = "lNametxt";
+            this.lNametxt.Size = new System.Drawing.Size(216, 22);
+            this.lNametxt.TabIndex = 10;
             // 
-            // textBox3
+            // idNotxt
             // 
-            this.textBox3.Location = new System.Drawing.Point(206, 191);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(216, 22);
-            this.textBox3.TabIndex = 9;
+            this.idNotxt.Location = new System.Drawing.Point(206, 191);
+            this.idNotxt.Name = "idNotxt";
+            this.idNotxt.Size = new System.Drawing.Size(216, 22);
+            this.idNotxt.TabIndex = 9;
             // 
-            // textBox2
+            // phoneNotxt
             // 
-            this.textBox2.Location = new System.Drawing.Point(206, 153);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(149, 22);
-            this.textBox2.TabIndex = 8;
+            this.phoneNotxt.Location = new System.Drawing.Point(206, 153);
+            this.phoneNotxt.Name = "phoneNotxt";
+            this.phoneNotxt.Size = new System.Drawing.Size(149, 22);
+            this.phoneNotxt.TabIndex = 8;
             // 
-            // textBox1
+            // fNametxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(206, 75);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(216, 22);
-            this.textBox1.TabIndex = 7;
+            this.fNametxt.Location = new System.Drawing.Point(206, 75);
+            this.fNametxt.Name = "fNametxt";
+            this.fNametxt.Size = new System.Drawing.Size(216, 22);
+            this.fNametxt.TabIndex = 7;
             // 
             // label11
             // 
@@ -319,32 +298,31 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1267, 552);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.guestpnl);
+            this.Controls.Add(this.Rersevationpnl);
             this.Name = "MakeBooking";
             this.Text = "MakeBooking";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.Load += new System.EventHandler(this.MakeBooking_Load);
+            this.Rersevationpnl.ResumeLayout(false);
+            this.Rersevationpnl.PerformLayout();
+            this.guestpnl.ResumeLayout(false);
+            this.guestpnl.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel Rersevationpnl;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DateTimePicker departureDateTP;
+        private System.Windows.Forms.DateTimePicker arrivalDateTP;
+        private System.Windows.Forms.Button cancelbtn;
+        private System.Windows.Forms.Button confirmRbtn;
+        private System.Windows.Forms.Button availabilitybtn;
+        private System.Windows.Forms.Panel guestpnl;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -352,12 +330,12 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox addresstxt;
+        private System.Windows.Forms.TextBox emailtxt;
+        private System.Windows.Forms.TextBox lNametxt;
+        private System.Windows.Forms.TextBox idNotxt;
+        private System.Windows.Forms.TextBox phoneNotxt;
+        private System.Windows.Forms.TextBox fNametxt;
+        private System.Windows.Forms.Button confirmGbtn;
     }
 }
