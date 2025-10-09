@@ -11,8 +11,8 @@ namespace HotelSystem.Logic
     internal class PaymentController
     {
         #region Data Members
-        PaymentDB paymentDB;
-        Collection<Payment> payments;
+        private PaymentDB paymentDB;
+        private Collection<Payment> payments;
 
         #endregion
         #region Properties
@@ -62,11 +62,12 @@ namespace HotelSystem.Logic
             }
         }
 
-        public bool finalizeChanges(Payment aPayment)
+        public bool FinalizeChanges(Payment aPayment)
         {
             return paymentDB.UpdateDataSource(aPayment);
         }
         #endregion
+
         #region Utility Methods
 
         public Payment Find(string paymentID)

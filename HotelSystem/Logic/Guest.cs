@@ -11,7 +11,7 @@ namespace HotelSystem.Logic
     {
         #region Fields
         private string guestID;
-        private string guestAccount; // changed GuestAccount to a string for database purposes
+        private string guestAccountID; // changed GuestAccount to a string for database purposes
         #endregion
 
         #region Property Methods

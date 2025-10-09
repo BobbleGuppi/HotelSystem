@@ -11,8 +11,8 @@ namespace HotelSystem.Logic
     internal class GuestController
     {
         #region Data Members
-        GuestDB guestDB;
-        Collection<Guest> guests;
+        private GuestDB guestDB;
+        private Collection<Guest> guests;
         #endregion
 
         #region Property Methods
@@ -55,7 +55,7 @@ namespace HotelSystem.Logic
 
         }
 
-        public bool FinalizeChnages(Guest aGuest)
+        public bool FinalizeChanges(Guest aGuest)
         {
             return guestDB.UpdateDataSource(aGuest);
         }
@@ -74,7 +74,7 @@ namespace HotelSystem.Logic
             }
             return guests[index];
         }
-        #endregion
+       
 
         public int FindIndex(Guest aGuest)
         {
@@ -92,6 +92,6 @@ namespace HotelSystem.Logic
             else
                 return -1;
         }
-
+        #endregion
     }
 }

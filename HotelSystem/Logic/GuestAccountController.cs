@@ -13,8 +13,8 @@ namespace HotelSystem.Logic
     internal class GuestAccountController
     {
         #region Data Members
-        GuestAccountDB guestAccountDB;
-        Collection<GuestAccount> guestAccounts;
+        private GuestAccountDB guestAccountDB;
+        private Collection<GuestAccount> guestAccounts;
         #endregion
 
         #region Properties

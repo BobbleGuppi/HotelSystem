@@ -144,12 +144,21 @@ namespace HotelSystem.View
 
         private void prevButton_Click(object sender, EventArgs e)
         {
-
+            panel1.Visible = true;
+            richTextBox1.Clear();
+            reservationInfo.Clear();
+            panel2.Visible = false;
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void doneButton_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = false;
+            this.Close();
         }
     }
 }
