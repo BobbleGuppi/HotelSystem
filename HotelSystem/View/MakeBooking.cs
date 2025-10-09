@@ -196,7 +196,9 @@ namespace HotelSystem.View
             bool depositPaid = false;
 
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
+            reservation.calculateTotalPrice(arrivalDate, departureDate);
 
+            MessageBox.Show($"Total price for stay: R{reservation.totalPrice}", "Total Price");
             try
             {
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);

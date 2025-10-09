@@ -56,6 +56,12 @@ namespace HotelSystem.Logic
         {
             get { return depositPaid; }
             set { depositPaid = value; }
+
+        }
+        public double TotalPrice
+        {
+            get { return totalPrice; }
+            set { totalPrice = value; }
         }
         #endregion
 
