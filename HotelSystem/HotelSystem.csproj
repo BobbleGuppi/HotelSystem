@@ -184,6 +184,7 @@
     <Content Include="Scripts\RealFinal.sql" />
     <Content Include="Scripts\updatedScript.sql" />
     <Content Include="Scripts\working.sql" />
+    <Content Include="Scripts\WorkScript.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
