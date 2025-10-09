@@ -28,6 +28,7 @@ namespace HotelSystem.View
             reservationController = new ReservationController();
             guestController = new GuestController();
             guestAccountController = new GuestAccountController();
+            confirmRbtn.Visible = false;
         }
 
         private void MakeBooking_Load(object sender, EventArgs e)
@@ -41,6 +42,10 @@ namespace HotelSystem.View
         {
             arrivalDate = arrivalDateTP.Value;
             departureDate = departureDateTP.Value;
+            if (!ValidateDates(arrivalDate, departureDate))
+            {
+                return; // Stop if invalid
+            }
 
             bool availability = reservationController.RoomAvailable(arrivalDate, departureDate);
             MessageBox.Show($"Checking room availability from {arrivalDate.ToShortDateString()} to {departureDate.ToShortDateString()} ");
@@ -48,26 +53,49 @@ namespace HotelSystem.View
             if (availability)
             {
                 MessageBox.Show("A room is available for the selected dates!", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                confirmRbtn.Visible = true;
             }
             else
             {
-                MessageBox.Show("Sorry, no rooms are available for those dates.", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Sorry, no rooms are available for those dates,change date", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void confirmRbtn_Click(object sender, EventArgs e)
         {
-            guestpnl.Visible = true;
-            CenterPanel(guestpnl);
-            Rersevationpnl.Visible = false;
+            // Show a friendly confirmation dialog before proceeding
+            string message = $"You selected:\n\n" +
+                             $"🗓 Arrival Date: {arrivalDate.ToLongDateString()}\n" +
+                             $"🏁 Departure Date: {departureDate.ToLongDateString()}\n\n" +
+                             $"Are you sure you want to continue with these dates?";
+
+            DialogResult result = MessageBox.Show(
+                message,
+                "Confirm Booking Dates",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // Proceed to the next panel (guest details)
+                guestpnl.Visible = true;
+                CenterPanel(guestpnl);
+                Rersevationpnl.Visible = false;
+
+                MessageBox.Show("Great! Let's continue with your guest details.",
+                    "Proceeding", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // Hide the confirm button and stay on the current panel
+                confirmRbtn.Visible = false;
+              
+                MessageBox.Show("No problem! Please adjust your dates and check availability again.",
+                    "Change Dates", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        private void CenterPanel(Panel panel)
-        {
-            int x = (this.ClientSize.Width - panel.Width) / 2;
-            int y = (this.ClientSize.Height - panel.Height) / 2;
-            panel.Location = new Point(x, y);
-        }
+
 
         private void confirmGbtn_Click(object sender, EventArgs e)
         {
@@ -165,7 +193,14 @@ namespace HotelSystem.View
             }
         }
 
-       
+        #region utility methods 
+
+        private void CenterPanel(Panel panel)
+        {
+            int x = (this.ClientSize.Width - panel.Width) / 2;
+            int y = (this.ClientSize.Height - panel.Height) / 2;
+            panel.Location = new Point(x, y);
+        }
 
         private string GenerateGuestID()
         {
@@ -185,11 +220,47 @@ namespace HotelSystem.View
             return "GA" + sum;
         }
 
+        private bool ValidateDates(DateTime arrival, DateTime departure)
+        {
+            // Check if arrival is in the past
+            if (arrival.Date < DateTime.Today)
+            {
+                MessageBox.Show("Arrival date cannot be in the past.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Check if departure is before or the same as arrival
+            if (departure <= arrival)
+            {
+                MessageBox.Show("Departure date must be after the arrival date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Check if booking is made at least 2 days in advance
+            if ((arrival - DateTime.Today).TotalDays < 2)
+            {
+                MessageBox.Show("Bookings must be made at least 2 days in advance.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Check if both arrival and departure are in December
+            if (arrival.Month != 12 || departure.Month != 12)
+            {
+                MessageBox.Show("Bookings can only be made for December.", "Invalid Month", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // All checks passed
+            return true;
+        }
+
+
+        #endregion
+
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
 
             string reservationId = "R" + new Random().Next(1000, 9999);
-            //string roomId = "R001";
 
             string guestId = guest.GuestID;
             double totalPrice = 0.0;
