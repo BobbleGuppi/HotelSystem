@@ -66,8 +66,8 @@ namespace HotelSystem.Database
             bool success;
             try
             {
-                if (cnMain.State != ConnectionState.Open)
-                    cnMain.Open();
+               
+                cnMain.Open();
                 daMain.Update(dsMain, table);
                 cnMain.Close();
                 FillDataSet(sqlLocal, table);
