@@ -35,13 +35,6 @@ namespace HotelSystem
         #endregion
 
 
-        #region Methods
-        public virtual string displayInfo()
-        {
-            return "$Full name:{name}\tAddress:{addresss}\tID:{id}";
-        }
-        #endregion
-
 
     }
 }

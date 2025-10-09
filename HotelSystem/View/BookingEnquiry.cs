@@ -14,10 +14,15 @@ namespace HotelSystem.View
    
     public partial class BookingEnquiry : Form
     {
+        #region Fields
         private Size originalFormSize;
         private Dictionary<Control, Rectangle> controlBounds = new Dictionary<Control, Rectangle>();
         private ReservationController reservationController;
         private Reservation reservation;
+
+        #endregion
+
+        #region Constructor
         public BookingEnquiry()
         {
             InitializeComponent();
@@ -29,6 +34,7 @@ namespace HotelSystem.View
             panel2.Visible = false;
 
         }
+        #endregion
 
         private void BookingEnquiry_ResizeEvent(object sender, EventArgs e)
         {
@@ -50,6 +56,7 @@ namespace HotelSystem.View
 
         }
 
+        #region Confirm Button
         private void confirmButton_Click(object sender, EventArgs e)
         {
             string reservationId = richTextBox1.Text;
@@ -77,6 +84,8 @@ namespace HotelSystem.View
             }
 
         }
+
+        #endregion
 
         private void CenterPanel()
         {
@@ -135,12 +144,21 @@ namespace HotelSystem.View
 
         private void prevButton_Click(object sender, EventArgs e)
         {
-
+            panel1.Visible = true;
+            richTextBox1.Clear();
+            reservationInfo.Clear();
+            panel2.Visible = false;
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void doneButton_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = false;
+            this.Close();
         }
     }
 }

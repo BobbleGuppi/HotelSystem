@@ -15,8 +15,8 @@ namespace HotelSystem.View
 {
     public partial class MakeBooking : Form
     {
-        DateTime arrivalDate;
-        DateTime departureDate;
+        private DateTime arrivalDate;
+        private DateTime departureDate;
         private ReservationController reservationController;
         private GuestController guestController;
         private GuestAccountController guestAccountController;
@@ -101,7 +101,13 @@ namespace HotelSystem.View
                 try
                 {
                     guestAccountController.DataMaintenance(newGuestAccount, DB.DBOperation.Add);
-                    guestAccountController.FinalizeChanges(newGuestAccount);
+                   bool savedaccount= guestAccountController.FinalizeChanges(newGuestAccount);
+                if (!savedaccount)
+                    {
+                        MessageBox.Show("Failed to save new guest account.");
+                        return;
+                    }
+                    else {  MessageBox.Show("New guest account added successfully!"); }
                 }
                 catch (Exception ex)
                 {
@@ -109,15 +115,23 @@ namespace HotelSystem.View
                     return;
                 }
 
-                // Now create the Guest with the guestAccount ID
+     
                 Guest newGuest = new Guest(id, fullname, phone, address, guestID, guestAccID);
 
                 try
                 {
                     guestController.DataMaintenance(newGuest, DB.DBOperation.Add);
-                    guestController.FinalizeChnages(newGuest);
-                    MessageBox.Show("New guest and guest account added successfully!");
-                    CreateReservation(newGuest, newGuestAccount);
+                    bool saved=guestController.FinalizeChanges(newGuest);
+                    if (!saved)
+                    {
+                        MessageBox.Show("Failed to save new guest.");
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("New guest and guest account added successfully!");
+                        CreateReservation(newGuest, newGuestAccount);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -127,18 +141,13 @@ namespace HotelSystem.View
             else
             {
                 // Find or create GuestAccount for existing guest
-                GuestAccount guestAccount = guestAccountController.AllGuestAccounts
-                    .FirstOrDefault(acc => acc.GuestID == existingGuest.GuestID);
-
-                if (guestAccount == null)
-                {
+               
                     string guestAccID = GenerateGuestAccountID();
                     DateTime dateCreated = DateTime.Now;
                     double totalAmount = 0.0;
                     string status = "Unpaid";
-                    guestAccount = new GuestAccount(guestAccID, existingGuest.GuestID, dateCreated, totalAmount, status);
-
-                    try
+                    GuestAccount guestAccount = new GuestAccount(guestAccID, existingGuest.GuestID, dateCreated, totalAmount, status);
+                try
                     {
                         guestAccountController.DataMaintenance(guestAccount, DB.DBOperation.Add);
                         guestAccountController.FinalizeChanges(guestAccount);
@@ -148,7 +157,7 @@ namespace HotelSystem.View
                         MessageBox.Show("Failed to add guest account for existing guest: " + ex.Message);
                         return;
                     }
-                }
+               
 
                 MessageBox.Show("Guest already exists. Proceeding to reservation...");
                 CreateReservation(existingGuest, guestAccount);
@@ -158,7 +167,7 @@ namespace HotelSystem.View
         private string GenerateGuestID()
         {
             Random rand = new Random();
-            return "GT" + rand.Next(100, 1000);
+            return "GT" + rand.Next(101, 1000);
         }
 
         private string GenerateGuestAccountID()
@@ -169,11 +178,6 @@ namespace HotelSystem.View
 
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
-            if (!reservationController.RoomAvailable(arrivalDate, departureDate))
-            {
-                MessageBox.Show("No rooms available for the selected dates. Cannot create reservation.");
-                return;
-            }
 
             string reservationId = "R" + new Random().Next(1000, 9999);
             //string roomId = "R001";
@@ -187,8 +191,16 @@ namespace HotelSystem.View
             try
             {
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
-                reservationController.FinalizeChanges(reservation);
-                MessageBox.Show("Reservation successfully created!");
+                bool savedReser = reservationController.FinalizeChanges(reservation);
+                if (!savedReser)
+                {
+                    MessageBox.Show("Failed to save reservation.");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Reservation successfully created!");
+                }
             }
             catch (Exception ex)
             {

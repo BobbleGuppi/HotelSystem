@@ -11,8 +11,8 @@ namespace HotelSystem.Logic
     internal class GuestController
     {
         #region Data Members
-        GuestDB guestDB;
-        Collection<Guest> guests;
+        private GuestDB guestDB;
+        private Collection<Guest> guests;
         #endregion
 
         #region Property Methods
@@ -35,15 +35,17 @@ namespace HotelSystem.Logic
         #region Database Comms
         public void DataMaintenance(Guest aGuest, DB.DBOperation operation)
         {
+
+            guestDB.DataSetChange(aGuest, operation);
             switch (operation)
             {
                 case DB.DBOperation.Add:
-                    guestDB.DataSetChange(aGuest, operation);
                     guests.Add(aGuest);
                     break;
                 case DB.DBOperation.Edit:
                     int rowIndex = FindIndex(aGuest);
-                    guests[rowIndex] = aGuest;
+                    if (rowIndex >= 0) // has to exist
+                        guests[rowIndex] = aGuest;
                     break;
                 case DB.DBOperation.Delete:
                     guestDB.DataSetChange(aGuest, operation);
@@ -55,26 +57,30 @@ namespace HotelSystem.Logic
 
         }
 
-        public bool FinalizeChnages(Guest aGuest)
+        public bool FinalizeChanges(Guest aGuest)
         {
             return guestDB.UpdateDataSource(aGuest);
         }
         #endregion
 
         #region Search Method
-        public Guest find(string guestID)
+        public Guest find(string id)
         {
             int index = 0;
-            Boolean found = (guests[index].GuestID == guestID);
+            Boolean found = (guests[index].ID == id);
             int count = guests.Count;
             while (!(found) && (index < count - 1))
             {
                 index++;
-                found = (guests[index].GuestID == guestID);
+                found = (guests[index].GuestID == id);
             }
-            return guests[index];
+            if (found){
+                return guests[index]; // found
+            }
+            else
+                return null; // not found
         }
-        #endregion
+       
 
         public int FindIndex(Guest aGuest)
         {
@@ -92,6 +98,6 @@ namespace HotelSystem.Logic
             else
                 return -1;
         }
-
+        #endregion
     }
 }
