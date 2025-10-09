@@ -10,6 +10,7 @@ namespace HotelSystem.Logic
     #region Data members
     public class GuestAccount
      {
+        #region Fields
         private string guestAccID;
         private string guestID;
         private DateTime dateCreated;
