@@ -32,7 +32,7 @@ namespace HotelSystem.Logic
         public string PaymentID { get{ return paymentId; } set{ paymentId = value; } }
         public string GuestAccID { get { return guestAccId; } set { guestAccId = value; } }
         public double Amount { get { return amount; } set { amount = value; } }
-        public string PaymentType { get { return paymentId; } set { paymentId = value; } }
+        public string PaymentType { get { return paymentType; } set { paymentType = value; } }
         public DateTime DatePaid { get { return payDate; } set { payDate = value; } }
         #endregion
 
