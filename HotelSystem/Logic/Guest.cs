@@ -16,14 +16,14 @@ namespace HotelSystem.Logic
 
         #region Property Methods
         public string GuestID { get { return guestID; } set { guestID = value; } }
-        public string GuestAccount { get { return guestAccount; } set { guestAccount = value; } }
+        public string GuestAccount { get { return guestAccountID; } set { guestAccountID= value; } }
         #endregion
 
         #region Constructor
         public Guest(string ID, string name, string phone, string address, string guestID, string guestAccount) : base(ID, name, phone, address)
         {
             this.guestID = guestID;
-            this.guestAccount = guestAccount;
+            this.guestAccountID = guestAccount;
         }
         #endregion
 

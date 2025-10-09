@@ -164,9 +164,6 @@ namespace HotelSystem.Database
             param = new SqlParameter("@CheckInDate", SqlDbType.DateTime, 8, "CheckInDate");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "Deposit"); // <-- FIXED HERE
-            daMain.InsertCommand.Parameters.Add(param);
-
             param = new SqlParameter("@CheckOutDate", SqlDbType.DateTime, 8, "CheckOutDate");
             daMain.InsertCommand.Parameters.Add(param);
 
@@ -176,7 +173,6 @@ namespace HotelSystem.Database
             param.SourceColumn = "TotalPrice";
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@DepositPaid", SqlDbType.Bit, 1, "Deposit");
             param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "Deposit");
             daMain.InsertCommand.Parameters.Add(param);
         }
@@ -185,7 +181,7 @@ namespace HotelSystem.Database
         {
            daMain.InsertCommand = new SqlCommand("INSERT INTO Reservation"+
                 " (ReservationID, GuestID, CheckInDate, CheckOutDate, TotalPrice, Deposit) " +
-                " VALUES (@ReservationID, @GuestID, @CheckInDate, @CheckOutDate, @TotalPrice, @DepositPaid)", cnMain);
+                " VALUES (@ReservationID, @GuestID, @CheckInDate, @CheckOutDate, @TotalPrice, @Deposit)", cnMain);
             Build_Insert_Parameter(reservation);
         }
 
@@ -214,7 +210,7 @@ namespace HotelSystem.Database
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@DepositPaid", SqlDbType.Bit, 1, "Deposit");
+            param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "Deposit");
             param.SourceVersion = DataRowVersion.Current; 
             daMain.UpdateCommand.Parameters.Add(param);
 

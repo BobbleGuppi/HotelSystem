@@ -189,7 +189,7 @@ namespace HotelSystem.Database
             
             Create_INSERT_Command(aGuestAcc);
             Create_UPDATE_Command(aGuestAcc);
-            Create_DELETE_Command(aGuestAcc);
+           // Create_DELETE_Command(aGuestAcc);
 
             success = UpdateDataSource(sqlLocal1, table1);
 

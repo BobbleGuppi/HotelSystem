@@ -62,17 +62,21 @@ namespace HotelSystem.Logic
         #endregion
 
         #region Search Method
-        public Guest find(string guestID)
+        public Guest find(string id)
         {
             int index = 0;
-            Boolean found = (guests[index].GuestID == guestID);
+            Boolean found = (guests[index].ID == id);
             int count = guests.Count;
             while (!(found) && (index < count - 1))
             {
                 index++;
-                found = (guests[index].GuestID == guestID);
+                found = (guests[index].GuestID == id);
             }
-            return guests[index];
+            if (found){
+                return guests[index]; // found
+            }
+            else
+                return null; // not found
         }
        
 

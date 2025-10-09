@@ -121,7 +121,7 @@ namespace HotelSystem.View
                 try
                 {
                     guestController.DataMaintenance(newGuest, DB.DBOperation.Add);
-                    bool saved=guestController.FinalizeChnages(newGuest);
+                    bool saved=guestController.FinalizeChanges(newGuest);
                     if (!saved)
                     {
                         MessageBox.Show("Failed to save new guest.");
@@ -167,7 +167,7 @@ namespace HotelSystem.View
         private string GenerateGuestID()
         {
             Random rand = new Random();
-            return "GT" + rand.Next(100, 1000);
+            return "GT" + rand.Next(101, 1000);
         }
 
         private string GenerateGuestAccountID()
