@@ -35,15 +35,17 @@ namespace HotelSystem.Logic
         #region Database Comms
         public void DataMaintenance(Guest aGuest, DB.DBOperation operation)
         {
+
+            guestDB.DataSetChange(aGuest, operation);
             switch (operation)
             {
                 case DB.DBOperation.Add:
-                    guestDB.DataSetChange(aGuest, operation);
                     guests.Add(aGuest);
                     break;
                 case DB.DBOperation.Edit:
                     int rowIndex = FindIndex(aGuest);
-                    guests[rowIndex] = aGuest;
+                    if (rowIndex >= 0) // has to exist
+                        guests[rowIndex] = aGuest;
                     break;
                 case DB.DBOperation.Delete:
                     guestDB.DataSetChange(aGuest, operation);
