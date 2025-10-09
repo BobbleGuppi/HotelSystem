@@ -196,6 +196,7 @@ namespace HotelSystem.View
             bool depositPaid = false;
 
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
+            reservation.calculateTotalPrice(arrivalDate, departureDate);
 
             try
             {
