@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HotelSystem.Logic
 {
-    #region Data members
+   
     public class GuestAccount
      {
         #region Fields
