@@ -119,6 +119,37 @@ namespace HotelSystem.Logic
         }
 
 
+        #region Occupancy Report Methods
+        public Dictionary<DateTime, double> CalculateDailyOccupancy(DateTime startDate, DateTime endDate)
+        {
+            int totalRooms = rooms.Count; // 5 rooms
+            Dictionary<DateTime, double> dailyOccupancy = new Dictionary<DateTime, double>();
+
+            for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
+            {
+                // Count how many reservations include this day
+                int occupiedCount = reservations.Count(r =>
+                    r.CheckInDate <= date && r.CheckOutDate > date);
+
+                double percentage = (double)occupiedCount / totalRooms * 100; // calc the percentage
+                dailyOccupancy[date] = percentage;
+            }
+
+            return dailyOccupancy;
+        }
+
+        public double CalculateAverageOccupancy(DateTime startDate, DateTime endDate)
+        {
+            var daily = CalculateDailyOccupancy(startDate, endDate);
+            if (daily.Count == 0) return 0;
+            return daily.Values.Average();
+        }
+
+
+        
+        #endregion
+
+
     }
 
 

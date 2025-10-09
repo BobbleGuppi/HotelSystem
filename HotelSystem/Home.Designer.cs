@@ -136,6 +136,7 @@
             this.summaryReportToolStripMenuItem.Name = "summaryReportToolStripMenuItem";
             this.summaryReportToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
             this.summaryReportToolStripMenuItem.Text = "Summary Report";
+            this.summaryReportToolStripMenuItem.Click += new System.EventHandler(this.summaryReportToolStripMenuItem_Click);
             // 
             // exceptionReportToolStripMenuItem
             // 

@@ -18,6 +18,7 @@ namespace HotelSystem
         private BookingEnquiry enquiryForm;
         private CancelBooking cancelBookingForm;
         private MakeBooking makeBookingForm;
+        private SummaryReport summaryReportWin;
 
         public Home()
         {
@@ -134,6 +135,23 @@ namespace HotelSystem
 
         }
 
+        private void summaryReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            if (summaryReportWin == null || summaryReportWin.IsDisposed)
+            {
+                summaryReportWin = new SummaryReport();
+                summaryReportWin.WindowState = FormWindowState.Maximized;
+                summaryReportWin.MdiParent = this;
+                summaryReportWin.Show();
+                summaryReportWin.BringToFront();
+            }
+            else
+            {
+                summaryReportWin.BringToFront(); // just focus the existing one
+            }
+        }
+
 
         #endregion
         // Add this method to your Home class
@@ -143,6 +161,6 @@ namespace HotelSystem
             // For now, leave it empty or add your logic
         }
 
-
+        
     }
 }
