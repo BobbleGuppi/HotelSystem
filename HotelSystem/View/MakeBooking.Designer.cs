@@ -68,6 +68,7 @@
             this.Rersevationpnl.Name = "Rersevationpnl";
             this.Rersevationpnl.Size = new System.Drawing.Size(520, 383);
             this.Rersevationpnl.TabIndex = 0;
+            this.Rersevationpnl.Paint += new System.Windows.Forms.PaintEventHandler(this.Rersevationpnl_Paint);
             // 
             // cancelbtn
             // 
