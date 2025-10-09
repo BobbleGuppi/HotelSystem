@@ -189,7 +189,6 @@ namespace HotelSystem.View
         {
 
             string reservationId = "R" + new Random().Next(1000, 9999);
-            //string roomId = "R001";
 
             string guestId = guest.GuestID;
             double totalPrice = 0.0;
