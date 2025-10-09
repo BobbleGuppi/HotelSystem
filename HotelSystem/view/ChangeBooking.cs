@@ -33,8 +33,8 @@ namespace HotelSystem.View
         private ReservationController res_cntrllr;
 
         // needed helper variables
-        Reservation myReservation;
-        bool roomAvail;
+        private Reservation myReservation;
+        private bool roomAvail;
         private Random rnd = new Random(); // declare at class level
 
         #endregion
