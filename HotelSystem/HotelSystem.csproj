@@ -183,6 +183,7 @@
     <Content Include="Scripts\guestTable2.sql" />
     <Content Include="Scripts\RealFinal.sql" />
     <Content Include="Scripts\updatedScript.sql" />
+    <Content Include="Scripts\working.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -217,6 +217,9 @@ namespace HotelSystem.View
             }
         }
 
+        private void Rersevationpnl_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
     }
 }
