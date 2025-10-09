@@ -37,6 +37,8 @@
             this.makeBookingEnquiryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeGuestBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.summaryReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exceptionReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,10 +122,27 @@
             // 
             this.reportsToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.reportsToolStripMenuItem.BackColor = System.Drawing.Color.PowderBlue;
+            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.summaryReportToolStripMenuItem,
+            this.exceptionReportToolStripMenuItem});
             this.reportsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
             this.reportsToolStripMenuItem.Size = new System.Drawing.Size(73, 40);
             this.reportsToolStripMenuItem.Text = "Reports";
+            // 
+            // summaryReportToolStripMenuItem
+            // 
+            this.summaryReportToolStripMenuItem.BackColor = System.Drawing.Color.CadetBlue;
+            this.summaryReportToolStripMenuItem.Name = "summaryReportToolStripMenuItem";
+            this.summaryReportToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
+            this.summaryReportToolStripMenuItem.Text = "Summary Report";
+            // 
+            // exceptionReportToolStripMenuItem
+            // 
+            this.exceptionReportToolStripMenuItem.BackColor = System.Drawing.Color.CadetBlue;
+            this.exceptionReportToolStripMenuItem.Name = "exceptionReportToolStripMenuItem";
+            this.exceptionReportToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
+            this.exceptionReportToolStripMenuItem.Text = "Exception Report";
             // 
             // Home
             // 
@@ -156,6 +175,8 @@
         private System.Windows.Forms.ToolStripMenuItem makeGuestBookingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem homeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem summaryReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exceptionReportToolStripMenuItem;
     }
 }
 
