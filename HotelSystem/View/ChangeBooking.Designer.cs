@@ -158,6 +158,7 @@
             // reservationIDTextBox
             // 
             this.reservationIDTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.reservationIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reservationIDTextBox.Location = new System.Drawing.Point(704, 151);
             this.reservationIDTextBox.Name = "reservationIDTextBox";
             this.reservationIDTextBox.Size = new System.Drawing.Size(228, 28);
