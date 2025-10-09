@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace HotelSystem.Logic
 {
-    #region Data members
+ 
     public class GuestAccount
-     {
+    {
         #region Fields
         private string guestAccID;
         private string guestID;
         private DateTime dateCreated;
         private string status;          // paid, unpaid, depositPaid
-        private double totalAmount;  
+        private double totalAmount;
         private double balance;
 
         private Payment depositPay;
@@ -25,12 +25,12 @@ namespace HotelSystem.Logic
         #region Property
         public string GuestAccID
         {
-            get {  return guestAccID; }
+            get { return guestAccID; }
         }
 
         public string GuestID
         {
-            get {  return guestID; }
+            get { return guestID; }
         }
 
         public DateTime DateCreated
@@ -45,7 +45,7 @@ namespace HotelSystem.Logic
 
         public double TotalAmount
         {
-            get { return  totalAmount; }
+            get { return totalAmount; }
         }
 
         public double Balance
@@ -65,7 +65,7 @@ namespace HotelSystem.Logic
         #endregion
 
         #region Constructor
-        public GuestAccount(string guestAccID, string guestID, DateTime dateCreated, double totalAmount , string status = "Unpaid")
+        public GuestAccount(string guestAccID, string guestID, DateTime dateCreated, double totalAmount, string status = "Unpaid")
         {
             this.guestAccID = guestAccID;
             this.guestID = guestID;
@@ -79,7 +79,7 @@ namespace HotelSystem.Logic
         #region Methods
         public void makeDeposit(string paymentId)
         {
-            if (depositPay !=null) {
+            if (depositPay != null) {
                 throw new Exception("Deposit has already been made.");
 
             }
@@ -116,9 +116,9 @@ namespace HotelSystem.Logic
         }
 
         public double getBalance()
-            {
-                return balance;
-            }
+        {
+            return balance;
+        }
 
         public string getStatus()
         {
@@ -126,9 +126,6 @@ namespace HotelSystem.Logic
         }
         #endregion
     }
-
-
-
 
 
 }
