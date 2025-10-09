@@ -15,6 +15,7 @@ namespace HotelSystem.View
 {
     public partial class MakeBooking : Form
     {
+        private static readonly Random rand = new Random();
         private DateTime arrivalDate;
         private DateTime departureDate;
         private ReservationController reservationController;
@@ -164,16 +165,24 @@ namespace HotelSystem.View
             }
         }
 
+       
+
         private string GenerateGuestID()
         {
-            Random rand = new Random();
-            return "GT" + rand.Next(101, 1000);
+            int randomPart = rand.Next(10, 100); // 3-digit random number
+            int timePart = DateTime.Now.Millisecond; // changes every millisecond
+            int sum = randomPart + timePart; // simple math sum
+
+            return "GT" + sum; // combine
         }
 
         private string GenerateGuestAccountID()
         {
-            Random rand = new Random();
-            return "GA" + rand.Next(1000, 9999);
+            int randomPart = rand.Next(100, 999); // 4-digit random
+            int timePart = (int)(DateTime.Now.Ticks % 10000); // last 4 digits of time
+            int sum = randomPart + timePart; // add them together
+
+            return "GA" + sum;
         }
 
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
