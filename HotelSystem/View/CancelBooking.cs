@@ -19,6 +19,8 @@ namespace HotelSystem.View
         private ReservationDB reservationDB;
         private GuestController guestController;
         private Guest foundGuest;
+        private Size originalFormSize;
+        private Dictionary<Control, Rectangle> controlBounds = new Dictionary<Control, Rectangle>();
 
         private int screen = 0; // 0= entering the ID screen 1= booking found confirmation 2= final delete confrimation
         
@@ -29,8 +31,10 @@ namespace HotelSystem.View
             Rcontroller = new ReservationController();
             reservationDB = new ReservationDB();
             guestController = new GuestController();
+            this.Resize += CancelBooking_Resize;
+            this.Load += CancelBooking_Load;
 
-            
+
             ResetToScreen0(); // this is the Initial state
         }
 
@@ -57,10 +61,10 @@ namespace HotelSystem.View
                         "Required Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                try
-                {
-                    foundReservation = Rcontroller.find(reservationid);
-                }catch
+                
+                
+                foundReservation = Rcontroller.find(reservationid);
+                if (foundReservation ==null)
                 {
                     MessageBox.Show("Reservation not found. Please try again.\n\n" +
                         "Note: ID is made from Guest initials, Month, Start Date and number of days reserved.",
@@ -124,7 +128,32 @@ namespace HotelSystem.View
             this.Close();
         }
 
-        
+        private void CancelBooking_Resize(object sender, EventArgs e)
+        {
+            panel1.Left = (this.ClientSize.Width - panel1.Width) / 2;
+            panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
+
+            if (originalFormSize.Width == 0 || originalFormSize.Height == 0)
+                return;
+
+            float xRatio = (float)this.ClientSize.Width / originalFormSize.Width;
+            float yRatio = (float)this.ClientSize.Height / originalFormSize.Height;
+
+            foreach (Control ctrl in panel1.Controls)
+            {
+                Rectangle orig = controlBounds[ctrl];
+                ctrl.Width = (int)(orig.Width * xRatio);
+                ctrl.Height = (int)(orig.Height * yRatio);
+                ctrl.Left = (int)(orig.Left * xRatio);
+                ctrl.Top = (int)(orig.Top * yRatio);
+            }
+
+            // Resize the panel to fill the form
+            panel1.Width = this.ClientSize.Width;
+            panel1.Height = this.ClientSize.Height;
+
+        } 
+
 
         private void ResetToScreen0()
         {
@@ -151,6 +180,7 @@ namespace HotelSystem.View
             goToHomeCancelButton.Visible = false;
 
             richTextBox1.Visible = true;
+            richTextBox1.Font = new Font("Segoe UI", 24, FontStyle.Regular);
             richTextBox1.Text =
                 $"Guest booking found!\n\nDo you wish to proceed to cancel the existing guest booking?\n\n" +
                 $"Full name: {foundGuest.Name}\n" +
@@ -170,6 +200,7 @@ namespace HotelSystem.View
         private void ShowScreen2()
         {
             richTextBox1.Visible = true;
+            richTextBox1.Font = new Font("Segoe UI", 24, FontStyle.Regular);
             richTextBox1.Text =
                 $"\n\nGuest booking for ({foundReservation.ReservationID}) will be cancelled.\n" +
                 $"This action cannot be undone.\n\nAre you sure you want to cancel this booking?";
@@ -184,6 +215,7 @@ namespace HotelSystem.View
 
         private void ShowScreen3()
         {
+            richTextBox1.Font = new Font("Segoe UI", 24, FontStyle.Regular);
             richTextBox1.Text =
                 $"\n\nGuest booking ({foundReservation.ReservationID}) has been successfully cancelled!\n\n" +
                 $"Hotel occupancy levels have been adjusted accordingly.";
@@ -194,6 +226,11 @@ namespace HotelSystem.View
             doneButton.Text = "Done";
 
             screen = 3;
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

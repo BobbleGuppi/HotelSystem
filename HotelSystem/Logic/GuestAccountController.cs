@@ -77,9 +77,6 @@ namespace HotelSystem.Logic
         }
         #endregion
 
-
-
-
         #region Search Method
 
         public GuestAccount Find(string guestAccID)

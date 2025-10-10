@@ -1,4 +1,5 @@
-﻿using HotelSystem.Logic;
+﻿using HotelSystem.Database;
+using HotelSystem.Logic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,14 +60,20 @@ namespace HotelSystem.View
         #region Confirm Button
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            string reservationId = richTextBox1.Text;
+            string reservationId = richTextBox1.Text.Trim();
+            if (string.IsNullOrWhiteSpace(reservationId))
+            {
+                MessageBox.Show("Reservation ID field must not be empty.",
+                    "Required Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             panel1.Visible = false;
             panel2.Visible = true;
-
-            reservation = reservationController.find(reservationId);
             reservationInfo.Size = new Size(900, 450);
             reservationInfo.Font = new Font("Segoe UI", 24, FontStyle.Regular);
             CenterPanel();
+
+            reservation = reservationController.find(reservationId);
 
             if (reservation != null) {
                 reservationInfo.AppendText("=== Reservation Details ===\n");

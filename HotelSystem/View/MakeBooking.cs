@@ -21,6 +21,8 @@ namespace HotelSystem.View
         private ReservationController reservationController;
         private GuestController guestController;
         private GuestAccountController guestAccountController;
+        private PaymentController paymentController;
+        
 
         public MakeBooking()
         {
@@ -42,10 +44,10 @@ namespace HotelSystem.View
         {
             arrivalDate = arrivalDateTP.Value;
             departureDate = departureDateTP.Value;
-            if (!ValidateDates(arrivalDate, departureDate))
-            {
-                return; // Stop if invalid
-            }
+            //if (!ValidateDates(arrivalDate, departureDate))
+            //{
+            //    return; // Stop if invalid
+            //}
 
             bool availability = reservationController.RoomAvailable(arrivalDate, departureDate);
             MessageBox.Show($"Checking room availability from {arrivalDate.ToShortDateString()} to {departureDate.ToShortDateString()} ");
@@ -220,42 +222,15 @@ namespace HotelSystem.View
             return "GA" + sum;
         }
 
-        private bool ValidateDates(DateTime arrival, DateTime departure)
+        private string GeneratePaymentID()
         {
-            // Check if arrival is in the past
-            if (arrival.Date < DateTime.Today)
-            {
-                MessageBox.Show("Arrival date cannot be in the past.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
+            int randomPart = rand.Next(10, 100); // 3-digit random number
+            int timePart = DateTime.Now.Millisecond; // changes every millisecond
+            int sum = randomPart + timePart; // simple math sum
 
-            // Check if departure is before or the same as arrival
-            if (departure <= arrival)
-            {
-                MessageBox.Show("Departure date must be after the arrival date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            // Check if booking is made at least 2 days in advance
-            if ((arrival - DateTime.Today).TotalDays < 2)
-            {
-                MessageBox.Show("Bookings must be made at least 2 days in advance.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            // Check if both arrival and departure are in December
-            if (arrival.Month != 12 || departure.Month != 12)
-            {
-                MessageBox.Show("Bookings can only be made for December.", "Invalid Month", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            // All checks passed
-            return true;
+            return "PY" + sum;
         }
 
-
-        #endregion
 
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
@@ -263,11 +238,19 @@ namespace HotelSystem.View
             string reservationId = ""+fNametxt.Text[0]+ ""+lNametxt.Text[0]+"12"+ arrivalDate.Day+ "-"+ diff;
 
             string guestId = guest.GuestID;
+            string guestAccId = guest.GuestAccount;
             double totalPrice = 0.0;
             bool depositPaid = false;
 
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
             reservation.calculateTotalPrice(arrivalDate, departureDate);
+
+            if (reservation.DepositPaid == true)
+            {
+                string paymentID = GeneratePaymentID();
+                Payment payment = new Payment(paymentID, guestId, totalPrice, type, DateTime.Now);
+                guestAccount.makeDeposit(paymentID);
+            }
 
             MessageBox.Show($"Total price for stay: R{reservation.totalPrice}", "Total Price");
             try
@@ -291,7 +274,7 @@ namespace HotelSystem.View
                 MessageBox.Show("Failed to create reservation: " + ex.Message);
             }
         }
-
+        #endregion
         private void Rersevationpnl_Paint(object sender, PaintEventArgs e)
         {
 
@@ -299,17 +282,17 @@ namespace HotelSystem.View
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
-                DialogResult result = MessageBox.Show(
-        "Are you sure you want to cancel?",   // Message
-        "Confirm Cancel",                     // Title
-        MessageBoxButtons.YesNo,              // Buttons
-        MessageBoxIcon.Question               // Icon
-               );
+                    DialogResult result = MessageBox.Show(
+            "Are you sure you want to cancel?",   // Message
+            "Confirm Cancel",                     // Title
+            MessageBoxButtons.YesNo,              // Buttons
+            MessageBoxIcon.Question               // Icon
+                   );
 
-    if (result == DialogResult.Yes)
-    {
-        this.Close(); // Close the form only if user clicks Yes
-    }
+            if (result == DialogResult.Yes)
+            {
+                this.Close(); // Close the form only if user clicks Yes
+            }
         }
 
         private void prepagebtn_Click(object sender, EventArgs e)
