@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.goToHomeCancelButton = new System.Windows.Forms.Button();
             this.doneButton = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.textBoxForReservationID = new System.Windows.Forms.TextBox();
@@ -36,7 +37,6 @@
             this.ConfirmButton = new System.Windows.Forms.Button();
             this.reservationIDinputLabel = new System.Windows.Forms.Label();
             this.reservationNumLabel = new System.Windows.Forms.Label();
-            this.goToHomeCancelButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,13 +56,28 @@
             this.panel1.Size = new System.Drawing.Size(1214, 629);
             this.panel1.TabIndex = 5;
             // 
+            // goToHomeCancelButton
+            // 
+            this.goToHomeCancelButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.goToHomeCancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.goToHomeCancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.goToHomeCancelButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.goToHomeCancelButton.Location = new System.Drawing.Point(120, 447);
+            this.goToHomeCancelButton.Margin = new System.Windows.Forms.Padding(5);
+            this.goToHomeCancelButton.Name = "goToHomeCancelButton";
+            this.goToHomeCancelButton.Size = new System.Drawing.Size(177, 82);
+            this.goToHomeCancelButton.TabIndex = 18;
+            this.goToHomeCancelButton.Text = "Cancel";
+            this.goToHomeCancelButton.UseVisualStyleBackColor = false;
+            this.goToHomeCancelButton.Click += new System.EventHandler(this.goToHomeCancelButton_Click);
+            // 
             // doneButton
             // 
             this.doneButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.doneButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.doneButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.doneButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doneButton.Location = new System.Drawing.Point(861, 444);
+            this.doneButton.Location = new System.Drawing.Point(861, 447);
             this.doneButton.Margin = new System.Windows.Forms.Padding(5);
             this.doneButton.Name = "doneButton";
             this.doneButton.Size = new System.Drawing.Size(177, 82);
@@ -73,7 +88,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(120, 51);
+            this.richTextBox1.Location = new System.Drawing.Point(147, 81);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
@@ -83,10 +98,11 @@
             // 
             // textBoxForReservationID
             // 
+            this.textBoxForReservationID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxForReservationID.Location = new System.Drawing.Point(446, 277);
             this.textBoxForReservationID.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForReservationID.Name = "textBoxForReservationID";
-            this.textBoxForReservationID.Size = new System.Drawing.Size(297, 22);
+            this.textBoxForReservationID.Size = new System.Drawing.Size(297, 30);
             this.textBoxForReservationID.TabIndex = 14;
             // 
             // prevPageButton
@@ -123,11 +139,11 @@
             // 
             this.reservationIDinputLabel.AutoSize = true;
             this.reservationIDinputLabel.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.reservationIDinputLabel.Font = new System.Drawing.Font("Eras Demi ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reservationIDinputLabel.Font = new System.Drawing.Font("Eras Demi ITC", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reservationIDinputLabel.Location = new System.Drawing.Point(133, 276);
             this.reservationIDinputLabel.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.reservationIDinputLabel.Name = "reservationIDinputLabel";
-            this.reservationIDinputLabel.Size = new System.Drawing.Size(152, 23);
+            this.reservationIDinputLabel.Size = new System.Drawing.Size(177, 26);
             this.reservationIDinputLabel.TabIndex = 5;
             this.reservationIDinputLabel.Text = "Reservation ID:\r\n";
             // 
@@ -145,21 +161,6 @@
             this.reservationNumLabel.TabIndex = 4;
             this.reservationNumLabel.Text = "Provide the reservation number and details:";
             this.reservationNumLabel.Click += new System.EventHandler(this.reservationNumLabel_Click);
-            // 
-            // goToHomeCancelButton
-            // 
-            this.goToHomeCancelButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.goToHomeCancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.goToHomeCancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.goToHomeCancelButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.goToHomeCancelButton.Location = new System.Drawing.Point(120, 447);
-            this.goToHomeCancelButton.Margin = new System.Windows.Forms.Padding(5);
-            this.goToHomeCancelButton.Name = "goToHomeCancelButton";
-            this.goToHomeCancelButton.Size = new System.Drawing.Size(177, 82);
-            this.goToHomeCancelButton.TabIndex = 18;
-            this.goToHomeCancelButton.Text = "Cancel";
-            this.goToHomeCancelButton.UseVisualStyleBackColor = false;
-            this.goToHomeCancelButton.Click += new System.EventHandler(this.goToHomeCancelButton_Click);
             // 
             // CancelBooking
             // 
