@@ -117,15 +117,11 @@ namespace HotelSystem.Logic
             totalPrice = 0; // Reset total price before recalculating
             calculateTotalPrice(checkInDate, checkOutDate); // Assuming pricePerNight is handled in checkSeasonalPricing
         }
-
         public string reservationDetails()
         {
-            //guest.displayInfo();
-            return "Current booking reserved for " + checkInDate.ToString("yyyy-MM-dd") + " to " + checkOutDate.ToString("yyyy-MM-dd");
-
+            return $"Check-In Date: {checkInDate:yyyy-MM-dd}\nCheck-Out Date: {checkOutDate:yyyy-MM-dd}";
         }
 
-        
 
 
 
