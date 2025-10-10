@@ -76,7 +76,7 @@
             this.doneButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.doneButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.doneButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doneButton.Location = new System.Drawing.Point(491, 465);
+            this.doneButton.Location = new System.Drawing.Point(856, 467);
             this.doneButton.Margin = new System.Windows.Forms.Padding(5);
             this.doneButton.Name = "doneButton";
             this.doneButton.Size = new System.Drawing.Size(177, 82);
@@ -88,11 +88,11 @@
             // richTextBox1
             // 
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(23, 35);
+            this.richTextBox1.Location = new System.Drawing.Point(104, 27);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(646, 403);
+            this.richTextBox1.Size = new System.Drawing.Size(1062, 403);
             this.richTextBox1.TabIndex = 15;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -112,7 +112,7 @@
             this.prevPageButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.prevPageButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.prevPageButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prevPageButton.Location = new System.Drawing.Point(53, 479);
+            this.prevPageButton.Location = new System.Drawing.Point(191, 467);
             this.prevPageButton.Margin = new System.Windows.Forms.Padding(5);
             this.prevPageButton.Name = "prevPageButton";
             this.prevPageButton.Size = new System.Drawing.Size(177, 82);
@@ -127,7 +127,7 @@
             this.ConfirmButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConfirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ConfirmButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConfirmButton.Location = new System.Drawing.Point(840, 451);
+            this.ConfirmButton.Location = new System.Drawing.Point(840, 465);
             this.ConfirmButton.Margin = new System.Windows.Forms.Padding(4);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Size = new System.Drawing.Size(177, 79);
@@ -168,9 +168,9 @@
             this.panel2.Controls.Add(this.richTextBox1);
             this.panel2.Controls.Add(this.doneButton);
             this.panel2.Controls.Add(this.prevPageButton);
-            this.panel2.Location = new System.Drawing.Point(1125, 42);
+            this.panel2.Location = new System.Drawing.Point(1499, 42);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(673, 629);
+            this.panel2.Size = new System.Drawing.Size(1222, 629);
             this.panel2.TabIndex = 6;
             // 
             // CancelBooking

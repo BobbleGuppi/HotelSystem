@@ -25,6 +25,13 @@ namespace HotelSystem.View
         private string displayGuest;
 
 
+        public enum DepositChecker
+        {
+            Unpaid = 0,
+            Paid = 1
+        }
+        DepositChecker depositChecker;
+
         public MakeBooking()
         {
             InitializeComponent();
@@ -226,6 +233,12 @@ namespace HotelSystem.View
             return "PY" + sum;
         }
 
+       public void DepositChecking()
+        {
+            int randomValue = rand.Next(0, 2);
+            depositChecker = (DepositChecker)randomValue;
+        }
+
 
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
@@ -240,15 +253,16 @@ namespace HotelSystem.View
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
             reservation.calculateTotalPrice(arrivalDate, departureDate);
 
-            if (reservation.DepositPaid == true)
+            if (depositChecker == DepositChecker.Paid)
             {
                 string paymentType = "Deposit";
                 string paymentID = GeneratePaymentID();
                 Payment payment = new Payment(paymentID, guestId, totalPrice,paymentType, DateTime.Now);
+                
                 guestAccount.makeDeposit(paymentID);
-            }
+            } 
 
-            MessageBox.Show($"Total price for stay: R{reservation.totalPrice}", "Total Price");
+                MessageBox.Show($"Total price for stay: R{reservation.totalPrice}", "Total Price");
             try
             {
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
