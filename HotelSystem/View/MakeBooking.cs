@@ -259,6 +259,7 @@ namespace HotelSystem.View
 
             if (depositChecker == DepositChecker.Paid)
             {
+                string paymentType = "Deposit";
                 string paymentID = GeneratePaymentID();
                 
                 guestAccount.makeDeposit(paymentID);
