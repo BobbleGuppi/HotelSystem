@@ -68,7 +68,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.label3.Font = new System.Drawing.Font("Eras Demi ITC", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 182);
+            this.label3.Location = new System.Drawing.Point(4, 226);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(703, 26);
@@ -96,7 +96,7 @@
             this.ConfirmButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConfirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ConfirmButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConfirmButton.Location = new System.Drawing.Point(1081, 474);
+            this.ConfirmButton.Location = new System.Drawing.Point(1093, 524);
             this.ConfirmButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ConfirmButton.Name = "ConfirmButton";
             this.ConfirmButton.Size = new System.Drawing.Size(176, 61);
@@ -114,7 +114,7 @@
             this.MainPanel.Location = new System.Drawing.Point(16, 33);
             this.MainPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(1596, 593);
+            this.MainPanel.Size = new System.Drawing.Size(1596, 638);
             this.MainPanel.TabIndex = 8;
             this.MainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.MainPanel_Paint);
             // 
@@ -130,14 +130,14 @@
             this.tableLayoutPanel1.Controls.Add(this.reservationIDTextBox, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.CheckOutPicker, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(72, 106);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(72, 139);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 118F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1472, 300);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1472, 345);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // label2
@@ -147,7 +147,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.label2.Font = new System.Drawing.Font("Eras Demi ITC", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(4, 91);
+            this.label2.Location = new System.Drawing.Point(4, 113);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(703, 26);
@@ -169,7 +169,7 @@
             // 
             this.reservationIDTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.reservationIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reservationIDTextBox.Location = new System.Drawing.Point(940, 186);
+            this.reservationIDTextBox.Location = new System.Drawing.Point(940, 230);
             this.reservationIDTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.reservationIDTextBox.Name = "reservationIDTextBox";
             this.reservationIDTextBox.Size = new System.Drawing.Size(303, 34);
@@ -181,7 +181,7 @@
             // 
             this.CheckOutPicker.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CheckOutPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CheckOutPicker.Location = new System.Drawing.Point(940, 95);
+            this.CheckOutPicker.Location = new System.Drawing.Point(940, 117);
             this.CheckOutPicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CheckOutPicker.Name = "CheckOutPicker";
             this.CheckOutPicker.Size = new System.Drawing.Size(303, 30);
