@@ -40,42 +40,45 @@ namespace HotelSystem.View
                 return;
             }
 
-            var loyalGuests = reservationController.GetLoyalGuestsByDateRange(startDate, endDate);
+            // Get summary buckets (2..5 where 5 = 5 or more)
+            var summary = reservationController.GetLoyalCountsByDateRange(startDate, endDate);
 
-            if (loyalGuests.Count == 0)
-            {
-                MessageBox.Show("No loyal guests found for the selected date range.");
-                loyaltyGridView.DataSource = null;
-                return;
-            }
-
-            // Build table for grid
+            // Always show a table with the four categories (even if zero)
             DataTable table = new DataTable();
-            table.Columns.Add("Guest ID");
-            table.Columns.Add("Reservation Count");
+            table.Columns.Add("Times Booked");         // 2,3,4,5
+            table.Columns.Add("Number of Guests");    // how many guests have that many bookings
 
-            foreach (var entry in loyalGuests)
+            for (int times = 2; times <= 5; times++)
             {
-                table.Rows.Add(entry.Key, entry.Value);
+                int guests = summary.ContainsKey(times) ? summary[times] : 0;
+                table.Rows.Add(times.ToString(), guests);
             }
 
             loyaltyGridView.DataSource = table;
 
-            // Optional chart visualization
+            // Build chart
             chart.Series.Clear();
-            var series = new System.Windows.Forms.DataVisualization.Charting.Series("Loyal Guests");
-            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            chart.ChartAreas[0].AxisX.Interval = 1;
+            chart.ChartAreas[0].AxisX.Title = "Times Booked";
+            chart.ChartAreas[0].AxisY.Title = "Number of Guests";
+            chart.Legends.Clear();
 
-            foreach (var entry in loyalGuests.OrderByDescending(x => x.Value))
+            var series = new System.Windows.Forms.DataVisualization.Charting.Series("Guests");
+            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            series.IsValueShownAsLabel = true;
+
+            // Add points in order 2,3,4,5 so X axis is consistent
+            for (int times = 2; times <= 5; times++)
             {
-                series.Points.AddXY(entry.Key, entry.Value);
+                int guests = summary.ContainsKey(times) ? summary[times] : 0;
+                series.Points.AddXY(times.ToString(), guests);
             }
 
             chart.Series.Add(series);
-            dataPanel.Visible = true;
-            reportCreatedDate.Text = "Report Created on: " + DateTime.Today;
-        }
 
+            dataPanel.Visible = true;
+            reportCreatedDate.Text = "Report Created on: " + DateTime.Now.ToString("yyyy-MM-dd");
+        }
         #endregion
 
 

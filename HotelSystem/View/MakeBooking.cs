@@ -44,10 +44,10 @@ namespace HotelSystem.View
         {
             arrivalDate = arrivalDateTP.Value;
             departureDate = departureDateTP.Value;
-            if (!ValidateDates(arrivalDate, departureDate))
-            {
-                return; // Stop if invalid
-            }
+            //if (!ValidateDates(arrivalDate, departureDate))
+            //{
+            //    return; // Stop if invalid
+            //}
 
             bool availability = reservationController.RoomAvailable(arrivalDate, departureDate);
             MessageBox.Show($"Checking room availability from {arrivalDate.ToShortDateString()} to {departureDate.ToShortDateString()} ");
@@ -232,7 +232,6 @@ namespace HotelSystem.View
         }
 
 
-
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
             string type = "Card";
@@ -276,7 +275,7 @@ namespace HotelSystem.View
                 MessageBox.Show("Failed to create reservation: " + ex.Message);
             }
         }
-
+        #endregion
         private void Rersevationpnl_Paint(object sender, PaintEventArgs e)
         {
 
@@ -284,17 +283,17 @@ namespace HotelSystem.View
 
         private void cancelbtn_Click(object sender, EventArgs e)
         {
-                DialogResult result = MessageBox.Show(
-        "Are you sure you want to cancel?",   // Message
-        "Confirm Cancel",                     // Title
-        MessageBoxButtons.YesNo,              // Buttons
-        MessageBoxIcon.Question               // Icon
-               );
+                    DialogResult result = MessageBox.Show(
+            "Are you sure you want to cancel?",   // Message
+            "Confirm Cancel",                     // Title
+            MessageBoxButtons.YesNo,              // Buttons
+            MessageBoxIcon.Question               // Icon
+                   );
 
-    if (result == DialogResult.Yes)
-    {
-        this.Close(); // Close the form only if user clicks Yes
-    }
+            if (result == DialogResult.Yes)
+            {
+                this.Close(); // Close the form only if user clicks Yes
+            }
         }
 
         private void prepagebtn_Click(object sender, EventArgs e)

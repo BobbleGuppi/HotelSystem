@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoyaltyReport));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.promptPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.GenerateButton = new System.Windows.Forms.Button();
@@ -42,17 +42,17 @@
             this.startDateLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataPanel = new System.Windows.Forms.Panel();
+            this.reportCreatedDate = new System.Windows.Forms.Label();
+            this.overviewLabel = new System.Windows.Forms.Label();
+            this.loyaltyGridView = new System.Windows.Forms.DataGridView();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.promptLabel = new System.Windows.Forms.Label();
-            this.loyaltyGridView = new System.Windows.Forms.DataGridView();
-            this.overviewLabel = new System.Windows.Forms.Label();
-            this.reportCreatedDate = new System.Windows.Forms.Label();
             this.promptPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.dataPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loyaltyGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
             // promptPanel
@@ -172,40 +172,16 @@
             this.dataPanel.TabIndex = 10;
             this.dataPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // chart
+            // reportCreatedDate
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart.Legends.Add(legend2);
-            this.chart.Location = new System.Drawing.Point(22, 3);
-            this.chart.Name = "chart";
-            this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart.Series.Add(series2);
-            this.chart.Size = new System.Drawing.Size(616, 184);
-            this.chart.TabIndex = 0;
-            // 
-            // promptLabel
-            // 
-            this.promptLabel.AutoSize = true;
-            this.promptLabel.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.promptLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.promptLabel.Location = new System.Drawing.Point(30, 17);
-            this.promptLabel.Name = "promptLabel";
-            this.promptLabel.Size = new System.Drawing.Size(412, 25);
-            this.promptLabel.TabIndex = 2;
-            this.promptLabel.Text = "Select a date range to generate the report";
-            // 
-            // loyaltyGridView
-            // 
-            this.loyaltyGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.loyaltyGridView.Location = new System.Drawing.Point(22, 193);
-            this.loyaltyGridView.Name = "loyaltyGridView";
-            this.loyaltyGridView.Size = new System.Drawing.Size(616, 204);
-            this.loyaltyGridView.TabIndex = 1;
+            this.reportCreatedDate.AutoSize = true;
+            this.reportCreatedDate.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.reportCreatedDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportCreatedDate.Location = new System.Drawing.Point(748, 352);
+            this.reportCreatedDate.Name = "reportCreatedDate";
+            this.reportCreatedDate.Size = new System.Drawing.Size(35, 20);
+            this.reportCreatedDate.TabIndex = 14;
+            this.reportCreatedDate.Text = "text";
             // 
             // overviewLabel
             // 
@@ -218,16 +194,40 @@
             this.overviewLabel.TabIndex = 13;
             this.overviewLabel.Text = resources.GetString("overviewLabel.Text");
             // 
-            // reportCreatedDate
+            // loyaltyGridView
             // 
-            this.reportCreatedDate.AutoSize = true;
-            this.reportCreatedDate.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.reportCreatedDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportCreatedDate.Location = new System.Drawing.Point(696, 353);
-            this.reportCreatedDate.Name = "reportCreatedDate";
-            this.reportCreatedDate.Size = new System.Drawing.Size(35, 20);
-            this.reportCreatedDate.TabIndex = 14;
-            this.reportCreatedDate.Text = "text";
+            this.loyaltyGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.loyaltyGridView.Location = new System.Drawing.Point(22, 193);
+            this.loyaltyGridView.Name = "loyaltyGridView";
+            this.loyaltyGridView.Size = new System.Drawing.Size(656, 204);
+            this.loyaltyGridView.TabIndex = 1;
+            // 
+            // chart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
+            this.chart.Location = new System.Drawing.Point(22, 3);
+            this.chart.Name = "chart";
+            this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart.Series.Add(series1);
+            this.chart.Size = new System.Drawing.Size(656, 184);
+            this.chart.TabIndex = 0;
+            // 
+            // promptLabel
+            // 
+            this.promptLabel.AutoSize = true;
+            this.promptLabel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.promptLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.promptLabel.Location = new System.Drawing.Point(30, 17);
+            this.promptLabel.Name = "promptLabel";
+            this.promptLabel.Size = new System.Drawing.Size(412, 25);
+            this.promptLabel.TabIndex = 2;
+            this.promptLabel.Text = "Select a date range to generate the report";
             // 
             // LoyaltyReport
             // 
@@ -247,8 +247,8 @@
             this.tableLayoutPanel1.PerformLayout();
             this.dataPanel.ResumeLayout(false);
             this.dataPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loyaltyGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);
 
         }
