@@ -10,40 +10,34 @@ namespace HotelSystem.Logic
 {
     public class ReservationController
     {
-        #region data members
+        #region Data Members
         public ReservationDB reservationDB;
         protected Collection<Reservation> reservations;
         protected List<Room> rooms = new List<Room>
-            {
-               new Room("R001"),
-                new Room("R002"),
-                new Room("R003"),
-                new Room("R004"),
-                new Room("R005")
-            };
+        {
+            new Room("R001"),
+            new Room("R002"),
+            new Room("R003"),
+            new Room("R004"),
+            new Room("R005")
+        };
         protected string currentRoom;
         #endregion
 
-        #region properties
-
-        public Collection<Reservation> AllReservations
-        {
-            get { return reservations; }
-        }
-        public string RoomID { get { return currentRoom; } set{currentRoom = value;} }
+        #region Properties
+        public Collection<Reservation> AllReservations => reservations;
+        public string RoomID { get => currentRoom; set => currentRoom = value; }
         #endregion
 
         #region Constructors
         public ReservationController()
         {
             reservationDB = new ReservationDB();
-            reservations = reservationDB.AllReservations;   
-             
+            reservations = reservationDB.AllReservations;
         }
-
         #endregion
 
-        #region database communication
+        #region Database Communication
         public void DataMaintenance(Reservation reservation, DB.DBOperation operation)
         {
             switch (operation)
@@ -65,67 +59,66 @@ namespace HotelSystem.Logic
             }
         }
 
-   
         public bool FinalizeChanges(Reservation reservation)
         {
             return reservationDB.UpdateDataSource(reservation);
         }
         #endregion
 
-        #region Search Method
+        #region Search Methods
         public Reservation find(string reservationID)
         {
-            int count = reservations.Count;
-            for (int i = 0; i < count; i++)
+            foreach (Reservation r in reservations)
             {
-                if (reservations[i].ReservationID == reservationID)
-                {
-                    return reservations[i]; // found
-                }
+                if (r.ReservationID == reservationID)
+                    return r;
             }
-            return null; // not found
+            return null;
         }
-
-        #endregion
 
         public int FindIndex(Reservation reservation)
         {
-            int counter = 0;
-            Boolean found = false;
-            found = (reservations[counter].ReservationID == reservation.ReservationID);
-
-            while (!(found) && (counter < reservations.Count - 1))
+            for (int i = 0; i < reservations.Count; i++)
             {
-                counter++;
-                found = (reservations[counter].ReservationID == reservation.ReservationID);
+                if (reservations[i].ReservationID == reservation.ReservationID)
+                    return i;
             }
-            if (found)
-                return counter;
-            else
-                return -1;
+            return -1;
         }
+        #endregion
 
+        #region Room Availability Logic
+        //Checks if there’s any available room between given dates
         public bool RoomAvailable(DateTime checkIn, DateTime checkOut)
         {
             foreach (Room room in rooms)
             {
                 if (room.IsAvailable(checkIn, checkOut))
                 {
-                    currentRoom = room.RoomID;
+                    currentRoom = room.RoomID; // Save the first available room ID
                     return true;
                 }
             }
-            return false;
+            return false; // All rooms full for the given period
         }
 
+        //  Adds a reservation only to ONE available room
         public void AddReservation(Reservation reservation)
         {
-            foreach(Room room in rooms)
+            foreach (Room room in rooms)
             {
-                room.AddReservation(reservation);
+                if (room.IsAvailable(reservation.CheckInDate, reservation.CheckOutDate))
+                {
+                    room.AddReservation(reservation);
+                    currentRoom = room.RoomID; // track which room was assigned
+                    return; // stop after assigning
+                }
             }
-        }
 
+            // Optional: if you want to handle no available rooms case here
+            Console.WriteLine("No available rooms found for this reservation period.");
+        }
+        #endregion
 
         #region Occupancy Report Methods
         public Dictionary<DateTime, double> CalculateDailyOccupancy(DateTime startDate, DateTime endDate)
@@ -152,9 +145,6 @@ namespace HotelSystem.Logic
             if (daily.Count == 0) return 0;
             return daily.Values.Average();
         }
-
-
-
         #endregion
 
         #region Loyalty Report Methods (Date Range)
@@ -183,14 +173,8 @@ namespace HotelSystem.Logic
 
             return buckets;
         }
-
         #endregion
-
-
-
-
     }
-
-
 }
-  
+
+

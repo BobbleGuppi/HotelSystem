@@ -207,6 +207,7 @@
     <Content Include="Scripts\updatedScript.sql" />
     <Content Include="Scripts\working.sql" />
     <Content Include="Scripts\WorkScript.sql" />
+    <Content Include="Scripts\ZamaScrpits.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

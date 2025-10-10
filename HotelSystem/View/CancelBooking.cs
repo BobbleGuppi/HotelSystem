@@ -33,7 +33,7 @@ namespace HotelSystem.View
             guestController = new GuestController();
             this.Resize += CancelBooking_Resize;
             this.Load += CancelBooking_Load;
-
+           
 
             ResetToScreen0(); // this is the Initial state
         }
@@ -75,13 +75,13 @@ namespace HotelSystem.View
 
                 
                     
-                    foundGuest = guestController.findGuest(foundReservation.GuestID);
-                    if (foundGuest == null)
-                    {
-                        MessageBox.Show("Guest could not be found for this reservation.",
-                       "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
+                foundGuest = guestController.findGuest(foundReservation.GuestID);
+                if (foundGuest == null)
+                {
+                    MessageBox.Show("Guest could not be found for this reservation.",
+                    "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 
                 
                 
@@ -159,29 +159,43 @@ namespace HotelSystem.View
         private void ResetToScreen0()
         {
             // Input screen visible
+            panel1.Controls.Add(ConfirmButton);
             reservationNumLabel.Visible = true;
             reservationIDinputLabel.Visible = true;
             textBoxForReservationID.Visible = true;
             ConfirmButton.Visible = true;
-
+            panel2.Visible = false;
             // Others hidden
+            panel1.Visible = true;
             richTextBox1.Visible = false;
             doneButton.Visible = false;
             prevPageButton.Visible = false;
-            goToHomeCancelButton.Visible = false;
+            goToHomeCancelButton.Visible = true;
 
             screen = 0;
+        }
+        private void CenterPanel()
+        {
+            panel2.Location = new Point(
+                (this.ClientSize.Width - panel2.Width) / 2,
+                (this.ClientSize.Height - panel2.Height) / 2
+            );
         }
 
         private void ShowScreen1()
         {
+            panel2.Controls.Add(ConfirmButton);
+            panel1.Visible = false;
+            panel2.Visible = true;
+            CenterPanel();
+
             reservationNumLabel.Visible = false;
             reservationIDinputLabel.Visible = false;
             textBoxForReservationID.Visible = false;
             goToHomeCancelButton.Visible = false;
 
             richTextBox1.Visible = true;
-            richTextBox1.Font = new Font("Segoe UI", 24, FontStyle.Regular);
+            richTextBox1.Font = new Font("Segoe UI", 18, FontStyle.Regular);
             richTextBox1.Text =
                 $"Guest booking found!\n\nDo you wish to proceed to cancel the existing guest booking?\n\n" +
                 $"Full name: {foundGuest.Name}\n" +
@@ -200,10 +214,14 @@ namespace HotelSystem.View
 
         private void ShowScreen2()
         {
+            
+            panel2.Visible = true;
+            
+            CenterPanel();
             richTextBox1.Visible = true;
             richTextBox1.Font = new Font("Segoe UI", 24, FontStyle.Regular);
             richTextBox1.Text =
-                $"\n\nGuest booking for ({foundReservation.ReservationID}) will be cancelled.\n" +
+                $"Guest booking for ({foundReservation.ReservationID}) will be cancelled.\n" +
                 $"This action cannot be undone.\n\nAre you sure you want to cancel this booking?";
 
             prevPageButton.Visible = true;
@@ -218,7 +236,7 @@ namespace HotelSystem.View
         {
             richTextBox1.Font = new Font("Segoe UI", 24, FontStyle.Regular);
             richTextBox1.Text =
-                $"\n\nGuest booking ({foundReservation.ReservationID}) has been successfully cancelled!\n\n" +
+                $"Guest booking ({foundReservation.ReservationID}) has been successfully cancelled!\n\n" +
                 $"Hotel occupancy levels have been adjusted accordingly.";
 
             ConfirmButton.Visible = false;
@@ -233,5 +251,13 @@ namespace HotelSystem.View
         {
 
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        
+        }
     }
-}
+
