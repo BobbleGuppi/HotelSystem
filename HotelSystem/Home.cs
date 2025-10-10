@@ -19,6 +19,7 @@ namespace HotelSystem
         private CancelBooking cancelBookingForm;
         private MakeBooking makeBookingForm;
         private SummaryReport summaryReportWin;
+        private ExceptionReport exceptionReportWin;
 
         public Home()
         {
@@ -152,6 +153,22 @@ namespace HotelSystem
             }
         }
 
+        private void exceptionReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            if (exceptionReportWin == null || exceptionReportWin.IsDisposed)
+            {
+                exceptionReportWin = new ExceptionReport();
+                exceptionReportWin.WindowState = FormWindowState.Maximized;
+                exceptionReportWin.MdiParent = this;
+                exceptionReportWin.Show();
+                exceptionReportWin.BringToFront();
+            }
+            else
+            {
+                exceptionReportWin.BringToFront(); // just focus the existing one
+            }
+        }
 
         #endregion
         // Add this method to your Home class
@@ -163,4 +180,6 @@ namespace HotelSystem
 
         
     }
+
+
 }

@@ -144,6 +144,7 @@
             this.exceptionReportToolStripMenuItem.Name = "exceptionReportToolStripMenuItem";
             this.exceptionReportToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
             this.exceptionReportToolStripMenuItem.Text = "Exception Report";
+            this.exceptionReportToolStripMenuItem.Click += new System.EventHandler(this.exceptionReportToolStripMenuItem_Click);
             // 
             // Home
             // 
