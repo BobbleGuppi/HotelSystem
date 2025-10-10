@@ -21,6 +21,8 @@ namespace HotelSystem.View
         private ReservationController reservationController;
         private GuestController guestController;
         private GuestAccountController guestAccountController;
+        private PaymentController paymentController;
+        
 
         public MakeBooking()
         {
@@ -220,54 +222,37 @@ namespace HotelSystem.View
             return "GA" + sum;
         }
 
-        private bool ValidateDates(DateTime arrival, DateTime departure)
+        private string GeneratePaymentID()
         {
-            // Check if arrival is in the past
-            if (arrival.Date < DateTime.Today)
-            {
-                MessageBox.Show("Arrival date cannot be in the past.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
+            int randomPart = rand.Next(10, 100); // 3-digit random number
+            int timePart = DateTime.Now.Millisecond; // changes every millisecond
+            int sum = randomPart + timePart; // simple math sum
 
-            // Check if departure is before or the same as arrival
-            if (departure <= arrival)
-            {
-                MessageBox.Show("Departure date must be after the arrival date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            // Check if booking is made at least 2 days in advance
-            if ((arrival - DateTime.Today).TotalDays < 2)
-            {
-                MessageBox.Show("Bookings must be made at least 2 days in advance.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            // Check if both arrival and departure are in December
-            if (arrival.Month != 12 || departure.Month != 12)
-            {
-                MessageBox.Show("Bookings can only be made for December.", "Invalid Month", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            // All checks passed
-            return true;
+            return "PY" + sum;
         }
 
 
-        #endregion
 
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
+            string type = "Card";
 
             string reservationId = "R" + new Random().Next(1000, 9999);
 
             string guestId = guest.GuestID;
+            string guestAccId = guest.GuestAccount;
             double totalPrice = 0.0;
             bool depositPaid = false;
 
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
             reservation.calculateTotalPrice(arrivalDate, departureDate);
+
+            if (reservation.DepositPaid == true)
+            {
+                string paymentID = GeneratePaymentID();
+                Payment payment = new Payment(paymentID, guestId, totalPrice, type, DateTime.Now);
+                guestAccount.makeDeposit(paymentID);
+            }
 
             MessageBox.Show($"Total price for stay: R{reservation.totalPrice}", "Total Price");
             try

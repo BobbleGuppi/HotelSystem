@@ -39,7 +39,12 @@
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.summaryReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exceptionReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.titlePanel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
+            this.titlePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -57,7 +62,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(771, 44);
+            this.menuStrip1.Size = new System.Drawing.Size(1224, 44);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -136,6 +141,7 @@
             this.summaryReportToolStripMenuItem.Name = "summaryReportToolStripMenuItem";
             this.summaryReportToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
             this.summaryReportToolStripMenuItem.Text = "Summary Report";
+            this.summaryReportToolStripMenuItem.Click += new System.EventHandler(this.summaryReportToolStripMenuItem_Click);
             // 
             // exceptionReportToolStripMenuItem
             // 
@@ -143,12 +149,45 @@
             this.exceptionReportToolStripMenuItem.Name = "exceptionReportToolStripMenuItem";
             this.exceptionReportToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
             this.exceptionReportToolStripMenuItem.Text = "Exception Report";
+            this.exceptionReportToolStripMenuItem.Click += new System.EventHandler(this.exceptionReportToolStripMenuItem_Click);
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.titleLabel.Font = new System.Drawing.Font("Georgia", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.CadetBlue;
+            this.titleLabel.Location = new System.Drawing.Point(29, 20);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(648, 144);
+            this.titleLabel.TabIndex = 9;
+            this.titleLabel.Text = "@Phumla Kamnandi \r\n               Hotel\r\n";
+            // 
+            // titlePanel
+            // 
+            this.titlePanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.titlePanel.Controls.Add(this.pictureBox1);
+            this.titlePanel.Controls.Add(this.titleLabel);
+            this.titlePanel.Location = new System.Drawing.Point(256, 245);
+            this.titlePanel.Name = "titlePanel";
+            this.titlePanel.Size = new System.Drawing.Size(713, 179);
+            this.titlePanel.TabIndex = 10;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(439, 101);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(85, 63);
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 420);
+            this.ClientSize = new System.Drawing.Size(1224, 436);
+            this.Controls.Add(this.titlePanel);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -161,6 +200,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.titlePanel.ResumeLayout(false);
+            this.titlePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,6 +219,9 @@
         private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem summaryReportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exceptionReportToolStripMenuItem;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Panel titlePanel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
