@@ -95,5 +95,10 @@ namespace HotelSystem.View
         {
 
         }
+
+        private void dataPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

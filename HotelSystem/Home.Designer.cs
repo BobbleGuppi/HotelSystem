@@ -132,23 +132,23 @@
             this.exceptionReportToolStripMenuItem});
             this.reportsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(73, 40);
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(122, 40);
             this.reportsToolStripMenuItem.Text = "Reports";
             // 
             // summaryReportToolStripMenuItem
             // 
             this.summaryReportToolStripMenuItem.BackColor = System.Drawing.Color.CadetBlue;
             this.summaryReportToolStripMenuItem.Name = "summaryReportToolStripMenuItem";
-            this.summaryReportToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
-            this.summaryReportToolStripMenuItem.Text = "Summary Report";
+            this.summaryReportToolStripMenuItem.Size = new System.Drawing.Size(203, 24);
+            this.summaryReportToolStripMenuItem.Text = "Occupancy Report";
             this.summaryReportToolStripMenuItem.Click += new System.EventHandler(this.summaryReportToolStripMenuItem_Click);
             // 
             // exceptionReportToolStripMenuItem
             // 
             this.exceptionReportToolStripMenuItem.BackColor = System.Drawing.Color.CadetBlue;
             this.exceptionReportToolStripMenuItem.Name = "exceptionReportToolStripMenuItem";
-            this.exceptionReportToolStripMenuItem.Size = new System.Drawing.Size(195, 24);
-            this.exceptionReportToolStripMenuItem.Text = "Exception Report";
+            this.exceptionReportToolStripMenuItem.Size = new System.Drawing.Size(219, 24);
+            this.exceptionReportToolStripMenuItem.Text = "Guest Loyalty Report";
             this.exceptionReportToolStripMenuItem.Click += new System.EventHandler(this.exceptionReportToolStripMenuItem_Click);
             // 
             // titleLabel

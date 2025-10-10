@@ -15,103 +15,65 @@ namespace HotelSystem.View
     public partial class LoyaltyReport : Form
     {
         #region Fields
-        private PaymentController paymentController = new PaymentController();
+        private ReservationController reservationController;
         #endregion
 
         #region Constructor
         public LoyaltyReport()
         {
             InitializeComponent();
-            paymentController = new PaymentController();
+            reservationController = new ReservationController();
+            dataPanel.Visible = false;
 
         }
         #endregion
 
         #region Generate Report Methods
-
         private void GenerateButton_Click(object sender, EventArgs e)
         {
             DateTime startDate = startDatePicker.Value.Date;
             DateTime endDate = endDatePicker.Value.Date;
 
-            // Filter payments by date range and exclude FullyPaid
-            var filteredPayments = paymentController.AllPayments
-                .Where(p => p.DatePaid.Date >= startDate && p.DatePaid.Date <= endDate)
-                .Where(p => !string.Equals(p.PaymentType, "Paid", StringComparison.OrdinalIgnoreCase))
-                .ToList();
-
-            if (filteredPayments.Count == 0)
+            if (endDate < startDate)
             {
-                MessageBox.Show("No payments found for the selected date range (excluding FullyPaid).");
+                MessageBox.Show("End date cannot be earlier than start date.");
                 return;
             }
 
-            // Group by payment status (Deposit / Paid / Unpaid)
-            var groupedStatus = filteredPayments
-                .GroupBy(p => p.PaymentType)
-                .Select(g => new
-                {
-                    Status = g.Key,
-                    Count = g.Count()
-                })
-                .ToList();
+            var loyalGuests = reservationController.GetLoyalGuestsByDateRange(startDate, endDate);
 
-            // Normalize to percentages out of 100
-            double totalCount = groupedStatus.Sum(g => g.Count);
-
-            var percentageData = groupedStatus
-                .Select(g => new PaymentPercentage
-                {
-                    Status = g.Status,
-                    Percentage = Math.Round((g.Count / totalCount) * 100, 2)
-                })
-                .ToList();
-
-            DisplayPieChart(percentageData);
-
-        }
-
-        /*
-         * Helper Method
-         * 
-         */
-        public class PaymentPercentage
-        {
-            public string Status { get; set; }
-            public double Percentage { get; set; }
-        }
-
-        private void DisplayPieChart(List<PaymentPercentage> percentageData)
-        {
-            paymentChart.Series.Clear();
-            paymentChart.Titles.Clear();
-            paymentChart.Titles.Add("Payment Status Distribution");
-
-            Series series = new Series
+            if (loyalGuests.Count == 0)
             {
-                Name = "PaymentStatus",
-                ChartType = SeriesChartType.Pie,
-                IsValueShownAsLabel = true
-            };
-
-            foreach (var item in percentageData)
-            {
-                // Add data points
-                DataPoint point = new DataPoint(0, item.Percentage);
-                point.AxisLabel = item.Status; // Legend label
-                point.LegendText = $"{item.Status}"; // Legend text
-                point.Label = $"{item.Status}: {item.Percentage}%"; // On-chart label
-                series.Points.Add(point);
+                MessageBox.Show("No loyal guests found for the selected date range.");
+                loyaltyGridView.DataSource = null;
+                return;
             }
 
-            paymentChart.Series.Add(series);
+            // Build table for grid
+            DataTable table = new DataTable();
+            table.Columns.Add("Guest ID");
+            table.Columns.Add("Reservation Count");
 
-            // Beautify chart
-            paymentChart.ChartAreas[0].Area3DStyle.Enable3D = true;
-            paymentChart.Legends[0].Enabled = true;
-            paymentChart.Legends[0].Docking = Docking.Right;
+            foreach (var entry in loyalGuests)
+            {
+                table.Rows.Add(entry.Key, entry.Value);
+            }
 
+            loyaltyGridView.DataSource = table;
+
+            // Optional chart visualization
+            chart.Series.Clear();
+            var series = new System.Windows.Forms.DataVisualization.Charting.Series("Loyal Guests");
+            series.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+
+            foreach (var entry in loyalGuests.OrderByDescending(x => x.Value))
+            {
+                series.Points.AddXY(entry.Key, entry.Value);
+            }
+
+            chart.Series.Add(series);
             dataPanel.Visible = true;
+            reportCreatedDate.Text = "Report Created on: " + DateTime.Today;
         }
 
         #endregion

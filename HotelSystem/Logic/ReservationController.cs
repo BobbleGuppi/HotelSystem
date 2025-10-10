@@ -146,8 +146,32 @@ namespace HotelSystem.Logic
         }
 
 
-        
+
         #endregion
+
+        #region Loyalty Report Methods (Date Range)
+        public Dictionary<string, int> GetLoyalGuestsByDateRange(DateTime startDate, DateTime endDate)
+        {
+            // Filter reservations within the selected date range
+            var filteredReservations = reservations
+                .Where(r =>
+                    r.CheckInDate <= endDate &&  // check-in before range end
+                    r.CheckOutDate >= startDate  // check-out after range start
+                )
+                .ToList();
+
+            // Group by GuestID and count how many reservations each guest has in that range
+            var loyaltyGroups = filteredReservations
+                .GroupBy(r => r.GuestID)
+                .Select(g => new { GuestID = g.Key, ReservationCount = g.Count() })
+                .Where(x => x.ReservationCount > 1) // guests with more than one reservation in the range
+                .ToDictionary(x => x.GuestID, x => x.ReservationCount);
+
+            return loyaltyGroups;
+        }
+        #endregion
+
+
 
 
     }
