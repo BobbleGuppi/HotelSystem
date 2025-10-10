@@ -15,6 +15,7 @@ namespace HotelSystem.Logic
         private DateTime checkInDate; //we will have to set a standard time
         private DateTime checkOutDate;
         public double totalPrice;
+        private string roomID;
         private bool depositPaid = false;
         
 

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OccupancyReport));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
             this.endDatePicker = new System.Windows.Forms.DateTimePicker();
             this.promptLabel = new System.Windows.Forms.Label();
@@ -41,11 +41,11 @@
             this.promptPanel = new System.Windows.Forms.Panel();
             this.GenerateButton = new System.Windows.Forms.Button();
             this.dataPanel = new System.Windows.Forms.Panel();
-            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.occupancyLabel = new System.Windows.Forms.Label();
-            this.averageTextBox = new System.Windows.Forms.RichTextBox();
-            this.overviewLabel = new System.Windows.Forms.Label();
             this.reportCreatedDate = new System.Windows.Forms.Label();
+            this.overviewLabel = new System.Windows.Forms.Label();
+            this.averageTextBox = new System.Windows.Forms.RichTextBox();
+            this.occupancyLabel = new System.Windows.Forms.Label();
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tableLayoutPanel1.SuspendLayout();
             this.promptPanel.SuspendLayout();
             this.dataPanel.SuspendLayout();
@@ -55,7 +55,7 @@
             // startDatePicker
             // 
             this.startDatePicker.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.startDatePicker.Location = new System.Drawing.Point(474, 3);
+            this.startDatePicker.Location = new System.Drawing.Point(473, 3);
             this.startDatePicker.Name = "startDatePicker";
             this.startDatePicker.Size = new System.Drawing.Size(200, 20);
             this.startDatePicker.TabIndex = 0;
@@ -63,7 +63,7 @@
             // endDatePicker
             // 
             this.endDatePicker.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.endDatePicker.Location = new System.Drawing.Point(474, 46);
+            this.endDatePicker.Location = new System.Drawing.Point(473, 46);
             this.endDatePicker.Name = "endDatePicker";
             this.endDatePicker.Size = new System.Drawing.Size(200, 20);
             this.endDatePicker.TabIndex = 1;
@@ -88,7 +88,7 @@
             this.startDateLabel.Font = new System.Drawing.Font("Eras Demi ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startDateLabel.Location = new System.Drawing.Point(3, 0);
             this.startDateLabel.Name = "startDateLabel";
-            this.startDateLabel.Size = new System.Drawing.Size(375, 19);
+            this.startDateLabel.Size = new System.Drawing.Size(374, 19);
             this.startDateLabel.TabIndex = 3;
             this.startDateLabel.Text = "Start Date:";
             // 
@@ -101,7 +101,7 @@
             this.endDateLabel.Font = new System.Drawing.Font("Eras Demi ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endDateLabel.Location = new System.Drawing.Point(3, 43);
             this.endDateLabel.Name = "endDateLabel";
-            this.endDateLabel.Size = new System.Drawing.Size(375, 19);
+            this.endDateLabel.Size = new System.Drawing.Size(374, 19);
             this.endDateLabel.TabIndex = 4;
             this.endDateLabel.Text = "End Date:";
             // 
@@ -158,46 +158,18 @@
             this.dataPanel.Name = "dataPanel";
             this.dataPanel.Size = new System.Drawing.Size(1286, 432);
             this.dataPanel.TabIndex = 7;
+            this.dataPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.dataPanel_Paint);
             // 
-            // chart
+            // reportCreatedDate
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart.Legends.Add(legend3);
-            this.chart.Location = new System.Drawing.Point(28, 21);
-            this.chart.Name = "chart";
-            this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart.Series.Add(series3);
-            this.chart.Size = new System.Drawing.Size(711, 390);
-            this.chart.TabIndex = 5;
-            this.chart.Text = "chart";
-            this.chart.Click += new System.EventHandler(this.chart_Click);
-            // 
-            // occupancyLabel
-            // 
-            this.occupancyLabel.AutoSize = true;
-            this.occupancyLabel.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.occupancyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.occupancyLabel.Location = new System.Drawing.Point(796, 196);
-            this.occupancyLabel.Name = "occupancyLabel";
-            this.occupancyLabel.Size = new System.Drawing.Size(252, 24);
-            this.occupancyLabel.TabIndex = 10;
-            this.occupancyLabel.Text = "Overall Average Occupancy:";
-            // 
-            // averageTextBox
-            // 
-            this.averageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.averageTextBox.Location = new System.Drawing.Point(1087, 192);
-            this.averageTextBox.Name = "averageTextBox";
-            this.averageTextBox.ReadOnly = true;
-            this.averageTextBox.Size = new System.Drawing.Size(86, 39);
-            this.averageTextBox.TabIndex = 9;
-            this.averageTextBox.Text = "";
-            this.averageTextBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.reportCreatedDate.AutoSize = true;
+            this.reportCreatedDate.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.reportCreatedDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportCreatedDate.Location = new System.Drawing.Point(845, 391);
+            this.reportCreatedDate.Name = "reportCreatedDate";
+            this.reportCreatedDate.Size = new System.Drawing.Size(35, 20);
+            this.reportCreatedDate.TabIndex = 13;
+            this.reportCreatedDate.Text = "text";
             // 
             // overviewLabel
             // 
@@ -211,18 +183,47 @@
             this.overviewLabel.Text = resources.GetString("overviewLabel.Text");
             this.overviewLabel.Click += new System.EventHandler(this.overviewLabel_Click);
             // 
-            // reportCreatedDate
+            // averageTextBox
             // 
-            this.reportCreatedDate.AutoSize = true;
-            this.reportCreatedDate.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.reportCreatedDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportCreatedDate.Location = new System.Drawing.Point(845, 391);
-            this.reportCreatedDate.Name = "reportCreatedDate";
-            this.reportCreatedDate.Size = new System.Drawing.Size(35, 20);
-            this.reportCreatedDate.TabIndex = 13;
-            this.reportCreatedDate.Text = "text";
+            this.averageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averageTextBox.Location = new System.Drawing.Point(1087, 192);
+            this.averageTextBox.Name = "averageTextBox";
+            this.averageTextBox.ReadOnly = true;
+            this.averageTextBox.Size = new System.Drawing.Size(86, 39);
+            this.averageTextBox.TabIndex = 9;
+            this.averageTextBox.Text = "";
+            this.averageTextBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
-            // SummaryReport
+            // occupancyLabel
+            // 
+            this.occupancyLabel.AutoSize = true;
+            this.occupancyLabel.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.occupancyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.occupancyLabel.Location = new System.Drawing.Point(796, 196);
+            this.occupancyLabel.Name = "occupancyLabel";
+            this.occupancyLabel.Size = new System.Drawing.Size(252, 24);
+            this.occupancyLabel.TabIndex = 10;
+            this.occupancyLabel.Text = "Overall Average Occupancy:";
+            // 
+            // chart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
+            this.chart.Location = new System.Drawing.Point(28, 21);
+            this.chart.Name = "chart";
+            this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart.Series.Add(series1);
+            this.chart.Size = new System.Drawing.Size(711, 390);
+            this.chart.TabIndex = 5;
+            this.chart.Text = "chart";
+            this.chart.Click += new System.EventHandler(this.chart_Click);
+            // 
+            // OccupancyReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -230,7 +231,7 @@
             this.ClientSize = new System.Drawing.Size(1310, 634);
             this.Controls.Add(this.dataPanel);
             this.Controls.Add(this.promptPanel);
-            this.Name = "SummaryReport";
+            this.Name = "OccupancyReport";
             this.Text = "Occupancy Rate Summary";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
