@@ -73,15 +73,16 @@ namespace HotelSystem.View
                 }
                 
 
-                try
-                {
+                
+                    
                     foundGuest = guestController.findGuest(foundReservation.GuestID);
-                }catch
-                {
-                    MessageBox.Show("Guest could not be found for this reservation.",
-                        "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                    if (foundGuest == null)
+                    {
+                        MessageBox.Show("Guest could not be found for this reservation.",
+                       "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                
                 
                 
 
@@ -180,6 +181,7 @@ namespace HotelSystem.View
             goToHomeCancelButton.Visible = false;
 
             richTextBox1.Visible = true;
+            richTextBox1.Font = new Font("Segoe UI", 24, FontStyle.Regular);
             richTextBox1.Text =
                 $"Guest booking found!\n\nDo you wish to proceed to cancel the existing guest booking?\n\n" +
                 $"Full name: {foundGuest.Name}\n" +
@@ -199,6 +201,7 @@ namespace HotelSystem.View
         private void ShowScreen2()
         {
             richTextBox1.Visible = true;
+            richTextBox1.Font = new Font("Segoe UI", 24, FontStyle.Regular);
             richTextBox1.Text =
                 $"\n\nGuest booking for ({foundReservation.ReservationID}) will be cancelled.\n" +
                 $"This action cannot be undone.\n\nAre you sure you want to cancel this booking?";
@@ -213,6 +216,7 @@ namespace HotelSystem.View
 
         private void ShowScreen3()
         {
+            richTextBox1.Font = new Font("Segoe UI", 24, FontStyle.Regular);
             richTextBox1.Text =
                 $"\n\nGuest booking ({foundReservation.ReservationID}) has been successfully cancelled!\n\n" +
                 $"Hotel occupancy levels have been adjusted accordingly.";

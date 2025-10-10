@@ -22,7 +22,13 @@ namespace HotelSystem.View
         private GuestController guestController;
         private GuestAccountController guestAccountController;
         private PaymentController paymentController;
-        
+
+        public enum DepositChecker
+        {
+            Unpaid = 0,
+            Paid = 1
+        }
+        DepositChecker depositChecker;
 
         public MakeBooking()
         {
@@ -231,12 +237,17 @@ namespace HotelSystem.View
             return "PY" + sum;
         }
 
+       public void DepositChecking()
+        {
+            int randomValue = rand.Next(0, 2);
+            depositChecker = (DepositChecker)randomValue;
+        }
+
 
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
-            string type = "Card";
-
-            string reservationId = "R" + new Random().Next(1000, 9999);
+            int diff = departureDate.Day - arrivalDate.Day;
+            string reservationId = ""+fNametxt.Text[0]+ ""+lNametxt.Text[0]+"12"+ arrivalDate.Day+ "-"+ diff;
 
             string guestId = guest.GuestID;
             string guestAccId = guest.GuestAccount;
@@ -246,14 +257,15 @@ namespace HotelSystem.View
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
             reservation.calculateTotalPrice(arrivalDate, departureDate);
 
-            if (reservation.DepositPaid == true)
+            if (depositChecker == DepositChecker.Paid)
             {
+                string paymentType = "Deposit";
                 string paymentID = GeneratePaymentID();
-                Payment payment = new Payment(paymentID, guestId, totalPrice, type, DateTime.Now);
+                
                 guestAccount.makeDeposit(paymentID);
-            }
+            } 
 
-            MessageBox.Show($"Total price for stay: R{reservation.totalPrice}", "Total Price");
+                MessageBox.Show($"Total price for stay: R{reservation.totalPrice}", "Total Price");
             try
             {
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
@@ -267,7 +279,7 @@ namespace HotelSystem.View
                 {
                     MessageBox.Show("Reservation successfully created!");
                     reservationController.AddReservation(reservation);
-
+                    this.Close();
                 }
             }
             catch (Exception ex)

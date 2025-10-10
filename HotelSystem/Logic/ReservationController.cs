@@ -13,7 +13,14 @@ namespace HotelSystem.Logic
         #region data members
         public ReservationDB reservationDB;
         protected Collection<Reservation> reservations;
-        protected List<Room> rooms;
+        protected List<Room> rooms = new List<Room>
+            {
+               new Room("R001"),
+                new Room("R002"),
+                new Room("R003"),
+                new Room("R004"),
+                new Room("R005")
+            };
         protected string currentRoom;
         #endregion
 
@@ -31,14 +38,7 @@ namespace HotelSystem.Logic
         {
             reservationDB = new ReservationDB();
             reservations = reservationDB.AllReservations;   
-            rooms = new List<Room>
-            {
-                new Room("R001"),
-                new Room("R002"),
-                new Room("R003"),
-                new Room("R004"),
-                new Room("R005")
-            };
+             
         }
 
         #endregion
