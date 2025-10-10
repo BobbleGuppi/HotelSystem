@@ -22,6 +22,8 @@ namespace HotelSystem.View
         private GuestController guestController;
         private GuestAccountController guestAccountController;
         private PaymentController paymentController;
+        private string displayGuest;
+
 
         public enum DepositChecker
         {
@@ -50,10 +52,10 @@ namespace HotelSystem.View
         {
             arrivalDate = arrivalDateTP.Value;
             departureDate = departureDateTP.Value;
-            //if (!ValidateDates(arrivalDate, departureDate))
-            //{
-            //    return; // Stop if invalid
-            //}
+            if (!ValidateDates(arrivalDate, departureDate))
+            {
+                return; // Stop if invalid
+            }
 
             bool availability = reservationController.RoomAvailable(arrivalDate, departureDate);
             MessageBox.Show($"Checking room availability from {arrivalDate.ToShortDateString()} to {departureDate.ToShortDateString()} ");
@@ -89,9 +91,6 @@ namespace HotelSystem.View
                 guestpnl.Visible = true;
                 CenterPanel(guestpnl);
                 Rersevationpnl.Visible = false;
-
-                MessageBox.Show("Great! Let's continue with your guest details.",
-                    "Proceeding", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -141,14 +140,11 @@ namespace HotelSystem.View
                    bool savedaccount= guestAccountController.FinalizeChanges(newGuestAccount);
                 if (!savedaccount)
                     {
-                        MessageBox.Show("Failed to save new guest account.");
                         return;
                     }
-                    else {  MessageBox.Show("New guest account added successfully!"); }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Failed to add new guest account: " + ex.Message);
                     return;
                 }
 
@@ -166,7 +162,7 @@ namespace HotelSystem.View
                     }
                     else
                     {
-                        MessageBox.Show("New guest and guest account added successfully!");
+                        MessageBox.Show("New guest added successfully!");
                         CreateReservation(newGuest, newGuestAccount);
                     }
                 }
@@ -261,6 +257,7 @@ namespace HotelSystem.View
             {
                 
                 string paymentID = GeneratePaymentID();
+                Payment payment = new Payment(paymentID, guestId, totalPrice,paymentType, DateTime.Now);
                 
                 guestAccount.makeDeposit(paymentID);
             } 
@@ -277,7 +274,20 @@ namespace HotelSystem.View
                 }
                 else
                 {
-                    MessageBox.Show("Reservation successfully created!");
+                    MessageBox.Show(
+    "✅ Reservation Successful!\n\n" +
+    "Guest Details\n" +
+    "-----------------------------\n" +
+    guest.displayInfo() + "\n\n" +
+    "Reservation Details\n" +
+    "-----------------------------\n" +
+    reservation.reservationDetails() + "\n\n" +
+    "Thank you for booking with Phumla Kamnandi Hotels! 🌿",
+    "Reservation Confirmed",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Information
+);
+
                     reservationController.AddReservation(reservation);
                     this.Close();
                 }
@@ -286,6 +296,40 @@ namespace HotelSystem.View
             {
                 MessageBox.Show("Failed to create reservation: " + ex.Message);
             }
+        }
+
+        private bool ValidateDates(DateTime arrival, DateTime departure)
+        {
+            // Check if arrival is in the past
+            if (arrival.Date < DateTime.Today)
+            {
+                MessageBox.Show("Arrival date cannot be in the past.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Check if departure is before or the same as arrival
+            if (departure <= arrival)
+            {
+                MessageBox.Show("Departure date must be after the arrival date.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Check if booking is made at least 2 days in advance
+            if ((arrival - DateTime.Today).TotalDays < 2)
+            {
+                MessageBox.Show("Bookings must be made at least 2 days in advance.", "Invalid Date", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // Check if both arrival and departure are in December
+            if (arrival.Month != 12 || departure.Month != 12)
+            {
+                MessageBox.Show("Bookings can only be made for December.", "Invalid Month", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            // All checks passed
+            return true;
         }
         #endregion
         private void Rersevationpnl_Paint(object sender, PaintEventArgs e)

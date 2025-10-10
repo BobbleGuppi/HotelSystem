@@ -1,9 +1,4 @@
 ﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelSystem.Logic
 {
@@ -11,16 +6,17 @@ namespace HotelSystem.Logic
     {
         #region Fields
         private string guestID;
-        private string guestAccountID; // changed GuestAccount to a string for database purposes
+        private string guestAccountID;
         #endregion
 
         #region Property Methods
         public string GuestID { get { return guestID; } set { guestID = value; } }
-        public string GuestAccount { get { return guestAccountID; } set { guestAccountID= value; } }
+        public string GuestAccount { get { return guestAccountID; } set { guestAccountID = value; } }
         #endregion
 
         #region Constructor
-        public Guest(string ID, string name, string phone, string address, string guestID, string guestAccount) : base(ID, name, phone, address)
+        public Guest(string ID, string name, string phone, string address, string guestID, string guestAccount)
+            : base(ID, name, phone, address)
         {
             this.guestID = guestID;
             this.guestAccountID = guestAccount;
@@ -28,12 +24,11 @@ namespace HotelSystem.Logic
         #endregion
 
         #region Methods
-        public void generateID()
+        public string displayInfo()
         {
-            Random random = new Random();
-            int guestId = random.Next(100, 1000);
-            guestID = "G" + guestId.ToString();
+            return $"Full Name: {Name}\nPhone: {Phone}\nAddress: {Address}\nID: {ID}\nGuest Account: {GuestAccount}";
         }
         #endregion
     }
 }
+
