@@ -34,6 +34,11 @@ namespace HotelSystem.Logic
             int guestId = random.Next(100, 1000);
             guestID = "G" + guestId.ToString();
         }
+
+        public virtual string displayInfo()
+        {
+            return "$Full name:{name}\tAddress:{addresss}\tID:{id}";
+        }
         #endregion
     }
 }
