@@ -282,6 +282,8 @@ namespace HotelSystem.View
                 else
                 {
                     MessageBox.Show("Reservation successfully created!");
+                    reservationController.AddReservation(reservation);
+
                 }
             }
             catch (Exception ex)

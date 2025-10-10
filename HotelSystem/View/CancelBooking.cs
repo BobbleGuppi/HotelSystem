@@ -75,7 +75,7 @@ namespace HotelSystem.View
 
                 try
                 {
-                    foundGuest = guestController.find(foundReservation.GuestID);
+                    foundGuest = guestController.findGuest(foundReservation.GuestID);
                 }catch
                 {
                     MessageBox.Show("Guest could not be found for this reservation.",
@@ -223,6 +223,11 @@ namespace HotelSystem.View
             doneButton.Text = "Done";
 
             screen = 3;
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
