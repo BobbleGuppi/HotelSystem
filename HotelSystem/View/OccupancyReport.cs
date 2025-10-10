@@ -13,7 +13,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace HotelSystem.View
 {
-    public partial class SummaryReport : Form
+    public partial class OccupancyReport : Form
     {
 
         #region Fields
@@ -21,16 +21,12 @@ namespace HotelSystem.View
         #endregion 
 
         #region Constructor
-        public SummaryReport()
+        public OccupancyReport()
         {
             InitializeComponent();
             reservationController = new ReservationController(); // create new controller
 
             dataPanel.Visible = false;
-            overviewLabel.Visible = true;
-            occupancyLabel.Visible = true;
-            averageTextBox.Visible = true;
-            reportCreatedDate.Visible = true;
         }
         #endregion
 
@@ -76,15 +72,9 @@ namespace HotelSystem.View
             averageTextBox.Text = $"{avgOccupancy:F2}%";
             reportCreatedDate.Text = "Report Created on: " + DateTime.Today;
 
-            overviewLabel.Visible = true;
-            occupancyLabel.Visible = true;
-            averageTextBox.Visible = true;
-            reportCreatedDate.Visible = true;
-
             dataPanel.Visible = true;
         }
         #endregion
-
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -97,6 +87,11 @@ namespace HotelSystem.View
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void overviewLabel_Click(object sender, EventArgs e)
         {
 
         }

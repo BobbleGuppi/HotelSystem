@@ -109,11 +109,11 @@
     <Compile Include="View\BookingEnquiry.Designer.cs">
       <DependentUpon>BookingEnquiry.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ExceptionReport.cs">
+    <Compile Include="View\LoyaltyReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ExceptionReport.Designer.cs">
-      <DependentUpon>ExceptionReport.cs</DependentUpon>
+    <Compile Include="View\LoyaltyReport.Designer.cs">
+      <DependentUpon>LoyaltyReport.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
@@ -127,11 +127,11 @@
     <Compile Include="View\MakeBooking.Designer.cs">
       <DependentUpon>MakeBooking.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SummaryReport.cs">
+    <Compile Include="View\OccupancyReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\SummaryReport.Designer.cs">
-      <DependentUpon>SummaryReport.cs</DependentUpon>
+    <Compile Include="View\OccupancyReport.Designer.cs">
+      <DependentUpon>OccupancyReport.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -150,8 +150,8 @@
     <EmbeddedResource Include="View\ChangeBooking.resx">
       <DependentUpon>ChangeBooking.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ExceptionReport.resx">
-      <DependentUpon>ExceptionReport.cs</DependentUpon>
+    <EmbeddedResource Include="View\LoyaltyReport.resx">
+      <DependentUpon>LoyaltyReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -159,8 +159,8 @@
     <EmbeddedResource Include="View\MakeBooking.resx">
       <DependentUpon>MakeBooking.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\SummaryReport.resx">
-      <DependentUpon>SummaryReport.cs</DependentUpon>
+    <EmbeddedResource Include="View\OccupancyReport.resx">
+      <DependentUpon>OccupancyReport.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

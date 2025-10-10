@@ -12,14 +12,14 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace HotelSystem.View
 {
-    public partial class ExceptionReport : Form
+    public partial class LoyaltyReport : Form
     {
         #region Fields
         private PaymentController paymentController = new PaymentController();
         #endregion
 
         #region Constructor
-        public ExceptionReport()
+        public LoyaltyReport()
         {
             InitializeComponent();
             paymentController = new PaymentController();
@@ -110,6 +110,8 @@ namespace HotelSystem.View
             paymentChart.ChartAreas[0].Area3DStyle.Enable3D = true;
             paymentChart.Legends[0].Enabled = true;
             paymentChart.Legends[0].Docking = Docking.Right;
+
+            dataPanel.Visible = true;
         }
 
         #endregion

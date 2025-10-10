@@ -1,6 +1,6 @@
 ﻿namespace HotelSystem.View
 {
-    partial class ExceptionReport
+    partial class LoyaltyReport
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.promptPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.GenerateButton = new System.Windows.Forms.Button();
@@ -41,12 +41,12 @@
             this.startDateLabel = new System.Windows.Forms.Label();
             this.promptLabel = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.dataPanel = new System.Windows.Forms.Panel();
             this.paymentChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.promptPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.dataPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.paymentChart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -156,7 +156,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.dataPanel);
             this.panel1.Controls.Add(this.GenerateButton);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.label1);
@@ -166,28 +166,28 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // panel2
+            // dataPanel
             // 
-            this.panel2.Controls.Add(this.paymentChart);
-            this.panel2.Location = new System.Drawing.Point(0, 142);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1227, 400);
-            this.panel2.TabIndex = 10;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.dataPanel.Controls.Add(this.paymentChart);
+            this.dataPanel.Location = new System.Drawing.Point(0, 142);
+            this.dataPanel.Name = "dataPanel";
+            this.dataPanel.Size = new System.Drawing.Size(1227, 400);
+            this.dataPanel.TabIndex = 10;
+            this.dataPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // paymentChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.paymentChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.paymentChart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.paymentChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.paymentChart.Legends.Add(legend2);
             this.paymentChart.Location = new System.Drawing.Point(22, 26);
             this.paymentChart.Name = "paymentChart";
             this.paymentChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.paymentChart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.paymentChart.Series.Add(series2);
             this.paymentChart.Size = new System.Drawing.Size(742, 354);
             this.paymentChart.TabIndex = 0;
             this.paymentChart.Text = "chart1";
@@ -208,7 +208,7 @@
             this.tableLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.dataPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.paymentChart)).EndInit();
             this.ResumeLayout(false);
 
@@ -226,7 +226,7 @@
         private System.Windows.Forms.Label promptLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel dataPanel;
         private System.Windows.Forms.DataVisualization.Charting.Chart paymentChart;
     }
 }
