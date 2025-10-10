@@ -128,6 +128,11 @@ namespace HotelSystem.View
         {
 
         }
+
+        private void promptPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 
