@@ -50,6 +50,7 @@
             this.lblname = new System.Windows.Forms.Label();
             this.lblfname = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.prepagebtn = new System.Windows.Forms.Button();
             this.Rersevationpnl.SuspendLayout();
             this.guestpnl.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +80,7 @@
             this.cancelbtn.TabIndex = 9;
             this.cancelbtn.Text = "Cancel";
             this.cancelbtn.UseVisualStyleBackColor = true;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
             // 
             // confirmRbtn
             // 
@@ -149,6 +151,7 @@
             // 
             // guestpnl
             // 
+            this.guestpnl.Controls.Add(this.prepagebtn);
             this.guestpnl.Controls.Add(this.confirmGbtn);
             this.guestpnl.Controls.Add(this.addresstxt);
             this.guestpnl.Controls.Add(this.lNametxt);
@@ -170,9 +173,9 @@
             // 
             this.confirmGbtn.BackColor = System.Drawing.Color.LightBlue;
             this.confirmGbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmGbtn.Location = new System.Drawing.Point(158, 339);
+            this.confirmGbtn.Location = new System.Drawing.Point(298, 329);
             this.confirmGbtn.Name = "confirmGbtn";
-            this.confirmGbtn.Size = new System.Drawing.Size(143, 23);
+            this.confirmGbtn.Size = new System.Drawing.Size(143, 33);
             this.confirmGbtn.TabIndex = 13;
             this.confirmGbtn.Text = "Confirm Guest";
             this.confirmGbtn.UseVisualStyleBackColor = false;
@@ -274,6 +277,18 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Capture Guest Details:";
             // 
+            // prepagebtn
+            // 
+            this.prepagebtn.BackColor = System.Drawing.Color.LightBlue;
+            this.prepagebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.prepagebtn.Location = new System.Drawing.Point(66, 329);
+            this.prepagebtn.Name = "prepagebtn";
+            this.prepagebtn.Size = new System.Drawing.Size(143, 33);
+            this.prepagebtn.TabIndex = 14;
+            this.prepagebtn.Text = "Prevoius Page";
+            this.prepagebtn.UseVisualStyleBackColor = false;
+            this.prepagebtn.Click += new System.EventHandler(this.prepagebtn_Click);
+            // 
             // MakeBooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -317,5 +332,6 @@
         private System.Windows.Forms.TextBox phoneNotxt;
         private System.Windows.Forms.TextBox fNametxt;
         private System.Windows.Forms.Button confirmGbtn;
+        private System.Windows.Forms.Button prepagebtn;
     }
 }
