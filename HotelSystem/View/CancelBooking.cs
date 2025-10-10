@@ -152,7 +152,7 @@ namespace HotelSystem.View
             panel1.Width = this.ClientSize.Width;
             panel1.Height = this.ClientSize.Height;
 
-        }
+        } 
 
 
         private void ResetToScreen0()
