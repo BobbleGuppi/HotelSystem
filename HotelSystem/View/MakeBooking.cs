@@ -22,7 +22,8 @@ namespace HotelSystem.View
         private GuestController guestController;
         private GuestAccountController guestAccountController;
         private PaymentController paymentController;
-        
+        private string displayGuest;
+
 
         public MakeBooking()
         {
@@ -83,9 +84,6 @@ namespace HotelSystem.View
                 guestpnl.Visible = true;
                 CenterPanel(guestpnl);
                 Rersevationpnl.Visible = false;
-
-                MessageBox.Show("Great! Let's continue with your guest details.",
-                    "Proceeding", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -135,14 +133,11 @@ namespace HotelSystem.View
                    bool savedaccount= guestAccountController.FinalizeChanges(newGuestAccount);
                 if (!savedaccount)
                     {
-                        MessageBox.Show("Failed to save new guest account.");
                         return;
                     }
-                    else {  MessageBox.Show("New guest account added successfully!"); }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Failed to add new guest account: " + ex.Message);
                     return;
                 }
 
@@ -160,7 +155,7 @@ namespace HotelSystem.View
                     }
                     else
                     {
-                        MessageBox.Show("New guest and guest account added successfully!");
+                        MessageBox.Show("New guest added successfully!");
                         CreateReservation(newGuest, newGuestAccount);
                     }
                 }
@@ -247,8 +242,9 @@ namespace HotelSystem.View
 
             if (reservation.DepositPaid == true)
             {
+                string paymentType = "Deposit";
                 string paymentID = GeneratePaymentID();
-                Payment payment = new Payment(paymentID, guestId, totalPrice, type, DateTime.Now);
+                Payment payment = new Payment(paymentID, guestId, totalPrice,paymentType, DateTime.Now);
                 guestAccount.makeDeposit(paymentID);
             }
 
@@ -264,7 +260,7 @@ namespace HotelSystem.View
                 }
                 else
                 {
-                    MessageBox.Show("Reservation successfully created!");
+                    MessageBox.Show("Reservation successfully created!"+reservation.reservationDetails());
                     reservationController.AddReservation(reservation);
                     this.Close();
                 }
