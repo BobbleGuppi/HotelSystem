@@ -282,6 +282,7 @@ namespace HotelSystem.View
                 else
                 {
                     MessageBox.Show("Reservation successfully created!");
+                    this.Close();
                 }
             }
             catch (Exception ex)
