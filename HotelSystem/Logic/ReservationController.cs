@@ -154,8 +154,39 @@ namespace HotelSystem.Logic
         }
 
 
-        
+
         #endregion
+
+        #region Loyalty Report Methods (Date Range)
+        // Returns a summary: key = times booked (2..5 where 5 = 5 or more), value = number of guests
+        public Dictionary<int, int> GetLoyalCountsByDateRange(DateTime startDate, DateTime endDate)
+        {
+            // Filter reservations that overlap the date range
+            var filtered = reservations
+                .Where(r => r.CheckInDate <= endDate && r.CheckOutDate >= startDate);
+
+            // Count reservations per guest inside the filtered set
+            var countsByGuest = filtered
+                .GroupBy(r => r.GuestID)
+                .Select(g => new { GuestID = g.Key, Count = g.Count() })
+                .Where(x => x.Count >= 2) // only interested in guests with multiple reservations
+                .ToList();
+
+            // Prepare buckets 2,3,4,5 (5 means 5 or more)
+            var buckets = new Dictionary<int, int> { { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
+
+            foreach (var g in countsByGuest)
+            {
+                int bucket = (g.Count >= 5) ? 5 : g.Count; // clamp to 5
+                buckets[bucket] = buckets[bucket] + 1;
+            }
+
+            return buckets;
+        }
+
+        #endregion
+
+
 
 
     }

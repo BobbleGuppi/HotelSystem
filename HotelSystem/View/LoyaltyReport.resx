@@ -117,4 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="overviewLabel.Text" xml:space="preserve">
+    <value>* The Occupancy Summary Report provides a transparent and clear summary 
+of room occupancy within a selected data range. 
+
+* It calculates the percentage of rooms occupied versus 
+the total number of rooms available within the specified period. 
+
+* This is meant to illustrate the trends across different periods, 
+such as low, mid, and high seasons, and make informed decisions about how to price, 
+how to staff and to come up with marketing strategies. </value>
+  </data>
 </root>
