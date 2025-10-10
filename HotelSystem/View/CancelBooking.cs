@@ -73,15 +73,16 @@ namespace HotelSystem.View
                 }
                 
 
-                try
-                {
+                
+                    
                     foundGuest = guestController.findGuest(foundReservation.GuestID);
-                }catch
-                {
-                    MessageBox.Show("Guest could not be found for this reservation.",
-                        "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                    if (foundGuest == null)
+                    {
+                        MessageBox.Show("Guest could not be found for this reservation.",
+                       "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                
                 
                 
 
