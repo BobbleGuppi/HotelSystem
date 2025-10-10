@@ -33,7 +33,7 @@ namespace HotelSystem.View
 
         private void MakeBooking_Load(object sender, EventArgs e)
         {
-            Rersevationpnl.Visible = true;
+             Rersevationpnl.Visible = true;
             CenterPanel(Rersevationpnl);
             guestpnl.Visible = false;
         }
