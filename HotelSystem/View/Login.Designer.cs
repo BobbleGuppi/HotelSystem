@@ -57,12 +57,12 @@
             // 
             // logbtn
             // 
-            this.logbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logbtn.Location = new System.Drawing.Point(249, 353);
+            this.logbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logbtn.Location = new System.Drawing.Point(234, 353);
             this.logbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logbtn.Name = "logbtn";
             this.logbtn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.logbtn.Size = new System.Drawing.Size(145, 36);
+            this.logbtn.Size = new System.Drawing.Size(166, 47);
             this.logbtn.TabIndex = 5;
             this.logbtn.Text = "Log in";
             this.logbtn.UseVisualStyleBackColor = true;
@@ -70,41 +70,43 @@
             // 
             // passwordbtn
             // 
+            this.passwordbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordbtn.Location = new System.Drawing.Point(184, 266);
             this.passwordbtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.passwordbtn.Name = "passwordbtn";
-            this.passwordbtn.Size = new System.Drawing.Size(271, 22);
+            this.passwordbtn.Size = new System.Drawing.Size(271, 30);
             this.passwordbtn.TabIndex = 4;
             this.passwordbtn.Text = "phumla@hote1";
             // 
             // usernamebtn
             // 
+            this.usernamebtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernamebtn.Location = new System.Drawing.Point(184, 161);
             this.usernamebtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.usernamebtn.Name = "usernamebtn";
-            this.usernamebtn.Size = new System.Drawing.Size(271, 22);
+            this.usernamebtn.Size = new System.Drawing.Size(271, 30);
             this.usernamebtn.TabIndex = 3;
             this.usernamebtn.Text = "Strawberry";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label3.Location = new System.Drawing.Point(179, 210);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 25);
+            this.label3.Size = new System.Drawing.Size(135, 29);
             this.label3.TabIndex = 2;
             this.label3.Text = "Password:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label2.Location = new System.Drawing.Point(179, 116);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 25);
+            this.label2.Size = new System.Drawing.Size(139, 29);
             this.label2.TabIndex = 1;
             this.label2.Text = "Username:";
             // 
@@ -113,7 +115,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Eras Demi ITC", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(171, 28);
+            this.label1.Location = new System.Drawing.Point(242, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 37);
             this.label1.TabIndex = 0;
