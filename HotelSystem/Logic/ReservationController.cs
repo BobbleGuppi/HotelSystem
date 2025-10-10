@@ -118,6 +118,14 @@ namespace HotelSystem.Logic
             return false;
         }
 
+        public void AddReservation(Reservation reservation)
+        {
+            foreach(Room room in rooms)
+            {
+                room.AddReservation(reservation);
+            }
+        }
+
 
         #region Occupancy Report Methods
         public Dictionary<DateTime, double> CalculateDailyOccupancy(DateTime startDate, DateTime endDate)
