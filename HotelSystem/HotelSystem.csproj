@@ -183,6 +183,7 @@
     <Content Include="Scripts\FixedScript.sql" />
     <Content Include="Scripts\guestTable2.sql" />
     <Content Include="Scripts\RealFinal.sql" />
+    <Content Include="Scripts\THEEScript.sql" />
     <Content Include="Scripts\updatedScript.sql" />
     <Content Include="Scripts\working.sql" />
     <Content Include="Scripts\WorkScript.sql" />

@@ -57,10 +57,10 @@ namespace HotelSystem.View
                         "Required Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                try
-                {
-                    foundReservation = Rcontroller.find(reservationid);
-                }catch
+                
+                
+                foundReservation = Rcontroller.find(reservationid);
+                if (foundReservation ==null)
                 {
                     MessageBox.Show("Reservation not found. Please try again.\n\n" +
                         "Note: ID is made from Guest initials, Month, Start Date and number of days reserved.",
@@ -69,10 +69,10 @@ namespace HotelSystem.View
                 }
                 
 
-                try
-                {
-                    foundGuest = guestController.find(foundReservation.GuestID);
-                }catch
+                
+                
+                foundGuest = guestController.find(foundReservation.GuestID);
+                if (foundGuest == null)
                 {
                     MessageBox.Show("Guest could not be found for this reservation.",
                         "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

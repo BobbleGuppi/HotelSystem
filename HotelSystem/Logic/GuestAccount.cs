@@ -72,7 +72,7 @@ namespace HotelSystem.Logic
             this.dateCreated = dateCreated;
             this.totalAmount = totalAmount;
             this.balance = totalAmount;
-            this.status = status; // inittally unpaid
+            this.status = status; // initially unpaid
         }
         #endregion
 

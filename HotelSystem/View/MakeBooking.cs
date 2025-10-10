@@ -21,6 +21,8 @@ namespace HotelSystem.View
         private ReservationController reservationController;
         private GuestController guestController;
         private GuestAccountController guestAccountController;
+        private PaymentController paymentController;
+        
 
         public MakeBooking()
         {
@@ -185,18 +187,38 @@ namespace HotelSystem.View
             return "GA" + sum;
         }
 
+        private string GeneratePaymentID()
+        {
+            int randomPart = rand.Next(10, 100); // 3-digit random number
+            int timePart = DateTime.Now.Millisecond; // changes every millisecond
+            int sum = randomPart + timePart; // simple math sum
+
+            return "PY" + sum;
+        }
+
+
+
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
+            string type = "Card";
 
             string reservationId = "R" + new Random().Next(1000, 9999);
             //string roomId = "R001";
 
             string guestId = guest.GuestID;
+            string guestAccId = guest.GuestAccount;
             double totalPrice = 0.0;
             bool depositPaid = false;
 
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
             reservation.calculateTotalPrice(arrivalDate, departureDate);
+
+            if (reservation.DepositPaid == true)
+            {
+                string paymentID = GeneratePaymentID();
+                Payment payment = new Payment(paymentID, guestId, totalPrice, type, DateTime.Now);
+                guestAccount.makeDeposit(paymentID);
+            }
 
             MessageBox.Show($"Total price for stay: R{reservation.totalPrice}", "Total Price");
             try
