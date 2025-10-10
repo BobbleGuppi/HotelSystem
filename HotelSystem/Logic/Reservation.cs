@@ -16,7 +16,7 @@ namespace HotelSystem.Logic
         private DateTime checkOutDate;
         public double totalPrice;
         private bool depositPaid = false;
-        private static readonly Random rand = new Random();
+        
 
 
         public Reservation(string reservationID, string guestID, DateTime checkInDate, DateTime checkOutDate, double totalPrice, bool depositPaid)
@@ -124,14 +124,7 @@ namespace HotelSystem.Logic
 
         }
 
-        private string GenerateDepositPaid()
-        {
-            int randomPart = rand.Next(10, 100); // 3-digit random number
-            int timePart = DateTime.Now.Millisecond; // changes every millisecond
-            int sum = randomPart + timePart; // simple math sum
-
-            return "PY" + sum;
-        }
+        
 
 
 
