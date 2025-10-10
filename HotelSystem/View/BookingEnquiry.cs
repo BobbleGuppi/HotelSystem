@@ -83,8 +83,7 @@ namespace HotelSystem.View
                 MessageBox.Show("Reservation not found. Please try again.\n\n" +
                     "Note: ID is made from Guest initials, Month, Start Date and number of days reserved.",
                     "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //panel1.Visible = true;
-
+               
                 return;
             }
 
