@@ -71,7 +71,7 @@ namespace HotelSystem.View
 
                 try
                 {
-                    foundGuest = guestController.find(foundReservation.GuestID);
+                    foundGuest = guestController.findGuest(foundReservation.GuestID);
                 }catch
                 {
                     MessageBox.Show("Guest could not be found for this reservation.",

@@ -32,8 +32,8 @@ namespace HotelSystem.Logic
         {
             foreach (Reservation r in reservations)
             {
-                // Overlap check: If the requested range overlaps with existing one
-                if (checkIn < r.CheckOutDate && checkOut > r.CheckInDate)
+                // Correct overlap check
+                if (checkIn < r.CheckOutDate && r.CheckInDate < checkOut)
                 {
                     return false; // Not available
                 }

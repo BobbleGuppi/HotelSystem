@@ -80,7 +80,25 @@ namespace HotelSystem.Logic
             else
                 return null; // not found
         }
-       
+
+        public Guest findGuest(string guestID)
+        {
+            int index = 0;
+            Boolean found = (guests[index].GuestID == guestID);
+            int count = guests.Count;
+            while (!(found) && (index < count - 1))
+            {
+                index++;
+                found = (guests[index].GuestID == guestID);
+            }
+            if (found)
+            {
+                return guests[index]; // found
+            }
+            else
+                return null; // not found
+        }
+
 
         public int FindIndex(Guest aGuest)
         {
