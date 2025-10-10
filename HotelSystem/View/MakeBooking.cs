@@ -247,8 +247,9 @@ namespace HotelSystem.View
 
             if (reservation.DepositPaid == true)
             {
+                string paymentType = "Deposit";
                 string paymentID = GeneratePaymentID();
-                Payment payment = new Payment(paymentID, guestId, totalPrice, type, DateTime.Now);
+                Payment payment = new Payment(paymentID, guestId, totalPrice, paymentType, DateTime.Now);
                 guestAccount.makeDeposit(paymentID);
             }
 
