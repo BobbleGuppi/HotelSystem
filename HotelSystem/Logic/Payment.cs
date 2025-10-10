@@ -17,7 +17,7 @@ namespace HotelSystem.Logic
         private DateTime payDate;
         #endregion
 
-       #region Constructors
+        #region Constructors
         public Payment(string paymentId, string guestAccId, double amount, string paymentType, DateTime payDate)
         {
             this.paymentId = paymentId;

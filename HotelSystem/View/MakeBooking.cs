@@ -30,11 +30,12 @@ namespace HotelSystem.View
             reservationController = new ReservationController();
             guestController = new GuestController();
             guestAccountController = new GuestAccountController();
+            confirmRbtn.Visible = false;
         }
 
         private void MakeBooking_Load(object sender, EventArgs e)
         {
-            Rersevationpnl.Visible = true;
+             Rersevationpnl.Visible = true;
             CenterPanel(Rersevationpnl);
             guestpnl.Visible = false;
         }
@@ -43,6 +44,10 @@ namespace HotelSystem.View
         {
             arrivalDate = arrivalDateTP.Value;
             departureDate = departureDateTP.Value;
+            if (!ValidateDates(arrivalDate, departureDate))
+            {
+                return; // Stop if invalid
+            }
 
             bool availability = reservationController.RoomAvailable(arrivalDate, departureDate);
             MessageBox.Show($"Checking room availability from {arrivalDate.ToShortDateString()} to {departureDate.ToShortDateString()} ");
@@ -50,26 +55,49 @@ namespace HotelSystem.View
             if (availability)
             {
                 MessageBox.Show("A room is available for the selected dates!", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                confirmRbtn.Visible = true;
             }
             else
             {
-                MessageBox.Show("Sorry, no rooms are available for those dates.", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Sorry, no rooms are available for those dates,change date", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void confirmRbtn_Click(object sender, EventArgs e)
         {
-            guestpnl.Visible = true;
-            CenterPanel(guestpnl);
-            Rersevationpnl.Visible = false;
+            // Show a friendly confirmation dialog before proceeding
+            string message = $"You selected:\n\n" +
+                             $"🗓 Arrival Date: {arrivalDate.ToLongDateString()}\n" +
+                             $"🏁 Departure Date: {departureDate.ToLongDateString()}\n\n" +
+                             $"Are you sure you want to continue with these dates?";
+
+            DialogResult result = MessageBox.Show(
+                message,
+                "Confirm Booking Dates",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // Proceed to the next panel (guest details)
+                guestpnl.Visible = true;
+                CenterPanel(guestpnl);
+                Rersevationpnl.Visible = false;
+
+                MessageBox.Show("Great! Let's continue with your guest details.",
+                    "Proceeding", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // Hide the confirm button and stay on the current panel
+                confirmRbtn.Visible = false;
+              
+                MessageBox.Show("No problem! Please adjust your dates and check availability again.",
+                    "Change Dates", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        private void CenterPanel(Panel panel)
-        {
-            int x = (this.ClientSize.Width - panel.Width) / 2;
-            int y = (this.ClientSize.Height - panel.Height) / 2;
-            panel.Location = new Point(x, y);
-        }
+
 
         private void confirmGbtn_Click(object sender, EventArgs e)
         {
@@ -167,7 +195,14 @@ namespace HotelSystem.View
             }
         }
 
-       
+        #region utility methods 
+
+        private void CenterPanel(Panel panel)
+        {
+            int x = (this.ClientSize.Width - panel.Width) / 2;
+            int y = (this.ClientSize.Height - panel.Height) / 2;
+            panel.Location = new Point(x, y);
+        }
 
         private string GenerateGuestID()
         {
@@ -203,7 +238,6 @@ namespace HotelSystem.View
             string type = "Card";
 
             string reservationId = "R" + new Random().Next(1000, 9999);
-            //string roomId = "R001";
 
             string guestId = guest.GuestID;
             string guestAccId = guest.GuestAccount;
@@ -244,6 +278,27 @@ namespace HotelSystem.View
         private void Rersevationpnl_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+                DialogResult result = MessageBox.Show(
+        "Are you sure you want to cancel?",   // Message
+        "Confirm Cancel",                     // Title
+        MessageBoxButtons.YesNo,              // Buttons
+        MessageBoxIcon.Question               // Icon
+               );
+
+    if (result == DialogResult.Yes)
+    {
+        this.Close(); // Close the form only if user clicks Yes
+    }
+        }
+
+        private void prepagebtn_Click(object sender, EventArgs e)
+        {
+           Rersevationpnl.Visible = true;
+           guestpnl.Visible = false;
         }
     }
 }

@@ -18,13 +18,41 @@ namespace HotelSystem
         private BookingEnquiry enquiryForm;
         private CancelBooking cancelBookingForm;
         private MakeBooking makeBookingForm;
+        private OccupancyReport summaryReportWin;
+        private LoyaltyReport exceptionReportWin;
 
         public Home()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
+
+            // Make sure this form is an MDI container
+            this.IsMdiContainer = true;
+
+            // Handle when a child form is opened or closed
+            this.MdiChildActivate += Home_MdiChildActivate;
+
         }
-       
+
+        private void Home_MdiChildActivate(object sender, EventArgs e)
+        {
+            // When any MDI child form is open
+            if (this.ActiveMdiChild != null)
+            {
+                // Hide the home panel/label
+                titlePanel.Visible = false;
+            }
+            else
+            {
+                // No child forms — show it again
+                titlePanel.Visible = true;
+                titlePanel.BringToFront();
+
+            }
+
+
+
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -35,7 +63,6 @@ namespace HotelSystem
         {
 
         }
-
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -134,15 +161,51 @@ namespace HotelSystem
 
         }
 
+        private void summaryReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            if (summaryReportWin == null || summaryReportWin.IsDisposed)
+            {
+                summaryReportWin = new OccupancyReport();
+                summaryReportWin.WindowState = FormWindowState.Maximized;
+                summaryReportWin.MdiParent = this;
+                summaryReportWin.Show();
+                summaryReportWin.BringToFront();
+            }
+            else
+            {
+                summaryReportWin.BringToFront(); // just focus the existing one
+            }
+        }
+
+        private void exceptionReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            CloseAllChildForms();
+            if (exceptionReportWin == null || exceptionReportWin.IsDisposed)
+            {
+                exceptionReportWin = new LoyaltyReport();
+                exceptionReportWin.WindowState = FormWindowState.Maximized;
+                exceptionReportWin.MdiParent = this;
+                exceptionReportWin.Show();
+                exceptionReportWin.BringToFront();
+            }
+            else
+            {
+                exceptionReportWin.BringToFront(); // just focus the existing one
+            }
+        }
 
         #endregion
+
+
         // Add this method to your Home class
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             // You can handle the item click event here if needed
             // For now, leave it empty or add your logic
         }
-
-
     }
+
+
 }

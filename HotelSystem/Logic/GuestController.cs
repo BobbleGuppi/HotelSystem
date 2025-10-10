@@ -72,7 +72,7 @@ namespace HotelSystem.Logic
             while (!(found) && (index < count - 1))
             {
                 index++;
-                found = (guests[index].GuestID == id);
+                found = (guests[index].ID == id);
             }
             if (found){
                 return guests[index]; // found

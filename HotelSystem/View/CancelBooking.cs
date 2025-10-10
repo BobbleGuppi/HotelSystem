@@ -19,6 +19,8 @@ namespace HotelSystem.View
         private ReservationDB reservationDB;
         private GuestController guestController;
         private Guest foundGuest;
+        private Size originalFormSize;
+        private Dictionary<Control, Rectangle> controlBounds = new Dictionary<Control, Rectangle>();
 
         private int screen = 0; // 0= entering the ID screen 1= booking found confirmation 2= final delete confrimation
         
@@ -29,8 +31,10 @@ namespace HotelSystem.View
             Rcontroller = new ReservationController();
             reservationDB = new ReservationDB();
             guestController = new GuestController();
+            this.Resize += CancelBooking_Resize;
+            this.Load += CancelBooking_Load;
 
-            
+
             ResetToScreen0(); // this is the Initial state
         }
 
@@ -124,7 +128,32 @@ namespace HotelSystem.View
             this.Close();
         }
 
-        
+        private void CancelBooking_Resize(object sender, EventArgs e)
+        {
+            panel1.Left = (this.ClientSize.Width - panel1.Width) / 2;
+            panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
+
+            if (originalFormSize.Width == 0 || originalFormSize.Height == 0)
+                return;
+
+            float xRatio = (float)this.ClientSize.Width / originalFormSize.Width;
+            float yRatio = (float)this.ClientSize.Height / originalFormSize.Height;
+
+            foreach (Control ctrl in panel1.Controls)
+            {
+                Rectangle orig = controlBounds[ctrl];
+                ctrl.Width = (int)(orig.Width * xRatio);
+                ctrl.Height = (int)(orig.Height * yRatio);
+                ctrl.Left = (int)(orig.Left * xRatio);
+                ctrl.Top = (int)(orig.Top * yRatio);
+            }
+
+            // Resize the panel to fill the form
+            panel1.Width = this.ClientSize.Width;
+            panel1.Height = this.ClientSize.Height;
+
+        } 
+
 
         private void ResetToScreen0()
         {

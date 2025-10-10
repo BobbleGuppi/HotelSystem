@@ -15,6 +15,7 @@ namespace HotelSystem.Logic
         private Collection<Payment> payments;
 
         #endregion
+
         #region Properties
 
         public Collection<Payment> AllPayments
