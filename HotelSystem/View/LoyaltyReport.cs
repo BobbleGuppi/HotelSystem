@@ -98,6 +98,11 @@ namespace HotelSystem.View
         {
 
         }
+
+        private void chart_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
