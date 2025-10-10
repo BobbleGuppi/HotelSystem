@@ -294,5 +294,26 @@ namespace HotelSystem.View
         {
 
         }
+
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+                DialogResult result = MessageBox.Show(
+        "Are you sure you want to cancel?",   // Message
+        "Confirm Cancel",                     // Title
+        MessageBoxButtons.YesNo,              // Buttons
+        MessageBoxIcon.Question               // Icon
+               );
+
+    if (result == DialogResult.Yes)
+    {
+        this.Close(); // Close the form only if user clicks Yes
+    }
+        }
+
+        private void prepagebtn_Click(object sender, EventArgs e)
+        {
+           Rersevationpnl.Visible = true;
+           guestpnl.Visible = false;
+        }
     }
 }
