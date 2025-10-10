@@ -234,9 +234,8 @@ namespace HotelSystem.View
 
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
-            string type = "Card";
-
-            string reservationId = "R" + new Random().Next(1000, 9999);
+            int diff = departureDate.Day - arrivalDate.Day;
+            string reservationId = ""+fNametxt.Text[0]+ ""+lNametxt.Text[0]+"12"+ arrivalDate.Day+ "-"+ diff;
 
             string guestId = guest.GuestID;
             string guestAccId = guest.GuestAccount;
@@ -267,7 +266,7 @@ namespace HotelSystem.View
                 {
                     MessageBox.Show("Reservation successfully created!");
                     reservationController.AddReservation(reservation);
-
+                    this.Close();
                 }
             }
             catch (Exception ex)
