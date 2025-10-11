@@ -73,7 +73,7 @@ namespace HotelSystem.View
 
         private void reservationIDTextBox_TextChanged(object sender, EventArgs e)
         {
-            reservationID = reservationIDTextBox.Text;
+            reservationID = reservationIDTextBox.Text.Trim();
         }
 
         #endregion
@@ -165,12 +165,13 @@ namespace HotelSystem.View
                 MessageBox.Show("No reservation selected.");
                 return;
             }
-            // Warning!! Original reservation will be updated. This is irreversible. Confirm new update?
+            //Warning!! Original reservation will be updated. This is irreversible. Confirm new update?
 
             // Show confirmation dialog
             DialogResult result = MessageBox.Show(
-                "Warning!! Original reservation will be updated. This is irreversible." +
-                "Confirm update?\r\n", // Message
+                "Warning!! Original reservation will be updated.\n" +
+                "This is irreversible.\n" +
+                "Confirm reservation to be updated?\r\n", // Message
                 "Confirm Change",                      // Title
                 MessageBoxButtons.YesNo,               // Yes/No buttons
                 MessageBoxIcon.Question                // Optional icon
@@ -189,12 +190,12 @@ namespace HotelSystem.View
 
                 if (success)
                 {
-                    MessageBox.Show("Reservation successfully updated in the database!");
+                    MessageBox.Show("Reservation successfully updated!");
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Failed to update reservation in the database.");
+                    MessageBox.Show("Failed to update reservation.");
                     this.Close();
                 }
             }
