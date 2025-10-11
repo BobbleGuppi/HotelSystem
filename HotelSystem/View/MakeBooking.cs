@@ -327,6 +327,7 @@ namespace HotelSystem.View
 
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
+
             int diff = departureDate.Day - arrivalDate.Day;
             string reservationId = ""+fNametxt.Text[0]+ ""+lNametxt.Text[0]+"12"+ arrivalDate.Day+ "-"+ diff;
 
@@ -335,19 +336,11 @@ namespace HotelSystem.View
             double totalPrice = 0.0;
             bool depositPaid = false;
 
+            
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
             reservation.calculateTotalPrice(arrivalDate, departureDate);
             double depositAmount = reservation.totalPrice * 0.10;
-            if (depositChecker == DepositChecker.Paid)
-            {
-                
-                string paymentID = GeneratePaymentID();
-                string paymentType = "Deposit";
-                Payment payment = new Payment(paymentID, guestId, totalPrice,paymentType, DateTime.Now);
-                
-                guestAccount.makeDeposit(paymentID);
-
-            } 
+            
             try
             {
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
