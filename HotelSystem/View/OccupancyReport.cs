@@ -107,6 +107,11 @@ namespace HotelSystem.View
         {
 
         }
+
+        private void OccupancyReport_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

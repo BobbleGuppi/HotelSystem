@@ -117,31 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="helpList.Text" xml:space="preserve">
-    <value>Welcome to the Hotel Booking System Guide!!
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>🛈 Welcome to the Hotel Booking System Guide!!
 
 Use this screen as a help reference. Here’s what each button does:
 
 
+Home – Returns you to the home screen.
+
+Exit – Closes the system safely.
+
+Make Booking – Create a new reservation for a guest.
+
+
 Manage Bookings:
 
-   * Make Booking – Create a new reservation for a guest.
+   ✦ Booking Enquiry – Displays details of a booking based on a Reservation ID.
 
-   * Change Booking – Allows you to search for an existing booking and modify its check-in &amp; check-out dates.
+   ✦ Change Booking – Allows you to search for an existing booking and modify its check-in &amp; check-out dates.
 
-   * Cancel Booking – Lets you cancel an existing booking. You’ll be asked to confirm before the booking is removed.
+   ✦ Cancel Booking – Lets you cancel an existing booking. You’ll be asked to confirm before the booking is removed.
 
 Reports:
 
-    * Guest Loyalty Report – Generates a summary showing how often guests have stayed at the hotel.
+    ✦ Guest Loyalty Report – Generates a summary showing how often guests have stayed at the hotel.
 
-    * Occupancy Report – Displays room occupancy statistics for a selected date range.
-
-
-Booking Enquiry – Displays details of a booking based on a Reservation ID.
-
-Home – Returns you to the home screen.
-
-Exit – Closes the system safely.</value>
+    ✦ Occupancy Report – Displays room occupancy statistics for a selected date range.
+</value>
   </data>
 </root>

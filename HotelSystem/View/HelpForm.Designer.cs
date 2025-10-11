@@ -29,36 +29,37 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelpForm));
-            this.helpList = new System.Windows.Forms.RichTextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
-            // helpList
+            // richTextBox1
             // 
-            this.helpList.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.helpList.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.helpList.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.helpList.Location = new System.Drawing.Point(48, 49);
-            this.helpList.Name = "helpList";
-            this.helpList.ReadOnly = true;
-            this.helpList.Size = new System.Drawing.Size(1205, 543);
-            this.helpList.TabIndex = 0;
-            this.helpList.Text = resources.GetString("helpList.Text");
+            this.richTextBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.richTextBox1.Location = new System.Drawing.Point(48, 49);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(1205, 562);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
-            // Help
+            // HelpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(1300, 749);
-            this.Controls.Add(this.helpList);
-            this.Name = "Help";
+            this.Controls.Add(this.richTextBox1);
+            this.Name = "HelpForm";
             this.Text = "Help";
+            this.Load += new System.EventHandler(this.HelpForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox helpList;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

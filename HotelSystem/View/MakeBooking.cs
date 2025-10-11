@@ -72,7 +72,7 @@ namespace HotelSystem.View
             }
             else
             {
-                MessageBox.Show("Sorry, no rooms are available for those dates,change date\nPlease try other dates", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Sorry, no rooms are available for those dates.\nPlease try other dates.", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -327,6 +327,7 @@ namespace HotelSystem.View
 
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
+
             int diff = departureDate.Day - arrivalDate.Day;
             string reservationId = ""+fNametxt.Text[0]+ ""+lNametxt.Text[0]+"12"+ arrivalDate.Day+ "-"+ diff;
 
@@ -335,6 +336,7 @@ namespace HotelSystem.View
             double totalPrice = 0.0;
             bool depositPaid = (depositChecker == DepositChecker.Paid);
 
+            
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
             reservation.calculateTotalPrice(arrivalDate, departureDate);
             double depositAmount = reservation.totalPrice * 0.10;
