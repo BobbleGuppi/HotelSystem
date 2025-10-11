@@ -333,7 +333,7 @@ namespace HotelSystem.View
             string guestId = guest.GuestID;
             string guestAccId = guest.GuestAccount;
             double totalPrice = 0.0;
-            bool depositPaid = false;
+            bool depositPaid = (depositChecker == DepositChecker.Paid);
 
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
             reservation.calculateTotalPrice(arrivalDate, departureDate);
@@ -343,7 +343,7 @@ namespace HotelSystem.View
                 
                 string paymentID = GeneratePaymentID();
                 string paymentType = "Deposit";
-                Payment payment = new Payment(paymentID, guestId, totalPrice,paymentType, DateTime.Now);
+                Payment payment = new Payment(paymentID, guestAccId, totalPrice,paymentType, DateTime.Now);
                 
                 guestAccount.makeDeposit(paymentID);
 
