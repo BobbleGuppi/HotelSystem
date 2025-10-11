@@ -334,6 +334,7 @@ namespace HotelSystem.View
             {
                 
                 string paymentID = GeneratePaymentID();
+                string paymentType = "Deposit";
                 Payment payment = new Payment(paymentID, guestId, totalPrice,paymentType, DateTime.Now);
                 
                 guestAccount.makeDeposit(paymentID);
