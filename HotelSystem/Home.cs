@@ -87,7 +87,10 @@ namespace HotelSystem
                 child.Close();
             }
         }
-
+        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+        }
         private void changeGuestBookingToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CloseAllChildForms();
@@ -205,6 +208,8 @@ namespace HotelSystem
             // You can handle the item click event here if needed
             // For now, leave it empty or add your logic
         }
+
+      
     }
 
 
