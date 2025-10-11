@@ -223,7 +223,7 @@ namespace HotelSystem.Database
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Original_GuestAccID", SqlDbType.NChar, 15, "GuestAccID");
+            param = new SqlParameter("@Original_GuestAccID", SqlDbType.NChar, 10, "GuestAccID");
             param.SourceVersion = DataRowVersion.Original;
             daMain.UpdateCommand.Parameters.Add(param);
 
