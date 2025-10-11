@@ -15,6 +15,8 @@ namespace HotelSystem.View
 {
     public partial class MakeBooking : Form
     {
+        private Size originalFormSize;
+        private Dictionary<Control, Rectangle> controlBounds = new Dictionary<Control, Rectangle>();
         private static readonly Random rand = new Random();
         private DateTime arrivalDate;
         private DateTime departureDate;
@@ -105,7 +107,31 @@ namespace HotelSystem.View
             }
         }
 
+        private void MakeBooking_Resize(object sender, EventArgs e)
+        {
+            Rersevationpnl.Left = (this.ClientSize.Width - Rersevationpnl.Width) / 2;
+            Rersevationpnl.Top = (this.ClientSize.Height - Rersevationpnl.Height) / 2;
 
+            if (originalFormSize.Width == 0 || originalFormSize.Height == 0)
+                return;
+
+            float xRatio = (float)this.ClientSize.Width / originalFormSize.Width;
+            float yRatio = (float)this.ClientSize.Height / originalFormSize.Height;
+
+            foreach (Control ctrl in Rersevationpnl.Controls)
+            {
+                Rectangle orig = controlBounds[ctrl];
+                ctrl.Width = (int)(orig.Width * xRatio);
+                ctrl.Height = (int)(orig.Height * yRatio);
+                ctrl.Left = (int)(orig.Left * xRatio);
+                ctrl.Top = (int)(orig.Top * yRatio);
+            }
+
+            // Resize the panel to fill the form
+            Rersevationpnl.Width = this.ClientSize.Width;
+            Rersevationpnl.Height = this.ClientSize.Height;
+
+        }
 
         private void confirmGbtn_Click(object sender, EventArgs e)
         {
@@ -306,7 +332,7 @@ namespace HotelSystem.View
 
             if (depositChecker == DepositChecker.Paid)
             {
-                string paymentType = "Deposit";
+                
                 string paymentID = GeneratePaymentID();
                 Payment payment = new Payment(paymentID, guestId, totalPrice,paymentType, DateTime.Now);
                 
@@ -425,6 +451,26 @@ namespace HotelSystem.View
         {
            Rersevationpnl.Visible = true;
            guestpnl.Visible = false;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblfname_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addresstxt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
