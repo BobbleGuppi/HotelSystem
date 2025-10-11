@@ -62,7 +62,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1224, 44);
+            this.menuStrip1.Size = new System.Drawing.Size(1300, 44);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -169,7 +169,7 @@
             this.titlePanel.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.titlePanel.Controls.Add(this.pictureBox1);
             this.titlePanel.Controls.Add(this.titleLabel);
-            this.titlePanel.Location = new System.Drawing.Point(256, 245);
+            this.titlePanel.Location = new System.Drawing.Point(303, 256);
             this.titlePanel.Name = "titlePanel";
             this.titlePanel.Size = new System.Drawing.Size(713, 179);
             this.titlePanel.TabIndex = 10;
@@ -187,7 +187,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1224, 436);
+            this.ClientSize = new System.Drawing.Size(1300, 749);
             this.Controls.Add(this.titlePanel);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
