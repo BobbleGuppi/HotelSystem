@@ -63,7 +63,7 @@ namespace HotelSystem.View
                 }
                 
                 
-                foundReservation = Rcontroller.find(reservationid);
+                foundReservation = Rcontroller.find(reservationid.ToUpper());
                 if (foundReservation ==null)
                 {
                     MessageBox.Show("Reservation not found. Please try again.\n\n" +

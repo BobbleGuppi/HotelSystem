@@ -61,6 +61,7 @@ namespace HotelSystem.View
         private void confirmButton_Click(object sender, EventArgs e)
         {
             string reservationId = richTextBox1.Text.Trim();
+            
             if (string.IsNullOrWhiteSpace(reservationId))
             {
                 MessageBox.Show("Reservation ID field must not be empty.",
@@ -73,7 +74,7 @@ namespace HotelSystem.View
             reservationInfo.Font = new Font("Segoe UI", 24, FontStyle.Regular);
             CenterPanel();
 
-            reservation = reservationController.find(reservationId);
+            reservation = reservationController.find(reservationId.ToUpper());
             if (reservation == null)
             {
                 panel1.Visible = true;

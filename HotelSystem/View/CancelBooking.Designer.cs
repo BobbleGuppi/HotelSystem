@@ -60,7 +60,7 @@
             this.goToHomeCancelButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.goToHomeCancelButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.goToHomeCancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.goToHomeCancelButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.goToHomeCancelButton.Font = new System.Drawing.Font("Eras Medium ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.goToHomeCancelButton.Location = new System.Drawing.Point(169, 516);
             this.goToHomeCancelButton.Margin = new System.Windows.Forms.Padding(5);
             this.goToHomeCancelButton.Name = "goToHomeCancelButton";
@@ -72,19 +72,19 @@
             // 
             // textBoxForReservationID
             // 
-            this.textBoxForReservationID.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxForReservationID.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxForReservationID.Location = new System.Drawing.Point(446, 277);
             this.textBoxForReservationID.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxForReservationID.Name = "textBoxForReservationID";
-            this.textBoxForReservationID.Size = new System.Drawing.Size(297, 32);
+            this.textBoxForReservationID.Size = new System.Drawing.Size(297, 34);
             this.textBoxForReservationID.TabIndex = 14;
             // 
             // ConfirmButton
             // 
-            this.ConfirmButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ConfirmButton.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ConfirmButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ConfirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ConfirmButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConfirmButton.Font = new System.Drawing.Font("Eras Medium ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmButton.Location = new System.Drawing.Point(840, 519);
             this.ConfirmButton.Margin = new System.Windows.Forms.Padding(4);
             this.ConfirmButton.Name = "ConfirmButton";
