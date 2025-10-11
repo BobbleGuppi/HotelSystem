@@ -165,11 +165,12 @@ namespace HotelSystem.View
                 MessageBox.Show("No reservation selected.");
                 return;
             }
+            // Warning!! Original reservation will be updated. This is irreversible. Confirm new update?
 
             // Show confirmation dialog
             DialogResult result = MessageBox.Show(
-                "Warning!! previous reservation will be deleted from the database." +
-                "Confirm new reservation to be created?\r\n", // Message
+                "Warning!! Original reservation will be updated. This is irreversible." +
+                "Confirm update?\r\n", // Message
                 "Confirm Change",                      // Title
                 MessageBoxButtons.YesNo,               // Yes/No buttons
                 MessageBoxIcon.Question                // Optional icon

@@ -72,7 +72,7 @@ namespace HotelSystem.View
             }
             else
             {
-                MessageBox.Show("Sorry, no rooms are available for those dates,change date", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Sorry, no rooms are available for those dates,change date\nPlease try other dates", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -239,7 +239,12 @@ namespace HotelSystem.View
                     }
                     else
                     {
-                        MessageBox.Show("New guest added successfully!");
+
+                        MessageBox.Show(
+                            "Guest details added successfully.Proceed with reservation.", "New guest created!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
                         CreateReservation(newGuest, newGuestAccount);
                     }
                 }
@@ -267,9 +272,12 @@ namespace HotelSystem.View
                         MessageBox.Show("Failed to add guest account for existing guest: " + ex.Message);
                         return;
                     }
-               
 
-                MessageBox.Show("Guest already exists. Proceeding to reservation...");
+                MessageBox.Show(
+                    " The guest already exists.Proceed with reservation.", "Guest details found!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
                 CreateReservation(existingGuest, guestAccount);
             }
         }

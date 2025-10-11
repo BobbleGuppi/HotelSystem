@@ -13,14 +13,17 @@ namespace HotelSystem
 {
     public partial class Home : Form
     {
-
+        #region Fields
         private ChangeBooking changeBookingForm; // store the single instance
         private BookingEnquiry enquiryForm;
         private CancelBooking cancelBookingForm;
         private MakeBooking makeBookingForm;
         private OccupancyReport summaryReportWin;
         private LoyaltyReport exceptionReportWin;
+        private HelpForm helpWindow;
+        #endregion
 
+        #region Constructor
         public Home()
         {
             InitializeComponent();
@@ -33,6 +36,9 @@ namespace HotelSystem
             this.MdiChildActivate += Home_MdiChildActivate;
 
         }
+        #endregion
+
+        #region Utility Methods
 
         private void Home_MdiChildActivate(object sender, EventArgs e)
         {
@@ -51,32 +57,8 @@ namespace HotelSystem
             }
 
 
-
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
 
         #region Child Form Functionality
 
@@ -199,7 +181,49 @@ namespace HotelSystem
             }
         }
 
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CloseAllChildForms();
+            if (helpWindow == null || helpWindow.IsDisposed)
+            {
+                helpWindow = new HelpForm();
+                helpWindow.WindowState = FormWindowState.Maximized;
+                helpWindow.MdiParent = this;
+                helpWindow.Show();
+                helpWindow.BringToFront();
+            }
+            else
+            {
+                exceptionReportWin.BringToFront(); // just focus the existing one
+            }
+
+        }
+
         #endregion
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
         // Add this method to your Home class
@@ -209,7 +233,6 @@ namespace HotelSystem
             // For now, leave it empty or add your logic
         }
 
-      
     }
 
 

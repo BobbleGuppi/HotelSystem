@@ -36,12 +36,13 @@
             this.cancelGuestBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeBookingEnquiryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.makeGuestBookingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.summaryReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exceptionReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.titleLabel = new System.Windows.Forms.Label();
             this.titlePanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.titlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,12 +58,13 @@
             this.homeToolStripMenuItem,
             this.manageGuestBookingsToolStripMenuItem,
             this.makeGuestBookingToolStripMenuItem,
-            this.reportsToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1300, 44);
+            this.menuStrip1.Size = new System.Drawing.Size(1365, 44);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -124,33 +126,15 @@
             this.makeGuestBookingToolStripMenuItem.Text = "Make Guest Booking";
             this.makeGuestBookingToolStripMenuItem.Click += new System.EventHandler(this.makeGuestBookingToolStripMenuItem_Click);
             // 
-            // reportsToolStripMenuItem
+            // helpToolStripMenuItem
             // 
-            this.reportsToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.reportsToolStripMenuItem.BackColor = System.Drawing.Color.PowderBlue;
-            this.reportsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.summaryReportToolStripMenuItem,
-            this.exceptionReportToolStripMenuItem});
-            this.reportsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(73, 40);
-            this.reportsToolStripMenuItem.Text = "Reports";
-            // 
-            // summaryReportToolStripMenuItem
-            // 
-            this.summaryReportToolStripMenuItem.BackColor = System.Drawing.Color.CadetBlue;
-            this.summaryReportToolStripMenuItem.Name = "summaryReportToolStripMenuItem";
-            this.summaryReportToolStripMenuItem.Size = new System.Drawing.Size(219, 24);
-            this.summaryReportToolStripMenuItem.Text = "Occupancy Report";
-            this.summaryReportToolStripMenuItem.Click += new System.EventHandler(this.summaryReportToolStripMenuItem_Click);
-            // 
-            // exceptionReportToolStripMenuItem
-            // 
-            this.exceptionReportToolStripMenuItem.BackColor = System.Drawing.Color.CadetBlue;
-            this.exceptionReportToolStripMenuItem.Name = "exceptionReportToolStripMenuItem";
-            this.exceptionReportToolStripMenuItem.Size = new System.Drawing.Size(219, 24);
-            this.exceptionReportToolStripMenuItem.Text = "Guest Loyalty Report";
-            this.exceptionReportToolStripMenuItem.Click += new System.EventHandler(this.exceptionReportToolStripMenuItem_Click);
+            this.helpToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.helpToolStripMenuItem.BackColor = System.Drawing.Color.PowderBlue;
+            this.helpToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(53, 40);
+            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // titleLabel
             // 
@@ -183,11 +167,37 @@
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripMenuItem1.BackColor = System.Drawing.Color.PowderBlue;
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3});
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(73, 40);
+            this.toolStripMenuItem1.Text = "Reports";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.BackColor = System.Drawing.Color.CadetBlue;
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(219, 24);
+            this.toolStripMenuItem2.Text = "Occupancy Report";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.BackColor = System.Drawing.Color.CadetBlue;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(219, 24);
+            this.toolStripMenuItem3.Text = "Guest Loyalty Report";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1300, 749);
+            this.ClientSize = new System.Drawing.Size(1365, 749);
             this.Controls.Add(this.titlePanel);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -217,12 +227,13 @@
         private System.Windows.Forms.ToolStripMenuItem makeBookingEnquiryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem makeGuestBookingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem homeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem summaryReportToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exceptionReportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Panel titlePanel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
     }
 }
 
