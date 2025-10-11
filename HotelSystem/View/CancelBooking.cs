@@ -53,37 +53,42 @@ namespace HotelSystem.View
         {
             if (screen == 0)
             {
-                string reservationid = textBoxForReservationID.Text.Trim();
+                try
+                {
+                    string reservationid = textBoxForReservationID.Text.Trim();
 
-                if (string.IsNullOrWhiteSpace(reservationid))
-                {
-                    MessageBox.Show("Reservation ID field must not be empty.",
-                        "Required Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                
-                
-                foundReservation = Rcontroller.find(reservationid.ToUpper());
-                if (foundReservation ==null)
-                {
-                    MessageBox.Show("Reservation not found. Please try again.\n\n" +
-                        "Note: ID is made from Guest initials, Month, Start Date and number of days reserved.",
-                        "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                
+                    if (string.IsNullOrWhiteSpace(reservationid))
+                    {
+                        MessageBox.Show("Reservation ID field must not be empty.",
+                            "Required Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
-                
-                    
-                foundGuest = guestController.findGuest(foundReservation.GuestID);
-                if (foundGuest == null)
+
+                    foundReservation = Rcontroller.find(reservationid.ToUpper());
+                    if (foundReservation == null)
+                    {
+                        MessageBox.Show("Reservation not found. Please try again.\n\n" +
+                            "Note: ID is made from Guest initials, Month, Start Date and number of days reserved.",
+                            "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+
+
+
+                    foundGuest = guestController.findGuest(foundReservation.GuestID);
+                    if (foundGuest == null)
+                    {
+                        MessageBox.Show("Guest could not be found for this reservation.",
+                        "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                }catch
                 {
-                    MessageBox.Show("Guest could not be found for this reservation.",
-                    "Data Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    MessageBox.Show("There was an error loading your reservation ID. Please check your internet connection and try again.", "Something went wrong",MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
-                
                 
 
                 
@@ -184,67 +189,85 @@ namespace HotelSystem.View
 
         private void ShowScreen1()
         {
-            panel2.Controls.Add(ConfirmButton);
-            panel1.Visible = false;
-            panel2.Visible = true;
-            CenterPanel();
+            try
+            {
+                panel2.Controls.Add(ConfirmButton);
+                panel1.Visible = false;
+                panel2.Visible = true;
+                CenterPanel();
 
-            reservationNumLabel.Visible = false;
-            reservationIDinputLabel.Visible = false;
-            textBoxForReservationID.Visible = false;
-            goToHomeCancelButton.Visible = false;
+                reservationNumLabel.Visible = false;
+                reservationIDinputLabel.Visible = false;
+                textBoxForReservationID.Visible = false;
+                goToHomeCancelButton.Visible = false;
 
-            richTextBox1.Visible = true;
-            richTextBox1.Font = new Font("Segoe UI", 18, FontStyle.Regular);
-            richTextBox1.Text =
-                $"Guest booking found!\n\nDo you wish to proceed to cancel the existing guest booking?\n\n" +
-                $"Full name: {foundGuest.Name}\n" +
-                $"Address: {foundGuest.Address}\n" +
-                $"ID: {foundGuest.ID}\n\n" +
-                $"{foundReservation.reservationDetails()}";
+                richTextBox1.Visible = true;
+                richTextBox1.Font = new Font("Segoe UI", 18, FontStyle.Regular);
+                richTextBox1.Text =
+                    $"Guest booking found!\n\nDo you wish to proceed to cancel the existing guest booking?\n\n" +
+                    $"Full name: {foundGuest.Name}\n" +
+                    $"Address: {foundGuest.Address}\n" +
+                    $"ID: {foundGuest.ID}\n\n" +
+                    $"{foundReservation.reservationDetails()}";
 
-            prevPageButton.Visible = true;
-            prevPageButton.Text = "Previous page";
-            ConfirmButton.Visible = true;
-            ConfirmButton.Text = "Confirm";
+                prevPageButton.Visible = true;
+                prevPageButton.Text = "Previous page";
+                ConfirmButton.Visible = true;
+                ConfirmButton.Text = "Confirm";
 
-            doneButton.Visible = false;
-            screen = 1;
+                doneButton.Visible = false;
+                screen = 1;
+
+            }catch
+            {
+                MessageBox.Show("There was an error loading your reservation ID. Please check your internet connection and try again.", "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ShowScreen2()
         {
-            
-            panel2.Visible = true;
-            
-            CenterPanel();
-            richTextBox1.Visible = true;
-            richTextBox1.Font = new Font("Segoe UI", 24, FontStyle.Regular);
-            richTextBox1.Text =
-                $"Guest booking for ({foundReservation.ReservationID}) will be cancelled.\n" +
-                $"This action cannot be undone.\n\nAre you sure you want to cancel this booking?";
+            try
+            {
+                panel2.Visible = true;
 
-            prevPageButton.Visible = true;
-            ConfirmButton.Visible = true;
-            ConfirmButton.Text = "Confirm";
+                CenterPanel();
+                richTextBox1.Visible = true;
+                richTextBox1.Font = new Font("Segoe UI", 24, FontStyle.Regular);
+                richTextBox1.Text =
+                    $"Guest booking for ({foundReservation.ReservationID}) will be cancelled.\n" +
+                    $"This action cannot be undone.\n\nAre you sure you want to cancel this booking?";
 
-            doneButton.Visible = false;
-            screen = 2;
+                prevPageButton.Visible = true;
+                ConfirmButton.Visible = true;
+                ConfirmButton.Text = "Confirm";
+
+                doneButton.Visible = false;
+                screen = 2;
+            } catch
+            {
+                MessageBox.Show("There was an error loading your reservation ID. Please check your internet connection and try again.", "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ShowScreen3()
         {
-            richTextBox1.Font = new Font("Segoe UI", 24, FontStyle.Regular);
-            richTextBox1.Text =
-                $"Guest booking ({foundReservation.ReservationID}) has been successfully cancelled!\n\n" +
-                $"Hotel occupancy levels have been adjusted accordingly.";
+            try
+            {
+                richTextBox1.Font = new Font("Segoe UI", 24, FontStyle.Regular);
+                richTextBox1.Text =
+                    $"Guest booking ({foundReservation.ReservationID}) has been successfully cancelled!\n\n" +
+                    $"Hotel occupancy levels have been adjusted accordingly.";
 
-            ConfirmButton.Visible = false;
-            prevPageButton.Visible = false;
-            doneButton.Visible = true;
-            doneButton.Text = "Done";
+                ConfirmButton.Visible = false;
+                prevPageButton.Visible = false;
+                doneButton.Visible = true;
+                doneButton.Text = "Done";
 
-            screen = 3;
+                screen = 3;
+            }catch
+            {
+                MessageBox.Show("There was an error loading your reservation ID. Please check your internet connection and try again.", "Something went wrong", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
