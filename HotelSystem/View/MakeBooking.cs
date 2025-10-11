@@ -72,7 +72,7 @@ namespace HotelSystem.View
             }
             else
             {
-                MessageBox.Show("Sorry, no rooms are available for those dates,change date\nPlease try other dates", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Sorry, no rooms are available for those dates.\nPlease try other dates.", "Availability Check", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

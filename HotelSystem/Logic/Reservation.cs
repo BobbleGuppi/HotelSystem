@@ -36,7 +36,11 @@ namespace HotelSystem.Logic
             set { reservationID = value; }
         }
 
-       
+       public string RoomID
+        {
+            get { return roomID; }
+            set { roomID = value; }
+        }
         public string GuestID
         {
             get { return guestID; }

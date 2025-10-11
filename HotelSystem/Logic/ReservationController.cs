@@ -34,7 +34,7 @@ namespace HotelSystem.Logic
         {
             reservationDB = new ReservationDB();
             reservations = reservationDB.AllReservations;
-        }
+            assignDBReservationsToRoom();        }
         #endregion
 
         #region Database Communication
@@ -62,6 +62,20 @@ namespace HotelSystem.Logic
         public bool FinalizeChanges(Reservation reservation)
         {
             return reservationDB.UpdateDataSource(reservation);
+        }
+
+        private void assignDBReservationsToRoom()
+        {
+            foreach (var reservation in reservations)
+            {
+                foreach (var room in rooms)
+                {
+                    if (reservation.RoomID == room.RoomID)
+                    {
+                        room.AddReservation(reservation);
+                    }
+                }
+            }
         }
         #endregion
 
