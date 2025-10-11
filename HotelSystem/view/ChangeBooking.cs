@@ -190,7 +190,7 @@ namespace HotelSystem.View
 
                 if (success)
                 {
-                    MessageBox.Show("Reservation successfully updated!");
+                    MessageBox.Show("Reservation updated successfully! ");
                     this.Close();
                 }
                 else
