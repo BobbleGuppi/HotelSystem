@@ -88,7 +88,7 @@
             this.usernamebtn.Name = "usernamebtn";
             this.usernamebtn.Size = new System.Drawing.Size(271, 30);
             this.usernamebtn.TabIndex = 3;
-            this.usernamebtn.Text = "Strawberry";
+            this.usernamebtn.Text = "Clerk00";
             // 
             // label3
             // 
@@ -119,7 +119,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Location = new System.Drawing.Point(242, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 39);
+            this.label1.Size = new System.Drawing.Size(106, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Login";
             // 
