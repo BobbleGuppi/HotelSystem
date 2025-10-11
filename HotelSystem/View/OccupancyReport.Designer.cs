@@ -55,17 +55,19 @@
             // startDatePicker
             // 
             this.startDatePicker.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.startDatePicker.Location = new System.Drawing.Point(473, 3);
+            this.startDatePicker.Location = new System.Drawing.Point(633, 4);
+            this.startDatePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.startDatePicker.Name = "startDatePicker";
-            this.startDatePicker.Size = new System.Drawing.Size(200, 20);
+            this.startDatePicker.Size = new System.Drawing.Size(265, 22);
             this.startDatePicker.TabIndex = 0;
             // 
             // endDatePicker
             // 
             this.endDatePicker.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.endDatePicker.Location = new System.Drawing.Point(473, 46);
+            this.endDatePicker.Location = new System.Drawing.Point(633, 57);
+            this.endDatePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.endDatePicker.Name = "endDatePicker";
-            this.endDatePicker.Size = new System.Drawing.Size(200, 20);
+            this.endDatePicker.Size = new System.Drawing.Size(265, 22);
             this.endDatePicker.TabIndex = 1;
             // 
             // promptLabel
@@ -73,9 +75,10 @@
             this.promptLabel.AutoSize = true;
             this.promptLabel.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.promptLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.promptLabel.Location = new System.Drawing.Point(30, 17);
+            this.promptLabel.Location = new System.Drawing.Point(40, 21);
+            this.promptLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.promptLabel.Name = "promptLabel";
-            this.promptLabel.Size = new System.Drawing.Size(412, 25);
+            this.promptLabel.Size = new System.Drawing.Size(515, 31);
             this.promptLabel.TabIndex = 2;
             this.promptLabel.Text = "Select a date range to generate the report";
             // 
@@ -86,9 +89,10 @@
             this.startDateLabel.AutoSize = true;
             this.startDateLabel.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.startDateLabel.Font = new System.Drawing.Font("Eras Demi ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startDateLabel.Location = new System.Drawing.Point(3, 0);
+            this.startDateLabel.Location = new System.Drawing.Point(4, 0);
+            this.startDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.startDateLabel.Name = "startDateLabel";
-            this.startDateLabel.Size = new System.Drawing.Size(374, 19);
+            this.startDateLabel.Size = new System.Drawing.Size(500, 23);
             this.startDateLabel.TabIndex = 3;
             this.startDateLabel.Text = "Start Date:";
             // 
@@ -99,9 +103,10 @@
             this.endDateLabel.AutoSize = true;
             this.endDateLabel.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.endDateLabel.Font = new System.Drawing.Font("Eras Demi ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.endDateLabel.Location = new System.Drawing.Point(3, 43);
+            this.endDateLabel.Location = new System.Drawing.Point(4, 53);
+            this.endDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.endDateLabel.Name = "endDateLabel";
-            this.endDateLabel.Size = new System.Drawing.Size(374, 19);
+            this.endDateLabel.Size = new System.Drawing.Size(500, 23);
             this.endDateLabel.TabIndex = 4;
             this.endDateLabel.Text = "End Date:";
             // 
@@ -114,12 +119,13 @@
             this.tableLayoutPanel1.Controls.Add(this.endDateLabel, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.endDatePicker, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.startDateLabel, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(64, 56);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(85, 69);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.38272F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.61728F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(767, 88);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1023, 108);
             this.tableLayoutPanel1.TabIndex = 5;
             // 
             // promptPanel
@@ -127,9 +133,10 @@
             this.promptPanel.Controls.Add(this.GenerateButton);
             this.promptPanel.Controls.Add(this.tableLayoutPanel1);
             this.promptPanel.Controls.Add(this.promptLabel);
-            this.promptPanel.Location = new System.Drawing.Point(12, 12);
+            this.promptPanel.Location = new System.Drawing.Point(16, 15);
+            this.promptPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.promptPanel.Name = "promptPanel";
-            this.promptPanel.Size = new System.Drawing.Size(1286, 597);
+            this.promptPanel.Size = new System.Drawing.Size(1715, 735);
             this.promptPanel.TabIndex = 6;
             this.promptPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -139,9 +146,10 @@
             this.GenerateButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.GenerateButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.GenerateButton.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GenerateButton.Location = new System.Drawing.Point(868, 84);
+            this.GenerateButton.Location = new System.Drawing.Point(1157, 103);
+            this.GenerateButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.GenerateButton.Name = "GenerateButton";
-            this.GenerateButton.Size = new System.Drawing.Size(112, 34);
+            this.GenerateButton.Size = new System.Drawing.Size(149, 42);
             this.GenerateButton.TabIndex = 8;
             this.GenerateButton.Text = "Generate";
             this.GenerateButton.UseVisualStyleBackColor = false;
@@ -154,9 +162,10 @@
             this.dataPanel.Controls.Add(this.averageTextBox);
             this.dataPanel.Controls.Add(this.occupancyLabel);
             this.dataPanel.Controls.Add(this.chart);
-            this.dataPanel.Location = new System.Drawing.Point(12, 177);
+            this.dataPanel.Location = new System.Drawing.Point(16, 218);
+            this.dataPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataPanel.Name = "dataPanel";
-            this.dataPanel.Size = new System.Drawing.Size(1286, 432);
+            this.dataPanel.Size = new System.Drawing.Size(1715, 532);
             this.dataPanel.TabIndex = 7;
             this.dataPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.dataPanel_Paint);
             // 
@@ -165,9 +174,10 @@
             this.reportCreatedDate.AutoSize = true;
             this.reportCreatedDate.BackColor = System.Drawing.SystemColors.ControlDark;
             this.reportCreatedDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reportCreatedDate.Location = new System.Drawing.Point(845, 391);
+            this.reportCreatedDate.Location = new System.Drawing.Point(1127, 481);
+            this.reportCreatedDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.reportCreatedDate.Name = "reportCreatedDate";
-            this.reportCreatedDate.Size = new System.Drawing.Size(35, 20);
+            this.reportCreatedDate.Size = new System.Drawing.Size(43, 25);
             this.reportCreatedDate.TabIndex = 13;
             this.reportCreatedDate.Text = "text";
             // 
@@ -176,9 +186,10 @@
             this.overviewLabel.AutoSize = true;
             this.overviewLabel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.overviewLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.overviewLabel.Location = new System.Drawing.Point(768, 21);
+            this.overviewLabel.Location = new System.Drawing.Point(1024, 26);
+            this.overviewLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.overviewLabel.Name = "overviewLabel";
-            this.overviewLabel.Size = new System.Drawing.Size(515, 144);
+            this.overviewLabel.Size = new System.Drawing.Size(652, 180);
             this.overviewLabel.TabIndex = 12;
             this.overviewLabel.Text = resources.GetString("overviewLabel.Text");
             this.overviewLabel.Click += new System.EventHandler(this.overviewLabel_Click);
@@ -186,10 +197,11 @@
             // averageTextBox
             // 
             this.averageTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.averageTextBox.Location = new System.Drawing.Point(1087, 192);
+            this.averageTextBox.Location = new System.Drawing.Point(1449, 236);
+            this.averageTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.averageTextBox.Name = "averageTextBox";
             this.averageTextBox.ReadOnly = true;
-            this.averageTextBox.Size = new System.Drawing.Size(86, 39);
+            this.averageTextBox.Size = new System.Drawing.Size(113, 47);
             this.averageTextBox.TabIndex = 9;
             this.averageTextBox.Text = "";
             this.averageTextBox.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -199,9 +211,10 @@
             this.occupancyLabel.AutoSize = true;
             this.occupancyLabel.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.occupancyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.occupancyLabel.Location = new System.Drawing.Point(796, 196);
+            this.occupancyLabel.Location = new System.Drawing.Point(1061, 241);
+            this.occupancyLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.occupancyLabel.Name = "occupancyLabel";
-            this.occupancyLabel.Size = new System.Drawing.Size(252, 24);
+            this.occupancyLabel.Size = new System.Drawing.Size(316, 29);
             this.occupancyLabel.TabIndex = 10;
             this.occupancyLabel.Text = "Overall Average Occupancy:";
             // 
@@ -211,28 +224,31 @@
             this.chart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart.Legends.Add(legend1);
-            this.chart.Location = new System.Drawing.Point(28, 21);
+            this.chart.Location = new System.Drawing.Point(37, 26);
+            this.chart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chart.Name = "chart";
             this.chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Excel;
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart.Series.Add(series1);
-            this.chart.Size = new System.Drawing.Size(711, 390);
+            this.chart.Size = new System.Drawing.Size(948, 480);
             this.chart.TabIndex = 5;
             this.chart.Text = "chart";
             this.chart.Click += new System.EventHandler(this.chart_Click);
             // 
             // OccupancyReport
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1310, 634);
+            this.ClientSize = new System.Drawing.Size(1747, 780);
             this.Controls.Add(this.dataPanel);
             this.Controls.Add(this.promptPanel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "OccupancyReport";
             this.Text = "Occupancy Rate Summary";
+            this.Load += new System.EventHandler(this.OccupancyReport_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.promptPanel.ResumeLayout(false);
