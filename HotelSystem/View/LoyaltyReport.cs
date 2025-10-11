@@ -77,7 +77,7 @@ namespace HotelSystem.View
             chart.Series.Add(series);
 
             dataPanel.Visible = true;
-            reportCreatedDate.Text = "Report Created on: " + DateTime.Now.ToString("yyyy-MM-dd");
+            reportCreatedDate.Text = "Generated on: [" + DateTime.Now.ToString("yyyy-MM-dd") + "]";
         }
         #endregion
 

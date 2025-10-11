@@ -70,7 +70,7 @@ namespace HotelSystem.View
 
             // --- Display average occupancy in a textbox ---
             averageTextBox.Text = $"{avgOccupancy:F2}%";
-            reportCreatedDate.Text = "Report Created on: " + DateTime.Today;
+            reportCreatedDate.Text = "Generated on: [" + DateTime.Now.ToString("yyyy-MM-dd") + "]";
 
             dataPanel.Visible = true;
         }
