@@ -37,10 +37,13 @@ namespace HotelSystem.View
         public MakeBooking()
         {
             InitializeComponent();
+            idNotxt.KeyPress += idNotxt_KeyPress;
+            phoneNotxt.KeyPress += phoneNotxt_KeyPress;
             reservationController = new ReservationController();
             guestController = new GuestController();
             guestAccountController = new GuestAccountController();
             confirmRbtn.Visible = false;
+
         }
 
         private void MakeBooking_Load(object sender, EventArgs e)
@@ -132,6 +135,54 @@ namespace HotelSystem.View
 
         private void confirmGbtn_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(fNametxt.Text))
+            {
+                MessageBox.Show("Please enter the guest’s first name.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                fNametxt.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(lNametxt.Text))
+            {
+                MessageBox.Show("Please enter the guest’s last name.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                lNametxt.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(phoneNotxt.Text))
+            {
+                MessageBox.Show("Please enter the guest’s phone number.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                phoneNotxt.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(idNotxt.Text))
+            {
+                MessageBox.Show("Please enter the guest’s ID number.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                idNotxt.Focus();
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(addresstxt.Text))
+            {
+                MessageBox.Show("Please enter the guest’s address.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                addresstxt.Focus();
+                return;
+            }
+
+            // 2️⃣ South African phone number validation (must be 10 digits, start with 0)
+            if (!System.Text.RegularExpressions.Regex.IsMatch(phoneNotxt.Text, @"^0\d{9}$"))
+            {
+                MessageBox.Show("Please enter a valid South African phone number (e.g. 0821234567).",
+                                "Invalid Phone Number", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                phoneNotxt.Focus();
+                return;
+            }
+
+            // 3️⃣ South African ID number validation (must be 13 digits)
+            if (!System.Text.RegularExpressions.Regex.IsMatch(idNotxt.Text, @"^\d{13}$"))
+            {
+                MessageBox.Show("Please enter a valid South African ID number (13 digits).",
+                                "Invalid ID Number", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                idNotxt.Focus();
+                return;
+            }
             string firstname = fNametxt.Text.Trim();
             string lastname = lNametxt.Text.Trim();
             string phone = phoneNotxt.Text.Trim();
@@ -281,7 +332,7 @@ namespace HotelSystem.View
 
             if (depositChecker == DepositChecker.Paid)
             {
-                string paymentType = "Deposit";
+                
                 string paymentID = GeneratePaymentID();
                 Payment payment = new Payment(paymentID, guestId, totalPrice,paymentType, DateTime.Now);
                 
@@ -357,6 +408,24 @@ namespace HotelSystem.View
             // All checks passed
             return true;
         }
+
+        private void idNotxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void phoneNotxt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+
         #endregion
         private void Rersevationpnl_Paint(object sender, PaintEventArgs e)
         {
