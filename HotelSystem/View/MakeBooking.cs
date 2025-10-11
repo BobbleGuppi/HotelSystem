@@ -329,7 +329,7 @@ namespace HotelSystem.View
 
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
             reservation.calculateTotalPrice(arrivalDate, departureDate);
-
+            double depositAmount = reservation.totalPrice * 0.10;
             if (depositChecker == DepositChecker.Paid)
             {
                 
@@ -338,9 +338,8 @@ namespace HotelSystem.View
                 Payment payment = new Payment(paymentID, guestId, totalPrice,paymentType, DateTime.Now);
                 
                 guestAccount.makeDeposit(paymentID);
-            } 
 
-                MessageBox.Show($"Total price for stay: R{reservation.totalPrice}", "Total Price");
+            } 
             try
             {
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
@@ -353,18 +352,21 @@ namespace HotelSystem.View
                 else
                 {
                     MessageBox.Show(
-    "✅ Reservation Successful!\n\n" +
-    "Guest Details\n" +
-    "-----------------------------\n" +
-    guest.displayInfo() + "\n\n" +
-    "Reservation Details\n" +
-    "-----------------------------\n" +
-    reservation.reservationDetails() + "\n\n" +
-    "Thank you for booking with Phumla Kamnandi Hotels! 🌿",
-    "Reservation Confirmed",
-    MessageBoxButtons.OK,
-    MessageBoxIcon.Information
-);
+                        "✅ Reservation Successful!\n\n" +
+                        "Guest Details\n" +
+                        "-----------------------------\n" +
+                        guest.displayInfo() + "\n\n" +
+                        "Reservation Details\n" +
+                        "-----------------------------\n" +
+                        reservation.reservationDetails() + "\n\n" +
+                        "💰 Total Amount to be Paid: R" + reservation.totalPrice.ToString("F2") + "\n" +
+                        "💵 Deposit (10%): R" + depositAmount.ToString("F2") + "\n\n" +
+                        "Thank you for booking with Phumla Kamnandi Hotels! 🌿",
+                        "Reservation Confirmed",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+
 
                     reservationController.AddReservation(reservation);
                     this.Close();
