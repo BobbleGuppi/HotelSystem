@@ -118,14 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="overviewLabel.Text" xml:space="preserve">
-    <value>* The Occupancy Summary Report provides a transparent and clear summary 
-of room occupancy within a selected data range. 
+    <value>* The Guest Loyalty Tracking Report is designed to identify and reward loyal customers 
+   who frequently stay at Phumla Kamnandi Hotel. 
 
-* It calculates the percentage of rooms occupied versus 
-the total number of rooms available within the specified period. 
+* The report calculates the number of bookings per guest, which helps 
+   management identify loyal customers who contribute to repeat business. 
 
-* This is meant to illustrate the trends across different periods, 
-such as low, mid, and high seasons, and make informed decisions about how to price, 
-how to staff and to come up with marketing strategies. </value>
+* The report groups guests according to how many bookings they 
+   have made – such as 2 times, 3 times, 4 times, or 5 times. 
+
+* This information can be used to give out loyalty points to those loyal 
+   customers and improve overall guest satisfaction.  </value>
   </data>
 </root>

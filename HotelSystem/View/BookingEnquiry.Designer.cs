@@ -44,10 +44,10 @@
             // reservLabel
             // 
             this.reservLabel.AutoSize = true;
-            this.reservLabel.Font = new System.Drawing.Font("Eras Demi ITC", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reservLabel.Location = new System.Drawing.Point(61, 168);
+            this.reservLabel.Font = new System.Drawing.Font("Eras Demi ITC", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reservLabel.Location = new System.Drawing.Point(138, 287);
             this.reservLabel.Name = "reservLabel";
-            this.reservLabel.Size = new System.Drawing.Size(152, 23);
+            this.reservLabel.Size = new System.Drawing.Size(213, 32);
             this.reservLabel.TabIndex = 1;
             this.reservLabel.Text = "Reservation ID:";
             this.reservLabel.Click += new System.EventHandler(this.reservLabel_Click);
@@ -55,9 +55,9 @@
             // richTextBox1
             // 
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(304, 156);
+            this.richTextBox1.Location = new System.Drawing.Point(544, 278);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(318, 47);
+            this.richTextBox1.Size = new System.Drawing.Size(318, 41);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -68,10 +68,10 @@
             this.label1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Eras Demi ITC", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 18);
+            this.label1.Location = new System.Drawing.Point(85, 69);
             this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(10, 0, 200, 0);
-            this.label1.Size = new System.Drawing.Size(725, 39);
+            this.label1.Padding = new System.Windows.Forms.Padding(10, 0, 300, 0);
+            this.label1.Size = new System.Drawing.Size(825, 39);
             this.label1.TabIndex = 3;
             this.label1.Text = "Provide the reservation number";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -81,7 +81,7 @@
             this.confirmButton.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.confirmButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.confirmButton.Font = new System.Drawing.Font("Eras Medium ITC", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confirmButton.Location = new System.Drawing.Point(255, 302);
+            this.confirmButton.Location = new System.Drawing.Point(362, 477);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(193, 59);
             this.confirmButton.TabIndex = 4;
@@ -97,7 +97,7 @@
             this.panel1.Controls.Add(this.reservLabel);
             this.panel1.Location = new System.Drawing.Point(37, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(725, 400);
+            this.panel1.Size = new System.Drawing.Size(1032, 617);
             this.panel1.TabIndex = 5;
             // 
             // panel2
@@ -149,7 +149,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1810, 769);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

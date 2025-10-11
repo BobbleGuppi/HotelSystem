@@ -61,6 +61,7 @@ namespace HotelSystem.View
         private void confirmButton_Click(object sender, EventArgs e)
         {
             string reservationId = richTextBox1.Text.Trim();
+            
             if (string.IsNullOrWhiteSpace(reservationId))
             {
                 MessageBox.Show("Reservation ID field must not be empty.",
@@ -73,7 +74,19 @@ namespace HotelSystem.View
             reservationInfo.Font = new Font("Segoe UI", 24, FontStyle.Regular);
             CenterPanel();
 
-            reservation = reservationController.find(reservationId);
+            reservation = reservationController.find(reservationId.ToUpper());
+            if (reservation == null)
+            {
+                panel1.Visible = true;
+                panel2.Visible = false;
+                prevButton.Visible = false;
+                doneButton.Visible = false;
+                MessageBox.Show("Reservation not found. Please try again.\n\n" +
+                    "Note: ID is made from Guest initials, Month, Start Date and number of days reserved.",
+                    "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
+                return;
+            }
 
             if (reservation != null) {
                 reservationInfo.AppendText("=== Reservation Details ===\n");
@@ -85,11 +98,6 @@ namespace HotelSystem.View
                 reservationInfo.AppendText($"Deposit Paid:   {(reservation.DepositPaid ? "Yes" : "No")}\n");
                 reservationInfo.Visible = true;
             }
-            else {                 
-                reservationInfo.AppendText("No reservation found with the provided ID.\n");
-                reservationInfo.Visible = true;
-            }
-
         }
 
         #endregion
