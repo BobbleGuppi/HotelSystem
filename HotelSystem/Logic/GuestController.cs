@@ -67,8 +67,13 @@ namespace HotelSystem.Logic
         public Guest find(string id)
         {
             int index = 0;
+            if (guests.Count == 0)
+            {
+                return null;
+            }
             Boolean found = (guests[index].ID == id);
             int count = guests.Count;
+            
             while (!(found) && (index < count - 1))
             {
                 index++;
