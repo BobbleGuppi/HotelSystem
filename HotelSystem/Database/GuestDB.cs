@@ -132,13 +132,13 @@ namespace HotelSystem.Database
         private void Build_INSERT_Parameters(Guest aGuest)
         {
             SqlParameter param = default(SqlParameter);
-            param = new SqlParameter("@ID", SqlDbType.NChar, 10, "ID");
+            param = new SqlParameter("@ID", SqlDbType.NVarChar, 25, "ID");
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@GuestID", SqlDbType.NChar, 10, "GuestID");
             daMain.InsertCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Name", SqlDbType.NChar, 30, "Name");
+            param = new SqlParameter("@Name", SqlDbType.NChar, 50, "Name");
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@Phone", SqlDbType.NChar, 10, "Phone");
