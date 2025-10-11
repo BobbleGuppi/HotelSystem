@@ -352,19 +352,19 @@ namespace HotelSystem.View
                 }
                 else
                 {
-                    MessageBox.Show(
-    "✅ Reservation Successful!\n\n" +
-    "Guest Details\n" +
-    "-----------------------------\n" +
-    guest.displayInfo() + "\n\n" +
-    "Reservation Details\n" +
-    "-----------------------------\n" +
-    reservation.reservationDetails() + "\n\n" +
-    "Thank you for booking with Phumla Kamnandi Hotels! 🌿",
-    "Reservation Confirmed",
-    MessageBoxButtons.OK,
-    MessageBoxIcon.Information
-);
+                                    MessageBox.Show(
+                    "✅ Reservation Successful!\n\n" +
+                    "Guest Details\n" +
+                    "-----------------------------\n" +
+                    guest.displayInfo() + "\n\n" +
+                    "Reservation Details\n" +
+                    "-----------------------------\n" +
+                    reservation.reservationDetails() + "\n\n" +
+                    "Thank you for booking with Phumla Kamnandi Hotels! 🌿",
+                    "Reservation Confirmed",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
 
                     reservationController.AddReservation(reservation);
                     this.Close();

@@ -9,7 +9,7 @@ namespace HotelSystem.Logic
     public class Room
     {
         private string roomID;
-        private List<Reservation> reservations = new List<Reservation>();
+        private List<Reservation> roomReservations = new List<Reservation>();
 
         public Room(string roomID)
         {
@@ -24,13 +24,13 @@ namespace HotelSystem.Logic
         // Add a reservation to this room
         public void AddReservation(Reservation reservation)
         {
-            reservations.Add(reservation);
+            roomReservations.Add(reservation);
         }
 
         // Check if room is available for a given date range
         public bool IsAvailable(DateTime checkIn, DateTime checkOut)
         {
-            foreach (Reservation r in reservations)
+            foreach (Reservation r in roomReservations)
             {
                 // Correct overlap check
                 if (checkIn < r.CheckOutDate && r.CheckInDate < checkOut)
