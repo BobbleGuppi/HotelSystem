@@ -123,9 +123,16 @@
 Use this screen as a help reference. Here’s what each button does:
 
 
+Home – Returns you to the home screen.
+
+Exit – Closes the system safely.
+
+Make Booking – Create a new reservation for a guest.
+
+
 Manage Bookings:
 
-   ✦ Make Booking – Create a new reservation for a guest.
+   ✦ Booking Enquiry – Displays details of a booking based on a Reservation ID.
 
    ✦ Change Booking – Allows you to search for an existing booking and modify its check-in &amp; check-out dates.
 
@@ -136,12 +143,6 @@ Reports:
     ✦ Guest Loyalty Report – Generates a summary showing how often guests have stayed at the hotel.
 
     ✦ Occupancy Report – Displays room occupancy statistics for a selected date range.
-
-
-Booking Enquiry – Displays details of a booking based on a Reservation ID.
-
-Home – Returns you to the home screen.
-
-Exit – Closes the system safely.</value>
+</value>
   </data>
 </root>

@@ -31,17 +31,35 @@ namespace HotelSystem.View
             richTextBox1.SelectionColor = Color.Black;
             richTextBox1.AppendText("Use this screen as a help reference. Here’s what each button does:\n\n");
 
+            // --- Home ---
+            richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Bold);
+            richTextBox1.AppendText("Home – ");
+            richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Regular);
+            richTextBox1.AppendText("Returns you to the home screen.\n\n");
+
+            // --- Exit ---
+            richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Bold);
+            richTextBox1.AppendText("Exit – ");
+            richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Regular);
+            richTextBox1.AppendText("Closes the system safely.\n\n");
+
+            // --- Make Booking ---
+            richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Bold);
+            richTextBox1.AppendText("Make Booking – ");
+            richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Regular);
+            richTextBox1.AppendText("Create a new reservation for a guest.\n\n");
+
             // --- Manage Bookings Header ---
             richTextBox1.SelectionFont = new Font("Segoe UI", 12, FontStyle.Bold);
             richTextBox1.SelectionColor = Color.SteelBlue;
             richTextBox1.AppendText("Manage Bookings:\n\n");
 
-            // --- Make Booking ---
+            // --- Booking Enquiry ---
             richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Bold);
             richTextBox1.SelectionColor = Color.Black;
-            richTextBox1.AppendText("   ✦ Make Booking – ");
+            richTextBox1.AppendText("   ✦ Make Booking Enquiry – ");
             richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Regular);
-            richTextBox1.AppendText("Create a new reservation for a guest.\n\n");
+            richTextBox1.AppendText("Displays details of a booking based on a Reservation ID.\n\n");
 
             // --- Change Booking ---
             richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Bold);
@@ -71,25 +89,8 @@ namespace HotelSystem.View
             richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Bold);
             richTextBox1.AppendText("    ✦ Occupancy Report – ");
             richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Regular);
-            richTextBox1.AppendText("Displays room occupancy statistics for a selected date range.\n\n");
+            richTextBox1.AppendText("Displays room occupancy statistics for a selected date range.\n");
 
-            // --- Booking Enquiry ---
-            richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Bold);
-            richTextBox1.AppendText("Booking Enquiry – ");
-            richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Regular);
-            richTextBox1.AppendText("Displays details of a booking based on a Reservation ID.\n\n");
-
-            // --- Home ---
-            richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Bold);
-            richTextBox1.AppendText("Home – ");
-            richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Regular);
-            richTextBox1.AppendText("Returns you to the home screen.\n\n");
-
-            // --- Exit ---
-            richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Bold);
-            richTextBox1.AppendText("Exit – ");
-            richTextBox1.SelectionFont = new Font("Segoe UI", 11, FontStyle.Regular);
-            richTextBox1.AppendText("Closes the system safely.\n");
         }
     }
 }
