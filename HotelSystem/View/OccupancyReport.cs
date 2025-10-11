@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,6 +36,12 @@ namespace HotelSystem.View
         {
             DateTime start = startDatePicker.Value.Date;
             DateTime end = endDatePicker.Value.Date;
+
+            if (end < start)
+            {
+                MessageBox.Show("End date cannot be earlier than start date!");
+                return;
+            }
 
             var dailyData = reservationController.CalculateDailyOccupancy(start, end);
             double avgOccupancy = reservationController.CalculateAverageOccupancy(start, end);
@@ -101,4 +108,5 @@ namespace HotelSystem.View
 
         }
     }
+
 }
