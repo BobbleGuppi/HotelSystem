@@ -209,7 +209,10 @@ namespace HotelSystem
             // For now, leave it empty or add your logic
         }
 
-      
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 

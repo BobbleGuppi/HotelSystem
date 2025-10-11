@@ -105,35 +105,26 @@ namespace HotelSystem.Logic
         //Checks if there’s any available room between given dates
         public bool RoomAvailable(DateTime checkIn, DateTime checkOut)
         {
-            foreach (Room room in rooms)
-            {
-                if (room.IsAvailable(checkIn, checkOut))
-                {
-                    currentRoom = room.RoomID; // Save the first available room ID
-                    return true;
-                }
-            }
-            return false; // All rooms full for the given period
+            // Count how many reservations overlap with the requested dates
+            int overlappingReservations = reservations.Count(r =>
+                checkIn < r.CheckOutDate && r.CheckInDate < checkOut);
+
+            // If 5 or more reservations overlap, all rooms are booked
+            return overlappingReservations < rooms.Count;
         }
 
         //  Adds a reservation only to ONE available room
-        public void AddReservation(Reservation reservation)
+        public bool AddReservation(Reservation reservation)
         {
             foreach (Room room in rooms)
             {
                 if (room.IsAvailable(reservation.CheckInDate, reservation.CheckOutDate))
                 {
                     room.AddReservation(reservation);
-                    reservations.Add(reservation);         // ✅ Add to the controller's list
-                    currentRoom = room.RoomID;             // Track the assigned room
-                    reservation.RoomID = currentRoom;
-                   
-                    return; // stop after assigning
+                    return true;
                 }
             }
-
-            // Optional: if you want to handle no available rooms case here
-            Console.WriteLine("No available rooms found for this reservation period.");
+            return false; // No available room
         }
         #endregion
 

@@ -1,6 +1,7 @@
 ﻿using HotelSystem.Logic;
 using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HotelSystem.View
@@ -23,12 +24,36 @@ namespace HotelSystem.View
             CenterPanel(panel1);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            Receptionist rec = new Receptionist("1", "Phumla", "0123456789", "123 Street", "Strawberry", "phumla@hote1");
+            Receptionist rec = new Receptionist("1", "Dirk Snyman", "0123456789", "123 Street", "Clerk00", "phumla@hote1");
+
             if (rec.login(usernamebtn.Text, passwordbtn.Text))
             {
-                MessageBox.Show("Login Successful");
+                // Hide the login panel
+                panel1.Visible = false;
+                this.BackColor = Color.FromArgb(10, 25, 60); // dark blue tone
+                this.BackgroundImageLayout = ImageLayout.Stretch;
+
+                // Create a welcome label
+                Label welcomeLabel = new Label();
+                welcomeLabel.Text = $"Welcome, {rec.Name}...";
+                welcomeLabel.Font = new Font("Segoe UI", 28, FontStyle.Regular);
+                welcomeLabel.ForeColor = Color.White;
+                welcomeLabel.BackColor = Color.Transparent;
+                welcomeLabel.AutoSize = true;
+
+                // Center it on screen
+                welcomeLabel.Left = (this.ClientSize.Width - welcomeLabel.Width) / 2;
+                welcomeLabel.Top = (this.ClientSize.Height - welcomeLabel.Height) / 2;
+
+                this.Controls.Add(welcomeLabel);
+                welcomeLabel.BringToFront();
+
+                // Wait 2.5 seconds
+                await Task.Delay(2500);
+
+                // Continue to Home form
                 this.Hide();
                 Home frm = new Home();
                 frm.ShowDialog();
@@ -39,6 +64,7 @@ namespace HotelSystem.View
                 MessageBox.Show("Login Failed. Please try again.");
             }
         }
+
 
         private void CenterPanel(Panel panel)
         {
