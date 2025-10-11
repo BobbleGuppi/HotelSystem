@@ -77,6 +77,7 @@
             this.homeToolStripMenuItem.Name = "homeToolStripMenuItem";
             this.homeToolStripMenuItem.Size = new System.Drawing.Size(40, 40);
             this.homeToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.homeToolStripMenuItem.Click += new System.EventHandler(this.homeToolStripMenuItem_Click);
             // 
             // manageGuestBookingsToolStripMenuItem
             // 
@@ -132,14 +133,14 @@
             this.exceptionReportToolStripMenuItem});
             this.reportsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(122, 40);
+            this.reportsToolStripMenuItem.Size = new System.Drawing.Size(73, 40);
             this.reportsToolStripMenuItem.Text = "Reports";
             // 
             // summaryReportToolStripMenuItem
             // 
             this.summaryReportToolStripMenuItem.BackColor = System.Drawing.Color.CadetBlue;
             this.summaryReportToolStripMenuItem.Name = "summaryReportToolStripMenuItem";
-            this.summaryReportToolStripMenuItem.Size = new System.Drawing.Size(203, 24);
+            this.summaryReportToolStripMenuItem.Size = new System.Drawing.Size(219, 24);
             this.summaryReportToolStripMenuItem.Text = "Occupancy Report";
             this.summaryReportToolStripMenuItem.Click += new System.EventHandler(this.summaryReportToolStripMenuItem_Click);
             // 
