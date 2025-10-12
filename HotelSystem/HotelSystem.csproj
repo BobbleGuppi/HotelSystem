@@ -208,6 +208,18 @@
   <ItemGroup>
     <Content Include="bin\Home light blue icon.jpeg" />
     <Content Include="Database\updatedDB.sql" />
+    <Content Include="Scripts\BScript.sql" />
+    <Content Include="Scripts\demo.sql" />
+    <Content Include="Scripts\FINAL.sql" />
+    <Content Include="Scripts\FixedScript.sql" />
+    <Content Include="Scripts\guestTable2.sql" />
+    <Content Include="Scripts\icescript.sql" />
+    <Content Include="Scripts\RealFinal.sql" />
+    <Content Include="Scripts\THEEScript.sql" />
+    <Content Include="Scripts\updatedScript.sql" />
+    <Content Include="Scripts\working.sql" />
+    <Content Include="Scripts\WorkScript.sql" />
+    <Content Include="Scripts\ZamaScrpits.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
