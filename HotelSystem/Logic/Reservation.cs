@@ -82,6 +82,7 @@ namespace HotelSystem.Logic
 
         }
 
+
         public double checkSeasonalPricing(DateTime date)
         {
             DateTime startLowSeason = new DateTime(2025, 12, 1);
