@@ -12,7 +12,7 @@ namespace HotelSystem.Database
 {
     public class DB
     {
-        // Connection string fixed: removed unsupported 'Application Intent=ReadWrite;'
+        
         private static string strConn = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=HotelSystemDB;Integrated Security=True;Connect Timeout=30;Encrypt=False";
         protected SqlConnection cnMain = new SqlConnection(strConn);
         protected DataSet dsMain;
@@ -29,7 +29,6 @@ namespace HotelSystem.Database
         {
             try
             {
-                // Only re-initialize if not already set
                 if (cnMain == null)
                     cnMain = new SqlConnection(strConn);
                 dsMain = new DataSet();
@@ -49,7 +48,7 @@ namespace HotelSystem.Database
                 daMain = new SqlDataAdapter(aSQLstring, cnMain);
                 if (cnMain.State != ConnectionState.Open)
                     cnMain.Open();
-                //dsMain.Clear();
+                
                 daMain.Fill(dsMain, aTable);
                 cnMain.Close();
             }

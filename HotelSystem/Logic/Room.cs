@@ -21,24 +21,24 @@ namespace HotelSystem.Logic
             get { return roomID; }
         }
 
-        // Add a reservation to this room
+        // this add a reservation to this room
         public void AddReservation(Reservation reservation)
         {
             roomReservations.Add(reservation);
         }
 
-        // Check if room is available for a given date range
+        // this check if room is available for a given date range
         public bool IsAvailable(DateTime checkIn, DateTime checkOut)
         {
             foreach (Reservation r in roomReservations)
             {
-                // Correct overlap check
+                // correct overlap check
                 if (checkIn < r.CheckOutDate && r.CheckInDate < checkOut)
                 {
-                    return false; // Not available
+                    return false; // not available
                 }
             }
-            return true; // Available if no overlap
+            return true; // available if no overlap
         }
     }
 
