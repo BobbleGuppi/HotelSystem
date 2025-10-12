@@ -52,7 +52,7 @@ namespace HotelSystem.View
         #region Utility Methods
         public void DateChecking() 
         {
-            int randomValue = rnd.Next(0, 2);  // 0 (inclusive) to 2 (exclusive)
+            int randomValue = rnd.Next(0, 2); 
             pickedDate = (DateChecker)randomValue; // Convert to enum
 
         }
@@ -62,12 +62,12 @@ namespace HotelSystem.View
         #region Get User Input
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            checkInDate = CheckInPicker.Value.Date; // assign to the field
+            checkInDate = CheckInPicker.Value.Date;
         }
 
         private void CheckOutPicker_ValueChanged(object sender, EventArgs e)
         {
-            checkOutDate = CheckOutPicker.Value.Date; // assign to the field
+            checkOutDate = CheckOutPicker.Value.Date; 
 
         }
 
@@ -114,7 +114,7 @@ namespace HotelSystem.View
                     if (pickedDate == DateChecker.validDate)
                     {
                         
-                        roomAvail = res_cntrllr.RoomAvailable(checkInDate, checkOutDate); // returns room
+                        roomAvail = res_cntrllr.RoomAvailable(checkInDate, checkOutDate); // returns bool if room is available
 
                         if (!roomAvail)
                         {
@@ -174,18 +174,15 @@ namespace HotelSystem.View
                 "Confirm reservation to be updated?\r\n", // Message
                 "Confirm Change",                      // Title
                 MessageBoxButtons.YesNo,               // Yes/No buttons
-                MessageBoxIcon.Question                // Optional icon
+                MessageBoxIcon.Question                // ? icon
             );
 
             if (result == DialogResult.Yes)
             {
-                // Update in-memory object
                 myReservation.changeReservationDates(checkInDate, checkOutDate);
 
-                // Update the DataSet
                 res_cntrllr.reservationDB.DataSetChange(myReservation, DB.DBOperation.Edit);
 
-                // Push the changes to the database via DataAdapter
                 bool success = res_cntrllr.FinalizeChanges(myReservation);
 
                 if (success)

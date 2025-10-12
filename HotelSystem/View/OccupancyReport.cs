@@ -25,7 +25,7 @@ namespace HotelSystem.View
         public OccupancyReport()
         {
             InitializeComponent();
-            reservationController = new ReservationController(); // create new controller
+            reservationController = new ReservationController(); 
 
             dataPanel.Visible = false;
         }
@@ -46,7 +46,7 @@ namespace HotelSystem.View
             var dailyData = reservationController.CalculateDailyOccupancy(start, end);
             double avgOccupancy = reservationController.CalculateAverageOccupancy(start, end);
 
-            // --- Chart Setup ---
+            // Chart Setup 
             chart.Series.Clear();
             chart.ChartAreas.Clear();
 
@@ -64,7 +64,7 @@ namespace HotelSystem.View
                 series.Points.AddXY(kvp.Key.ToString("dd MMM"), kvp.Value);
             }
 
-            // --- Add Average Line ---
+            // Add Average Line
             Series avgLine = new Series("Average");
             avgLine.ChartType = SeriesChartType.Line;
             avgLine.BorderWidth = 2;
@@ -75,7 +75,7 @@ namespace HotelSystem.View
             }
             chart.Series.Add(avgLine);
 
-            // --- Display average occupancy in a textbox ---
+            // Display average occupancy in a textbox 
             averageTextBox.Text = $"{avgOccupancy:F2}%";
             reportCreatedDate.Text = "Generated on: [" + DateTime.Now.ToString("yyyy-MM-dd") + "]";
 
