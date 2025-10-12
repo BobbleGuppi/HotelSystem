@@ -86,7 +86,7 @@ namespace HotelSystem
             }
             else
             {
-                changeBookingForm.BringToFront(); // just focus the existing one
+                changeBookingForm.BringToFront(); 
             }
 
         }
@@ -104,7 +104,7 @@ namespace HotelSystem
             }
             else
             {
-                cancelBookingForm.BringToFront(); // just focus the existing one
+                cancelBookingForm.BringToFront(); 
             }
         }
 
@@ -121,7 +121,7 @@ namespace HotelSystem
             }
             else
             {
-                enquiryForm.BringToFront(); // just focus the existing one
+                enquiryForm.BringToFront(); 
             }
 
         }
@@ -139,7 +139,7 @@ namespace HotelSystem
             }
             else
             {
-                makeBookingForm.BringToFront(); // just focus the existing one
+                makeBookingForm.BringToFront(); 
             }
 
 
@@ -159,7 +159,7 @@ namespace HotelSystem
             }
             else
             {
-                summaryReportWin.BringToFront(); // just focus the existing one
+                summaryReportWin.BringToFront(); 
             }
         }
 
@@ -177,7 +177,7 @@ namespace HotelSystem
             }
             else
             {
-                exceptionReportWin.BringToFront(); // just focus the existing one
+                exceptionReportWin.BringToFront(); 
             }
         }
 
@@ -194,11 +194,46 @@ namespace HotelSystem
             }
             else
             {
-                exceptionReportWin.BringToFront(); // just focus the existing one
+                exceptionReportWin.BringToFront();
             }
 
         }
 
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            // Open Occupancy Report
+            CloseAllChildForms();
+            if (summaryReportWin == null || summaryReportWin.IsDisposed)
+            {
+                summaryReportWin = new OccupancyReport();
+                summaryReportWin.WindowState = FormWindowState.Maximized;
+                summaryReportWin.MdiParent = this;
+                summaryReportWin.Show();
+                summaryReportWin.BringToFront();
+            }
+            else
+            {
+                summaryReportWin.BringToFront();
+            }
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            // Open Loyalty Report
+            CloseAllChildForms();
+            if (exceptionReportWin == null || exceptionReportWin.IsDisposed)
+            {
+                exceptionReportWin = new LoyaltyReport();
+                exceptionReportWin.WindowState = FormWindowState.Maximized;
+                exceptionReportWin.MdiParent = this;
+                exceptionReportWin.Show();
+                exceptionReportWin.BringToFront();
+            }
+            else
+            {
+                exceptionReportWin.BringToFront();
+            }
+        }
         #endregion
 
         private void button2_Click(object sender, EventArgs e)

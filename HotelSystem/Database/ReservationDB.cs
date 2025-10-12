@@ -80,7 +80,7 @@ namespace HotelSystem.Database
                     continue;
                 }
 
-                // Trim DB-side value (nchar may be padded)
+                
                 string reservationId = Convert.ToString(dsMain.Tables[table].Rows[rowIndex]["ReservationID"]).TrimEnd();
                 if (reservationId == reservation.ReservationID)
                 {
@@ -96,15 +96,15 @@ namespace HotelSystem.Database
 
         private void FillRow(DataRow myRow, Reservation reservation, DB.DBOperation operation)
         {
-            // Always set the columns for both Add and Edit
+            
             myRow["ReservationID"] = reservation.ReservationID;
             myRow["GuestID"] = reservation.GuestID;
             myRow["CheckInDate"] = reservation.CheckInDate;
             myRow["CheckOutDate"] = reservation.CheckOutDate;
             myRow["TotalPrice"] = reservation.totalPrice;
-            myRow["Deposit"] = reservation.DepositPaid; // or reservation.Deposit if that's your property
+            myRow["Deposit"] = reservation.DepositPaid; 
 
-            // No AcceptChanges() here — we want the DataRow state to remain Modified for Update()
+            
         }
 
 
@@ -242,7 +242,7 @@ namespace HotelSystem.Database
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "Deposit"); // matches DB column
+            param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "Deposit"); 
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 

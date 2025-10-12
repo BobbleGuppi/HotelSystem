@@ -45,7 +45,8 @@ namespace HotelSystem.Logic
 
         public double TotalAmount
         {
-            get { return totalAmount; }
+            get { return totalAmount;}
+            set { totalAmount = value; }
         }
 
         public double Balance
@@ -77,6 +78,13 @@ namespace HotelSystem.Logic
         #endregion
 
         #region Methods
+
+        public void UpdateTotalAmount(double newTotal)
+        {
+            totalAmount = newTotal;
+            balance = newTotal; // reset balance to new total
+            
+        }
         public void makeDeposit(string paymentId)
         {
             if (depositPay != null) {

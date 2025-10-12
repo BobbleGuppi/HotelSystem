@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -59,7 +60,7 @@ namespace HotelSystem.View
             departureDate = departureDateTP.Value;
             if (!ValidateDates(arrivalDate, departureDate))
             {
-                return; // Stop if invalid
+                return;
             }
 
             bool availability = reservationController.Roomvailable(arrivalDate, departureDate);
@@ -77,8 +78,7 @@ namespace HotelSystem.View
         }
 
         private void confirmRbtn_Click(object sender, EventArgs e)
-        {
-            // Show a friendly confirmation dialog before proceeding
+        { 
             string message = $"You selected:\n\n" +
                              $"🗓 Arrival Date: {arrivalDate.ToLongDateString()}\n" +
                              $"🏁 Departure Date: {departureDate.ToLongDateString()}\n\n" +
@@ -92,14 +92,13 @@ namespace HotelSystem.View
 
             if (result == DialogResult.Yes)
             {
-                // Proceed to the next panel (guest details)
                 guestpnl.Visible = true;
                 CenterPanel(guestpnl);
                 Rersevationpnl.Visible = false;
             }
             else
             {
-                // Hide the confirm button and stay on the current panel
+   
                 confirmRbtn.Visible = false;
               
                 MessageBox.Show("No problem! Please adjust your dates and check availability again.",
@@ -127,7 +126,7 @@ namespace HotelSystem.View
                 ctrl.Top = (int)(orig.Top * yRatio);
             }
 
-            // Resize the panel to fill the form
+ 
             Rersevationpnl.Width = this.ClientSize.Width;
             Rersevationpnl.Height = this.ClientSize.Height;
 
@@ -166,7 +165,6 @@ namespace HotelSystem.View
                 return;
             }
 
-            // 2️⃣ South African phone number validation (must be 10 digits, start with 0)
             if (!System.Text.RegularExpressions.Regex.IsMatch(phoneNotxt.Text, @"^0\d{9}$"))
             {
                 MessageBox.Show("Please enter a valid South African phone number (e.g. 0821234567).",
@@ -175,7 +173,7 @@ namespace HotelSystem.View
                 return;
             }
 
-            // 3️⃣ South African ID number validation (must be 13 digits)
+   
             if (!System.Text.RegularExpressions.Regex.IsMatch(idNotxt.Text, @"^\d{13}$"))
             {
                 MessageBox.Show("Please enter a valid South African ID number (13 digits).",
@@ -204,58 +202,47 @@ namespace HotelSystem.View
             if (existingGuest == null)
             {
                 string guestID = GenerateGuestID();
-                // Create GuestAccount for the new guest
                 string guestAccID = GenerateGuestAccountID();
                 DateTime dateCreated = DateTime.Now;
                 double totalAmount = 0.0;
                 string status = "Unpaid";
                 GuestAccount newGuestAccount = new GuestAccount(guestAccID, guestID, dateCreated, totalAmount, status);
+                Guest newGuest = new Guest(id, fullname, phone, address, guestID, guestAccID);
 
+                // Save new guest and guest account first
                 try
                 {
                     guestAccountController.DataMaintenance(newGuestAccount, DB.DBOperation.Add);
-                   bool savedaccount= guestAccountController.FinalizeChanges(newGuestAccount);
-                if (!savedaccount)
+                    bool savedaccount = guestAccountController.FinalizeChanges(newGuestAccount);
+                    if (!savedaccount)
                     {
                         return;
                     }
-                }
-                catch (Exception ex)
-                {
-                    return;
-                }
-
-     
-                Guest newGuest = new Guest(id, fullname, phone, address, guestID, guestAccID);
-
-                try
-                {
                     guestController.DataMaintenance(newGuest, DB.DBOperation.Add);
-                    bool saved=guestController.FinalizeChanges(newGuest);
+                    bool saved = guestController.FinalizeChanges(newGuest);
                     if (!saved)
                     {
                         MessageBox.Show("Failed to save new guest.");
                         return;
                     }
-                    else
-                    {
-
-                        MessageBox.Show(
-                            "Guest details added successfully.Proceed with reservation.", "New guest created!",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information
-                        );
-                        CreateReservation(newGuest, newGuestAccount);
-                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Failed to add new guest: " + ex.Message);
+                    MessageBox.Show("Failed to add new guest or account: " + ex.Message);
+                    return;
                 }
+
+                MessageBox.Show(
+                    "Guest details added successfully. Proceed with reservation.", "New guest created!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                // Now update the GuestAccount's total after reservation price is known
+                CreateReservation(newGuest, newGuestAccount);
             }
             else
             {
-                // Find or create GuestAccount for existing guest
                
                     string guestAccID = GenerateGuestAccountID();
                     DateTime dateCreated = DateTime.Now;
@@ -274,7 +261,7 @@ namespace HotelSystem.View
                     }
 
                 MessageBox.Show(
-                    " The guest already exists.Proceed with reservation.", "Guest details found!",
+                    " The guest already exists. Proceed with reservation.", "Guest details found!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
@@ -327,7 +314,6 @@ namespace HotelSystem.View
 
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
-
             int diff = departureDate.Day - arrivalDate.Day;
             string reservationId = ""+fNametxt.Text[0]+ ""+lNametxt.Text[0]+"12"+ arrivalDate.Day+ "-"+ diff;
 
@@ -336,20 +322,24 @@ namespace HotelSystem.View
             double totalPrice = 0.0;
             bool depositPaid = (depositChecker == DepositChecker.Paid);
 
-            
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
             reservation.calculateTotalPrice(arrivalDate, departureDate);
+            guestAccount.UpdateTotalAmount(reservation.totalPrice);
             double depositAmount = reservation.totalPrice * 0.10;
+
+            // --- Always update GuestAccount in DB with correct totalAmount ---
+            guestAccountController.DataMaintenance(guestAccount, DB.DBOperation.Edit);
+            guestAccountController.FinalizeChanges(guestAccount);
+
             if (depositChecker == DepositChecker.Paid)
             {
-                
                 string paymentID = GeneratePaymentID();
                 string paymentType = "Deposit";
-                Payment payment = new Payment(paymentID, guestAccId, totalPrice,paymentType, DateTime.Now);
-                
+                Payment payment = new Payment(paymentID, guestAccId, totalPrice, paymentType, DateTime.Now);
                 guestAccount.makeDeposit(paymentID);
-
-            } 
+                guestAccountController.DataMaintenance(guestAccount, DB.DBOperation.Edit);
+                guestAccountController.FinalizeChanges(guestAccount);
+            }
             try
             {
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
@@ -376,7 +366,6 @@ namespace HotelSystem.View
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information
                     );
-
 
                     reservationController.AddReservation(reservation);
                     this.Close();
@@ -448,15 +437,15 @@ namespace HotelSystem.View
         private void cancelbtn_Click(object sender, EventArgs e)
         {
                     DialogResult result = MessageBox.Show(
-            "Are you sure you want to cancel?",   // Message
-            "Confirm Cancel",                     // Title
-            MessageBoxButtons.YesNo,              // Buttons
-            MessageBoxIcon.Question               // Icon
+            "Are you sure you want to cancel?",  
+            "Confirm Cancel",                    
+            MessageBoxButtons.YesNo,              
+            MessageBoxIcon.Question              
                    );
 
             if (result == DialogResult.Yes)
             {
-                this.Close(); // Close the form only if user clicks Yes
+                this.Close();
             }
         }
 
