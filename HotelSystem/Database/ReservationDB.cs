@@ -242,7 +242,7 @@ namespace HotelSystem.Database
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "Deposit"); // matches DB column
+            param = new SqlParameter("@Deposit", SqlDbType.Bit, 1, "Deposit"); 
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
