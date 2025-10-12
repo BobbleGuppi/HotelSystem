@@ -199,6 +199,41 @@ namespace HotelSystem
 
         }
 
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            // Open Occupancy Report
+            CloseAllChildForms();
+            if (summaryReportWin == null || summaryReportWin.IsDisposed)
+            {
+                summaryReportWin = new OccupancyReport();
+                summaryReportWin.WindowState = FormWindowState.Maximized;
+                summaryReportWin.MdiParent = this;
+                summaryReportWin.Show();
+                summaryReportWin.BringToFront();
+            }
+            else
+            {
+                summaryReportWin.BringToFront();
+            }
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            // Open Loyalty Report
+            CloseAllChildForms();
+            if (exceptionReportWin == null || exceptionReportWin.IsDisposed)
+            {
+                exceptionReportWin = new LoyaltyReport();
+                exceptionReportWin.WindowState = FormWindowState.Maximized;
+                exceptionReportWin.MdiParent = this;
+                exceptionReportWin.Show();
+                exceptionReportWin.BringToFront();
+            }
+            else
+            {
+                exceptionReportWin.BringToFront();
+            }
+        }
         #endregion
 
         private void button2_Click(object sender, EventArgs e)

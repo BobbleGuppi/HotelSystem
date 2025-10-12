@@ -38,7 +38,7 @@ namespace HotelSystem.View
                 // Create a welcome label
                 Label welcomeLabel = new Label();
                 welcomeLabel.Text = $"Welcome, {rec.Name}...";
-                welcomeLabel.Font = new Font("Segoe UI", 28, FontStyle.Regular);
+                welcomeLabel.Font = new Font("Segoe UI", 28, FontStyle.Bold);
                 welcomeLabel.ForeColor = Color.White;
                 welcomeLabel.BackColor = Color.Transparent;
                 welcomeLabel.AutoSize = true;
