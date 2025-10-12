@@ -78,6 +78,13 @@ namespace HotelSystem.Logic
         #endregion
 
         #region Methods
+
+        public void UpdateTotalAmount(double newTotal)
+        {
+            totalAmount = newTotal;
+            balance = newTotal; // reset balance to new total
+            
+        }
         public void makeDeposit(string paymentId)
         {
             if (depositPay != null) {

@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -206,48 +207,39 @@ namespace HotelSystem.View
                 double totalAmount = 0.0;
                 string status = "Unpaid";
                 GuestAccount newGuestAccount = new GuestAccount(guestAccID, guestID, dateCreated, totalAmount, status);
+                Guest newGuest = new Guest(id, fullname, phone, address, guestID, guestAccID);
 
+                // Save new guest and guest account first
                 try
                 {
                     guestAccountController.DataMaintenance(newGuestAccount, DB.DBOperation.Add);
-                   bool savedaccount= guestAccountController.FinalizeChanges(newGuestAccount);
-                if (!savedaccount)
+                    bool savedaccount = guestAccountController.FinalizeChanges(newGuestAccount);
+                    if (!savedaccount)
                     {
                         return;
                     }
-                }
-                catch (Exception ex)
-                {
-                    return;
-                }
-
-     
-                Guest newGuest = new Guest(id, fullname, phone, address, guestID, guestAccID);
-
-                try
-                {
                     guestController.DataMaintenance(newGuest, DB.DBOperation.Add);
-                    bool saved=guestController.FinalizeChanges(newGuest);
+                    bool saved = guestController.FinalizeChanges(newGuest);
                     if (!saved)
                     {
                         MessageBox.Show("Failed to save new guest.");
                         return;
                     }
-                    else
-                    {
-
-                        MessageBox.Show(
-                            "Guest details added successfully.Proceed with reservation.", "New guest created!",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information
-                        );
-                        CreateReservation(newGuest, newGuestAccount);
-                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Failed to add new guest: " + ex.Message);
+                    MessageBox.Show("Failed to add new guest or account: " + ex.Message);
+                    return;
                 }
+
+                MessageBox.Show(
+                    "Guest details added successfully. Proceed with reservation.", "New guest created!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                // Now update the GuestAccount's total after reservation price is known
+                CreateReservation(newGuest, newGuestAccount);
             }
             else
             {
@@ -269,7 +261,7 @@ namespace HotelSystem.View
                     }
 
                 MessageBox.Show(
-                    " The guest already exists.Proceed with reservation.", "Guest details found!",
+                    " The guest already exists. Proceed with reservation.", "Guest details found!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
@@ -322,7 +314,6 @@ namespace HotelSystem.View
 
         private void CreateReservation(Guest guest, GuestAccount guestAccount)
         {
-
             int diff = departureDate.Day - arrivalDate.Day;
             string reservationId = ""+fNametxt.Text[0]+ ""+lNametxt.Text[0]+"12"+ arrivalDate.Day+ "-"+ diff;
 
@@ -331,21 +322,24 @@ namespace HotelSystem.View
             double totalPrice = 0.0;
             bool depositPaid = (depositChecker == DepositChecker.Paid);
 
-            
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
             reservation.calculateTotalPrice(arrivalDate, departureDate);
-            guestAccount.TotalAmount = reservation.totalPrice;
+            guestAccount.UpdateTotalAmount(reservation.totalPrice);
             double depositAmount = reservation.totalPrice * 0.10;
+
+            // --- Always update GuestAccount in DB with correct totalAmount ---
+            guestAccountController.DataMaintenance(guestAccount, DB.DBOperation.Edit);
+            guestAccountController.FinalizeChanges(guestAccount);
+
             if (depositChecker == DepositChecker.Paid)
             {
-                
                 string paymentID = GeneratePaymentID();
                 string paymentType = "Deposit";
-                Payment payment = new Payment(paymentID, guestAccId, totalPrice,paymentType, DateTime.Now);
-                
+                Payment payment = new Payment(paymentID, guestAccId, totalPrice, paymentType, DateTime.Now);
                 guestAccount.makeDeposit(paymentID);
-
-            } 
+                guestAccountController.DataMaintenance(guestAccount, DB.DBOperation.Edit);
+                guestAccountController.FinalizeChanges(guestAccount);
+            }
             try
             {
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
@@ -372,7 +366,6 @@ namespace HotelSystem.View
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information
                     );
-
 
                     reservationController.AddReservation(reservation);
                     this.Close();
