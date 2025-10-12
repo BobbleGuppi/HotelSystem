@@ -102,14 +102,13 @@ namespace HotelSystem.Logic
         #endregion
 
         #region Room Availability Logic
-        //Checks if there’s any available room between given dates
+        
         public bool RoomAvailable(DateTime checkIn, DateTime checkOut)
         {
             // Count how many reservations overlap with the requested dates
             int overlappingReservations = reservations.Count(r =>
                 checkIn < r.CheckOutDate && r.CheckInDate < checkOut);
 
-            // If 5 or more reservations overlap, all rooms are booked
             return overlappingReservations < rooms.Count;
         }
 
@@ -124,7 +123,7 @@ namespace HotelSystem.Logic
                     return true;
                 }
             }
-            return false; // No available room
+            return false; 
         }
         #endregion
 
@@ -140,7 +139,7 @@ namespace HotelSystem.Logic
                 int occupiedCount = reservations.Count(r =>
                     r.CheckInDate <= date && r.CheckOutDate > date);
 
-                double percentage = (double)occupiedCount / totalRooms * 100; // calc the percentage
+                double percentage = (double)occupiedCount / totalRooms * 100; 
                 dailyOccupancy[date] = percentage;
             }
 
@@ -159,23 +158,22 @@ namespace HotelSystem.Logic
         // Returns a summary: key = times booked (2..5 where 5 = 5 or more), value = number of guests
         public Dictionary<int, int> GetLoyalCountsByDateRange(DateTime startDate, DateTime endDate)
         {
-            // Filter reservations that overlap the date range
+         
             var filtered = reservations
                 .Where(r => r.CheckInDate <= endDate && r.CheckOutDate >= startDate);
 
-            // Count reservations per guest inside the filtered set
             var countsByGuest = filtered
                 .GroupBy(r => r.GuestID)
                 .Select(g => new { GuestID = g.Key, Count = g.Count() })
-                .Where(x => x.Count >= 2) // only interested in guests with multiple reservations
+                .Where(x => x.Count >= 2) 
                 .ToList();
 
-            // Prepare buckets 2,3,4,5 (5 means 5 or more)
+   
             var buckets = new Dictionary<int, int> { { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 } };
 
             foreach (var g in countsByGuest)
             {
-                int bucket = (g.Count >= 5) ? 5 : g.Count; // clamp to 5
+                int bucket = (g.Count >= 5) ? 5 : g.Count;
                 buckets[bucket] = buckets[bucket] + 1;
             }
 

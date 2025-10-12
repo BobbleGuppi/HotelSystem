@@ -59,7 +59,7 @@ namespace HotelSystem.View
             departureDate = departureDateTP.Value;
             if (!ValidateDates(arrivalDate, departureDate))
             {
-                return; // Stop if invalid
+                return;
             }
 
             bool availability = reservationController.RoomAvailable(arrivalDate, departureDate);
@@ -77,8 +77,7 @@ namespace HotelSystem.View
         }
 
         private void confirmRbtn_Click(object sender, EventArgs e)
-        {
-            // Show a friendly confirmation dialog before proceeding
+        { 
             string message = $"You selected:\n\n" +
                              $"🗓 Arrival Date: {arrivalDate.ToLongDateString()}\n" +
                              $"🏁 Departure Date: {departureDate.ToLongDateString()}\n\n" +
@@ -92,14 +91,13 @@ namespace HotelSystem.View
 
             if (result == DialogResult.Yes)
             {
-                // Proceed to the next panel (guest details)
                 guestpnl.Visible = true;
                 CenterPanel(guestpnl);
                 Rersevationpnl.Visible = false;
             }
             else
             {
-                // Hide the confirm button and stay on the current panel
+   
                 confirmRbtn.Visible = false;
               
                 MessageBox.Show("No problem! Please adjust your dates and check availability again.",
@@ -127,7 +125,7 @@ namespace HotelSystem.View
                 ctrl.Top = (int)(orig.Top * yRatio);
             }
 
-            // Resize the panel to fill the form
+ 
             Rersevationpnl.Width = this.ClientSize.Width;
             Rersevationpnl.Height = this.ClientSize.Height;
 
@@ -166,7 +164,6 @@ namespace HotelSystem.View
                 return;
             }
 
-            // 2️⃣ South African phone number validation (must be 10 digits, start with 0)
             if (!System.Text.RegularExpressions.Regex.IsMatch(phoneNotxt.Text, @"^0\d{9}$"))
             {
                 MessageBox.Show("Please enter a valid South African phone number (e.g. 0821234567).",
@@ -175,7 +172,7 @@ namespace HotelSystem.View
                 return;
             }
 
-            // 3️⃣ South African ID number validation (must be 13 digits)
+   
             if (!System.Text.RegularExpressions.Regex.IsMatch(idNotxt.Text, @"^\d{13}$"))
             {
                 MessageBox.Show("Please enter a valid South African ID number (13 digits).",
@@ -204,7 +201,6 @@ namespace HotelSystem.View
             if (existingGuest == null)
             {
                 string guestID = GenerateGuestID();
-                // Create GuestAccount for the new guest
                 string guestAccID = GenerateGuestAccountID();
                 DateTime dateCreated = DateTime.Now;
                 double totalAmount = 0.0;
@@ -255,7 +251,6 @@ namespace HotelSystem.View
             }
             else
             {
-                // Find or create GuestAccount for existing guest
                
                     string guestAccID = GenerateGuestAccountID();
                     DateTime dateCreated = DateTime.Now;
@@ -448,15 +443,15 @@ namespace HotelSystem.View
         private void cancelbtn_Click(object sender, EventArgs e)
         {
                     DialogResult result = MessageBox.Show(
-            "Are you sure you want to cancel?",   // Message
-            "Confirm Cancel",                     // Title
-            MessageBoxButtons.YesNo,              // Buttons
-            MessageBoxIcon.Question               // Icon
+            "Are you sure you want to cancel?",  
+            "Confirm Cancel",                    
+            MessageBoxButtons.YesNo,              
+            MessageBoxIcon.Question              
                    );
 
             if (result == DialogResult.Yes)
             {
-                this.Close(); // Close the form only if user clicks Yes
+                this.Close();
             }
         }
 
