@@ -119,8 +119,8 @@ namespace HotelSystem.Logic
         {
             checkInDate = newCheckIn;
             checkOutDate = newCheckOut;
-            totalPrice = 0; // Reset total price before recalculating
-            calculateTotalPrice(checkInDate, checkOutDate); // Assuming pricePerNight is handled in checkSeasonalPricing
+            totalPrice = 0; // reset total price before recalculating
+            calculateTotalPrice(checkInDate, checkOutDate); // assuming pricePerNight is handled in checkSeasonalPricing
         }
         public string reservationDetails()
         {

@@ -73,7 +73,7 @@ namespace HotelSystem.Logic
             this.dateCreated = dateCreated;
             this.totalAmount = totalAmount;
             this.balance = totalAmount;
-            this.status = status; // initially unpaid
+            this.status = status; 
         }
         #endregion
 
@@ -92,7 +92,7 @@ namespace HotelSystem.Logic
 
             }
 
-            double depositAmount = totalAmount * 0.10; // chat said this is how i make it 10%
+            double depositAmount = totalAmount * 0.10; 
             balance -= depositAmount;
             status = "DepositPaid";
 
