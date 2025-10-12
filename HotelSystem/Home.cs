@@ -86,7 +86,7 @@ namespace HotelSystem
             }
             else
             {
-                changeBookingForm.BringToFront(); // just focus the existing one
+                changeBookingForm.BringToFront(); 
             }
 
         }
@@ -104,7 +104,7 @@ namespace HotelSystem
             }
             else
             {
-                cancelBookingForm.BringToFront(); // just focus the existing one
+                cancelBookingForm.BringToFront(); 
             }
         }
 
@@ -121,7 +121,7 @@ namespace HotelSystem
             }
             else
             {
-                enquiryForm.BringToFront(); // just focus the existing one
+                enquiryForm.BringToFront(); 
             }
 
         }
@@ -139,7 +139,7 @@ namespace HotelSystem
             }
             else
             {
-                makeBookingForm.BringToFront(); // just focus the existing one
+                makeBookingForm.BringToFront(); 
             }
 
 
@@ -159,7 +159,7 @@ namespace HotelSystem
             }
             else
             {
-                summaryReportWin.BringToFront(); // just focus the existing one
+                summaryReportWin.BringToFront(); 
             }
         }
 
@@ -177,7 +177,7 @@ namespace HotelSystem
             }
             else
             {
-                exceptionReportWin.BringToFront(); // just focus the existing one
+                exceptionReportWin.BringToFront(); 
             }
         }
 
@@ -194,7 +194,7 @@ namespace HotelSystem
             }
             else
             {
-                exceptionReportWin.BringToFront(); // just focus the existing one
+                exceptionReportWin.BringToFront();
             }
 
         }

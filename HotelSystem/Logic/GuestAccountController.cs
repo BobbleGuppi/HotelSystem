@@ -30,7 +30,7 @@ namespace HotelSystem.Logic
         #region Constructor
         public GuestAccountController()
         {
-            //***instantiate the guestAccDB object to communicate with the database
+         
             guestAccountDB = new GuestAccountDB();
             guestAccounts = guestAccountDB.AllGuestAccounts;
         }
@@ -51,7 +51,7 @@ namespace HotelSystem.Logic
 
                 case DB.DBOperation.Edit:
                     index = FindIndex(aGuestAcc);
-                    if (index >= 0) // has to exist
+                    if (index >= 0)
                     {
                         guestAccounts[index] = aGuestAcc;
 
@@ -60,7 +60,7 @@ namespace HotelSystem.Logic
 
                 case DB.DBOperation.Delete:
                     index = FindIndex(aGuestAcc);
-                    if (index >= 0) // has to exist
+                    if (index >= 0) 
                     {
                         guestAccounts.RemoveAt(index);
                     }
@@ -69,10 +69,9 @@ namespace HotelSystem.Logic
 
         }
 
-        //***Commit the changes to the database
         public bool FinalizeChanges(GuestAccount aGuestAcc)
         {
-            //***call the guestAccDB method that will commit the changes to the database
+ 
             return guestAccountDB.UpdateDataSource(aGuestAcc);
         }
         #endregion
@@ -82,17 +81,17 @@ namespace HotelSystem.Logic
         public GuestAccount Find(string guestAccID)
         {
             int index = 0;
-            bool found = (guestAccounts[index].GuestAccID == guestAccID); // checks if it is the first guestAcc. The found variable will be searching for an guestAcc
+            bool found = (guestAccounts[index].GuestAccID == guestAccID); 
             int count = guestAccounts.Count;
 
-            while (!(found) && (index < guestAccounts.Count - 1))  //if you have not found the guestAcc AND you have not reached the end of the collection – write
+            while (!(found) && (index < guestAccounts.Count - 1))  
             {
                 index++;
-                found = (guestAccounts[index].GuestAccID == guestAccID); // this will be TRUE if found
+                found = (guestAccounts[index].GuestAccID == guestAccID); 
 
 
             }
-            return guestAccounts[index]; // guestAcc we found
+            return guestAccounts[index]; 
         }
 
         public int FindIndex(GuestAccount aGuestAcc)

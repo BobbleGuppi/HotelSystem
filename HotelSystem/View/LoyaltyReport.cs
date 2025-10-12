@@ -40,10 +40,10 @@ namespace HotelSystem.View
                 return;
             }
 
-            // Get summary buckets (2..5 where 5 = 5 or more)
+            // Get summary buckets
             var summary = reservationController.GetLoyalCountsByDateRange(startDate, endDate);
 
-            // Always show a table with the four categories (even if zero)
+            // Always show a table
             DataTable table = new DataTable();
             table.Columns.Add("Times Booked");         // 2,3,4,5
             table.Columns.Add("Number of Guests");    // how many guests have that many bookings

@@ -88,8 +88,14 @@ namespace HotelSystem.Database
                 aRow["TotalAmount"] = aGuestAcc.TotalAmount;
                 aRow["Status"] = aGuestAcc.Status;
                 
+            }else if (operation == DB.DBOperation.Edit)
+            {
+                aRow["GuestID"] = aGuestAcc.GuestID;
+                aRow["DateCreated"] = aGuestAcc.DateCreated;  //NOTE square brackets to indicate index of collections of fields in row.
+                aRow["TotalAmount"] = aGuestAcc.TotalAmount;
+                aRow["Status"] = aGuestAcc.Status;
             }
-            
+
         }
 
         public int FindRow(GuestAccount aGuestAcc, string table)
@@ -219,7 +225,7 @@ namespace HotelSystem.Database
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
-            param = new SqlParameter("@Status", SqlDbType.DateTime, 8, "Status");
+            param = new SqlParameter("@Status", SqlDbType.NChar, 10, "Status");
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
 
