@@ -170,6 +170,7 @@ namespace HotelSystem.View
             textBoxForReservationID.Visible = true;
             ConfirmButton.Visible = true;
             panel2.Visible = false;
+
             // Others hidden
             panel1.Visible = true;
             richTextBox1.Visible = false;
