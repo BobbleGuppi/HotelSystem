@@ -334,13 +334,22 @@ namespace HotelSystem.View
             string guestId = guest.GuestID;
             string guestAccId = guest.GuestAccount;
             double totalPrice = 0.0;
-            bool depositPaid = false;
+            bool depositPaid = (depositChecker == DepositChecker.Paid);
 
             
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
             reservation.calculateTotalPrice(arrivalDate, departureDate);
             double depositAmount = reservation.totalPrice * 0.10;
-            
+            if (depositChecker == DepositChecker.Paid)
+            {
+                
+                string paymentID = GeneratePaymentID();
+                string paymentType = "Deposit";
+                Payment payment = new Payment(paymentID, guestAccId, totalPrice,paymentType, DateTime.Now);
+                
+                guestAccount.makeDeposit(paymentID);
+
+            } 
             try
             {
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
