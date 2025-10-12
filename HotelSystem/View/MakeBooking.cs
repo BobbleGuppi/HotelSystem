@@ -12,6 +12,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// Team 22:
+// Rachel Alia - ALXRAC002
+// Zamazhengu Tshabalala - TSHZAM011
+// Blessings Nyameni - NYMNDY001
+// Amahle Mbambo - MBAMAH001
 namespace HotelSystem.View
 {
     public partial class MakeBooking : Form
