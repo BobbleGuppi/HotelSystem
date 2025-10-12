@@ -334,6 +334,7 @@ namespace HotelSystem.View
             
             Reservation reservation = new Reservation(reservationId, guestId, arrivalDate, departureDate, totalPrice, depositPaid);
             reservation.calculateTotalPrice(arrivalDate, departureDate);
+            guestAccount.TotalAmount = reservation.totalPrice;
             double depositAmount = reservation.totalPrice * 0.10;
             if (depositChecker == DepositChecker.Paid)
             {
