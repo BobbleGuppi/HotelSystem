@@ -77,7 +77,7 @@ namespace HotelSystem.Database
         private void FillRow(DataRow aRow, GuestAccount aGuestAcc, DB.DBOperation operation)
         {
 
-
+            
             if (operation == DB.DBOperation.Add)
             {
                 aRow["GuestAccID"] = aGuestAcc.GuestAccID;

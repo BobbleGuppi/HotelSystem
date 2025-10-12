@@ -342,6 +342,8 @@ namespace HotelSystem.View
             }
             try
             {
+                guestAccount.TotalAmount += reservation.totalPrice;
+
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
                 bool savedReser = reservationController.FinalizeChanges(reservation);
                 if (!savedReser)

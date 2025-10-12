@@ -105,14 +105,14 @@ namespace HotelSystem.Logic
         
         public bool RoomAvailable(DateTime checkIn, DateTime checkOut)
         {
-            // Count how many reservations overlap with the requested dates
+            // this coount how many reservations overlap with the requested dates
             int overlappingReservations = reservations.Count(r =>
                 checkIn < r.CheckOutDate && r.CheckInDate < checkOut);
 
             return overlappingReservations < rooms.Count;
         }
 
-        //  Adds a reservation only to ONE available room
+        //  this adds a reservation only to ONE available room
         public bool AddReservation(Reservation reservation)
         {
             foreach (Room room in rooms)
