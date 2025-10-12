@@ -46,6 +46,7 @@ namespace HotelSystem.Logic
         public double TotalAmount
         {
             get { return totalAmount; }
+            set { totalAmount = value; }
         }
 
         public double Balance
