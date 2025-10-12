@@ -63,7 +63,7 @@ namespace HotelSystem.View
                 return;
             }
 
-            bool availability = reservationController.RoomAvailable(arrivalDate, departureDate);
+            bool availability = reservationController.Roomvailable(arrivalDate, departureDate);
             MessageBox.Show($"Checking room availability from {arrivalDate.ToShortDateString()} to {departureDate.ToShortDateString()} ");
 
             if (availability)
@@ -342,6 +342,8 @@ namespace HotelSystem.View
             }
             try
             {
+                guestAccount.TotalAmount += reservation.totalPrice;
+
                 reservationController.DataMaintenance(reservation, DB.DBOperation.Add);
                 bool savedReser = reservationController.FinalizeChanges(reservation);
                 if (!savedReser)
