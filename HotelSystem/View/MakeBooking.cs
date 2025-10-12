@@ -62,7 +62,7 @@ namespace HotelSystem.View
                 return; // Stop if invalid
             }
 
-            bool availability = reservationController.RoomAvailable(arrivalDate, departureDate);
+            bool availability = reservationController.Roomvailable(arrivalDate, departureDate);
             MessageBox.Show($"Checking room availability from {arrivalDate.ToShortDateString()} to {departureDate.ToShortDateString()} ");
 
             if (availability)
