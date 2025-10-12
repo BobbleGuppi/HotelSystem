@@ -153,7 +153,7 @@ namespace HotelSystem.Database
 
         private void Create_INSERT_Command(Guest aGuest)
         {
-            //Create the command that must be used to insert values into the Books table..
+            
             daMain.InsertCommand = new SqlCommand("INSERT into Guest (GuestID, ID, Name, Address, Phone, GuestAccID) VALUES (@GuestID, @ID, @Name, @Address, @Phone, @GuestAccID)", cnMain);
             Build_INSERT_Parameters(aGuest);
         }

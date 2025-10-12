@@ -49,18 +49,16 @@ namespace HotelSystem.Database
         }
         private void Add2Collection(string table)
         {
-            //Declare references to a myRow object and an GuestAcc object
             DataRow myRow = null;
             GuestAccount aGuestAcc;
-            
-            //READ from the table  
+              
             foreach (DataRow myRow_loopVariable in dsMain.Tables[table].Rows)
             {
                 myRow = myRow_loopVariable;
                 if (!(myRow.RowState == DataRowState.Deleted))
                 {
                    
-                    //Obtain each attribute from the specific field in the row in the table
+                    
                     
                     string guestAccID = Convert.ToString(myRow["GuestAccID"]).TrimEnd();
                     string guestID  = Convert.ToString(myRow["GuestID"]).TrimEnd();
@@ -79,19 +77,18 @@ namespace HotelSystem.Database
         private void FillRow(DataRow aRow, GuestAccount aGuestAcc, DB.DBOperation operation)
         {
 
-
+            
             if (operation == DB.DBOperation.Add)
             {
                 aRow["GuestAccID"] = aGuestAcc.GuestAccID;
                 aRow["GuestID"] = aGuestAcc.GuestID;
-                aRow["DateCreated"] = aGuestAcc.DateCreated;  //NOTE square brackets to indicate index of collections of fields in row.
-                aRow["TotalAmount"] = aGuestAcc.TotalAmount;
+                aRow["DateCreated"] = aGuestAcc.DateCreated; 
                 aRow["Status"] = aGuestAcc.Status;
                 
             }else if (operation == DB.DBOperation.Edit)
             {
                 aRow["GuestID"] = aGuestAcc.GuestID;
-                aRow["DateCreated"] = aGuestAcc.DateCreated;  //NOTE square brackets to indicate index of collections of fields in row.
+                aRow["DateCreated"] = aGuestAcc.DateCreated;  
                 aRow["TotalAmount"] = aGuestAcc.TotalAmount;
                 aRow["Status"] = aGuestAcc.Status;
             }

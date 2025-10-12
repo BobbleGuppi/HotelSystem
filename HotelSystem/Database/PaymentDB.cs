@@ -134,8 +134,8 @@ namespace HotelSystem.Database
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@Amount", SqlDbType.Decimal);
-            param.Precision = 18;      // total digits
-            param.Scale = 2;           // digits after decimal
+            param.Precision = 18;      
+            param.Scale = 2;           
             param.SourceColumn = "Amount";
             daMain.InsertCommand.Parameters.Add(param);
 
@@ -149,7 +149,7 @@ namespace HotelSystem.Database
 
         private void Create_INSERT_Command(Payment aPayment)
         {
-            //Create the command that must be used to insert values into the Books table..
+            
             daMain.InsertCommand = new SqlCommand("INSERT into Guest (PaymentID, GuestAccID, Amount, DatePaid, PaymentType) VALUES (@PaymentID, @GuestAccID, @Amount, @DatePaid, @PaymentType)", cnMain);
             Build_INSERT_Parameters(aPayment);
         }

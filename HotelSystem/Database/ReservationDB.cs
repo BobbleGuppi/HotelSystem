@@ -128,7 +128,6 @@ namespace HotelSystem.Database
                     int editIndex = FindRow(reservation, table);
                     if (editIndex < 0)
                     {
-                        // Optionally throw or log; for now show message
                         MessageBox.Show("Edit failed: reservation row not found in DataSet.");
                         return;
                     }
