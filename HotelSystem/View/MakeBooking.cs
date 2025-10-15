@@ -243,7 +243,7 @@ namespace HotelSystem.View
                     MessageBoxIcon.Information
                 );
 
-                // Now update the GuestAccount's total after reservation price is known
+           
                 CreateReservation(newGuest, newGuestAccount);
             }
             else

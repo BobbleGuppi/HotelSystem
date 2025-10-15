@@ -76,23 +76,22 @@ namespace HotelSystem.Database
 
         private void FillRow(DataRow aRow, GuestAccount aGuestAcc, DB.DBOperation operation)
         {
-
-            
             if (operation == DB.DBOperation.Add)
             {
                 aRow["GuestAccID"] = aGuestAcc.GuestAccID;
                 aRow["GuestID"] = aGuestAcc.GuestID;
-                aRow["DateCreated"] = aGuestAcc.DateCreated; 
-                aRow["Status"] = aGuestAcc.Status;
-                
-            }else if (operation == DB.DBOperation.Edit)
-            {
-                aRow["GuestID"] = aGuestAcc.GuestID;
-                aRow["DateCreated"] = aGuestAcc.DateCreated;  
+                aRow["DateCreated"] = aGuestAcc.DateCreated;
                 aRow["TotalAmount"] = aGuestAcc.TotalAmount;
                 aRow["Status"] = aGuestAcc.Status;
             }
+            else if (operation == DB.DBOperation.Edit) 
+            {
+                aRow["GuestID"] = aGuestAcc.GuestID;
+                aRow["DateCreated"] = aGuestAcc.DateCreated;
+                aRow["TotalAmount"] = aGuestAcc.TotalAmount;
+                aRow["Status"] = aGuestAcc.Status;
 
+            }
         }
 
         public int FindRow(GuestAccount aGuestAcc, string table)
@@ -167,8 +166,8 @@ namespace HotelSystem.Database
             daMain.InsertCommand.Parameters.Add(param);
 
             param = new SqlParameter("@TotalAmount", SqlDbType.Decimal);
-            param.Precision = 18;      // total digits
-            param.Scale = 2;           // digits after decimal
+            param.Precision = 18;     
+            param.Scale = 2;          
             param.SourceColumn = "TotalAmount";
             daMain.InsertCommand.Parameters.Add(param);
 
@@ -188,7 +187,6 @@ namespace HotelSystem.Database
         public bool UpdateDataSource(GuestAccount aGuestAcc)
         {
             bool success = true;
-            //Create_INSERT_Command(aGuestAcc);//repeated this line by mistake .
             
             Create_INSERT_Command(aGuestAcc);
             Create_UPDATE_Command(aGuestAcc);
@@ -216,8 +214,8 @@ namespace HotelSystem.Database
             daMain.UpdateCommand.Parameters.Add(param);
 
             param = new SqlParameter("@TotalAmount", SqlDbType.Decimal);
-            param.Precision = 18;      // total digits
-            param.Scale = 2;           // digits after decimal
+            param.Precision = 18;     
+            param.Scale = 2;          
             param.SourceColumn = "TotalAmount";
             param.SourceVersion = DataRowVersion.Current;
             daMain.UpdateCommand.Parameters.Add(param);
